@@ -67,38 +67,6 @@ export function ProjectSection() {
       liveUrl: "https://lumni-psi.vercel.app",
       githubUrl: "https://github.com/thembaxx/lumni",
     },
-    {
-      id: "next-beta",
-      title: "Nextdot (next-beta)",
-      subtitle: "Full-Stack E-Commerce & Management Platform",
-      oneLiner: "A full-stack web application showcasing product catalogs, cart management, and modern UI components.",
-      description:
-        "Nextdot (next-beta) is a web application built with Next.js, React, and TypeScript. Demonstrates product discovery, dynamic filter states, responsive card grid architecture, and clean client-server data flow.",
-      features: [
-        "Dynamic product filtering and responsive catalog layout",
-        "Client-side cart state handling and checkout UI workflows",
-        "TypeScript interfaces ensuring strict props and API response typing",
-        "Optimized image rendering using Next.js Image component",
-      ],
-      technologies: ["React", "TypeScript", "Next.js", "Tailwind CSS"],
-      tools: ["UI System", "API Integration"],
-      screenshots: [
-        {
-          src: "/projects/next-beta-1.png",
-          alt: "Nextdot application interface showing product showcase grid and interactive navigation",
-          type: "desktop",
-          label: "Product Showcase",
-        },
-        {
-          src: "/projects/next-beta-2.png",
-          alt: "Nextdot detail view interface displaying item configuration and cart actions",
-          type: "desktop",
-          label: "Product Detail View",
-        },
-      ],
-      liveUrl: "https://next-beta-five.vercel.app",
-      githubUrl: "https://github.com/thembaxx/next-beta",
-    },
   ];
 
   return (

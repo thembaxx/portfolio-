@@ -63,11 +63,11 @@ describe("Themba Mndebele Developer Portfolio", () => {
     expect(screen.getByText("TypeScript")).toBeDefined();
   });
 
-  test("renders Featured Projects including Mileia, Lumni, and Nextdot", () => {
+  test("renders Featured Projects including Mileia and Lumni", () => {
     render(<ProjectSection />);
     expect(screen.getByText("Mileia")).toBeDefined();
     expect(screen.getByText("Lumni")).toBeDefined();
-    expect(screen.getByText("Nextdot (next-beta)")).toBeDefined();
+    expect(screen.queryByText("Nextdot (next-beta)")).toBeNull();
   });
 
   test("renders Contact section with email mailto link and social profiles", () => {
