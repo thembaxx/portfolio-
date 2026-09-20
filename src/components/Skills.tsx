@@ -1,4 +1,4 @@
-import { Layers, Terminal, TestTube2, Bot } from "lucide-react";
+import { Layers, Terminal, TestTube2, Wrench } from "lucide-react";
 
 interface SkillCategory {
   title: string;
@@ -10,51 +10,44 @@ interface SkillCategory {
 export function Skills() {
   const skillCategories: SkillCategory[] = [
     {
-      title: "Frontend Development",
+      title: "Core Frontend Architecture",
       icon: Layers,
-      description: "Core UI technologies and modern frontend frameworks",
-      skills: ["React", "Next.js", "TypeScript", "JavaScript", "Tailwind CSS", "HTML5", "CSS3"],
+      description: "Modern web standards, UI frameworks, and type safety",
+      skills: ["React", "Next.js", "TypeScript", "JavaScript (ES6+)", "Tailwind CSS", "HTML5 & CSS3"],
     },
     {
-      title: "Engineering & Architecture",
+      title: "State, APIs & System Design",
       icon: Terminal,
-      description: "System design, state management, and developer tooling",
-      skills: [
-        "REST APIs",
-        "API Integration",
-        "Component Architecture",
-        "Responsive Web Design",
-        "Git / GitHub",
-        "State Management",
-      ],
+      description: "Data fetching, client state, and backend integration",
+      skills: ["REST APIs", "Appwrite", "Zustand", "Component Design", "Responsive Web Design", "Git & GitHub"],
     },
     {
-      title: "Testing & Quality",
+      title: "Testing & Quality Assurance",
       icon: TestTube2,
-      description: "Automated unit, integration, and end-to-end testing",
-      skills: ["Vitest", "Playwright", "Frontend Testing", "Accessibility (a11y)"],
+      description: "Automated verification, accessibility, and performance",
+      skills: ["Vitest", "Playwright", "React Testing Library", "Accessibility (WCAG)", "Web Vitals"],
     },
     {
-      title: "AI-Assisted Engineering",
-      icon: Bot,
-      description: "Modern AI-assisted development tooling and models",
-      skills: ["Gemini", "Kimi", "DeepSeek", "OpenCode", "Cline", "CodeRabbit"],
+      title: "Developer Tooling & AI Workflows",
+      icon: Wrench,
+      description: "Productivity tools for research, debugging, and code analysis",
+      skills: ["Gemini", "DeepSeek", "Kimi", "CodeRabbit", "IndexedDB / Dexie.js", "Vercel"],
     },
   ];
 
   return (
-    <section id="skills" className="py-20 border-b border-border transition-colors">
+    <section id="skills" className="py-16 md:py-24 border-b border-border transition-colors">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Section Header */}
         <div className="max-w-2xl space-y-3">
           <div className="inline-flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-wider text-primary">
-            <span>Skills &amp; expertise</span>
+            <span>Technical Capabilities</span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground [text-wrap:balance]">
-            Technologies and core capabilities
+            Skills &amp; Technologies
           </h2>
           <p className="text-sm sm:text-base text-muted-foreground [text-wrap:pretty]">
-            Grouped by functional domain. Only includes tools and frameworks actively used in production and verified projects.
+            Grouped by domain. Tools and frameworks actively used to deliver production applications.
           </p>
         </div>
 
@@ -65,7 +58,7 @@ export function Skills() {
             return (
               <div
                 key={category.title}
-                className="p-6 rounded-3xl bg-card border border-border space-y-4 hover:border-primary/50 transition-colors shadow-xs"
+                className="p-6 rounded-3xl bg-card border border-border space-y-4 hover:border-primary/40 transition-colors shadow-2xs"
               >
                 <div className="flex items-center gap-3">
                   <div className="p-2 rounded-lg bg-secondary text-primary border border-border shrink-0">
@@ -77,7 +70,7 @@ export function Skills() {
                   </div>
                 </div>
 
-                <div className="flex flex-wrap gap-2 pt-2">
+                <div className="flex flex-wrap gap-2 pt-1">
                   {category.skills.map((skill) => (
                     <span
                       key={skill}

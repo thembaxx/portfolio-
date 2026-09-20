@@ -2,11 +2,11 @@ import { ArrowDown, Mail, MapPin, Sparkles } from "lucide-react";
 
 export function Hero() {
   return (
-    <section className="relative pt-12 pb-20 md:pt-20 md:pb-32 overflow-hidden border-b border-border transition-colors">
+    <section className="relative pt-10 pb-16 md:pt-16 md:pb-24 overflow-hidden border-b border-border transition-colors">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl space-y-6">
           {/* Availability & Location Badge */}
-          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-card border border-border text-xs font-medium shadow-xs">
+          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-card border border-border text-xs font-medium shadow-2xs">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
@@ -23,24 +23,24 @@ export function Hero() {
 
           {/* Main Value Proposition */}
           <div className="space-y-4">
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.15] [text-wrap:balance]">
-              Frontend Developer building{" "}
-              <span className="text-primary font-bold">
-                thoughtful digital experiences
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.12] [text-wrap:balance]">
+              Themba Mndebele
+              <span className="block text-xl sm:text-3xl lg:text-4xl text-primary font-semibold mt-2">
+                Frontend Developer · React · TypeScript
               </span>
             </h1>
             <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl font-normal [text-wrap:pretty]">
-              Hi, I’m <strong className="text-foreground font-semibold">Themba Mndebele</strong>. I
-              specialise in <strong className="text-foreground font-medium">React</strong>,{" "}
-              <strong className="text-foreground font-medium">TypeScript</strong>, and modern web
-              development—combining clean engineering architecture with meticulous UI/UX detail.
+              I build high-performance, responsive web applications and production-quality interfaces.
+              Specialising in <strong className="text-foreground font-semibold">React</strong>,{" "}
+              <strong className="text-foreground font-semibold">TypeScript</strong>, and{" "}
+              <strong className="text-foreground font-semibold">Next.js</strong>—combining clean component architecture, automated testing, and thoughtful UI/UX detail.
             </p>
           </div>
 
           {/* Tech stack highlights */}
           <div className="flex flex-wrap items-center gap-2 pt-1 text-xs">
             <span className="font-mono text-muted-foreground">Specialities:</span>
-            {["React", "Next.js", "TypeScript", "Tailwind CSS", "UI/UX"].map((tech) => (
+            {["React 19", "Next.js", "TypeScript", "Tailwind CSS", "UI/UX"].map((tech) => (
               <span
                 key={tech}
                 className="px-2.5 py-1 rounded-md bg-card border border-border text-foreground font-medium shadow-2xs whitespace-nowrap"
@@ -54,27 +54,25 @@ export function Hero() {
             </span>
           </div>
 
-          {/* Call to Actions */}
+          {/* Primary & Secondary Call to Actions */}
           <div className="pt-4 flex flex-wrap items-center gap-4">
-            {/* Button with icon on right gets slightly smaller padding on the icon side: pl-4.5 pr-3.5 */}
             <a
               href="#projects"
-              className="inline-flex items-center gap-2 pl-4.5 pr-3.5 py-2.5 rounded-lg bg-primary text-primary-foreground font-semibold text-sm shadow-sm hover:bg-primary/90 active:scale-[0.97] transition-[color,background-color,border-color,transform] duration-150 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              className="inline-flex items-center gap-2 pl-4.5 pr-3.5 py-2.5 rounded-lg bg-primary text-primary-foreground font-semibold text-sm shadow-xs hover:bg-primary/90 active:scale-[0.97] transition-[color,background-color,border-color,transform] duration-150 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
-              <span>View projects</span>
+              <span>View my work</span>
               <ArrowDown className="w-4 h-4" strokeWidth={2} aria-hidden="true" />
             </a>
 
-            {/* Button with icon on left gets slightly smaller padding on the icon side: pl-3.5 pr-4.5 */}
             <a
-              href="mailto:me@themba.dev"
+              href="mailto:mndebele.themba@gmail.com"
               className="inline-flex items-center gap-2 pl-3.5 pr-4.5 py-2.5 rounded-lg bg-card hover:bg-accent text-foreground border border-border text-sm font-medium active:scale-[0.97] transition-[color,background-color,border-color,transform] duration-150 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
               <Mail className="w-4 h-4 text-primary" strokeWidth={1.75} aria-hidden="true" />
-              <span>Contact me</span>
+              <span>Let’s connect</span>
             </a>
 
-            <div className="flex items-center gap-2 ml-2 pl-2 border-l border-border">
+            <div className="flex items-center gap-2 ml-1 pl-3 border-l border-border">
               <a
                 href="https://github.com/thembaxx"
                 target="_blank"
