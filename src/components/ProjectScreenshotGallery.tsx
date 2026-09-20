@@ -25,16 +25,16 @@ export function ProjectScreenshotGallery({ screenshots, projectName }: GalleryPr
     <div className="space-y-4">
       {/* Viewport switcher tabs */}
       {screenshots.length > 1 && (
-        <div className="flex items-center gap-2 border-b border-slate-800/80 pb-2">
+        <div className="flex items-center gap-2 border-b border-border pb-2">
           {screenshots.map((s, idx) => (
             <button
               key={s.label}
               type="button"
               onClick={() => setActiveTab(idx)}
-              className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all focus:outline-none focus:ring-2 focus:ring-sky-400 ${
+              className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all focus:outline-none focus:ring-2 focus:ring-ring ${
                 activeTab === idx
-                  ? "bg-slate-800 text-sky-400 border border-slate-700 shadow-sm"
-                  : "text-slate-400 hover:text-slate-200 hover:bg-slate-900/60"
+                  ? "bg-secondary text-foreground border border-border shadow-2xs font-semibold"
+                  : "text-muted-foreground hover:text-foreground hover:bg-accent"
               }`}
             >
               {s.type === "desktop" ? (
@@ -49,8 +49,8 @@ export function ProjectScreenshotGallery({ screenshots, projectName }: GalleryPr
       )}
 
       {/* Primary Displayed Screenshot */}
-      <div className="relative rounded-xl overflow-hidden border border-slate-800 bg-slate-950/80 group">
-        <div className="aspect-[16/9] relative w-full overflow-hidden bg-slate-900">
+      <div className="relative rounded-xl overflow-hidden border border-border bg-card group shadow-sm">
+        <div className="aspect-[16/9] relative w-full overflow-hidden bg-muted">
           <Image
             src={screenshots[activeTab]?.src || screenshots[0].src}
             alt={screenshots[activeTab]?.alt || `${projectName} screenshot`}
