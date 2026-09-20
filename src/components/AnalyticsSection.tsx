@@ -66,14 +66,14 @@ export function AnalyticsSection() {
                   {item.metric}
                 </span>
                 <span className="inline-flex items-center gap-1 text-[11px] font-medium text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full">
-                  <ShieldCheck className="w-3 h-3" />
+                  <ShieldCheck className="w-3 h-3" strokeWidth={1.75} aria-hidden="true" />
                   {item.status}
                 </span>
               </div>
-              <div className="text-2xl font-bold font-mono tracking-tight text-foreground">
+              <div className="text-2xl font-bold font-mono tabular-nums tracking-tight text-foreground">
                 {item.value}
               </div>
-              <p className="text-[11px] text-muted-foreground">Target: {item.benchmark}</p>
+              <p className="text-[11px] font-mono tabular-nums text-muted-foreground">Target: {item.benchmark}</p>
             </div>
           ))}
         </div>
@@ -81,18 +81,18 @@ export function AnalyticsSection() {
         {/* Chart Panels */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Lighthouse Score Area Chart */}
-          <div className="p-6 rounded-2xl bg-card border border-border space-y-6 shadow-sm transition-colors">
+          <div className="p-6 rounded-2xl bg-card border border-border space-y-6 shadow-xs transition-colors">
             <div className="flex items-center justify-between">
               <div className="space-y-1">
-                <h3 className="text-base font-semibold flex items-center gap-2">
-                  <Zap className="w-4 h-4 text-blue-600 dark:text-sky-400" />
+                <h3 className="text-base font-semibold flex items-center gap-2 [text-wrap:balance]">
+                  <Zap className="w-4 h-4 text-primary" strokeWidth={1.75} aria-hidden="true" />
                   Lighthouse Audit Score Trend
                 </h3>
-                <p className="text-xs text-muted-foreground">
+                <p className="text-xs text-muted-foreground [text-wrap:pretty]">
                   Average automated audit rating over 6 months
                 </p>
               </div>
-              <span className="text-xs font-mono font-bold px-2.5 py-1 rounded bg-blue-500/10 text-blue-600 dark:text-sky-400">
+              <span className="text-xs font-mono tabular-nums font-bold px-2.5 py-1 rounded bg-accent text-primary border border-border">
                 100 / 100
               </span>
             </div>
@@ -101,12 +101,6 @@ export function AnalyticsSection() {
               {mounted ? (
                 <ResponsiveContainer width="100%" height="100%">
                   <AreaChart data={performanceData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-                    <defs>
-                      <linearGradient id="scoreColor" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor="#2563eb" stopOpacity={0.4} />
-                        <stop offset="95%" stopColor="#2563eb" stopOpacity={0.0} />
-                      </linearGradient>
-                    </defs>
                     <CartesianGrid strokeDasharray="3 3" opacity={0.15} />
                     <XAxis dataKey="month" stroke="currentColor" className="text-xs text-muted-foreground" />
                     <YAxis domain={[80, 100]} stroke="currentColor" className="text-xs text-muted-foreground" />
@@ -124,32 +118,32 @@ export function AnalyticsSection() {
                       dataKey="lighthouse"
                       stroke="#2563eb"
                       strokeWidth={2}
-                      fillOpacity={1}
-                      fill="url(#scoreColor)"
+                      fill="#2563eb"
+                      fillOpacity={0.08}
                     />
                   </AreaChart>
                 </ResponsiveContainer>
               ) : (
                 <div className="h-full w-full flex items-center justify-center text-xs text-muted-foreground">
-                  Loading analytics chart...
+                  Loading analytics chart…
                 </div>
               )}
             </div>
           </div>
 
           {/* Web Vitals Efficiency Bar Chart */}
-          <div className="p-6 rounded-2xl bg-card border border-border space-y-6 shadow-sm transition-colors">
+          <div className="p-6 rounded-2xl bg-card border border-border space-y-6 shadow-xs transition-colors">
             <div className="flex items-center justify-between">
               <div className="space-y-1">
-                <h3 className="text-base font-semibold flex items-center gap-2">
-                  <Activity className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
+                <h3 className="text-base font-semibold flex items-center gap-2 [text-wrap:balance]">
+                  <Activity className="w-4 h-4 text-primary" strokeWidth={1.75} aria-hidden="true" />
                   Page Load &amp; Interactive Efficiency
                 </h3>
-                <p className="text-xs text-muted-foreground">
+                <p className="text-xs text-muted-foreground [text-wrap:pretty]">
                   Speed Index and Web Vitals ratings
                 </p>
               </div>
-              <span className="text-xs font-mono font-bold px-2.5 py-1 rounded bg-cyan-500/10 text-cyan-600 dark:text-cyan-400">
+              <span className="text-xs font-mono tabular-nums font-bold px-2.5 py-1 rounded bg-accent text-primary border border-border">
                 99.4%
               </span>
             </div>
@@ -170,12 +164,12 @@ export function AnalyticsSection() {
                         fontSize: "12px",
                       }}
                     />
-                    <Bar dataKey="webVitals" fill="#06b6d4" radius={[4, 4, 0, 0]} />
+                    <Bar dataKey="webVitals" fill="#2563eb" radius={[4, 4, 0, 0]} />
                   </BarChart>
                 </ResponsiveContainer>
               ) : (
                 <div className="h-full w-full flex items-center justify-center text-xs text-muted-foreground">
-                  Loading performance metrics...
+                  Loading performance metrics…
                 </div>
               )}
             </div>
