@@ -19,11 +19,11 @@ export function Contact() {
 
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
             <a
-              href="mailto:me@themba.dev"
+              href="mailto:mndebele.themba@gmail.com"
               className="inline-flex items-center justify-center gap-2.5 pl-5 pr-6 py-3.5 rounded-xl bg-primary text-primary-foreground font-semibold text-sm shadow-sm hover:bg-primary/90 active:scale-[0.97] transition-[color,background-color,border-color,transform] duration-150 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
               <Mail className="w-4 h-4" strokeWidth={2} aria-hidden="true" />
-              <span>me@themba.dev</span>
+              <span>mndebele.themba@gmail.com</span>
             </a>
 
             <a
