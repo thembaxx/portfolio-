@@ -69,7 +69,7 @@ export function Hero() {
             </a>
 
             <a
-              href="mailto:mndebele.themba@gmail.com"
+              href="mailto:me@themba.dev"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-slate-800/90 hover:bg-slate-700/90 text-slate-100 border border-slate-700 text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-sky-400"
             >
               <Mail className="w-4 h-4 text-sky-400" />

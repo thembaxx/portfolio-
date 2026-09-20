@@ -61,7 +61,7 @@ describe("Themba Mndebele Developer Portfolio", () => {
 
   test("renders Contact section with email mailto link and social profiles", () => {
     render(<Contact />);
-    expect(screen.getByText("mndebele.themba@gmail.com")).toBeDefined();
+    expect(screen.getByText("me@themba.dev")).toBeDefined();
     expect(screen.getByText("LinkedIn Profile")).toBeDefined();
   });
 

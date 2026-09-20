@@ -25,11 +25,11 @@ export function Contact() {
 
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
             <a
-              href="mailto:mndebele.themba@gmail.com"
+              href="mailto:me@themba.dev"
               className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-semibold text-sm transition-all shadow-lg shadow-sky-500/20 focus:outline-none focus:ring-2 focus:ring-sky-400"
             >
               <Mail className="w-4 h-4" />
-              <span>mndebele.themba@gmail.com</span>
+              <span>me@themba.dev</span>
             </a>
 
             <a
