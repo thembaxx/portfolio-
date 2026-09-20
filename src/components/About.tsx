@@ -2,7 +2,7 @@ import { Cpu, UserCheck } from "lucide-react";
 
 export function About() {
   return (
-    <section id="about" className="py-20 border-b border-border transition-colors">
+    <section id="about" className="py-20 border-b border-border transition-colors scroll-mt-24">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-start gap-10 lg:gap-16">
           {/* Section Heading */}

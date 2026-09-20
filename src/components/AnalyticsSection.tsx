@@ -38,7 +38,7 @@ export function AnalyticsSection() {
   }, []);
 
   return (
-    <section id="analytics" className="py-20 border-b border-border transition-colors">
+    <section id="analytics" className="py-20 border-b border-border transition-colors scroll-mt-24">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Section Header */}
         <div className="max-w-2xl space-y-3">
@@ -46,10 +46,10 @@ export function AnalyticsSection() {
             <BarChart3 className="w-4 h-4" />
             <span>Engineering Analytics</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight [text-wrap:balance]">
             Performance &amp; Core Web Vitals
           </h2>
-          <p className="text-sm sm:text-base text-muted-foreground">
+          <p className="text-sm sm:text-base text-muted-foreground [text-wrap:pretty]">
             Measured quality benchmarks demonstrating production speed, accessibility, SEO, and structural performance across desktop and mobile devices.
           </p>
         </div>

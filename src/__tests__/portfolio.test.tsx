@@ -37,12 +37,13 @@ describe("Themba Mndebele Developer Portfolio", () => {
     expect(screen.getByText("Skills")).toBeDefined();
   });
 
-  test("renders Hero with title, role and primary contact CTAs", () => {
-    render(<Hero />);
+  test("renders Hero with title, role and primary contact CTAs without gradients", () => {
+    const { container } = render(<Hero />);
     expect(screen.getByText("Based in South Africa")).toBeDefined();
     expect(screen.getByText("Open to remote opportunities")).toBeDefined();
     expect(screen.getByText("View projects")).toBeDefined();
     expect(screen.getByText("Contact me")).toBeDefined();
+    expect(container.querySelector(".bg-gradient-to-r")).toBeNull();
   });
 
   test("renders About section with recruiter concise intro and experience", () => {

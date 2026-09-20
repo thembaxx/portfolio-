@@ -6,7 +6,7 @@ export function Approach() {
       title: "Design-Minded Engineering",
       icon: Palette,
       description:
-        "I care deeply about how interfaces look, feel, and behave—not just whether they function. I build robust design systems with pixel-perfect attention to detail, motion design, and micro-interactions.",
+        "I care deeply about how interfaces look, feel, and behave\u2014not just whether they function. I build robust design systems with pixel-perfect attention to detail, motion design, and micro-interactions.",
     },
     {
       title: "Modern Tech Stack & Quality",
@@ -18,7 +18,7 @@ export function Approach() {
       title: "AI-Assisted Workflow",
       icon: Sparkles,
       description:
-        "I leverage modern AI tools (Gemini, DeepSeek, CodeRabbit) to accelerate research, debug edge cases, write tests, and explore implementations—while retaining absolute technical ownership.",
+        "I leverage modern AI tools (Gemini, DeepSeek, CodeRabbit) to accelerate research, debug edge cases, write tests, and explore implementations\u2014while retaining absolute technical ownership.",
     },
     {
       title: "Continuous Learning",
@@ -29,7 +29,7 @@ export function Approach() {
   ];
 
   return (
-    <section id="approach" className="py-20 border-b border-border transition-colors">
+    <section id="approach" className="py-20 border-b border-border transition-colors scroll-mt-24">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Header */}
         <div className="max-w-2xl space-y-3">

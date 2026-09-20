@@ -33,7 +33,7 @@ export function Hero() {
               Hi, I’m <strong className="text-foreground font-semibold">Themba Mndebele</strong>. I
               specialise in <strong className="text-foreground font-medium">React</strong>,{" "}
               <strong className="text-foreground font-medium">TypeScript</strong>, and modern web
-              development—combining clean engineering architecture with meticulous UI/UX detail.
+              development&mdash;combining clean engineering architecture with meticulous UI/UX detail.
             </p>
           </div>
 
