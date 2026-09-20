@@ -47,13 +47,13 @@ export function Skills() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Section Header */}
         <div className="max-w-2xl space-y-3">
-          <div className="inline-flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-wider text-blue-600 dark:text-sky-400">
-            <span>Skills &amp; Expertise</span>
+          <div className="inline-flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-wider text-primary">
+            <span>Skills &amp; expertise</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground [text-wrap:balance]">
             Technologies and core capabilities
           </h2>
-          <p className="text-sm sm:text-base text-muted-foreground">
+          <p className="text-sm sm:text-base text-muted-foreground [text-wrap:pretty]">
             Grouped by functional domain. Only includes tools and frameworks actively used in production and verified projects.
           </p>
         </div>
@@ -65,15 +65,15 @@ export function Skills() {
             return (
               <div
                 key={category.title}
-                className="p-6 rounded-xl bg-card border border-border space-y-4 hover:border-primary/50 transition-all shadow-xs"
+                className="p-6 rounded-3xl bg-card border border-border space-y-4 hover:border-primary/50 transition-colors shadow-xs"
               >
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-secondary text-blue-600 dark:text-sky-400 border border-border">
-                    <Icon className="w-5 h-5" />
+                  <div className="p-2 rounded-lg bg-secondary text-primary border border-border shrink-0">
+                    <Icon className="w-5 h-5" strokeWidth={1.75} aria-hidden="true" />
                   </div>
                   <div>
-                    <h3 className="text-base font-semibold text-foreground">{category.title}</h3>
-                    <p className="text-xs text-muted-foreground">{category.description}</p>
+                    <h3 className="text-base font-semibold text-foreground [text-wrap:balance]">{category.title}</h3>
+                    <p className="text-xs text-muted-foreground [text-wrap:pretty]">{category.description}</p>
                   </div>
                 </div>
 
@@ -81,7 +81,7 @@ export function Skills() {
                   {category.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="px-3 py-1 text-xs font-medium rounded-md bg-secondary/80 border border-border text-foreground hover:bg-accent transition-colors"
+                      className="px-3 py-1 text-xs font-medium rounded-md bg-secondary/80 border border-border text-foreground hover:bg-accent transition-colors whitespace-nowrap"
                     >
                       {skill}
                     </span>

@@ -16,7 +16,7 @@ export function Footer() {
             href="https://github.com/thembaxx"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-ring rounded px-1 py-0.5"
+            className="hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded px-1.5 py-0.5"
           >
             GitHub
           </a>
@@ -24,13 +24,13 @@ export function Footer() {
             href="https://www.linkedin.com/in/themba-p"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-ring rounded px-1 py-0.5"
+            className="hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded px-1.5 py-0.5"
           >
             LinkedIn
           </a>
           <a
             href="mailto:me@themba.dev"
-            className="hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-ring rounded px-1 py-0.5"
+            className="hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded px-1.5 py-0.5"
           >
             Email
           </a>

@@ -3,12 +3,6 @@ import { ArrowDown, Mail, MapPin, Sparkles } from "lucide-react";
 export function Hero() {
   return (
     <section className="relative pt-12 pb-20 md:pt-20 md:pb-32 overflow-hidden border-b border-border transition-colors">
-      {/* Background visual highlight */}
-      <div
-        className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-blue-500/10 dark:bg-sky-500/10 blur-[120px] rounded-full pointer-events-none -z-10"
-        aria-hidden="true"
-      />
-
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl space-y-6">
           {/* Availability & Location Badge */}
@@ -18,25 +12,25 @@ export function Hero() {
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
             </span>
             <span className="flex items-center gap-1.5">
-              <MapPin className="w-3.5 h-3.5 text-muted-foreground" />
+              <MapPin className="w-3.5 h-3.5 text-muted-foreground" strokeWidth={1.75} aria-hidden="true" />
               <span>Based in South Africa</span>
             </span>
-            <span className="text-muted-foreground">·</span>
-            <span className="text-blue-600 dark:text-sky-400 font-semibold">
+            <span className="text-muted-foreground" aria-hidden="true">·</span>
+            <span className="text-primary font-semibold">
               Open to remote opportunities
             </span>
           </div>
 
           {/* Main Value Proposition */}
           <div className="space-y-4">
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.15]">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.15] [text-wrap:balance]">
               Frontend Developer building{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-cyan-600 to-indigo-600 dark:from-sky-400 dark:via-blue-400 dark:to-indigo-400">
+              <span className="text-primary font-bold">
                 thoughtful digital experiences
               </span>
             </h1>
-            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl font-normal">
-              Hi, I&apos;m <strong className="text-foreground font-semibold">Themba Mndebele</strong>. I
+            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl font-normal [text-wrap:pretty]">
+              Hi, I’m <strong className="text-foreground font-semibold">Themba Mndebele</strong>. I
               specialise in <strong className="text-foreground font-medium">React</strong>,{" "}
               <strong className="text-foreground font-medium">TypeScript</strong>, and modern web
               development—combining clean engineering architecture with meticulous UI/UX detail.
@@ -49,32 +43,34 @@ export function Hero() {
             {["React", "Next.js", "TypeScript", "Tailwind CSS", "UI/UX"].map((tech) => (
               <span
                 key={tech}
-                className="px-2.5 py-1 rounded-md bg-card border border-border text-foreground font-medium shadow-2xs"
+                className="px-2.5 py-1 rounded-md bg-card border border-border text-foreground font-medium shadow-2xs whitespace-nowrap"
               >
                 {tech}
               </span>
             ))}
-            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-blue-500/10 border border-blue-500/20 text-blue-600 dark:text-sky-400 font-medium">
-              <Sparkles className="w-3 h-3 text-blue-600 dark:text-sky-400" />
+            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-accent border border-border text-primary font-medium whitespace-nowrap">
+              <Sparkles className="w-3 h-3 text-primary" strokeWidth={1.75} aria-hidden="true" />
               <span>AI Workflows</span>
             </span>
           </div>
 
           {/* Call to Actions */}
           <div className="pt-4 flex flex-wrap items-center gap-4">
+            {/* Button with icon on right gets slightly smaller padding on the icon side: pl-4.5 pr-3.5 */}
             <a
               href="#projects"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-primary text-primary-foreground font-semibold text-sm transition-all shadow-md hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-ring"
+              className="inline-flex items-center gap-2 pl-4.5 pr-3.5 py-2.5 rounded-lg bg-primary text-primary-foreground font-semibold text-sm shadow-sm hover:bg-primary/90 active:scale-[0.97] transition-[color,background-color,border-color,transform] duration-150 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
               <span>View projects</span>
-              <ArrowDown className="w-4 h-4" />
+              <ArrowDown className="w-4 h-4" strokeWidth={2} aria-hidden="true" />
             </a>
 
+            {/* Button with icon on left gets slightly smaller padding on the icon side: pl-3.5 pr-4.5 */}
             <a
               href="mailto:me@themba.dev"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-card hover:bg-accent text-foreground border border-border text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-ring"
+              className="inline-flex items-center gap-2 pl-3.5 pr-4.5 py-2.5 rounded-lg bg-card hover:bg-accent text-foreground border border-border text-sm font-medium active:scale-[0.97] transition-[color,background-color,border-color,transform] duration-150 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
-              <Mail className="w-4 h-4 text-blue-600 dark:text-sky-400" />
+              <Mail className="w-4 h-4 text-primary" strokeWidth={1.75} aria-hidden="true" />
               <span>Contact me</span>
             </a>
 
@@ -83,7 +79,7 @@ export function Hero() {
                 href="https://github.com/thembaxx"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2.5 rounded-lg bg-card hover:bg-accent border border-border text-muted-foreground hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-ring"
+                className="w-10 h-10 flex items-center justify-center rounded-lg bg-card hover:bg-accent border border-border text-muted-foreground hover:text-foreground active:scale-[0.95] transition-[color,background-color,border-color,transform] duration-150 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                 aria-label="GitHub Profile"
               >
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
@@ -94,7 +90,7 @@ export function Hero() {
                 href="https://www.linkedin.com/in/themba-p"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2.5 rounded-lg bg-card hover:bg-accent border border-border text-muted-foreground hover:text-blue-600 dark:hover:text-sky-400 transition-colors focus:outline-none focus:ring-2 focus:ring-ring"
+                className="w-10 h-10 flex items-center justify-center rounded-lg bg-card hover:bg-accent border border-border text-muted-foreground hover:text-primary active:scale-[0.95] transition-[color,background-color,border-color,transform] duration-150 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                 aria-label="LinkedIn Profile"
               >
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
