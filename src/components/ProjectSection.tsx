@@ -76,11 +76,11 @@ export function ProjectSection() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Section Header */}
         <div className="max-w-2xl space-y-3">
-          <div className="inline-flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-wider text-blue-600 dark:text-sky-400">
-            <FolderGit2 className="w-4 h-4" />
-            <span>Featured Work</span>
+          <div className="inline-flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-wider text-primary">
+            <FolderGit2 className="w-4 h-4" strokeWidth={1.75} aria-hidden="true" />
+            <span>Featured work</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight [text-wrap:balance]">
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground [text-wrap:balance]">
             Production projects &amp; applications
           </h2>
           <p className="text-sm sm:text-base text-muted-foreground [text-wrap:pretty]">

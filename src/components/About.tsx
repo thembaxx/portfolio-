@@ -7,11 +7,11 @@ export function About() {
         <div className="flex flex-col md:flex-row md:items-start gap-10 lg:gap-16">
           {/* Section Heading */}
           <div className="md:w-1/3 space-y-3">
-            <div className="inline-flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-wider text-blue-600 dark:text-sky-400">
-              <UserCheck className="w-4 h-4" />
-              <span>About Me</span>
+            <div className="inline-flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-wider text-primary">
+              <UserCheck className="w-4 h-4" strokeWidth={1.75} aria-hidden="true" />
+              <span>About me</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight [text-wrap:balance]">
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground [text-wrap:balance]">
               Engineering with strong design thinking &amp; modern AI workflows.
             </h2>
           </div>
@@ -28,13 +28,13 @@ export function About() {
               With a background bridging design and engineering, I prioritize design system consistency, responsive layouts, accessibility, and state management. I care deeply about how digital products look, feel, and function for real users.
             </p>
 
-            <div className="p-5 rounded-xl bg-card border border-border space-y-3 shadow-xs">
+            <div className="p-5 rounded-2xl bg-card border border-border space-y-3 shadow-xs">
               <div className="flex items-center gap-2 text-sm font-semibold text-foreground">
-                <Cpu className="w-4 h-4 text-blue-600 dark:text-sky-400 shrink-0" />
+                <Cpu className="w-4 h-4 text-primary" strokeWidth={1.75} aria-hidden="true" />
                 <span>AI-Assisted Engineering Workflow</span>
               </div>
               <p className="text-sm text-muted-foreground leading-relaxed [text-wrap:pretty]">
-                I integrate modern AI tooling&mdash;including Gemini, DeepSeek, Kimi, OpenCode, Cline, and CodeRabbit&mdash;into my engineering workflow. I leverage AI to accelerate research, investigate bugs, write comprehensive test suites with Vitest and Playwright, and explore optimal implementation strategies while maintaining full ownership over code architecture, reliability, and security.
+                I integrate modern AI tooling—including Gemini, DeepSeek, Kimi, OpenCode, Cline, and CodeRabbit—into my engineering workflow. I leverage AI to accelerate research, investigate bugs, write comprehensive test suites with Vitest and Playwright, and explore optimal implementation strategies while maintaining full ownership over code architecture, reliability, and security.
               </p>
             </div>
           </div>

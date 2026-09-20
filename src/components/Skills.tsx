@@ -47,8 +47,8 @@ export function Skills() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Section Header */}
         <div className="max-w-2xl space-y-3">
-          <div className="inline-flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-wider text-blue-600 dark:text-sky-400">
-            <span>Skills &amp; Expertise</span>
+          <div className="inline-flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-wider text-primary">
+            <span>Skills &amp; expertise</span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground [text-wrap:balance]">
             Technologies and core capabilities
@@ -65,11 +65,11 @@ export function Skills() {
             return (
               <div
                 key={category.title}
-                className="p-6 rounded-xl bg-card border border-border space-y-4 hover:border-primary/50 transition-colors shadow-xs"
+                className="p-6 rounded-3xl bg-card border border-border space-y-4 hover:border-primary/50 transition-colors shadow-xs"
               >
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-secondary text-blue-600 dark:text-sky-400 border border-border shrink-0">
-                    <Icon className="w-5 h-5" />
+                  <div className="p-2 rounded-lg bg-secondary text-primary border border-border shrink-0">
+                    <Icon className="w-5 h-5" strokeWidth={1.75} aria-hidden="true" />
                   </div>
                   <div>
                     <h3 className="text-base font-semibold text-foreground [text-wrap:balance]">{category.title}</h3>
