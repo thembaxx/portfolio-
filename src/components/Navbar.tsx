@@ -1,36 +1,44 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { useTheme } from "next-themes";
+import { Menu, X, ArrowUpRight, Sun, Moon } from "lucide-react";
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme } = useTheme();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const navLinks = [
     { name: "About", href: "#about" },
+    { name: "Analytics", href: "#analytics" },
     { name: "Projects", href: "#projects" },
     { name: "Skills", href: "#skills" },
     { name: "Approach", href: "#approach" },
   ];
 
   return (
-    <header className="sticky top-0 z-50 backdrop-blur-md bg-[#090a0f]/80 border-b border-slate-800/60 transition-all">
+    <header className="sticky top-0 z-50 backdrop-blur-md bg-background/80 border-b border-border transition-colors">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Monogram / Name Logo */}
         <Link
           href="#"
-          className="flex items-center gap-2.5 group focus:outline-none focus:ring-2 focus:ring-sky-400 rounded-md p-1"
+          className="flex items-center gap-2.5 group focus:outline-none focus:ring-2 focus:ring-ring rounded-md p-1"
           aria-label="Themba Mndebele Home"
         >
-          <div className="w-8 h-8 rounded-lg bg-slate-800/80 border border-slate-700/60 flex items-center justify-center font-semibold text-sky-400 text-sm group-hover:border-sky-500/50 transition-colors">
+          <div className="w-8 h-8 rounded-lg bg-secondary/80 border border-border flex items-center justify-center font-semibold text-primary text-sm group-hover:border-primary/50 transition-colors">
             TM
           </div>
           <div className="flex flex-col">
-            <span className="text-sm font-semibold text-slate-100 tracking-tight leading-none group-hover:text-white transition-colors">
+            <span className="text-sm font-semibold tracking-tight leading-none group-hover:text-primary transition-colors">
               Themba Mndebele
             </span>
-            <span className="text-[11px] text-slate-400 font-normal leading-tight">
+            <span className="text-[11px] text-muted-foreground font-normal leading-tight">
               Frontend Developer
             </span>
           </div>
@@ -42,26 +50,42 @@ export function Navbar() {
             <a
               key={link.name}
               href={link.href}
-              className="text-xs uppercase tracking-wider font-medium text-slate-300 hover:text-sky-400 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-400 rounded px-1.5 py-1"
+              className="text-xs uppercase tracking-wider font-medium text-muted-foreground hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-ring rounded px-1.5 py-1"
             >
               {link.name}
             </a>
           ))}
         </nav>
 
-        {/* CTA Button & Mobile Menu Toggle */}
-        <div className="flex items-center gap-4">
+        {/* Theme Switcher, CTA Button & Mobile Menu Toggle */}
+        <div className="flex items-center gap-3">
+          {/* Theme Switcher */}
+          {mounted && (
+            <button
+              type="button"
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              className="p-2 rounded-lg bg-card border border-border text-muted-foreground hover:text-foreground hover:bg-accent transition-colors focus:outline-none focus:ring-2 focus:ring-ring"
+              aria-label="Toggle light and dark theme"
+            >
+              {theme === "dark" ? (
+                <Sun className="w-4 h-4 text-amber-400" />
+              ) : (
+                <Moon className="w-4 h-4 text-slate-700" />
+              )}
+            </button>
+          )}
+
           <a
             href="#contact"
-            className="hidden sm:inline-flex items-center gap-1.5 text-xs font-medium bg-slate-800/90 hover:bg-slate-700 text-slate-100 hover:text-white border border-slate-700/80 hover:border-slate-600 px-3.5 py-1.5 rounded-md transition-all shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-400"
+            className="hidden sm:inline-flex items-center gap-1.5 text-xs font-medium bg-primary text-primary-foreground hover:bg-primary/90 px-3.5 py-2 rounded-lg transition-all shadow-xs focus:outline-none focus:ring-2 focus:ring-ring"
           >
             <span>Let&apos;s talk</span>
-            <ArrowUpRight className="w-3.5 h-3.5 text-sky-400" />
+            <ArrowUpRight className="w-3.5 h-3.5" />
           </a>
 
           <button
             type="button"
-            className="md:hidden p-2 rounded-md text-slate-400 hover:text-slate-100 hover:bg-slate-800/80 focus:outline-none focus:ring-2 focus:ring-sky-400"
+            className="md:hidden p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent focus:outline-none focus:ring-2 focus:ring-ring border border-border"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-expanded={mobileMenuOpen}
             aria-label="Toggle Navigation Menu"
@@ -73,13 +97,13 @@ export function Navbar() {
 
       {/* Mobile Menu Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-b border-slate-800 bg-[#0c0e17] px-4 pt-3 pb-5 space-y-3">
+        <div className="md:hidden border-b border-border bg-card px-4 pt-3 pb-5 space-y-3">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
               onClick={() => setMobileMenuOpen(false)}
-              className="block text-sm font-medium text-slate-300 hover:text-sky-400 py-1.5 transition-colors"
+              className="block text-sm font-medium text-muted-foreground hover:text-foreground py-1.5 transition-colors"
             >
               {link.name}
             </a>
@@ -88,7 +112,7 @@ export function Navbar() {
             <a
               href="#contact"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center justify-center gap-2 w-full text-xs font-medium bg-sky-500/10 text-sky-400 hover:bg-sky-500/20 border border-sky-500/30 px-4 py-2 rounded-md transition-all"
+              className="flex items-center justify-center gap-2 w-full text-xs font-medium bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 rounded-lg transition-all"
             >
               <span>Let&apos;s talk</span>
               <ArrowUpRight className="w-3.5 h-3.5" />

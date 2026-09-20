@@ -18,6 +18,15 @@ vitest.mock("next/image", () => ({
   },
 }));
 
+// Mock next-themes
+vitest.mock("next-themes", () => ({
+  useTheme: () => ({
+    theme: "dark",
+    setTheme: vitest.fn(),
+  }),
+  ThemeProvider: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
+}));
+
 describe("Themba Mndebele Developer Portfolio", () => {
   test("renders Navbar with branding and navigation links", () => {
     render(<Navbar />);
@@ -52,9 +61,9 @@ describe("Themba Mndebele Developer Portfolio", () => {
     expect(screen.getByText("TypeScript")).toBeDefined();
   });
 
-  test("renders Featured Projects with exact target projects", () => {
+  test("renders Featured Projects with exact target projects (excluding next-beta)", () => {
     render(<ProjectSection />);
-    expect(screen.getByText("Nextdot (next-beta)")).toBeDefined();
+    expect(screen.queryByText("Nextdot (next-beta)")).toBeNull();
     expect(screen.getByText("Mileia")).toBeDefined();
     expect(screen.getByText("Lumni")).toBeDefined();
   });

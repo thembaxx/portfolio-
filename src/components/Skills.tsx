@@ -43,17 +43,17 @@ export function Skills() {
   ];
 
   return (
-    <section id="skills" className="py-20 border-b border-slate-800/50">
+    <section id="skills" className="py-20 border-b border-border transition-colors">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Section Header */}
         <div className="max-w-2xl space-y-3">
-          <div className="inline-flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-wider text-sky-400">
+          <div className="inline-flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-wider text-blue-600 dark:text-sky-400">
             <span>Skills &amp; Expertise</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
             Technologies and core capabilities
           </h2>
-          <p className="text-sm sm:text-base text-slate-400">
+          <p className="text-sm sm:text-base text-muted-foreground">
             Grouped by functional domain. Only includes tools and frameworks actively used in production and verified projects.
           </p>
         </div>
@@ -65,15 +65,15 @@ export function Skills() {
             return (
               <div
                 key={category.title}
-                className="p-6 rounded-xl bg-[#11131f] border border-slate-800/80 space-y-4 hover:border-slate-700/80 transition-all"
+                className="p-6 rounded-xl bg-card border border-border space-y-4 hover:border-primary/50 transition-all shadow-xs"
               >
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-slate-800/80 text-sky-400 border border-slate-700/50">
+                  <div className="p-2 rounded-lg bg-secondary text-blue-600 dark:text-sky-400 border border-border">
                     <Icon className="w-5 h-5" />
                   </div>
                   <div>
-                    <h3 className="text-base font-semibold text-white">{category.title}</h3>
-                    <p className="text-xs text-slate-400">{category.description}</p>
+                    <h3 className="text-base font-semibold text-foreground">{category.title}</h3>
+                    <p className="text-xs text-muted-foreground">{category.description}</p>
                   </div>
                 </div>
 
@@ -81,7 +81,7 @@ export function Skills() {
                   {category.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="px-3 py-1 text-xs font-medium rounded-md bg-slate-900 border border-slate-800 text-slate-200 hover:text-white hover:border-slate-700 transition-colors"
+                      className="px-3 py-1 text-xs font-medium rounded-md bg-secondary/80 border border-border text-foreground hover:bg-accent transition-colors"
                     >
                       {skill}
                     </span>

@@ -4,39 +4,6 @@ import { FolderGit2 } from "lucide-react";
 export function ProjectSection() {
   const projects: ProjectData[] = [
     {
-      id: "next-beta",
-      title: "Nextdot (next-beta)",
-      subtitle: "Personalized Estate & Document Management Guidance System",
-      oneLiner:
-        "Clear recommendations on which documents to track, when to update them, and who to share them with.",
-      description:
-        "Nextdot provides personalized, structured guidance tailored to each family's unique circumstances. Built with Next.js App Router and React Server Components, it helps families keep vital estate documents organized, current, and securely shared.",
-      features: [
-        "Dynamic family document tracking and personalized status recommendations",
-        "Role-based document sharing and access permission controls",
-        "Interactive timeline for document updates and compliance checks",
-        "Responsive, accessible web application with structured layout architecture",
-      ],
-      technologies: ["React", "TypeScript", "Next.js", "Tailwind CSS"],
-      tools: ["Lucide Icons", "PostCSS", "App Router"],
-      screenshots: [
-        {
-          src: "/projects/next-beta-1.png",
-          alt: "Nextdot landing interface screenshot",
-          type: "desktop",
-          label: "Landing Overview",
-        },
-        {
-          src: "/projects/next-beta-2.png",
-          alt: "Nextdot features section screenshot",
-          type: "desktop",
-          label: "Feature Details",
-        },
-      ],
-      liveUrl: "https://dev.nextdot.app",
-      githubUrl: "https://github.com/Rattlehub-Digital-Ltd/next-beta",
-    },
-    {
       id: "mileia",
       title: "Mileia",
       subtitle: "On-Demand Tradesperson Marketplace Platform",
@@ -105,18 +72,18 @@ export function ProjectSection() {
   ];
 
   return (
-    <section id="projects" className="py-20 border-b border-slate-800/50">
+    <section id="projects" className="py-20 border-b border-border transition-colors">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Section Header */}
         <div className="max-w-2xl space-y-3">
-          <div className="inline-flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-wider text-sky-400">
+          <div className="inline-flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-wider text-blue-600 dark:text-sky-400">
             <FolderGit2 className="w-4 h-4" />
             <span>Featured Work</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">
             Production projects &amp; applications
           </h2>
-          <p className="text-sm sm:text-base text-slate-400">
+          <p className="text-sm sm:text-base text-muted-foreground">
             A curated selection of production applications showcasing React architecture, TypeScript rigor, responsive UI/UX, and AI integrations.
           </p>
         </div>

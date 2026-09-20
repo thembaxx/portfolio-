@@ -29,17 +29,17 @@ export function Approach() {
   ];
 
   return (
-    <section id="approach" className="py-20 border-b border-slate-800/50">
+    <section id="approach" className="py-20 border-b border-border transition-colors">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Header */}
         <div className="max-w-2xl space-y-3">
-          <div className="inline-flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-wider text-sky-400">
+          <div className="inline-flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-wider text-blue-600 dark:text-sky-400">
             <span>Engineering Philosophy</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
             How I approach software engineering
           </h2>
-          <p className="text-sm sm:text-base text-slate-400">
+          <p className="text-sm sm:text-base text-muted-foreground">
             Principled execution combining engineering rigor, visual design craft, and modern AI acceleration.
           </p>
         </div>
@@ -51,13 +51,13 @@ export function Approach() {
             return (
               <div
                 key={item.title}
-                className="p-5 rounded-xl bg-[#0f111a] border border-slate-800/80 space-y-3 hover:border-slate-700 transition-all"
+                className="p-5 rounded-xl bg-card border border-border space-y-3 hover:border-primary/50 transition-all shadow-xs"
               >
-                <div className="p-2.5 w-fit rounded-lg bg-slate-800/70 text-sky-400 border border-slate-700/50">
+                <div className="p-2.5 w-fit rounded-lg bg-secondary text-blue-600 dark:text-sky-400 border border-border">
                   <Icon className="w-5 h-5" />
                 </div>
-                <h3 className="text-base font-semibold text-white">{item.title}</h3>
-                <p className="text-xs text-slate-400 leading-relaxed">{item.description}</p>
+                <h3 className="text-base font-semibold text-foreground">{item.title}</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed">{item.description}</p>
               </div>
             );
           })}
