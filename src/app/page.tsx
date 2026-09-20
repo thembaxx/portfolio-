@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground transition-colors selection:bg-blue-500/20 selection:text-blue-600 dark:selection:text-sky-300">
       <Navbar />
-      <main className="flex-1">
+      <main id="main-content" className="flex-1">
         <Hero />
         <About />
         <AnalyticsSection />

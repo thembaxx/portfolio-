@@ -28,7 +28,7 @@ export function Navbar() {
         {/* Monogram / Name Logo */}
         <Link
           href="#"
-          className="flex items-center gap-2.5 group focus:outline-none focus:ring-2 focus:ring-ring rounded-md p-1"
+          className="flex items-center gap-2.5 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-md p-1 active:scale-[0.98] transition-transform duration-150 ease-out"
           aria-label="Themba Mndebele Home"
         >
           <div className="w-8 h-8 rounded-lg bg-secondary/80 border border-border flex items-center justify-center font-semibold text-primary text-sm group-hover:border-primary/50 transition-colors">
@@ -50,7 +50,7 @@ export function Navbar() {
             <a
               key={link.name}
               href={link.href}
-              className="text-xs uppercase tracking-wider font-medium text-muted-foreground hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-ring rounded px-1.5 py-1"
+              className="text-xs uppercase tracking-wider font-medium text-muted-foreground hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded px-1.5 py-1"
             >
               {link.name}
             </a>
@@ -64,7 +64,7 @@ export function Navbar() {
             <button
               type="button"
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="p-2 rounded-lg bg-card border border-border text-muted-foreground hover:text-foreground hover:bg-accent transition-colors focus:outline-none focus:ring-2 focus:ring-ring"
+              className="p-2 rounded-lg bg-card border border-border text-muted-foreground hover:text-foreground hover:bg-accent transition-colors active:scale-[0.98] transition-transform duration-150 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               aria-label="Toggle light and dark theme"
             >
               {theme === "dark" ? (
@@ -77,15 +77,15 @@ export function Navbar() {
 
           <a
             href="#contact"
-            className="hidden sm:inline-flex items-center gap-1.5 text-xs font-medium bg-primary text-primary-foreground hover:bg-primary/90 px-3.5 py-2 rounded-lg transition-all shadow-xs focus:outline-none focus:ring-2 focus:ring-ring"
+            className="hidden sm:inline-flex items-center gap-1.5 text-xs font-medium bg-primary text-primary-foreground hover:bg-primary/90 pl-3.5 pr-2.5 py-2 rounded-lg active:scale-[0.98] transition-transform duration-150 ease-out shadow-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
-            <span>Let&apos;s talk</span>
+            <span>Let&rsquo;s talk</span>
             <ArrowUpRight className="w-3.5 h-3.5" />
           </a>
 
           <button
             type="button"
-            className="md:hidden p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent focus:outline-none focus:ring-2 focus:ring-ring border border-border"
+            className="md:hidden p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent active:scale-[0.98] transition-transform duration-150 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring border border-border"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-expanded={mobileMenuOpen}
             aria-label="Toggle Navigation Menu"
@@ -112,9 +112,9 @@ export function Navbar() {
             <a
               href="#contact"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center justify-center gap-2 w-full text-xs font-medium bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 rounded-lg transition-all"
+              className="flex items-center justify-center gap-2 w-full text-xs font-medium bg-primary text-primary-foreground hover:bg-primary/90 pl-4 pr-3 py-2 rounded-lg active:scale-[0.98] transition-transform duration-150 ease-out"
             >
-              <span>Let&apos;s talk</span>
+              <span>Let&rsquo;s talk</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
             </a>
           </div>

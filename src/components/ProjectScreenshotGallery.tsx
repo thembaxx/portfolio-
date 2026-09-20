@@ -31,16 +31,16 @@ export function ProjectScreenshotGallery({ screenshots, projectName }: GalleryPr
               key={s.label}
               type="button"
               onClick={() => setActiveTab(idx)}
-              className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all focus:outline-none focus:ring-2 focus:ring-ring ${
+              className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium active:scale-[0.98] transition-transform duration-150 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
                 activeTab === idx
                   ? "bg-secondary text-foreground border border-border shadow-2xs font-semibold"
                   : "text-muted-foreground hover:text-foreground hover:bg-accent"
               }`}
             >
               {s.type === "desktop" ? (
-                <Monitor className="w-3.5 h-3.5" />
+                <Monitor className="w-3.5 h-3.5 shrink-0" />
               ) : (
-                <Smartphone className="w-3.5 h-3.5" />
+                <Smartphone className="w-3.5 h-3.5 shrink-0" />
               )}
               <span>{s.label}</span>
             </button>
@@ -49,7 +49,7 @@ export function ProjectScreenshotGallery({ screenshots, projectName }: GalleryPr
       )}
 
       {/* Primary Displayed Screenshot */}
-      <div className="relative rounded-xl overflow-hidden border border-border bg-card group shadow-sm">
+      <div className="relative rounded-xl overflow-hidden border border-border bg-card group shadow-sm ring-1 ring-inset ring-black/8 dark:ring-white/8">
         <div className="aspect-[16/9] relative w-full overflow-hidden bg-muted">
           <Image
             src={screenshots[activeTab]?.src || screenshots[0].src}

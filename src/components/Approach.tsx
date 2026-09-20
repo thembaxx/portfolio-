@@ -6,7 +6,7 @@ export function Approach() {
       title: "Design-Minded Engineering",
       icon: Palette,
       description:
-        "I care deeply about how interfaces look, feel, and behave—not just whether they function. I build robust design systems with pixel-perfect attention to detail, motion design, and micro-interactions.",
+        "I care deeply about how interfaces look, feel, and behave\u2014not just whether they function. I build robust design systems with pixel-perfect attention to detail, motion design, and micro-interactions.",
     },
     {
       title: "Modern Tech Stack & Quality",
@@ -18,7 +18,7 @@ export function Approach() {
       title: "AI-Assisted Workflow",
       icon: Sparkles,
       description:
-        "I leverage modern AI tools (Gemini, DeepSeek, CodeRabbit) to accelerate research, debug edge cases, write tests, and explore implementations—while retaining absolute technical ownership.",
+        "I leverage modern AI tools (Gemini, DeepSeek, CodeRabbit) to accelerate research, debug edge cases, write tests, and explore implementations\u2014while retaining absolute technical ownership.",
     },
     {
       title: "Continuous Learning",
@@ -29,17 +29,17 @@ export function Approach() {
   ];
 
   return (
-    <section id="approach" className="py-20 border-b border-border transition-colors">
+    <section id="approach" className="py-20 border-b border-border transition-colors scroll-mt-24">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Header */}
         <div className="max-w-2xl space-y-3">
           <div className="inline-flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-wider text-blue-600 dark:text-sky-400">
             <span>Engineering Philosophy</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground [text-wrap:balance]">
             How I approach software engineering
           </h2>
-          <p className="text-sm sm:text-base text-muted-foreground">
+          <p className="text-sm sm:text-base text-muted-foreground [text-wrap:pretty]">
             Principled execution combining engineering rigor, visual design craft, and modern AI acceleration.
           </p>
         </div>
@@ -51,13 +51,13 @@ export function Approach() {
             return (
               <div
                 key={item.title}
-                className="p-5 rounded-xl bg-card border border-border space-y-3 hover:border-primary/50 transition-all shadow-xs"
+                className="p-5 rounded-xl bg-card border border-border space-y-3 hover:border-primary/50 transition-colors shadow-xs"
               >
-                <div className="p-2.5 w-fit rounded-lg bg-secondary text-blue-600 dark:text-sky-400 border border-border">
+                <div className="p-2.5 w-fit rounded-lg bg-secondary text-blue-600 dark:text-sky-400 border border-border shrink-0">
                   <Icon className="w-5 h-5" />
                 </div>
-                <h3 className="text-base font-semibold text-foreground">{item.title}</h3>
-                <p className="text-xs text-muted-foreground leading-relaxed">{item.description}</p>
+                <h3 className="text-base font-semibold text-foreground [text-wrap:balance]">{item.title}</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed [text-wrap:pretty]">{item.description}</p>
               </div>
             );
           })}

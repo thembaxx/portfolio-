@@ -72,7 +72,7 @@ export function ProjectSection() {
   ];
 
   return (
-    <section id="projects" className="py-20 border-b border-border transition-colors">
+    <section id="projects" className="py-20 border-b border-border transition-colors scroll-mt-24">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Section Header */}
         <div className="max-w-2xl space-y-3">
@@ -80,10 +80,10 @@ export function ProjectSection() {
             <FolderGit2 className="w-4 h-4" />
             <span>Featured Work</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight [text-wrap:balance]">
             Production projects &amp; applications
           </h2>
-          <p className="text-sm sm:text-base text-muted-foreground">
+          <p className="text-sm sm:text-base text-muted-foreground [text-wrap:pretty]">
             A curated selection of production applications showcasing React architecture, TypeScript rigor, responsive UI/UX, and AI integrations.
           </p>
         </div>
