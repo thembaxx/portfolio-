@@ -64,7 +64,7 @@ export function Navbar() {
             <button
               type="button"
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="p-2 rounded-lg bg-card border border-border text-muted-foreground hover:text-foreground hover:bg-accent transition-colors focus:outline-none focus:ring-2 focus:ring-ring"
+              className="min-w-[40px] min-h-[40px] flex items-center justify-center rounded-lg bg-card border border-border text-muted-foreground hover:text-foreground hover:bg-accent transition-colors duration-150 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               aria-label="Toggle light and dark theme"
             >
               {theme === "dark" ? (
@@ -77,7 +77,7 @@ export function Navbar() {
 
           <a
             href="#contact"
-            className="hidden sm:inline-flex items-center gap-1.5 text-xs font-medium bg-primary text-primary-foreground hover:bg-primary/90 px-3.5 py-2 rounded-lg transition-all shadow-xs focus:outline-none focus:ring-2 focus:ring-ring"
+            className="hidden sm:inline-flex items-center gap-1.5 text-xs font-semibold bg-primary text-primary-foreground hover:bg-primary/90 pl-3.5 pr-2.5 py-2 rounded-lg transition-transform transition-colors duration-200 ease-out active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
             <span>Let&apos;s talk</span>
             <ArrowUpRight className="w-3.5 h-3.5" />
@@ -85,7 +85,7 @@ export function Navbar() {
 
           <button
             type="button"
-            className="md:hidden p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent focus:outline-none focus:ring-2 focus:ring-ring border border-border"
+            className="md:hidden min-w-[40px] min-h-[40px] flex items-center justify-center rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring border border-border active:scale-[0.97] transition-transform transition-colors"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-expanded={mobileMenuOpen}
             aria-label="Toggle Navigation Menu"

@@ -46,10 +46,10 @@ export function AnalyticsSection() {
             <BarChart3 className="w-4 h-4" />
             <span>Engineering Analytics</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-balance">
             Performance &amp; Core Web Vitals
           </h2>
-          <p className="text-sm sm:text-base text-muted-foreground">
+          <p className="text-sm sm:text-base text-muted-foreground text-pretty">
             Measured quality benchmarks demonstrating production speed, accessibility, SEO, and structural performance across desktop and mobile devices.
           </p>
         </div>
@@ -59,7 +59,7 @@ export function AnalyticsSection() {
           {vitalsBreakdown.map((item) => (
             <div
               key={item.metric}
-              className="p-4 rounded-xl bg-card border border-border shadow-xs space-y-2 transition-colors"
+              className="p-4 rounded-xl bg-card border border-border shadow-2xs space-y-2 transition-colors duration-200"
             >
               <div className="flex items-center justify-between">
                 <span className="text-xs font-mono font-semibold text-muted-foreground">
@@ -70,10 +70,10 @@ export function AnalyticsSection() {
                   {item.status}
                 </span>
               </div>
-              <div className="text-2xl font-bold font-mono tracking-tight text-foreground">
+              <div className="text-2xl font-bold font-mono tracking-tight text-foreground tabular-nums">
                 {item.value}
               </div>
-              <p className="text-[11px] text-muted-foreground">Target: {item.benchmark}</p>
+              <p className="text-[11px] text-muted-foreground tabular-nums">Target: {item.benchmark}</p>
             </div>
           ))}
         </div>
@@ -81,7 +81,7 @@ export function AnalyticsSection() {
         {/* Chart Panels */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Lighthouse Score Area Chart */}
-          <div className="p-6 rounded-2xl bg-card border border-border space-y-6 shadow-sm transition-colors">
+          <div className="p-6 rounded-2xl bg-card border border-border space-y-6 shadow-2xs transition-colors duration-200">
             <div className="flex items-center justify-between">
               <div className="space-y-1">
                 <h3 className="text-base font-semibold flex items-center gap-2">
@@ -92,7 +92,7 @@ export function AnalyticsSection() {
                   Average automated audit rating over 6 months
                 </p>
               </div>
-              <span className="text-xs font-mono font-bold px-2.5 py-1 rounded bg-blue-500/10 text-blue-600 dark:text-sky-400">
+              <span className="text-xs font-mono font-bold px-2.5 py-1 rounded bg-blue-500/10 text-blue-600 dark:text-sky-400 tabular-nums">
                 100 / 100
               </span>
             </div>
@@ -101,15 +101,9 @@ export function AnalyticsSection() {
               {mounted ? (
                 <ResponsiveContainer width="100%" height="100%">
                   <AreaChart data={performanceData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-                    <defs>
-                      <linearGradient id="scoreColor" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor="#2563eb" stopOpacity={0.4} />
-                        <stop offset="95%" stopColor="#2563eb" stopOpacity={0.0} />
-                      </linearGradient>
-                    </defs>
                     <CartesianGrid strokeDasharray="3 3" opacity={0.15} />
                     <XAxis dataKey="month" stroke="currentColor" className="text-xs text-muted-foreground" />
-                    <YAxis domain={[80, 100]} stroke="currentColor" className="text-xs text-muted-foreground" />
+                    <YAxis domain={[80, 100]} stroke="currentColor" className="text-xs text-muted-foreground tabular-nums" />
                     <Tooltip
                       contentStyle={{
                         backgroundColor: "var(--card)",
@@ -124,8 +118,8 @@ export function AnalyticsSection() {
                       dataKey="lighthouse"
                       stroke="#2563eb"
                       strokeWidth={2}
-                      fillOpacity={1}
-                      fill="url(#scoreColor)"
+                      fillOpacity={0.15}
+                      fill="#2563eb"
                     />
                   </AreaChart>
                 </ResponsiveContainer>
@@ -138,7 +132,7 @@ export function AnalyticsSection() {
           </div>
 
           {/* Web Vitals Efficiency Bar Chart */}
-          <div className="p-6 rounded-2xl bg-card border border-border space-y-6 shadow-sm transition-colors">
+          <div className="p-6 rounded-2xl bg-card border border-border space-y-6 shadow-2xs transition-colors duration-200">
             <div className="flex items-center justify-between">
               <div className="space-y-1">
                 <h3 className="text-base font-semibold flex items-center gap-2">
@@ -149,7 +143,7 @@ export function AnalyticsSection() {
                   Speed Index and Web Vitals ratings
                 </p>
               </div>
-              <span className="text-xs font-mono font-bold px-2.5 py-1 rounded bg-cyan-500/10 text-cyan-600 dark:text-cyan-400">
+              <span className="text-xs font-mono font-bold px-2.5 py-1 rounded bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 tabular-nums">
                 99.4%
               </span>
             </div>
@@ -160,7 +154,7 @@ export function AnalyticsSection() {
                   <BarChart data={performanceData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
                     <CartesianGrid strokeDasharray="3 3" opacity={0.15} />
                     <XAxis dataKey="month" stroke="currentColor" className="text-xs text-muted-foreground" />
-                    <YAxis domain={[80, 100]} stroke="currentColor" className="text-xs text-muted-foreground" />
+                    <YAxis domain={[80, 100]} stroke="currentColor" className="text-xs text-muted-foreground tabular-nums" />
                     <Tooltip
                       contentStyle={{
                         backgroundColor: "var(--card)",

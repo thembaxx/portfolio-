@@ -36,7 +36,7 @@ export function Footer() {
           </a>
         </div>
 
-        <div className="text-xs text-muted-foreground text-center md:text-right">
+        <div className="text-xs text-muted-foreground text-center md:text-right tabular-nums">
           &copy; {currentYear} Themba Mndebele. Built with React &amp; TypeScript.
         </div>
       </div>

@@ -48,15 +48,15 @@ export function ProjectScreenshotGallery({ screenshots, projectName }: GalleryPr
         </div>
       )}
 
-      {/* Primary Displayed Screenshot */}
-      <div className="relative rounded-xl overflow-hidden border border-border bg-card group shadow-sm">
-        <div className="aspect-[16/9] relative w-full overflow-hidden bg-muted">
+      {/* Primary Displayed Screenshot with 1px outline offset by -1px */}
+      <div className="relative rounded-2xl overflow-hidden border border-border bg-card group shadow-2xs">
+        <div className="aspect-[16/9] relative w-full overflow-hidden bg-muted outline outline-1 outline-foreground/10 -outline-offset-1 rounded-2xl">
           <Image
             src={screenshots[activeTab]?.src || screenshots[0].src}
             alt={screenshots[activeTab]?.alt || `${projectName} screenshot`}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
-            className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
+            className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.02]"
             priority={false}
           />
         </div>

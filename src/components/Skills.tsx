@@ -50,22 +50,22 @@ export function Skills() {
           <div className="inline-flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-wider text-blue-600 dark:text-sky-400">
             <span>Skills &amp; Expertise</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground text-balance">
             Technologies and core capabilities
           </h2>
-          <p className="text-sm sm:text-base text-muted-foreground">
+          <p className="text-sm sm:text-base text-muted-foreground text-pretty">
             Grouped by functional domain. Only includes tools and frameworks actively used in production and verified projects.
           </p>
         </div>
 
-        {/* Skill Category Cards */}
+        {/* Skill Category Cards - Outer p-6 (24px) + inner r=8px -> outer r=32px (rounded-2xl / 3xl) */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {skillCategories.map((category) => {
             const Icon = category.icon;
             return (
               <div
                 key={category.title}
-                className="p-6 rounded-xl bg-card border border-border space-y-4 hover:border-primary/50 transition-all shadow-xs"
+                className="p-6 rounded-2xl bg-card border border-border space-y-4 hover:border-primary/50 transition-colors duration-200 shadow-2xs"
               >
                 <div className="flex items-center gap-3">
                   <div className="p-2 rounded-lg bg-secondary text-blue-600 dark:text-sky-400 border border-border">
@@ -81,7 +81,7 @@ export function Skills() {
                   {category.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="px-3 py-1 text-xs font-medium rounded-md bg-secondary/80 border border-border text-foreground hover:bg-accent transition-colors"
+                      className="px-3 py-1 text-xs font-medium rounded-md bg-secondary/80 border border-border text-foreground hover:bg-accent transition-colors duration-150"
                     >
                       {skill}
                     </span>

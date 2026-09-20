@@ -3,17 +3,11 @@ import { ArrowDown, Mail, MapPin, Sparkles } from "lucide-react";
 export function Hero() {
   return (
     <section className="relative pt-12 pb-20 md:pt-20 md:pb-32 overflow-hidden border-b border-border transition-colors">
-      {/* Background visual highlight */}
-      <div
-        className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-blue-500/10 dark:bg-sky-500/10 blur-[120px] rounded-full pointer-events-none -z-10"
-        aria-hidden="true"
-      />
-
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl space-y-6">
           {/* Availability & Location Badge */}
-          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-card border border-border text-xs font-medium shadow-xs">
-            <span className="relative flex h-2 w-2">
+          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-card border border-border text-xs font-medium shadow-2xs">
+            <span className="relative flex h-2 w-2" pointer-events-none="true">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
             </span>
@@ -21,7 +15,7 @@ export function Hero() {
               <MapPin className="w-3.5 h-3.5 text-muted-foreground" />
               <span>Based in South Africa</span>
             </span>
-            <span className="text-muted-foreground">·</span>
+            <span className="text-muted-foreground" aria-hidden="true">·</span>
             <span className="text-blue-600 dark:text-sky-400 font-semibold">
               Open to remote opportunities
             </span>
@@ -29,13 +23,13 @@ export function Hero() {
 
           {/* Main Value Proposition */}
           <div className="space-y-4">
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.15]">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.15] text-balance">
               Frontend Developer building{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-cyan-600 to-indigo-600 dark:from-sky-400 dark:via-blue-400 dark:to-indigo-400">
+              <span className="text-blue-600 dark:text-sky-400 font-bold">
                 thoughtful digital experiences
               </span>
             </h1>
-            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl font-normal">
+            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl font-normal text-pretty">
               Hi, I&apos;m <strong className="text-foreground font-semibold">Themba Mndebele</strong>. I
               specialise in <strong className="text-foreground font-medium">React</strong>,{" "}
               <strong className="text-foreground font-medium">TypeScript</strong>, and modern web
@@ -54,25 +48,27 @@ export function Hero() {
                 {tech}
               </span>
             ))}
-            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-blue-500/10 border border-blue-500/20 text-blue-600 dark:text-sky-400 font-medium">
-              <Sparkles className="w-3 h-3 text-blue-600 dark:text-sky-400" />
+            <span className="inline-flex items-center gap-1.5 pl-2 pr-2.5 py-1 rounded-md bg-blue-500/10 border border-blue-500/20 text-blue-600 dark:text-sky-400 font-medium">
+              <Sparkles className="w-3.5 h-3.5 text-blue-600 dark:text-sky-400" />
               <span>AI Workflows</span>
             </span>
           </div>
 
           {/* Call to Actions */}
           <div className="pt-4 flex flex-wrap items-center gap-4">
+            {/* Asymmetric padding: icon on right -> slightly tighter right padding */}
             <a
               href="#projects"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-primary text-primary-foreground font-semibold text-sm transition-all shadow-md hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-ring"
+              className="inline-flex items-center gap-2 pl-5 pr-4 py-2.5 rounded-lg bg-primary text-primary-foreground font-semibold text-sm transition-transform transition-colors duration-200 ease-out active:scale-[0.97] hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               <span>View projects</span>
               <ArrowDown className="w-4 h-4" />
             </a>
 
+            {/* Asymmetric padding: icon on left -> slightly tighter left padding */}
             <a
               href="mailto:me@themba.dev"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-card hover:bg-accent text-foreground border border-border text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-ring"
+              className="inline-flex items-center gap-2 pl-4 pr-5 py-2.5 rounded-lg bg-card hover:bg-accent text-foreground border border-border text-sm font-medium transition-transform transition-colors duration-200 ease-out active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               <Mail className="w-4 h-4 text-blue-600 dark:text-sky-400" />
               <span>Contact me</span>
@@ -83,7 +79,7 @@ export function Hero() {
                 href="https://github.com/thembaxx"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2.5 rounded-lg bg-card hover:bg-accent border border-border text-muted-foreground hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-ring"
+                className="min-w-[40px] min-h-[40px] flex items-center justify-center rounded-lg bg-card hover:bg-accent border border-border text-muted-foreground hover:text-foreground transition-transform transition-colors duration-200 ease-out active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 aria-label="GitHub Profile"
               >
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
@@ -94,7 +90,7 @@ export function Hero() {
                 href="https://www.linkedin.com/in/themba-p"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2.5 rounded-lg bg-card hover:bg-accent border border-border text-muted-foreground hover:text-blue-600 dark:hover:text-sky-400 transition-colors focus:outline-none focus:ring-2 focus:ring-ring"
+                className="min-w-[40px] min-h-[40px] flex items-center justify-center rounded-lg bg-card hover:bg-accent border border-border text-muted-foreground hover:text-blue-600 dark:hover:text-sky-400 transition-transform transition-colors duration-200 ease-out active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 aria-label="LinkedIn Profile"
               >
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">

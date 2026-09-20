@@ -36,28 +36,28 @@ export function Approach() {
           <div className="inline-flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-wider text-blue-600 dark:text-sky-400">
             <span>Engineering Philosophy</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground text-balance">
             How I approach software engineering
           </h2>
-          <p className="text-sm sm:text-base text-muted-foreground">
+          <p className="text-sm sm:text-base text-muted-foreground text-pretty">
             Principled execution combining engineering rigor, visual design craft, and modern AI acceleration.
           </p>
         </div>
 
-        {/* Principles Grid */}
+        {/* Principles Grid - Outer p-5 (20px) + inner r=8px -> outer r=20px (rounded-2xl) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {principles.map((item) => {
             const Icon = item.icon;
             return (
               <div
                 key={item.title}
-                className="p-5 rounded-xl bg-card border border-border space-y-3 hover:border-primary/50 transition-all shadow-xs"
+                className="p-5 rounded-2xl bg-card border border-border space-y-3 hover:border-primary/50 transition-colors duration-200 shadow-2xs"
               >
                 <div className="p-2.5 w-fit rounded-lg bg-secondary text-blue-600 dark:text-sky-400 border border-border">
                   <Icon className="w-5 h-5" />
                 </div>
                 <h3 className="text-base font-semibold text-foreground">{item.title}</h3>
-                <p className="text-xs text-muted-foreground leading-relaxed">{item.description}</p>
+                <p className="text-xs text-muted-foreground leading-relaxed text-pretty">{item.description}</p>
               </div>
             );
           })}
