@@ -11,9 +11,10 @@ import { Footer } from "../components/Footer";
 
 // Mock next/image cleanly for JSDOM
 vitest.mock("next/image", () => ({
-  default: (props: any) => {
+  default: (props: React.ImgHTMLAttributes<HTMLImageElement> & { fill?: boolean; priority?: boolean }) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { fill, priority, ...rest } = props;
-    // eslint-disable-next-next/no-img-element
+    // eslint-disable-next-line @next/next/no-img-element
     return <img {...rest} alt={props.alt || ""} />;
   },
 }));
@@ -41,8 +42,8 @@ describe("Themba Mndebele Developer Portfolio", () => {
     const { container } = render(<Hero />);
     expect(screen.getByText("Based in South Africa")).toBeDefined();
     expect(screen.getByText("Open to remote opportunities")).toBeDefined();
-    expect(screen.getByText("View projects")).toBeDefined();
-    expect(screen.getByText("Contact me")).toBeDefined();
+    expect(screen.getByText("View my work")).toBeDefined();
+    expect(screen.getByText("Let’s connect")).toBeDefined();
     expect(container.querySelector(".bg-gradient-to-r")).toBeNull();
   });
 
@@ -62,16 +63,16 @@ describe("Themba Mndebele Developer Portfolio", () => {
     expect(screen.getByText("TypeScript")).toBeDefined();
   });
 
-  test("renders Featured Projects with exact target projects (excluding next-beta)", () => {
+  test("renders Featured Projects including Mileia, Lumni, and Nextdot", () => {
     render(<ProjectSection />);
-    expect(screen.queryByText("Nextdot (next-beta)")).toBeNull();
     expect(screen.getByText("Mileia")).toBeDefined();
     expect(screen.getByText("Lumni")).toBeDefined();
+    expect(screen.getByText("Nextdot (next-beta)")).toBeDefined();
   });
 
   test("renders Contact section with email mailto link and social profiles", () => {
     render(<Contact />);
-    expect(screen.getByText("me@themba.dev")).toBeDefined();
+    expect(screen.getByText("mndebele.themba@gmail.com")).toBeDefined();
     expect(screen.getByText("LinkedIn Profile")).toBeDefined();
   });
 

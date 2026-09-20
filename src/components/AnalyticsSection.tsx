@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 import { Activity, BarChart3, ShieldCheck, Zap } from "lucide-react";
 import {
   AreaChart,
@@ -30,12 +30,14 @@ const vitalsBreakdown = [
   { metric: "INP", value: "35ms", benchmark: "< 200ms", status: "Optimal" },
 ];
 
-export function AnalyticsSection() {
-  const [mounted, setMounted] = useState(false);
+const emptySubscribe = () => () => {};
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+export function AnalyticsSection() {
+  const mounted = useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false
+  );
 
   return (
     <section id="analytics" className="py-20 border-b border-border transition-colors scroll-mt-24">

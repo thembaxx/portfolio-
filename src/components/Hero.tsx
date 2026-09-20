@@ -24,23 +24,20 @@ export function Hero() {
           {/* Main Value Proposition */}
           <div className="space-y-4">
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.15] [text-wrap:balance]">
-              Frontend Developer building{" "}
-              <span className="text-primary font-bold">
-                thoughtful digital experiences
+              Themba Mndebele
+              <span className="block text-primary font-bold text-2xl sm:text-4xl lg:text-5xl mt-1">
+                Frontend Developer · React · TypeScript
               </span>
             </h1>
             <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl font-normal [text-wrap:pretty]">
-              Hi, I’m <strong className="text-foreground font-semibold">Themba Mndebele</strong>. I
-              specialise in <strong className="text-foreground font-medium">React</strong>,{" "}
-              <strong className="text-foreground font-medium">TypeScript</strong>, and modern web
-              development&mdash;combining clean engineering architecture with meticulous UI/UX detail.
+              I build high-performance, accessible, production-ready web applications. Specialising in <strong className="text-foreground font-semibold">React</strong>, <strong className="text-foreground font-semibold">TypeScript</strong>, and <strong className="text-foreground font-semibold">Next.js</strong> with a focus on UI/UX detail and clean frontend architecture.
             </p>
           </div>
 
           {/* Tech stack highlights */}
           <div className="flex flex-wrap items-center gap-2 pt-1 text-xs">
             <span className="font-mono text-muted-foreground">Specialities:</span>
-            {["React", "Next.js", "TypeScript", "Tailwind CSS", "UI/UX"].map((tech) => (
+            {["React", "TypeScript", "Next.js", "Tailwind CSS", "UI/UX Engineering"].map((tech) => (
               <span
                 key={tech}
                 className="px-2.5 py-1 rounded-md bg-card border border-border text-foreground font-medium shadow-2xs whitespace-nowrap"
@@ -50,28 +47,26 @@ export function Hero() {
             ))}
             <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-accent border border-border text-primary font-medium whitespace-nowrap">
               <Sparkles className="w-3 h-3 text-primary" strokeWidth={1.75} aria-hidden="true" />
-              <span>AI Workflows</span>
+              <span>AI-Assisted Workflows</span>
             </span>
           </div>
 
           {/* Call to Actions */}
           <div className="pt-4 flex flex-wrap items-center gap-4">
-            {/* Button with icon on right gets slightly smaller padding on the icon side: pl-4.5 pr-3.5 */}
             <a
               href="#projects"
               className="inline-flex items-center gap-2 pl-4.5 pr-3.5 py-2.5 rounded-lg bg-primary text-primary-foreground font-semibold text-sm shadow-sm hover:bg-primary/90 active:scale-[0.97] transition-[color,background-color,border-color,transform] duration-150 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
-              <span>View projects</span>
+              <span>View my work</span>
               <ArrowDown className="w-4 h-4" strokeWidth={2} aria-hidden="true" />
             </a>
 
-            {/* Button with icon on left gets slightly smaller padding on the icon side: pl-3.5 pr-4.5 */}
             <a
-              href="mailto:me@themba.dev"
+              href="mailto:mndebele.themba@gmail.com"
               className="inline-flex items-center gap-2 pl-3.5 pr-4.5 py-2.5 rounded-lg bg-card hover:bg-accent text-foreground border border-border text-sm font-medium active:scale-[0.97] transition-[color,background-color,border-color,transform] duration-150 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
               <Mail className="w-4 h-4 text-primary" strokeWidth={1.75} aria-hidden="true" />
-              <span>Contact me</span>
+              <span>Let’s connect</span>
             </a>
 
             <div className="flex items-center gap-2 ml-2 pl-2 border-l border-border">
