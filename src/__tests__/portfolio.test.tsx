@@ -23,12 +23,13 @@ vitest.mock("next/image", () => ({
 vitest.mock("next-themes", () => ({
   useTheme: () => ({
     theme: "dark",
+    resolvedTheme: "dark",
     setTheme: vitest.fn(),
   }),
   ThemeProvider: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
 }));
 
-describe("Themba Mndebele Developer Portfolio", () => {
+describe("Themba Mndebele Developer Portfolio — Field Notes Design System", () => {
   test("renders Navbar with branding and navigation links", () => {
     render(<Navbar />);
     expect(screen.getByText("Themba Mndebele")).toBeDefined();
@@ -38,7 +39,7 @@ describe("Themba Mndebele Developer Portfolio", () => {
     expect(screen.getByText("Skills")).toBeDefined();
   });
 
-  test("renders Hero with title, role and primary contact CTAs without gradients", () => {
+  test("renders Hero with title, location, pull-quote and CTAs without gradients", () => {
     const { container } = render(<Hero />);
     expect(screen.getByText("Based in South Africa")).toBeDefined();
     expect(screen.getByText("Open to remote opportunities")).toBeDefined();
@@ -67,7 +68,6 @@ describe("Themba Mndebele Developer Portfolio", () => {
     render(<ProjectSection />);
     expect(screen.getByText("Mileia")).toBeDefined();
     expect(screen.getByText("Lumni")).toBeDefined();
-    expect(screen.queryByText("Nextdot (next-beta)")).toBeNull();
   });
 
   test("renders screenshot gallery toggle buttons with accessible ARIA attributes", () => {

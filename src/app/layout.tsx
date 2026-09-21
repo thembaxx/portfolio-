@@ -1,16 +1,18 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Fraunces, Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
   subsets: ["latin"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -59,7 +61,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className="scroll-smooth">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col bg-background text-foreground`}
+        className={`${fraunces.variable} ${inter.variable} antialiased min-h-screen flex flex-col bg-[var(--bg)] text-[var(--ink)] font-sans selection:bg-[var(--accentSoft)] selection:text-[var(--accent)]`}
       >
         <a
           href="#main-content"
@@ -68,8 +70,8 @@ export default function RootLayout({
           Skip to content
         </a>
         <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
+          attribute="data-theme"
+          defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
