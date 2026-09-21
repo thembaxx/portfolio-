@@ -29,10 +29,10 @@ export function Footer() {
             LinkedIn
           </a>
           <a
-            href="mailto:mndebele.themba@gmail.com"
+            href="mailto:me@themba.dev"
             className="hover:text-[var(--ink)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] rounded px-1.5 py-0.5"
           >
-            Email
+            Email me
           </a>
         </div>
 

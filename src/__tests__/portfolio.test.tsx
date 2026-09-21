@@ -44,7 +44,7 @@ describe("Themba Mndebele Developer Portfolio — Field Notes Design System", ()
     expect(screen.getByText("Based in South Africa")).toBeDefined();
     expect(screen.getByText("Open to remote opportunities")).toBeDefined();
     expect(screen.getByText("View my work")).toBeDefined();
-    expect(screen.getByText("Let’s connect")).toBeDefined();
+    expect(screen.getByText("Email me")).toBeDefined();
     expect(container.querySelector(".bg-gradient-to-r")).toBeNull();
   });
 
@@ -83,7 +83,7 @@ describe("Themba Mndebele Developer Portfolio — Field Notes Design System", ()
 
   test("renders Contact section with email mailto link and social profiles", () => {
     render(<Contact />);
-    expect(screen.getByText("mndebele.themba@gmail.com")).toBeDefined();
+    expect(screen.getByText("me@themba.dev")).toBeDefined();
     expect(screen.getByText("LinkedIn Profile")).toBeDefined();
   });
 
