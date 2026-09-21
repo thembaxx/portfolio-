@@ -58,8 +58,58 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://themba.dev/#person",
+        name: "Themba Mndebele",
+        url: "https://themba.dev",
+        image: "https://themba.dev/profile.jpg",
+        jobTitle: "Frontend Developer",
+        worksFor: {
+          "@type": "Organization",
+          name: "Freelance / Open to Opportunities",
+        },
+        sameAs: [
+          "https://github.com/thembaxx",
+          "https://www.linkedin.com/in/themba-p",
+        ],
+        knowsAbout: [
+          "React",
+          "TypeScript",
+          "Next.js",
+          "Tailwind CSS",
+          "UI/UX Engineering",
+          "Web Accessibility",
+          "Frontend Architecture",
+        ],
+        description:
+          "Frontend developer with ~4 years of experience building responsive, accessible web applications using React, TypeScript, and Next.js.",
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://themba.dev/#website",
+        url: "https://themba.dev",
+        name: "Themba Mndebele Portfolio",
+        description:
+          "Official portfolio of Themba Mndebele, Frontend Developer specialising in React, TypeScript, and Next.js.",
+        publisher: {
+          "@id": "https://themba.dev/#person",
+        },
+      },
+    ],
+  };
+
   return (
     <html lang="en" suppressHydrationWarning className="scroll-smooth">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body
         className={`${fraunces.variable} ${inter.variable} antialiased min-h-screen flex flex-col bg-[var(--bg)] text-[var(--ink)] font-sans selection:bg-[var(--accentSoft)] selection:text-[var(--accent)]`}
       >

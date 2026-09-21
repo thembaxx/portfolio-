@@ -95,6 +95,38 @@ export function generateStaticParams() {
   return [{ id: "mileia" }, { id: "lumni" }];
 }
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
+  const project = projectsMap[id];
+
+  if (!project) {
+    return {
+      title: "Project Not Found",
+    };
+  }
+
+  return {
+    title: `${project.title} — ${project.subtitle} | Themba Mndebele`,
+    description: project.description,
+    openGraph: {
+      title: `${project.title} — Case Study by Themba Mndebele`,
+      description: project.description,
+      url: `https://themba.dev/projects/${project.id}`,
+      siteName: "Themba Mndebele Portfolio",
+      type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${project.title} Case Study — Themba Mndebele`,
+      description: project.description,
+    },
+  };
+}
+
 export default async function ProjectPage({
   params,
 }: {
@@ -107,8 +139,29 @@ export default async function ProjectPage({
     notFound();
   }
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: project.title,
+    headline: project.subtitle,
+    description: project.description,
+    applicationCategory: "WebApplication",
+    operatingSystem: "Web Browser",
+    author: {
+      "@type": "Person",
+      name: "Themba Mndebele",
+      url: "https://themba.dev",
+    },
+    url: project.liveUrl,
+    codeRepository: project.githubUrl,
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-[var(--bg)] text-[var(--ink)] transition-colors">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Navbar />
       <main id="main-content" className="flex-1 py-12 sm:py-16">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
