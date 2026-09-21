@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Monitor, Smartphone } from "lucide-react";
+import { Monitor, Smartphone, Wifi, Battery, Signal } from "lucide-react";
 
 export interface ScreenshotItem {
   src: string;
@@ -21,11 +21,13 @@ export function ProjectScreenshotGallery({ screenshots, projectName }: GalleryPr
 
   if (!screenshots || screenshots.length === 0) return null;
 
+  const currentScreenshot = screenshots[activeTab] || screenshots[0];
+
   return (
     <div className="space-y-4">
-      {/* Viewport switcher tabs */}
+      {/* Gallery view switcher tabs */}
       {screenshots.length > 1 && (
-        <div className="flex items-center gap-2 border-b border-border pb-2">
+        <div className="flex items-center gap-2 border-b border-[var(--line)] pb-2">
           {screenshots.map((s, idx) => (
             <button
               key={s.label}
@@ -33,10 +35,10 @@ export function ProjectScreenshotGallery({ screenshots, projectName }: GalleryPr
               onClick={() => setActiveTab(idx)}
               aria-pressed={activeTab === idx}
               aria-label={`Show ${s.label} screenshot for ${projectName}`}
-              className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium active:scale-[0.97] transition-[color,background-color,border-color,transform] duration-150 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
+              className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] ${
                 activeTab === idx
-                  ? "bg-secondary text-foreground border border-border shadow-2xs font-semibold"
-                  : "text-muted-foreground hover:text-foreground hover:bg-accent"
+                  ? "bg-[var(--accentSoft)] text-[var(--accent)] font-semibold"
+                  : "text-[var(--mute)] hover:text-[var(--ink)] hover:bg-[var(--card)]"
               }`}
             >
               {s.type === "desktop" ? (
@@ -50,17 +52,41 @@ export function ProjectScreenshotGallery({ screenshots, projectName }: GalleryPr
         </div>
       )}
 
-      {/* Primary Displayed Screenshot with 1px outline offset -1px */}
-      <div className="relative rounded-2xl overflow-hidden border border-border bg-card group shadow-xs outline outline-1 -outline-offset-1 outline-black/10 dark:outline-white/10">
-        <div className="aspect-[16/9] relative w-full overflow-hidden bg-muted">
-          <Image
-            src={screenshots[activeTab]?.src || screenshots[0].src}
-            alt={screenshots[activeTab]?.alt || `${projectName} screenshot`}
-            fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
-            className="object-cover object-top transition-transform duration-300 group-hover:scale-[1.01] will-change-transform"
-            priority={false}
-          />
+      {/* iPhone Frame Display - exact CSS-drawn frame with real screenshot inside */}
+      <div className="flex justify-center items-center py-4 bg-[var(--bg)] rounded-2xl border border-[var(--line)]">
+        <div className="relative w-[280px] sm:w-[310px] h-[560px] sm:h-[600px] bg-[#111111] rounded-[48px] p-3 shadow-xl border-4 border-[#2b2b2b] flex flex-col justify-between overflow-hidden">
+          {/* Dynamic Island / Speaker notch */}
+          <div className="absolute top-4 left-1/2 -translate-x-1/2 w-24 h-5 bg-black rounded-full z-20 flex items-center justify-between px-2">
+            <div className="w-2.5 h-2.5 rounded-full bg-[#1a1a1a] border border-gray-800" />
+            <div className="w-2 h-2 rounded-full bg-blue-900/40" />
+          </div>
+
+          {/* iPhone Status Bar */}
+          <div className="relative z-10 pt-2 px-6 pb-1 flex justify-between items-center text-[10px] text-white/80 font-sans tracking-tight">
+            <span>9:41</span>
+            <div className="flex items-center gap-1.5">
+              <Signal className="w-3 h-3" />
+              <Wifi className="w-3 h-3" />
+              <Battery className="w-3.5 h-3.5" />
+            </div>
+          </div>
+
+          {/* Screen Content Container */}
+          <div className="relative flex-1 w-full bg-white dark:bg-zinc-900 rounded-[36px] overflow-hidden my-1 border border-black/10">
+            <Image
+              src={currentScreenshot.src}
+              alt={currentScreenshot.alt || `${projectName} screenshot`}
+              fill
+              sizes="(max-width: 760px) 280px, 310px"
+              className="object-cover object-top"
+              priority={false}
+            />
+          </div>
+
+          {/* Home Bar Indicator */}
+          <div className="relative z-10 pt-1 pb-0.5 flex justify-center">
+            <div className="w-32 h-1 bg-white/40 rounded-full" />
+          </div>
         </div>
       </div>
     </div>

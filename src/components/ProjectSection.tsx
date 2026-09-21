@@ -70,18 +70,18 @@ export function ProjectSection() {
   ];
 
   return (
-    <section id="projects" className="py-20 border-b border-border transition-colors scroll-mt-24">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+    <section id="projects" className="py-16 sm:py-20 border-b border-[var(--line)] transition-colors scroll-mt-20">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         {/* Section Header */}
-        <div className="max-w-2xl space-y-3">
-          <div className="inline-flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-wider text-primary">
+        <div className="max-w-2xl space-y-2">
+          <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[var(--accent)] font-sans">
             <FolderGit2 className="w-4 h-4" strokeWidth={1.75} aria-hidden="true" />
             <span>Featured work</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground [text-wrap:balance]">
+          <h2 className="font-serif text-2xl sm:text-3xl font-normal tracking-tight text-[var(--ink)]">
             Production projects &amp; applications
           </h2>
-          <p className="text-sm sm:text-base text-muted-foreground [text-wrap:pretty]">
+          <p className="text-sm sm:text-base text-[var(--mute)] font-sans">
             A curated selection of production applications showcasing React architecture, TypeScript rigor, responsive UI/UX, and AI integrations.
           </p>
         </div>

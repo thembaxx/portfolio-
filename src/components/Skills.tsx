@@ -43,45 +43,46 @@ export function Skills() {
   ];
 
   return (
-    <section id="skills" className="py-20 border-b border-border transition-colors scroll-mt-24">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+    <section id="skills" className="py-16 sm:py-20 border-b border-[var(--line)] transition-colors scroll-mt-20">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         {/* Section Header */}
-        <div className="max-w-2xl space-y-3">
-          <div className="inline-flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-wider text-primary">
+        <div className="max-w-2xl space-y-2">
+          <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[var(--accent)] font-sans">
             <span>Skills &amp; expertise</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground [text-wrap:balance]">
+          <h2 className="font-serif text-2xl sm:text-3xl font-normal tracking-tight text-[var(--ink)]">
             Technologies and core capabilities
           </h2>
-          <p className="text-sm sm:text-base text-muted-foreground [text-wrap:pretty]">
+          <p className="text-sm sm:text-base text-[var(--mute)] font-sans">
             Grouped by functional domain. Only includes tools and frameworks actively used in production and verified projects.
           </p>
         </div>
 
-        {/* Skill Category Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Responsive Skill Grid: 1 col on mobile, 2 cols at 760px, 4 cols at 1080px desktop breakpoint */}
+        <div className="grid grid-cols-1 min-[760px]:grid-cols-2 min-[1080px]:grid-cols-4 gap-6">
           {skillCategories.map((category) => {
             const Icon = category.icon;
             return (
               <div
                 key={category.title}
-                className="p-6 rounded-3xl bg-card border border-border space-y-4 hover:border-primary/50 transition-colors shadow-xs"
+                className="p-6 rounded-2xl bg-[var(--card)] border border-[var(--line)] space-y-4 flex flex-col justify-between transition-colors"
               >
-                <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-secondary text-primary border border-border shrink-0">
+                <div className="space-y-3">
+                  <div className="w-10 h-10 rounded-full bg-[var(--accentSoft)] text-[var(--accent)] border border-[var(--line)] flex items-center justify-center shrink-0">
                     <Icon className="w-5 h-5" strokeWidth={1.75} aria-hidden="true" />
                   </div>
                   <div>
-                    <h3 className="text-base font-semibold text-foreground [text-wrap:balance]">{category.title}</h3>
-                    <p className="text-xs text-muted-foreground [text-wrap:pretty]">{category.description}</p>
+                    <h3 className="font-serif text-lg font-normal text-[var(--ink)]">{category.title}</h3>
+                    <p className="text-xs text-[var(--mute)] font-sans mt-1 leading-relaxed">{category.description}</p>
                   </div>
                 </div>
 
-                <div className="flex flex-wrap gap-2 pt-2">
+                {/* Skill Pills */}
+                <div className="flex flex-wrap gap-1.5 pt-2">
                   {category.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="px-3 py-1 text-xs font-medium rounded-md bg-secondary/80 border border-border text-foreground hover:bg-accent transition-colors whitespace-nowrap"
+                      className="px-2.5 py-1 text-xs font-medium rounded-full bg-[var(--accentSoft)] text-[var(--accent)] whitespace-nowrap"
                     >
                       {skill}
                     </span>
