@@ -69,11 +69,11 @@ export function Hero() {
           </a>
 
           <a
-            href="mailto:mndebele.themba@gmail.com"
+            href="mailto:me@themba.dev"
             className="inline-flex items-center gap-1.5 px-2 py-1 text-sm font-medium text-[var(--ink)] hover:underline decoration-[var(--accent)] underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] rounded"
           >
             <Mail className="w-4 h-4 text-[var(--accent)]" strokeWidth={1.75} aria-hidden="true" />
-            <span>Let’s connect</span>
+            <span>Email me</span>
           </a>
 
           <div className="flex items-center gap-3 pl-2 border-l border-[var(--line)]">
