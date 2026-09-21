@@ -1,0 +1,36 @@
+# Themba Mndebele — Portfolio & Technical Profile
+
+> Frontend Developer specialising in React, TypeScript, Next.js, and modern UI/UX engineering.
+
+## Summary
+Themba Mndebele is a South Africa-based Frontend Developer with approximately 4 years of professional experience building high-performance, accessible, and resilient web applications.
+
+## Technical Skills & Expertise
+- Languages & Core: TypeScript, JavaScript (ES6+), HTML5, CSS3/PostCSS
+- Frameworks & UI: React 19, Next.js 16 (App Router), Tailwind CSS
+- State Management & Async Data: Zustand, React Query (TanStack), Context API
+- Testing & QA: Vitest, React Testing Library, Playwright, JSDOM
+- Backend & Databases (Integration): Appwrite, Dexie.js (IndexedDB), REST APIs, KaTeX
+- AI Tooling & Workflows: Gemini, DeepSeek, Kimi, OpenCode, Cline, CodeRabbit
+
+## Featured Projects
+### 1. Mileia — On-Demand Tradesperson Marketplace
+- Description: Connects local residents in Cape Town with verified tradespeople.
+- Live Demo: https://mileia.vercel.app
+- GitHub: https://github.com/thembaxx/mileia
+- Case Study: https://themba.dev/projects/mileia
+- Key Tech: React, TypeScript, Next.js, Tailwind CSS
+
+### 2. Lumni — AI-Powered Study Ecosystem for Matric Students
+- Description: Adaptive learning platform with quizzes, past paper revisions, and offline caching for South African Matric students.
+- Live Demo: https://lumni-psi.vercel.app
+- GitHub: https://github.com/thembaxx/lumni
+- Case Study: https://themba.dev/projects/lumni
+- Key Tech: React 19, Next.js 16, Zustand, Appwrite, Dexie.js (IndexedDB), Vitest, Playwright
+
+## Contact & Links
+- Website: https://themba.dev
+- Email: me@themba.dev
+- GitHub: https://github.com/thembaxx
+- LinkedIn: https://www.linkedin.com/in/themba-p
+- Location: South Africa (Open to remote opportunities)
