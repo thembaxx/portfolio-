@@ -1,34 +1,54 @@
+import Image from "next/image";
 import { ArrowDown, Mail, MapPin, Sparkles } from "lucide-react";
 
 export function Hero() {
   return (
     <section className="py-12 sm:py-16 md:py-24 border-b border-[var(--line)] transition-colors">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-        {/* Availability Badge */}
-        <div className="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-full bg-[var(--card)] border border-[var(--line)] text-xs font-medium text-[var(--ink)]">
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--accent)] opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--accent)]"></span>
-          </span>
-          <span className="flex items-center gap-1.5">
-            <MapPin className="w-3.5 h-3.5 text-[var(--mute)]" strokeWidth={1.75} aria-hidden="true" />
-            <span>Based in South Africa</span>
-          </span>
-          <span className="text-[var(--mute)]" aria-hidden="true">·</span>
-          <span className="text-[var(--accent)] font-semibold">
-            Open to remote opportunities
-          </span>
+        {/* Header content with Profile Picture */}
+        <div className="flex flex-col-reverse sm:flex-row sm:items-center justify-between gap-6 sm:gap-8">
+          <div className="space-y-4 max-w-2xl">
+            {/* Availability Badge */}
+            <div className="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-full bg-[var(--card)] border border-[var(--line)] text-xs font-medium text-[var(--ink)]">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--accent)] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--accent)]"></span>
+              </span>
+              <span className="flex items-center gap-1.5">
+                <MapPin className="w-3.5 h-3.5 text-[var(--mute)]" strokeWidth={1.75} aria-hidden="true" />
+                <span>Based in South Africa</span>
+              </span>
+              <span className="text-[var(--mute)]" aria-hidden="true">·</span>
+              <span className="text-[var(--accent)] font-semibold">
+                Open to remote opportunities
+              </span>
+            </div>
+
+            <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-[var(--ink)] leading-[1.15]">
+              Themba Mndebele
+              <span className="block font-sans font-medium text-lg sm:text-2xl text-[var(--mute)] mt-2">
+                Frontend Developer · React · TypeScript
+              </span>
+            </h1>
+          </div>
+
+          {/* Square Profile Picture with hairline border */}
+          <div className="shrink-0">
+            <div className="relative w-28 h-28 sm:w-36 sm:h-36 md:w-40 md:h-40 rounded-2xl overflow-hidden border border-[var(--line)] bg-[var(--card)] shadow-sm">
+              <Image
+                src="/profile.jpg"
+                alt="Themba Mndebele portrait"
+                fill
+                priority
+                className="object-cover"
+                sizes="(max-width: 640px) 112px, (max-width: 768px) 144px, 160px"
+              />
+            </div>
+          </div>
         </div>
 
-        {/* Headlines */}
+        {/* Lead Statements */}
         <div className="space-y-4 max-w-3xl">
-          <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-[var(--ink)] leading-[1.15]">
-            Themba Mndebele
-            <span className="block font-sans font-medium text-lg sm:text-2xl text-[var(--mute)] mt-2">
-              Frontend Developer · React · TypeScript
-            </span>
-          </h1>
-
           {/* Italic serif pull-quote style lead paragraph as required by design system */}
           <p className="font-serif italic text-lg sm:text-xl md:text-2xl text-[var(--ink)] leading-relaxed max-w-2xl">
             "I build high-performance, accessible, production-ready web applications with a focus on UI/UX detail and clean architecture."
