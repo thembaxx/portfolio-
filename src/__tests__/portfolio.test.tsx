@@ -70,6 +70,17 @@ describe("Themba Mndebele Developer Portfolio", () => {
     expect(screen.queryByText("Nextdot (next-beta)")).toBeNull();
   });
 
+  test("renders screenshot gallery toggle buttons with accessible ARIA attributes", () => {
+    render(<ProjectSection />);
+    const marketplaceBtn = screen.getByRole("button", { name: "Show Marketplace View screenshot for Mileia" });
+    const servicesBtn = screen.getByRole("button", { name: "Show Services Directory screenshot for Mileia" });
+
+    expect(marketplaceBtn).toBeDefined();
+    expect(servicesBtn).toBeDefined();
+    expect(marketplaceBtn.getAttribute("aria-pressed")).toBe("true");
+    expect(servicesBtn.getAttribute("aria-pressed")).toBe("false");
+  });
+
   test("renders Contact section with email mailto link and social profiles", () => {
     render(<Contact />);
     expect(screen.getByText("mndebele.themba@gmail.com")).toBeDefined();

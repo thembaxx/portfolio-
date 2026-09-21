@@ -31,6 +31,8 @@ export function ProjectScreenshotGallery({ screenshots, projectName }: GalleryPr
               key={s.label}
               type="button"
               onClick={() => setActiveTab(idx)}
+              aria-pressed={activeTab === idx}
+              aria-label={`Show ${s.label} screenshot for ${projectName}`}
               className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium active:scale-[0.97] transition-[color,background-color,border-color,transform] duration-150 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
                 activeTab === idx
                   ? "bg-secondary text-foreground border border-border shadow-2xs font-semibold"
