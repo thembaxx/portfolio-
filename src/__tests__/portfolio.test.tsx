@@ -1,6 +1,6 @@
 import { vitest, describe, test, expect } from "vitest";
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import { Navbar } from "../components/Navbar";
 import { Hero } from "../components/Hero";
 import { About } from "../components/About";
@@ -85,6 +85,25 @@ describe("Themba Mndebele Developer Portfolio — Field Notes Design System", ()
     render(<Contact />);
     expect(screen.getByText("me@themba.dev")).toBeDefined();
     expect(screen.getByText("LinkedIn Profile")).toBeDefined();
+  });
+
+  test("copies email to clipboard and displays confirmation state when copy button is clicked", async () => {
+    const writeTextMock = vitest.fn().mockResolvedValue(undefined);
+    Object.defineProperty(navigator, "clipboard", {
+      value: { writeText: writeTextMock },
+      writable: true,
+      configurable: true,
+    });
+
+    render(<Contact />);
+    const copyBtn = screen.getByRole("button", { name: "Copy email address to clipboard" });
+    expect(copyBtn).toBeDefined();
+
+    fireEvent.click(copyBtn);
+
+    expect(writeTextMock).toHaveBeenCalledWith("me@themba.dev");
+    expect(await screen.findByRole("button", { name: "Email address copied to clipboard" })).toBeDefined();
+    expect(screen.getByText("Email address me@themba.dev copied to clipboard")).toBeDefined();
   });
 
   test("renders Footer copyright and information", () => {
