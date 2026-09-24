@@ -1,6 +1,21 @@
-import { Mail, ArrowUpRight } from "lucide-react";
+"use client";
+
+import { useState } from "react";
+import { Mail, ArrowUpRight, Copy, Check } from "lucide-react";
 
 export function Contact() {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText("me@themba.dev");
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // Fallback
+    }
+  };
+
   return (
     <section id="contact" className="py-16 sm:py-20 border-b border-[var(--line)] transition-colors relative overflow-hidden">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -17,14 +32,32 @@ export function Contact() {
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
-            <a
-              href="mailto:me@themba.dev"
-              className="inline-flex items-center justify-center gap-2.5 px-6 py-3 rounded-full bg-[var(--accent)] text-white font-medium text-sm hover:opacity-90 active:scale-95 transition-all shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
-            >
-              <Mail className="w-4 h-4" strokeWidth={2} aria-hidden="true" />
-              <span>me@themba.dev</span>
-            </a>
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
+            <div className="inline-flex items-center justify-between sm:justify-start rounded-full bg-[var(--accent)] text-white p-1 shadow-sm">
+              <a
+                href="mailto:me@themba.dev"
+                className="inline-flex items-center gap-2 px-5 py-2 font-medium text-sm hover:opacity-90 active:scale-95 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 rounded-full"
+              >
+                <Mail className="w-4 h-4" strokeWidth={2} aria-hidden="true" />
+                <span>me@themba.dev</span>
+              </a>
+              <button
+                type="button"
+                onClick={handleCopyEmail}
+                aria-label={copied ? "Email address copied to clipboard" : "Copy email address to clipboard"}
+                className="p-2 text-white/80 hover:text-white hover:bg-white/10 rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
+              >
+                {copied ? (
+                  <Check className="w-4 h-4 text-emerald-300" strokeWidth={2.5} aria-hidden="true" />
+                ) : (
+                  <Copy className="w-4 h-4" strokeWidth={2} aria-hidden="true" />
+                )}
+              </button>
+            </div>
+
+            <span className="sr-only" role="status" aria-live="polite">
+              {copied ? "Email address copied to clipboard" : ""}
+            </span>
 
             <a
               href="https://www.linkedin.com/in/themba-p"

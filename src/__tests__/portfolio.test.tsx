@@ -81,9 +81,10 @@ describe("Themba Mndebele Developer Portfolio — Field Notes Design System", ()
     expect(servicesBtn.getAttribute("aria-pressed")).toBe("false");
   });
 
-  test("renders Contact section with email mailto link and social profiles", () => {
+  test("renders Contact section with email mailto link, copy button, and social profiles", () => {
     render(<Contact />);
     expect(screen.getByText("me@themba.dev")).toBeDefined();
+    expect(screen.getByRole("button", { name: "Copy email address to clipboard" })).toBeDefined();
     expect(screen.getByText("LinkedIn Profile")).toBeDefined();
   });
 

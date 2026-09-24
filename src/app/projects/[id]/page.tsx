@@ -180,7 +180,7 @@ export default async function ProjectPage({
               {project.title}
             </h1>
             <p className="font-serif italic text-lg sm:text-xl text-[var(--ink)]">
-              "{project.oneLiner}"
+              &ldquo;{project.oneLiner}&rdquo;
             </p>
             <p className="text-sm sm:text-base text-[var(--mute)] leading-relaxed font-sans">
               {project.description}
