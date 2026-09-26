@@ -51,7 +51,7 @@ export function Hero() {
         <div className="space-y-4 max-w-3xl">
           {/* Italic serif pull-quote style lead paragraph as required by design system */}
           <p className="font-serif italic text-lg sm:text-xl md:text-2xl text-[var(--ink)] leading-relaxed max-w-2xl">
-            "I build high-performance, accessible, production-ready web applications with a focus on UI/UX detail and clean architecture."
+            &quot;I build high-performance, accessible, production-ready web applications with a focus on UI/UX detail and clean architecture.&quot;
           </p>
 
           <p className="text-sm sm:text-base text-[var(--mute)] leading-relaxed max-w-2xl font-sans">
