@@ -87,6 +87,25 @@ describe("Themba Mndebele Developer Portfolio — Field Notes Design System", ()
     expect(screen.getByText("LinkedIn Profile")).toBeDefined();
   });
 
+  test("renders Contact section with copy email button and triggers clipboard copy with feedback", async () => {
+    const writeTextMock = vitest.fn().mockResolvedValue(undefined);
+    Object.assign(navigator, {
+      clipboard: {
+        writeText: writeTextMock,
+      },
+    });
+
+    render(<Contact />);
+    const copyButton = screen.getByRole("button", { name: /copy email address/i });
+    expect(copyButton).toBeDefined();
+
+    copyButton.click();
+    expect(writeTextMock).toHaveBeenCalledWith("me@themba.dev");
+
+    expect(await screen.findByText("Copied!")).toBeDefined();
+    expect(screen.getByText("Email address me@themba.dev copied to clipboard")).toBeDefined();
+  });
+
   test("renders Footer copyright and information", () => {
     render(<Footer />);
     expect(screen.getByText("Frontend Developer · React · TypeScript · South Africa")).toBeDefined();
