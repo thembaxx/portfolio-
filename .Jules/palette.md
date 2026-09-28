@@ -5,3 +5,7 @@
 ## 2026-09-22 - Clipboard Copy Live Feedback
 **Learning:** Copy-to-clipboard interactions on contact actions require an `aria-live="polite"` region to inform screen reader users when text is copied, alongside visual confirmation icons and state labels for sighted users.
 **Action:** When implementing clipboard copy buttons, pair stateful visual feedback (`Check` icon and "Copied!") with an `aria-live="polite"` status element announcing the copy outcome.
+
+## 2026-09-23 - Fixed Controls & Mobile Menu Event Collision
+**Learning:** Fixed header utility buttons (like theme toggles) can intercept touch pointer events or obscure mobile menu buttons on narrow viewports if top/right positioning overlaps default header padding.
+**Action:** Always provide right margin spacing on mobile navigation toggles when fixed position top-right utility controls are present, and pair theme switchers with dynamic `aria-label`, `title`, and `aria-pressed` states.

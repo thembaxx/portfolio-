@@ -39,6 +39,18 @@ describe("Themba Mndebele Developer Portfolio — Field Notes Design System", ()
     expect(screen.getByText("Skills")).toBeDefined();
   });
 
+  test("renders Navbar theme toggle and mobile navigation with accessible attributes", () => {
+    render(<Navbar />);
+    const themeBtn = screen.getByRole("button", { name: "Switch to light theme" });
+    expect(themeBtn).toBeDefined();
+    expect(themeBtn.getAttribute("aria-pressed")).toBe("true");
+    expect(themeBtn.getAttribute("title")).toBe("Switch to light theme");
+
+    const menuBtn = screen.getByRole("button", { name: "Toggle Navigation Menu" });
+    expect(menuBtn).toBeDefined();
+    expect(menuBtn.getAttribute("aria-controls")).toBe("mobile-menu");
+  });
+
   test("renders Hero with title, location, pull-quote and CTAs without gradients", () => {
     const { container } = render(<Hero />);
     expect(screen.getByText("Based in South Africa")).toBeDefined();
