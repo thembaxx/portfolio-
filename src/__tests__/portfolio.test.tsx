@@ -8,6 +8,7 @@ import { Skills } from "../components/Skills";
 import { ProjectSection } from "../components/ProjectSection";
 import { Contact } from "../components/Contact";
 import { Footer } from "../components/Footer";
+import ProjectPage from "../app/projects/[id]/page";
 
 // Mock next/image cleanly for JSDOM
 vitest.mock("next/image", () => ({
@@ -109,5 +110,18 @@ describe("Themba Mndebele Developer Portfolio — Field Notes Design System", ()
   test("renders Footer copyright and information", () => {
     render(<Footer />);
     expect(screen.getByText("Frontend Developer · React · TypeScript · South Africa")).toBeDefined();
+  });
+
+  test("renders Project detail page with accessible external action links", async () => {
+    const pageComponent = await ProjectPage({ params: Promise.resolve({ id: "mileia" }) });
+    render(pageComponent);
+
+    const liveDemoLink = screen.getByRole("link", { name: "Open Live Demo for Mileia (opens in a new tab)" });
+    const githubLink = screen.getByRole("link", { name: "View GitHub repository for Mileia (opens in a new tab)" });
+
+    expect(liveDemoLink).toBeDefined();
+    expect(githubLink).toBeDefined();
+    expect(liveDemoLink.getAttribute("target")).toBe("_blank");
+    expect(githubLink.getAttribute("target")).toBe("_blank");
   });
 });
