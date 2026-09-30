@@ -5,3 +5,7 @@
 ## 2026-09-22 - Clipboard Copy Live Feedback
 **Learning:** Copy-to-clipboard interactions on contact actions require an `aria-live="polite"` region to inform screen reader users when text is copied, alongside visual confirmation icons and state labels for sighted users.
 **Action:** When implementing clipboard copy buttons, pair stateful visual feedback (`Check` icon and "Copied!") with an `aria-live="polite"` status element announcing the copy outcome.
+
+## 2026-09-30 - Fixed Header Floating Controls on Mobile Viewports
+**Learning:** Floating theme or action controls placed at `fixed top-3.5 right-4` overlap mobile navigation toggle buttons placed in `px-4` header flex containers on small viewports, intercepting pointer clicks. Offset floating fixed header buttons (e.g. `right-16 sm:right-6`) to prevent touch target collision.
+**Action:** Always test mobile viewport overlay and tap targets when positioning fixed floating action buttons near top navigation bars.

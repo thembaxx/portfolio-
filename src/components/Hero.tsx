@@ -101,7 +101,7 @@ export function Hero() {
               href="https://github.com/thembaxx"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="GitHub Profile"
+              aria-label="GitHub profile (opens in a new tab)"
               className="p-2 rounded-full text-[var(--mute)] hover:text-[var(--ink)] hover:bg-[var(--card)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
             >
               <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
@@ -112,7 +112,7 @@ export function Hero() {
               href="https://www.linkedin.com/in/themba-p"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="LinkedIn Profile"
+              aria-label="LinkedIn profile (opens in a new tab)"
               className="p-2 rounded-full text-[var(--mute)] hover:text-[var(--accent)] hover:bg-[var(--card)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
             >
               <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">

@@ -75,10 +75,11 @@ export function Navbar() {
           <div className="flex items-center gap-2 md:hidden">
             <button
               type="button"
-              className="w-9 h-9 flex items-center justify-center rounded-lg text-[var(--mute)] hover:text-[var(--ink)] hover:bg-[var(--card)] transition-colors border border-[var(--line)]"
+              className="w-9 h-9 flex items-center justify-center rounded-lg text-[var(--mute)] hover:text-[var(--ink)] hover:bg-[var(--card)] transition-colors border border-[var(--line)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-expanded={mobileMenuOpen}
-              aria-label="Toggle Navigation Menu"
+              aria-controls="mobile-navigation"
+              aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
             >
               {mobileMenuOpen ? (
                 <X className="w-5 h-5" strokeWidth={1.75} aria-hidden="true" />
@@ -91,17 +92,22 @@ export function Navbar() {
 
         {/* Mobile Menu Drawer */}
         {mobileMenuOpen && (
-          <div className="md:hidden border-b border-[var(--line)] bg-[var(--bg)] px-4 pt-3 pb-5 space-y-3">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="block text-sm font-medium text-[var(--mute)] hover:text-[var(--ink)] py-1.5 transition-colors"
-              >
-                {link.name}
-              </a>
-            ))}
+          <div
+            id="mobile-navigation"
+            className="md:hidden border-b border-[var(--line)] bg-[var(--bg)] px-4 pt-3 pb-5 space-y-3"
+          >
+            <nav aria-label="Mobile Navigation" className="space-y-3">
+              {navLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block text-sm font-medium text-[var(--mute)] hover:text-[var(--ink)] py-1.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] rounded px-1.5"
+                >
+                  {link.name}
+                </a>
+              ))}
+            </nav>
           </div>
         )}
       </header>
@@ -111,8 +117,9 @@ export function Navbar() {
         <button
           type="button"
           onClick={() => setTheme(isDark ? "light" : "dark")}
-          className="fixed top-3.5 right-4 z-50 w-10 h-10 rounded-full bg-[var(--card)] border border-[var(--line)] text-[var(--ink)] flex items-center justify-center shadow-md hover:scale-105 active:scale-95 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
-          aria-label="Toggle dark and light theme"
+          className="fixed top-3.5 right-16 sm:right-6 z-50 w-10 h-10 rounded-full bg-[var(--card)] border border-[var(--line)] text-[var(--ink)] flex items-center justify-center shadow-md hover:scale-105 active:scale-95 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+          aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
+          title={isDark ? "Switch to light theme" : "Switch to dark theme"}
         >
           {isDark ? (
             <Sun className="w-4 h-4 text-amber-400" strokeWidth={2} aria-hidden="true" />
