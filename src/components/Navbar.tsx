@@ -108,18 +108,23 @@ export function Navbar() {
 
       {/* Floating Theme Toggle Button - Fixed Top Right as specified */}
       {mounted && (
-        <button
-          type="button"
-          onClick={() => setTheme(isDark ? "light" : "dark")}
-          className="fixed top-3.5 right-4 z-50 w-10 h-10 rounded-full bg-[var(--card)] border border-[var(--line)] text-[var(--ink)] flex items-center justify-center shadow-md hover:scale-105 active:scale-95 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
-          aria-label="Toggle dark and light theme"
-        >
-          {isDark ? (
-            <Sun className="w-4 h-4 text-amber-400" strokeWidth={2} aria-hidden="true" />
-          ) : (
-            <Moon className="w-4 h-4 text-[var(--ink)]" strokeWidth={2} aria-hidden="true" />
-          )}
-        </button>
+        <>
+          <button
+            type="button"
+            onClick={() => setTheme(isDark ? "light" : "dark")}
+            className="fixed top-3.5 right-4 z-50 w-10 h-10 rounded-full bg-[var(--card)] border border-[var(--line)] text-[var(--ink)] flex items-center justify-center shadow-md hover:scale-105 active:scale-95 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+            aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
+          >
+            {isDark ? (
+              <Sun className="w-4 h-4 text-amber-400" strokeWidth={2} aria-hidden="true" />
+            ) : (
+              <Moon className="w-4 h-4 text-[var(--ink)]" strokeWidth={2} aria-hidden="true" />
+            )}
+          </button>
+          <div className="sr-only" aria-live="polite" aria-atomic="true">
+            {isDark ? "Dark theme active" : "Light theme active"}
+          </div>
+        </>
       )}
     </>
   );
