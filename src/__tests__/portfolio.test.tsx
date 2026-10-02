@@ -30,13 +30,14 @@ vitest.mock("next-themes", () => ({
 }));
 
 describe("Themba Mndebele Developer Portfolio — Field Notes Design System", () => {
-  test("renders Navbar with branding and navigation links", () => {
+  test("renders Navbar with branding, navigation links, and theme toggle button", () => {
     render(<Navbar />);
     expect(screen.getByText("Themba Mndebele")).toBeDefined();
     expect(screen.getByText("Frontend Developer")).toBeDefined();
     expect(screen.getByText("About")).toBeDefined();
     expect(screen.getByText("Projects")).toBeDefined();
     expect(screen.getByText("Skills")).toBeDefined();
+    expect(screen.getByRole("button", { name: "Switch to light theme" })).toBeDefined();
   });
 
   test("renders Hero with title, location, pull-quote and CTAs without gradients", () => {
