@@ -78,7 +78,8 @@ export function Navbar() {
               className="w-9 h-9 flex items-center justify-center rounded-lg text-[var(--mute)] hover:text-[var(--ink)] hover:bg-[var(--card)] transition-colors border border-[var(--line)]"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-expanded={mobileMenuOpen}
-              aria-label="Toggle Navigation Menu"
+              aria-controls="mobile-navigation-drawer"
+              aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
             >
               {mobileMenuOpen ? (
                 <X className="w-5 h-5" strokeWidth={1.75} aria-hidden="true" />
@@ -91,7 +92,10 @@ export function Navbar() {
 
         {/* Mobile Menu Drawer */}
         {mobileMenuOpen && (
-          <div className="md:hidden border-b border-[var(--line)] bg-[var(--bg)] px-4 pt-3 pb-5 space-y-3">
+          <div
+            id="mobile-navigation-drawer"
+            className="md:hidden border-b border-[var(--line)] bg-[var(--bg)] px-4 pt-3 pb-5 space-y-3"
+          >
             {navLinks.map((link) => (
               <a
                 key={link.name}
@@ -112,7 +116,8 @@ export function Navbar() {
           type="button"
           onClick={() => setTheme(isDark ? "light" : "dark")}
           className="fixed top-3.5 right-4 z-50 w-10 h-10 rounded-full bg-[var(--card)] border border-[var(--line)] text-[var(--ink)] flex items-center justify-center shadow-md hover:scale-105 active:scale-95 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
-          aria-label="Toggle dark and light theme"
+          aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
+          title={isDark ? "Switch to light theme" : "Switch to dark theme"}
         >
           {isDark ? (
             <Sun className="w-4 h-4 text-amber-400" strokeWidth={2} aria-hidden="true" />
