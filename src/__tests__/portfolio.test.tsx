@@ -8,6 +8,14 @@ import { Skills } from "../components/Skills";
 import { ProjectSection } from "../components/ProjectSection";
 import { Contact } from "../components/Contact";
 import { Footer } from "../components/Footer";
+import Home from "../app/page";
+import RootLayout from "../app/layout";
+
+// Mock next/font/google
+vitest.mock("next/font/google", () => ({
+  Fraunces: () => ({ variable: "--font-fraunces" }),
+  Inter: () => ({ variable: "--font-inter" }),
+}));
 
 // Mock next/image cleanly for JSDOM
 vitest.mock("next/image", () => ({
@@ -109,5 +117,19 @@ describe("Themba Mndebele Developer Portfolio — Field Notes Design System", ()
   test("renders Footer copyright and information", () => {
     render(<Footer />);
     expect(screen.getByText("Frontend Developer · React · TypeScript · South Africa")).toBeDefined();
+  });
+
+  test("renders single Skip to content link targeting #main-content with accessible focus styles", () => {
+    render(
+      <RootLayout>
+        <Home />
+      </RootLayout>,
+      { container: document.body }
+    );
+    const skipLinks = screen.getAllByRole("link", { name: "Skip to content" });
+    expect(skipLinks.length).toBe(1);
+    expect(skipLinks[0].getAttribute("href")).toBe("#main-content");
+    expect(skipLinks[0].className).toContain("sr-only");
+    expect(skipLinks[0].className).toContain("focus-visible:not-sr-only");
   });
 });
