@@ -92,8 +92,9 @@ export function Navbar() {
 
         {/* Mobile Menu Drawer */}
         {mobileMenuOpen && (
-          <div
+          <nav
             id="mobile-navigation-drawer"
+            aria-label="Mobile Navigation"
             className="md:hidden border-b border-[var(--line)] bg-[var(--bg)] px-4 pt-3 pb-5 space-y-3"
           >
             {navLinks.map((link) => (
@@ -101,12 +102,12 @@ export function Navbar() {
                 key={link.name}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="block text-sm font-medium text-[var(--mute)] hover:text-[var(--ink)] py-1.5 transition-colors"
+                className="block text-sm font-medium text-[var(--mute)] hover:text-[var(--ink)] py-1.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] rounded px-2"
               >
                 {link.name}
               </a>
             ))}
-          </div>
+          </nav>
         )}
       </header>
 

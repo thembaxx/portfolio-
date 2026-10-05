@@ -1,6 +1,6 @@
 import { vitest, describe, test, expect } from "vitest";
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import { Navbar } from "../components/Navbar";
 import { Hero } from "../components/Hero";
 import { About } from "../components/About";
@@ -86,15 +86,21 @@ describe("Themba Mndebele Developer Portfolio — Field Notes Design System", ()
     expect(screen.getByText("Lumni")).toBeDefined();
   });
 
-  test("renders screenshot gallery toggle buttons with accessible ARIA attributes", () => {
+  test("renders screenshot gallery toggle buttons with accessible ARIA attributes and live region announcements", () => {
     render(<ProjectSection />);
-    const marketplaceBtn = screen.getByRole("button", { name: "Show Marketplace View screenshot for Mileia" });
-    const servicesBtn = screen.getByRole("button", { name: "Show Services Directory screenshot for Mileia" });
+    const marketplaceBtn = screen.getByRole("tab", { name: "Show Marketplace View screenshot for Mileia" });
+    const servicesBtn = screen.getByRole("tab", { name: "Show Services Directory screenshot for Mileia" });
 
     expect(marketplaceBtn).toBeDefined();
     expect(servicesBtn).toBeDefined();
-    expect(marketplaceBtn.getAttribute("aria-pressed")).toBe("true");
-    expect(servicesBtn.getAttribute("aria-pressed")).toBe("false");
+    expect(marketplaceBtn.getAttribute("aria-selected")).toBe("true");
+    expect(servicesBtn.getAttribute("aria-selected")).toBe("false");
+
+    expect(screen.getByText("Showing Marketplace View screenshot for Mileia")).toBeDefined();
+
+    fireEvent.click(servicesBtn);
+    expect(screen.getByText("Showing Services Directory screenshot for Mileia")).toBeDefined();
+    expect(servicesBtn.getAttribute("aria-selected")).toBe("true");
   });
 
   test("renders Contact section with email mailto link and social profiles", () => {

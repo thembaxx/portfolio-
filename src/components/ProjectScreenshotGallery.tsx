@@ -27,13 +27,18 @@ export function ProjectScreenshotGallery({ screenshots, projectName }: GalleryPr
     <div className="space-y-4">
       {/* Gallery view switcher tabs */}
       {screenshots.length > 1 && (
-        <div className="flex items-center gap-2 border-b border-[var(--line)] pb-2">
+        <div
+          role="tablist"
+          aria-label={`Screenshot view options for ${projectName}`}
+          className="flex items-center gap-2 border-b border-[var(--line)] pb-2"
+        >
           {screenshots.map((s, idx) => (
             <button
               key={s.label}
               type="button"
+              role="tab"
               onClick={() => setActiveTab(idx)}
-              aria-pressed={activeTab === idx}
+              aria-selected={activeTab === idx}
               aria-label={`Show ${s.label} screenshot for ${projectName}`}
               className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] ${
                 activeTab === idx
@@ -51,6 +56,11 @@ export function ProjectScreenshotGallery({ screenshots, projectName }: GalleryPr
           ))}
         </div>
       )}
+
+      {/* Screen reader live notification for screenshot changes */}
+      <div className="sr-only" aria-live="polite" aria-atomic="true">
+        {`Showing ${currentScreenshot.label} screenshot for ${projectName}`}
+      </div>
 
       {/* iPhone Frame Display - exact CSS-drawn frame with real screenshot inside */}
       <div className="flex justify-center items-center py-4 bg-[var(--bg)] rounded-2xl border border-[var(--line)]">
