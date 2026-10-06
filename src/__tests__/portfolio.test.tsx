@@ -10,6 +10,7 @@ import { Contact } from "../components/Contact";
 import { Footer } from "../components/Footer";
 import Home from "../app/page";
 import RootLayout from "../app/layout";
+import ProjectPage from "../app/projects/[id]/page";
 
 // Mock next/font/google
 vitest.mock("next/font/google", () => ({
@@ -145,5 +146,20 @@ describe("Themba Mndebele Developer Portfolio — Field Notes Design System", ()
     expect(skipLinks[0].getAttribute("href")).toBe("#main-content");
     expect(skipLinks[0].className).toContain("sr-only");
     expect(skipLinks[0].className).toContain("focus-visible:not-sr-only");
+  });
+
+  test("renders project detail page with accessible external action links and focus ring attributes", async () => {
+    const pageComponent = await ProjectPage({ params: Promise.resolve({ id: "mileia" }) });
+    render(pageComponent);
+
+    const liveDemoLink = screen.getByRole("link", { name: "Open Live Demo for Mileia" });
+    expect(liveDemoLink).toBeDefined();
+    expect(liveDemoLink.getAttribute("aria-label")).toBe("Open Live Demo for Mileia");
+    expect(liveDemoLink.className).toContain("focus-visible:ring-2");
+
+    const githubLink = screen.getByRole("link", { name: "View GitHub repository for Mileia" });
+    expect(githubLink).toBeDefined();
+    expect(githubLink.getAttribute("aria-label")).toBe("View GitHub repository for Mileia");
+    expect(githubLink.className).toContain("focus-visible:ring-2");
   });
 });

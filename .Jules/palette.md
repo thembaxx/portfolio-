@@ -9,3 +9,7 @@
 ## 2026-10-03 - Dynamic Theme and Mobile Menu Toggle Clarity
 **Learning:** Fixed header icon buttons (such as theme switchers and mobile drawer toggles) need dynamic action-oriented `aria-label`s (e.g. "Switch to light theme" or "Close navigation menu") paired with `title` tooltips for hover states and explicit `aria-controls` bindings to communicate state shifts accurately to both sighted and screen reader users.
 **Action:** Always provide state-aware `aria-label`s, native `title` attributes, and `aria-controls` IDs on fixed menu and theme toggles in navigation components.
+
+## 2026-10-24 - Project Detail Action Link Accessibility and Focus States
+**Learning:** Detail/case study subpages often miss context-rich `aria-label`s and `focus-visible` ring indicators on action links (e.g. Live Demo and GitHub Repository links) compared to index cards. Ensuring explicit `aria-label`s, `focus-visible` rings, and `aria-hidden` attributes on decorative icons provides a seamless and accessible experience for keyboard and screen reader users across all pages.
+**Action:** Always mirror interactive action link ARIA attributes and focus styles across both summary cards and dedicated detail pages.
