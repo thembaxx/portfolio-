@@ -1,3 +1,4 @@
+import { ParticleBackground } from "@/components/ParticleBackground";
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { ProjectSection } from "@/components/ProjectSection";
@@ -8,9 +9,10 @@ import { Footer } from "@/components/Footer";
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col bg-[var(--bg)] text-[var(--ink)] transition-colors">
+    <div className="portfolio-page">
+      <ParticleBackground />
       <Navbar />
-      <main id="main-content" className="flex-1">
+      <main id="main-content" className="portfolio-main" tabIndex={-1}>
         <Hero />
         <ProjectSection />
         <Skills />

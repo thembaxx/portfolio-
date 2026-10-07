@@ -1,20 +1,26 @@
 import { vitest, describe, test, expect } from "vitest";
 import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, act } from "@testing-library/react";
 import { Navbar } from "../components/Navbar";
 import { Hero } from "../components/Hero";
 import { About } from "../components/About";
 import { Skills } from "../components/Skills";
 import { ProjectSection } from "../components/ProjectSection";
 import { Contact } from "../components/Contact";
+import { ProjectScreenshotGallery } from "../components/ProjectScreenshotGallery";
 import { Footer } from "../components/Footer";
 import Home from "../app/page";
 import RootLayout from "../app/layout";
 
 // Mock next/font/google
 vitest.mock("next/font/google", () => ({
-  Fraunces: () => ({ variable: "--font-fraunces" }),
-  Inter: () => ({ variable: "--font-inter" }),
+  Instrument_Serif: () => ({ variable: "--font-fraunces" }),
+  Geist: () => ({ variable: "--font-inter" }),
+  Geist_Mono: () => ({ variable: "--font-geist-mono" }),
+}));
+
+vitest.mock("../components/ParticleBackground", () => ({
+  ParticleBackground: () => <canvas aria-hidden="true" />,
 }));
 
 // Mock next/image cleanly for JSDOM
@@ -37,57 +43,56 @@ vitest.mock("next-themes", () => ({
   ThemeProvider: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
 }));
 
-describe("Themba Mndebele Developer Portfolio — Field Notes Design System", () => {
-  test("renders Navbar with branding, navigation links, accessible theme toggle, and mobile menu toggle", () => {
+describe("Themba Mndebele — editorial portfolio", () => {
+  test("navigation works from the homepage and project detail pages, with an accessible theme toggle", () => {
     render(<Navbar />);
-    expect(screen.getByText("Themba Mndebele")).toBeDefined();
-    expect(screen.getByText("Frontend Developer")).toBeDefined();
-    expect(screen.getByText("About")).toBeDefined();
-    expect(screen.getByText("Projects")).toBeDefined();
-    expect(screen.getByText("Skills")).toBeDefined();
-
+    expect(screen.getByRole("link", { name: "Themba Mndebele, top" })).toHaveAttribute("href", "/#top");
+    for (const [name, href] of [["Work", "/#work"], ["About", "/#about"], ["Contact", "/#contact"]]) {
+      expect(screen.getByRole("link", { name })).toHaveAttribute("href", href);
+    }
     const themeToggle = screen.getByRole("button", { name: "Switch to light theme" });
-    expect(themeToggle).toBeDefined();
-    expect(themeToggle.getAttribute("title")).toBe("Switch to light theme");
-
-    const mobileToggle = screen.getByRole("button", { name: "Open navigation menu" });
-    expect(mobileToggle).toBeDefined();
-    expect(mobileToggle.getAttribute("aria-controls")).toBe("mobile-navigation-drawer");
+    expect(themeToggle).toHaveAttribute("title", "Switch to light theme");
   });
 
-  test("renders Hero with title, location, pull-quote and CTAs without gradients", () => {
-    const { container } = render(<Hero />);
-    expect(screen.getByText("Based in South Africa")).toBeDefined();
-    expect(screen.getByText("Open to remote opportunities")).toBeDefined();
-    expect(screen.getByText("View my work")).toBeDefined();
-    expect(screen.getByText("Email me")).toBeDefined();
-    expect(container.querySelector(".bg-gradient-to-r")).toBeNull();
+  test("hero presents the supplied name, availability, technology focus, and contact actions", () => {
+    render(<Hero />);
+    expect(screen.getByRole("heading", { level: 1, name: "Themba Mndebele" })).toBeDefined();
+    expect(screen.getByText("South Africa")).toBeDefined();
+    expect(screen.getByText("Open to remote roles")).toBeDefined();
+    expect(screen.getByRole("link", { name: /Selected work/ })).toHaveAttribute("href", "#work");
+    expect(screen.getByRole("link", { name: "me@themba.dev" })).toHaveAttribute("href", "mailto:me@themba.dev");
   });
 
-  test("renders About section with recruiter concise intro and experience", () => {
+  test("about preserves the supplied experience and engineering ownership", () => {
     render(<About />);
-    expect(screen.getByText("4 years of professional experience")).toBeDefined();
-    expect(screen.getByText("AI-Assisted Engineering Workflow")).toBeDefined();
+    expect(screen.getByText(/Four years building React products/)).toBeDefined();
+    expect(screen.getByText(/owning architecture, reliability and security myself/)).toBeDefined();
   });
 
-  test("renders Skills grouped logically without percentage bars", () => {
+  test("toolkit groups the supplied skills by domain", () => {
     render(<Skills />);
-    expect(screen.getByText("Frontend Development")).toBeDefined();
-    expect(screen.getByText("Engineering & Architecture")).toBeDefined();
-    expect(screen.getByText("Testing & Quality")).toBeDefined();
-    expect(screen.getByText("AI-Assisted Engineering")).toBeDefined();
-    expect(screen.getByText("React")).toBeDefined();
-    expect(screen.getByText("TypeScript")).toBeDefined();
+    for (const category of ["Frontend", "Architecture", "Quality", "AI-assisted"]) {
+      expect(screen.getByText(category)).toBeDefined();
+    }
+    expect(screen.getByText(/React, Next.js, TypeScript/)).toBeDefined();
+    expect(screen.getByText(/Vitest, Playwright/)).toBeDefined();
   });
 
   test("renders Featured Projects including Mileia and Lumni", () => {
     render(<ProjectSection />);
     expect(screen.getByText("Mileia")).toBeDefined();
     expect(screen.getByText("Lumni")).toBeDefined();
+    expect(screen.getByRole("link", { name: "Read Mileia case study" })).toHaveAttribute("href", "/projects/mileia");
+    expect(screen.getByRole("link", { name: "Read Lumni case study" })).toHaveAttribute("href", "/projects/lumni");
+    expect(screen.getByRole("link", { name: /Open live demo for Mileia/ })).toHaveAttribute("href", "https://mileia.vercel.app");
+    expect(screen.getByRole("link", { name: /View GitHub repository for Lumni/ })).toHaveAttribute("href", "https://github.com/thembaxx/lumni");
   });
 
   test("renders screenshot gallery toggle buttons with accessible ARIA attributes and live region announcements", () => {
-    render(<ProjectSection />);
+    render(<ProjectScreenshotGallery projectName="Mileia" screenshots={[
+      { src: "/projects/mileia-1.png", alt: "Marketplace", type: "desktop", label: "Marketplace View" },
+      { src: "/projects/mileia-2.png", alt: "Services", type: "desktop", label: "Services Directory" },
+    ]} />);
     const marketplaceBtn = screen.getByRole("tab", { name: "Show Marketplace View screenshot for Mileia" });
     const servicesBtn = screen.getByRole("tab", { name: "Show Services Directory screenshot for Mileia" });
 
@@ -106,7 +111,7 @@ describe("Themba Mndebele Developer Portfolio — Field Notes Design System", ()
   test("renders Contact section with email mailto link and social profiles", () => {
     render(<Contact />);
     expect(screen.getByText("me@themba.dev")).toBeDefined();
-    expect(screen.getByText("LinkedIn Profile")).toBeDefined();
+    expect(screen.getByRole("link", { name: /LinkedIn profile/ })).toBeDefined();
   });
 
   test("renders Contact section with copy email button and triggers clipboard copy with feedback", async () => {
@@ -121,16 +126,41 @@ describe("Themba Mndebele Developer Portfolio — Field Notes Design System", ()
     const copyButton = screen.getByRole("button", { name: /copy email address/i });
     expect(copyButton).toBeDefined();
 
-    copyButton.click();
+    fireEvent.click(copyButton);
     expect(writeTextMock).toHaveBeenCalledWith("me@themba.dev");
 
-    expect(await screen.findByText("Copied!")).toBeDefined();
+    expect(await screen.findByText("Copied ✓")).toBeDefined();
     expect(screen.getByText("Email address me@themba.dev copied to clipboard")).toBeDefined();
+  });
+
+  test("clipboard rejection provides an accessible recovery message", async () => {
+    Object.assign(navigator, { clipboard: { writeText: vitest.fn().mockRejectedValue(new Error("Permission denied")) } });
+    render(<Contact />);
+    fireEvent.click(screen.getByRole("button", { name: /copy email address/i }));
+    expect(await screen.findByRole("status")).toHaveTextContent(/Could not copy automatically/);
+    expect(screen.getByRole("link", { name: "me@themba.dev" })).toHaveAttribute("href", "mailto:me@themba.dev");
+  });
+
+  test("copy confirmation resets and its timer is cleaned up on unmount", async () => {
+    vitest.useFakeTimers();
+    try {
+      Object.assign(navigator, { clipboard: { writeText: vitest.fn().mockResolvedValue(undefined) } });
+      const { unmount } = render(<Contact />);
+      await act(async () => { fireEvent.click(screen.getByRole("button", { name: /copy email address/i })); });
+      expect(screen.getByText("Copied ✓")).toBeDefined();
+      act(() => vitest.advanceTimersByTime(2000));
+      expect(screen.getByText("Copy email")).toBeDefined();
+      await act(async () => { fireEvent.click(screen.getByRole("button", { name: /copy email address/i })); });
+      unmount();
+      expect(vitest.getTimerCount()).toBe(0);
+    } finally {
+      vitest.useRealTimers();
+    }
   });
 
   test("renders Footer copyright and information", () => {
     render(<Footer />);
-    expect(screen.getByText("Frontend Developer · React · TypeScript · South Africa")).toBeDefined();
+    expect(screen.getByText("Frontend Developer · South Africa")).toBeDefined();
   });
 
   test("renders single Skip to content link targeting #main-content with accessible focus styles", () => {

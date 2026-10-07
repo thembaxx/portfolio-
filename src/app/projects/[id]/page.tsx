@@ -163,7 +163,7 @@ export default async function ProjectPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Navbar />
-      <main id="main-content" className="flex-1 py-12 sm:py-16">
+      <main id="main-content" className="project-page flex-1 py-12 sm:py-16" tabIndex={-1}>
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           {/* Back link */}
           <Link

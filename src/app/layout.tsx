@@ -1,17 +1,25 @@
 import type { Metadata } from "next";
-import { Fraunces, Inter } from "next/font/google";
+import { Instrument_Serif, Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
-const fraunces = Fraunces({
+const serif = Instrument_Serif({
+  weight: "400",
+  style: ["normal", "italic"],
   variable: "--font-fraunces",
   subsets: ["latin"],
   display: "swap",
 });
 
-const inter = Inter({
+const sans = Geist({
   variable: "--font-inter",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const mono = Geist_Mono({
+  variable: "--font-geist-mono",
   subsets: ["latin"],
   display: "swap",
 });
@@ -104,7 +112,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" suppressHydrationWarning className="scroll-smooth">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"
@@ -112,7 +120,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${fraunces.variable} ${inter.variable} antialiased min-h-screen flex flex-col bg-[var(--bg)] text-[var(--ink)] font-sans selection:bg-[var(--accentSoft)] selection:text-[var(--accent)]`}
+        className={`${serif.variable} ${sans.variable} ${mono.variable} antialiased min-h-screen flex flex-col bg-[var(--bg)] text-[var(--ink)] font-sans selection:bg-[var(--accentSoft)] selection:text-[var(--accent)]`}
       >
         <a
           href="#main-content"
