@@ -95,12 +95,20 @@ describe("Themba Mndebele Developer Portfolio — Field Notes Design System", ()
     expect(servicesBtn).toBeDefined();
     expect(marketplaceBtn.getAttribute("aria-selected")).toBe("true");
     expect(servicesBtn.getAttribute("aria-selected")).toBe("false");
+    expect(marketplaceBtn.getAttribute("aria-controls")).toBe("screenshot-panel-mileia");
+    expect(servicesBtn.getAttribute("aria-controls")).toBe("screenshot-panel-mileia");
+
+    const tabPanels = screen.getAllByRole("tabpanel");
+    expect(tabPanels.length).toBeGreaterThanOrEqual(1);
+    expect(tabPanels[0].getAttribute("id")).toBe("screenshot-panel-mileia");
+    expect(tabPanels[0].getAttribute("aria-labelledby")).toBe("screenshot-tab-mileia-0");
 
     expect(screen.getByText("Showing Marketplace View screenshot for Mileia")).toBeDefined();
 
     fireEvent.click(servicesBtn);
     expect(screen.getByText("Showing Services Directory screenshot for Mileia")).toBeDefined();
     expect(servicesBtn.getAttribute("aria-selected")).toBe("true");
+    expect(tabPanels[0].getAttribute("aria-labelledby")).toBe("screenshot-tab-mileia-1");
   });
 
   test("renders Contact section with email mailto link and social profiles", () => {

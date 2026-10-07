@@ -22,6 +22,9 @@ export function ProjectScreenshotGallery({ screenshots, projectName }: GalleryPr
   if (!screenshots || screenshots.length === 0) return null;
 
   const currentScreenshot = screenshots[activeTab] || screenshots[0];
+  const projectSlug = projectName.toLowerCase().replace(/\s+/g, "-");
+  const panelId = `screenshot-panel-${projectSlug}`;
+  const activeTabId = `screenshot-tab-${projectSlug}-${activeTab}`;
 
   return (
     <div className="space-y-4">
@@ -32,28 +35,33 @@ export function ProjectScreenshotGallery({ screenshots, projectName }: GalleryPr
           aria-label={`Screenshot view options for ${projectName}`}
           className="flex items-center gap-2 border-b border-[var(--line)] pb-2"
         >
-          {screenshots.map((s, idx) => (
-            <button
-              key={s.label}
-              type="button"
-              role="tab"
-              onClick={() => setActiveTab(idx)}
-              aria-selected={activeTab === idx}
-              aria-label={`Show ${s.label} screenshot for ${projectName}`}
-              className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] ${
-                activeTab === idx
-                  ? "bg-[var(--accentSoft)] text-[var(--accent)] font-semibold"
-                  : "text-[var(--mute)] hover:text-[var(--ink)] hover:bg-[var(--card)]"
-              }`}
-            >
-              {s.type === "desktop" ? (
-                <Monitor className="w-3.5 h-3.5" strokeWidth={1.75} aria-hidden="true" />
-              ) : (
-                <Smartphone className="w-3.5 h-3.5" strokeWidth={1.75} aria-hidden="true" />
-              )}
-              <span>{s.label}</span>
-            </button>
-          ))}
+          {screenshots.map((s, idx) => {
+            const tabId = `screenshot-tab-${projectSlug}-${idx}`;
+            return (
+              <button
+                key={s.label}
+                id={tabId}
+                type="button"
+                role="tab"
+                onClick={() => setActiveTab(idx)}
+                aria-selected={activeTab === idx}
+                aria-controls={panelId}
+                aria-label={`Show ${s.label} screenshot for ${projectName}`}
+                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] ${
+                  activeTab === idx
+                    ? "bg-[var(--accentSoft)] text-[var(--accent)] font-semibold"
+                    : "text-[var(--mute)] hover:text-[var(--ink)] hover:bg-[var(--card)]"
+                }`}
+              >
+                {s.type === "desktop" ? (
+                  <Monitor className="w-3.5 h-3.5" strokeWidth={1.75} aria-hidden="true" />
+                ) : (
+                  <Smartphone className="w-3.5 h-3.5" strokeWidth={1.75} aria-hidden="true" />
+                )}
+                <span>{s.label}</span>
+              </button>
+            );
+          })}
         </div>
       )}
 
@@ -82,7 +90,13 @@ export function ProjectScreenshotGallery({ screenshots, projectName }: GalleryPr
           </div>
 
           {/* Screen Content Container */}
-          <div className="relative flex-1 w-full bg-white dark:bg-zinc-900 rounded-[36px] overflow-hidden my-1 border border-black/10">
+          <div
+            id={panelId}
+            role="tabpanel"
+            aria-labelledby={activeTabId}
+            tabIndex={0}
+            className="relative flex-1 w-full bg-white dark:bg-zinc-900 rounded-[36px] overflow-hidden my-1 border border-black/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+          >
             <Image
               src={currentScreenshot.src}
               alt={currentScreenshot.alt || `${projectName} screenshot`}
