@@ -1,20 +1,19 @@
 import { ProjectCard, ProjectData } from "./ProjectCard";
-import { FolderGit2 } from "lucide-react";
+import { SectionLabel } from "./SectionLabel";
 
 export function ProjectSection() {
   const projects: ProjectData[] = [
     {
       id: "mileia",
       title: "Mileia",
-      subtitle: "On-Demand Tradesperson Marketplace Platform",
+      subtitle: "On-demand tradesperson marketplace · Cape Town",
       oneLiner: "An on-demand marketplace connecting local residents with verified tradespeople.",
       description:
-        "Mileia connects homeowners and businesses in Cape Town with verified tradespeople. Demonstrates location-aware filtering, responsive service discovery UI, stateful booking request flows, and accessible form controls.",
+        "Connects homeowners and businesses with verified tradespeople — location-aware discovery, stateful booking requests and accessible forms, designed mobile-first for people working in the field.",
       features: [
-        "React component architecture & custom search filtering hooks",
-        "TypeScript type safety across booking workflows & service data schemas",
-        "Mobile-first responsive interface tailored for field tradespeople and customers",
-        "Tailwind CSS styling with consistent design tokens and accessible contrast",
+        "Custom search and filtering hooks",
+        "Type-safe booking workflows and service schemas",
+        "Design tokens with accessible contrast",
       ],
       technologies: ["React", "TypeScript", "Next.js", "Tailwind CSS"],
       tools: ["Component Architecture", "UI/UX Engineering"],
@@ -38,17 +37,17 @@ export function ProjectSection() {
     {
       id: "lumni",
       title: "Lumni",
-      subtitle: "AI-Powered Study Ecosystem for Matric Students",
+      subtitle: "AI study companion for Matric students",
       oneLiner: "An AI-powered web platform providing adaptive quizzes, past paper revisions, and study analytics.",
       description:
-        "Lumni empowers South African Matric students with AI-assisted learning tools. Demonstrates React 19 features, Next.js 16 App Router architecture, state management with Zustand, Appwrite backend integration, and offline caching with IndexedDB.",
+        "An AI-assisted learning platform for South African Matric learners: generated quizzes and explanations, past papers with rendered maths, and an offline-first client for patchy connections.",
       features: [
-        "AI model integration for dynamic quiz generation and explanation breakdowns",
-        "Zustand state management for interactive flashcards, session timers, and quiz scoring",
-        "Syllabus alignment with past paper PDF rendering & KaTeX mathematical expression support",
-        "Offline-first client caching using Dexie.js & IndexedDB for low-connectivity environments",
+        "AI quiz generation and explanation breakdowns",
+        "Flashcards, session timers and scoring in Zustand",
+        "Past paper PDFs with KaTeX maths",
+        "IndexedDB caching for low-connectivity use",
       ],
-      technologies: ["React 19", "TypeScript", "Next.js 16", "Tailwind CSS", "Appwrite"],
+      technologies: ["React 19", "Next.js 16", "Zustand", "Appwrite", "Dexie", "Vitest", "Playwright"],
       tools: ["Zustand", "Vitest", "Playwright", "KaTeX"],
       screenshots: [
         {
@@ -70,26 +69,14 @@ export function ProjectSection() {
   ];
 
   return (
-    <section id="projects" className="py-16 sm:py-20 border-b border-[var(--line)] transition-colors scroll-mt-20">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-        {/* Section Header */}
-        <div className="max-w-2xl space-y-2">
-          <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[var(--accent)] font-sans">
-            <FolderGit2 className="w-4 h-4" strokeWidth={1.75} aria-hidden="true" />
-            <span>Featured work</span>
-          </div>
-          <h2 className="font-serif text-2xl sm:text-3xl font-normal tracking-tight text-[var(--ink)]">
-            Production projects &amp; applications
-          </h2>
-          <p className="text-sm sm:text-base text-[var(--mute)] font-sans">
-            A curated selection of production applications showcasing React architecture, TypeScript rigor, responsive UI/UX, and AI integrations.
-          </p>
-        </div>
-
-        {/* Project List */}
-        <div className="space-y-12">
-          {projects.map((project, idx) => (
-            <ProjectCard key={project.id} project={project} index={idx} />
+    <section id="work" className="portfolio-section" aria-labelledby="work-heading">
+      <span id="projects" className="legacy-anchor" aria-hidden="true" />
+      <div className="portfolio-wrap">
+        <SectionLabel title="01 — Selected work" note="2 products" />
+        <h2 id="work-heading" className="section-heading">Built, shipped, <em>live.</em></h2>
+        <div className="project-list">
+          {projects.map((project, index) => (
+            <ProjectCard key={project.id} project={project} index={index} />
           ))}
         </div>
       </div>

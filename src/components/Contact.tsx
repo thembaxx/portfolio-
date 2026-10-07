@@ -1,98 +1,44 @@
 "use client";
 
-import { useState } from "react";
-import { Mail, ArrowUpRight, Copy, Check } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { SectionLabel } from "./SectionLabel";
 
 export function Contact() {
-  const [copied, setCopied] = useState(false);
+  const [status, setStatus] = useState<"idle" | "copied" | "failed">("idle");
+  const timeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+  useEffect(() => () => { if (timeout.current) clearTimeout(timeout.current); }, []);
 
-  const handleCopy = async () => {
+  async function handleCopy() {
+    if (timeout.current) clearTimeout(timeout.current);
     try {
       await navigator.clipboard.writeText("me@themba.dev");
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
+      setStatus("copied");
+      timeout.current = setTimeout(() => setStatus("idle"), 2000);
     } catch {
-      // Fallback if clipboard API is unavailable
+      setStatus("failed");
     }
-  };
+  }
 
   return (
-    <section id="contact" className="py-16 sm:py-20 border-b border-[var(--line)] transition-colors relative overflow-hidden">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl space-y-8">
-          <div className="space-y-3">
-            <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[var(--accent)] font-sans">
-              <span>Get in touch</span>
-            </div>
-            <h2 className="font-serif text-3xl sm:text-4xl font-normal tracking-tight leading-tight text-[var(--ink)]">
-              Have an opportunity or project in mind? Let’s build something exceptional.
-            </h2>
-            <p className="text-sm sm:text-base text-[var(--mute)] leading-relaxed font-sans">
-              I am actively available for full-time frontend engineering roles, React development contracts, and technical collaborations. Feel free to reach out via email or LinkedIn.
-            </p>
-          </div>
-
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
-            <div className="flex flex-wrap items-center gap-2.5">
-              <a
-                href="mailto:me@themba.dev"
-                className="inline-flex items-center justify-center gap-2.5 px-6 py-3 rounded-full bg-[var(--accent)] text-white font-medium text-sm hover:opacity-90 active:scale-95 transition-all shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
-                aria-label="Send email to me@themba.dev"
-              >
-                <Mail className="w-4 h-4" strokeWidth={2} aria-hidden="true" />
-                <span>me@themba.dev</span>
-              </a>
-
-              <button
-                type="button"
-                onClick={handleCopy}
-                aria-label="Copy email address me@themba.dev to clipboard"
-                className="inline-flex items-center justify-center gap-1.5 px-3.5 py-3 rounded-full bg-[var(--card)] border border-[var(--line)] text-xs font-medium text-[var(--ink)] hover:bg-[var(--accentSoft)] hover:text-[var(--accent)] active:scale-95 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
-              >
-                {copied ? (
-                  <>
-                    <Check className="w-4 h-4 text-[var(--accent)]" strokeWidth={2} aria-hidden="true" />
-                    <span className="text-[var(--accent)] font-semibold">Copied!</span>
-                  </>
-                ) : (
-                  <>
-                    <Copy className="w-4 h-4 text-[var(--mute)]" strokeWidth={1.75} aria-hidden="true" />
-                    <span>Copy email</span>
-                  </>
-                )}
-              </button>
-            </div>
-
-            <div className="flex items-center gap-2 sm:ml-2">
-              <a
-                href="https://www.linkedin.com/in/themba-p"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn profile (opens in a new tab)"
-                className="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 text-sm font-medium text-[var(--ink)] hover:underline decoration-[var(--accent)] underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] rounded"
-              >
-                <span>LinkedIn Profile</span>
-                <ArrowUpRight className="w-4 h-4 text-[var(--accent)]" strokeWidth={1.75} aria-hidden="true" />
-              </a>
-
-              <a
-                href="https://github.com/thembaxx"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub profile (opens in a new tab)"
-                className="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 text-sm font-medium text-[var(--ink)] hover:underline decoration-[var(--accent)] underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] rounded"
-              >
-                <span>GitHub</span>
-                <ArrowUpRight className="w-4 h-4 text-[var(--accent)]" strokeWidth={1.75} aria-hidden="true" />
-              </a>
-            </div>
-          </div>
-
-          {/* Screen reader notification live region */}
-          <div className="sr-only" aria-live="polite" aria-atomic="true">
-            {copied ? "Email address me@themba.dev copied to clipboard" : ""}
-          </div>
+    <section id="contact" className="portfolio-section" aria-labelledby="contact-heading">
+      <div className="portfolio-wrap">
+        <SectionLabel title="04 — Contact" note="Available now" />
+        <h2 id="contact-heading" className="section-heading">Have a role or project in <em>mind?</em></h2>
+        <a className="contact-email" href="mailto:me@themba.dev">me@themba.dev</a>
+        <div className="action-row">
+          <button className="portfolio-button" type="button" onClick={handleCopy}
+            aria-label="Copy email address me@themba.dev to clipboard">
+            {status === "copied" ? "Copied ✓" : "Copy email"}
+          </button>
+          <a className="text-link mono" href="https://www.linkedin.com/in/themba-p" target="_blank"
+            rel="noopener noreferrer" aria-label="LinkedIn profile (opens in a new tab)">LinkedIn ↗</a>
+          <a className="text-link mono" href="https://github.com/thembaxx" target="_blank"
+            rel="noopener noreferrer" aria-label="GitHub profile (opens in a new tab)">GitHub ↗</a>
         </div>
+        <p className={status === "failed" ? "copy-status" : "sr-only"} role="status" aria-live="polite" aria-atomic="true">
+          {status === "copied" ? "Email address me@themba.dev copied to clipboard" :
+            status === "failed" ? "Could not copy automatically. Select the email address above to copy it, or click it to open your email app." : ""}
+        </p>
       </div>
     </section>
   );
