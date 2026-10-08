@@ -1,6 +1,7 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
+import Link from "next/link";
 import { useTheme } from "next-themes";
 
 const emptySubscribe = () => () => {};
@@ -13,13 +14,13 @@ export function Navbar() {
 
   return (
     <header className="portfolio-header">
-      <a href="/#top" className="mono portfolio-brand" aria-label="Themba Mndebele, top">
+      <Link href="/#top" className="mono portfolio-brand" aria-label="Themba Mndebele, top">
         TM — Portfolio
-      </a>
+      </Link>
       <nav className="mono" aria-label="Main navigation">
-        <a href="/#work">Work</a>
-        <a href="/#about">About</a>
-        <a href="/#contact">Contact</a>
+        <Link href="/#work">Work</Link>
+        <Link href="/#about">About</Link>
+        <Link href="/#contact">Contact</Link>
         <button
           type="button"
           className="theme-toggle"
