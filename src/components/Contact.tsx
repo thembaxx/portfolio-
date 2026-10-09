@@ -27,7 +27,7 @@ export function Contact() {
         <a className="contact-email" href="mailto:me@themba.dev">me@themba.dev</a>
         <div className="action-row">
           <button className="portfolio-button" type="button" onClick={handleCopy}
-            aria-label="Copy email address me@themba.dev to clipboard">
+            aria-label={status === "copied" ? "Email address me@themba.dev copied to clipboard" : "Copy email address me@themba.dev to clipboard"}>
             {status === "copied" ? "Copied ✓" : "Copy email"}
           </button>
           <a className="text-link mono" href="https://www.linkedin.com/in/themba-p" target="_blank"

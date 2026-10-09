@@ -22,6 +22,7 @@ export function ProjectScreenshotGallery({ screenshots, projectName }: GalleryPr
   if (!screenshots || screenshots.length === 0) return null;
 
   const currentScreenshot = screenshots[activeTab] || screenshots[0];
+  const slug = projectName.toLowerCase().replace(/[^a-z0-9]/g, "-");
 
   return (
     <div className="space-y-4">
@@ -37,6 +38,8 @@ export function ProjectScreenshotGallery({ screenshots, projectName }: GalleryPr
               key={s.label}
               type="button"
               role="tab"
+              id={`tab-${slug}-${idx}`}
+              aria-controls={`tabpanel-${slug}-${idx}`}
               onClick={() => setActiveTab(idx)}
               aria-selected={activeTab === idx}
               aria-label={`Show ${s.label} screenshot for ${projectName}`}
@@ -63,7 +66,12 @@ export function ProjectScreenshotGallery({ screenshots, projectName }: GalleryPr
       </div>
 
       {/* iPhone Frame Display - exact CSS-drawn frame with real screenshot inside */}
-      <div className="flex justify-center items-center py-4 bg-[var(--bg)] rounded-2xl border border-[var(--line)]">
+      <div
+        id={`tabpanel-${slug}-${activeTab}`}
+        role="tabpanel"
+        aria-labelledby={`tab-${slug}-${activeTab}`}
+        className="flex justify-center items-center py-4 bg-[var(--bg)] rounded-2xl border border-[var(--line)]"
+      >
         <div className="relative w-[280px] sm:w-[310px] h-[560px] sm:h-[600px] bg-[#111111] rounded-[48px] p-3 shadow-xl border-4 border-[#2b2b2b] flex flex-col justify-between overflow-hidden">
           {/* Dynamic Island / Speaker notch */}
           <div className="absolute top-4 left-1/2 -translate-x-1/2 w-24 h-5 bg-black rounded-full z-20 flex items-center justify-between px-2">

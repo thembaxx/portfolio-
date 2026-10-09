@@ -100,12 +100,20 @@ describe("Themba Mndebele — editorial portfolio", () => {
     expect(servicesBtn).toBeDefined();
     expect(marketplaceBtn.getAttribute("aria-selected")).toBe("true");
     expect(servicesBtn.getAttribute("aria-selected")).toBe("false");
+    expect(marketplaceBtn.getAttribute("aria-controls")).toBe("tabpanel-mileia-0");
+    expect(servicesBtn.getAttribute("aria-controls")).toBe("tabpanel-mileia-1");
+
+    const tabpanel = screen.getByRole("tabpanel");
+    expect(tabpanel).toHaveAttribute("id", "tabpanel-mileia-0");
+    expect(tabpanel).toHaveAttribute("aria-labelledby", "tab-mileia-0");
 
     expect(screen.getByText("Showing Marketplace View screenshot for Mileia")).toBeDefined();
 
     fireEvent.click(servicesBtn);
     expect(screen.getByText("Showing Services Directory screenshot for Mileia")).toBeDefined();
     expect(servicesBtn.getAttribute("aria-selected")).toBe("true");
+    expect(tabpanel).toHaveAttribute("id", "tabpanel-mileia-1");
+    expect(tabpanel).toHaveAttribute("aria-labelledby", "tab-mileia-1");
   });
 
   test("renders Contact section with email mailto link and social profiles", () => {
