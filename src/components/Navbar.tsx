@@ -26,6 +26,7 @@ export function Navbar() {
           disabled={!mounted}
           onClick={() => setTheme(isDark ? "light" : "dark")}
           aria-label={mounted ? label : "Toggle theme"}
+          aria-pressed={mounted ? isDark : undefined}
           title={mounted ? label : "Toggle theme"}
         >
           <span aria-hidden="true">◐</span>
