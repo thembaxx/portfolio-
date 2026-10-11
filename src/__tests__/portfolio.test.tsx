@@ -14,8 +14,8 @@ import RootLayout from "../app/layout";
 
 // Mock next/font/google
 vitest.mock("next/font/google", () => ({
-  Instrument_Serif: () => ({ variable: "--font-fraunces" }),
-  Geist: () => ({ variable: "--font-inter" }),
+  Instrument_Serif: () => ({ variable: "--font-instrument-serif" }),
+  Geist: () => ({ variable: "--font-geist" }),
   Geist_Mono: () => ({ variable: "--font-geist-mono" }),
 }));
 

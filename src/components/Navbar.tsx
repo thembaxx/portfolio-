@@ -1,6 +1,8 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
+import { LogoMark } from "./LogoMark";
+import { brand } from "@/lib/brand";
 import { useTheme } from "next-themes";
 
 const emptySubscribe = () => () => {};
@@ -13,8 +15,8 @@ export function Navbar() {
 
   return (
     <header className="portfolio-header">
-      <a href="/#top" className="mono portfolio-brand" aria-label="Themba Mndebele, top">
-        TM — Portfolio
+      <a href="/#top" className="portfolio-brand" aria-label="Themba Mndebele, top">
+        <LogoMark size={32} /><span className="brand-wordmark">{brand.name}<i aria-hidden="true">.</i></span>
       </a>
       <nav className="mono" aria-label="Main navigation">
         <a href="/#work">Work</a>

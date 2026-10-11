@@ -1,12 +1,13 @@
 {
-  "name": "next-app",
+  "name": "themba-mndebele-portfolio",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "brand:assets": "node scripts/generate-brand-assets.mjs"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",

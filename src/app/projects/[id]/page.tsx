@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { projectMetadata, projectSchema, serializeSchema } from "@/lib/seo";
 import { projects, getProject } from "@/data/projects";
 import { notFound, permanentRedirect } from "next/navigation";
 import { Navbar } from "@/components/Navbar";
@@ -24,25 +25,7 @@ export async function generateMetadata({
     };
   }
 
-  return {
-    title: `${project.title} — ${project.subtitle} | Themba Mndebele`,
-    description: project.description,
-    alternates: { canonical: `/projects/${project.id}` },
-    openGraph: {
-      title: `${project.title} — Case Study by Themba Mndebele`,
-      description: project.description,
-      url: `https://themba.dev/projects/${project.id}`,
-      images: [{ url: project.screenshots[0].src, width: project.screenshots[0].width, height: project.screenshots[0].height, alt: project.screenshots[0].alt }],
-      siteName: "Themba Mndebele Portfolio",
-      type: "article",
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `${project.title} Case Study — Themba Mndebele`,
-      images: [project.screenshots[0].src],
-      description: project.description,
-    },
-  };
+  return projectMetadata(project);
 }
 
 export default async function ProjectPage({
@@ -58,28 +41,11 @@ export default async function ProjectPage({
     notFound();
   }
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: project.title,
-    headline: project.subtitle,
-    description: project.description,
-    applicationCategory: "WebApplication",
-    operatingSystem: "Web Browser",
-    author: {
-      "@type": "Person",
-      name: "Themba Mndebele",
-      url: "https://themba.dev",
-    },
-    url: project.liveUrl,
-    codeRepository: project.githubUrl,
-  };
-
   return (
     <div className="min-h-screen flex flex-col bg-[var(--bg)] text-[var(--ink)] transition-colors">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: serializeSchema(projectSchema(project)) }}
       />
       <Navbar />
       <main id="main-content" className="project-page flex-1 py-12 sm:py-16" tabIndex={-1}>

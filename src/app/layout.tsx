@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+import { identitySchema, serializeSchema, siteMetadata } from "@/lib/seo";
 import { Instrument_Serif, Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Analytics } from "@vercel/analytics/next";
@@ -7,13 +8,13 @@ import "./globals.css";
 const serif = Instrument_Serif({
   weight: "400",
   style: ["normal", "italic"],
-  variable: "--font-fraunces",
+  variable: "--font-instrument-serif",
   subsets: ["latin"],
   display: "swap",
 });
 
 const sans = Geist({
-  variable: "--font-inter",
+  variable: "--font-geist",
   subsets: ["latin"],
   display: "swap",
 });
@@ -24,42 +25,9 @@ const mono = Geist_Mono({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: "Themba Mndebele — Frontend Developer | React & TypeScript",
-  description:
-    "Themba Mndebele is a South Africa-based Frontend Developer specialising in React, TypeScript, Next.js, and modern UI/UX design. View production projects and contact for engineering opportunities.",
-  keywords: [
-    "Themba Mndebele",
-    "Frontend Developer",
-    "React Developer",
-    "TypeScript Developer",
-    "Next.js",
-    "South Africa Frontend Developer",
-    "UI/UX Engineer",
-    "Web Developer Portfolio",
-  ],
-  authors: [{ name: "Themba Mndebele", url: "https://themba.dev" }],
-  creator: "Themba Mndebele",
-  metadataBase: new URL("https://themba.dev"),
-  openGraph: {
-    title: "Themba Mndebele — Frontend Developer | React & TypeScript",
-    description:
-      "Frontend Developer specialising in React, TypeScript, and thoughtful digital user experiences. Based in South Africa, open to remote opportunities.",
-    url: "https://themba.dev",
-    siteName: "Themba Mndebele Portfolio",
-    locale: "en_ZA",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Themba Mndebele — Frontend Developer | React & TypeScript",
-    description:
-      "Frontend Developer specialising in React, TypeScript, and thoughtful digital user experiences.",
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
+export const metadata: Metadata = siteMetadata;
+export const viewport: Viewport = {
+  themeColor: [{ media: "(prefers-color-scheme: light)", color: "#efeae0" }, { media: "(prefers-color-scheme: dark)", color: "#0f0e0c" }],
 };
 
 export default function RootLayout({
@@ -67,56 +35,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Person",
-        "@id": "https://themba.dev/#person",
-        name: "Themba Mndebele",
-        url: "https://themba.dev",
-        image: "https://themba.dev/profile.jpg",
-        jobTitle: "Frontend Developer",
-        worksFor: {
-          "@type": "Organization",
-          name: "Freelance / Open to Opportunities",
-        },
-        sameAs: [
-          "https://github.com/thembaxx",
-          "https://www.linkedin.com/in/themba-p",
-        ],
-        knowsAbout: [
-          "React",
-          "TypeScript",
-          "Next.js",
-          "Tailwind CSS",
-          "UI/UX Engineering",
-          "Web Accessibility",
-          "Frontend Architecture",
-        ],
-        description:
-          "Frontend developer with ~4 years of experience building responsive, accessible web applications using React, TypeScript, and Next.js.",
-      },
-      {
-        "@type": "WebSite",
-        "@id": "https://themba.dev/#website",
-        url: "https://themba.dev",
-        name: "Themba Mndebele Portfolio",
-        description:
-          "Official portfolio of Themba Mndebele, Frontend Developer specialising in React, TypeScript, and Next.js.",
-        publisher: {
-          "@id": "https://themba.dev/#person",
-        },
-      },
-    ],
-  };
-
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM portfolio overview" />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: serializeSchema(identitySchema) }}
         />
       </head>
       <body
