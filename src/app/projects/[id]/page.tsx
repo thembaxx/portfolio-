@@ -1,98 +1,13 @@
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { projects, getProject } from "@/data/projects";
+import { notFound, permanentRedirect } from "next/navigation";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ProjectScreenshotGallery } from "@/components/ProjectScreenshotGallery";
 import { ArrowLeft, ExternalLink, CheckCircle2 } from "lucide-react";
 
-interface ProjectDetail {
-  id: string;
-  title: string;
-  subtitle: string;
-  oneLiner: string;
-  description: string;
-  features: string[];
-  technologies: string[];
-  tools?: string[];
-  screenshots: Array<{
-    src: string;
-    alt: string;
-    type: "desktop" | "mobile";
-    label: string;
-  }>;
-  liveUrl: string;
-  githubUrl: string;
-}
-
-const projectsMap: Record<string, ProjectDetail> = {
-  mileia: {
-    id: "mileia",
-    title: "Mileia",
-    subtitle: "On-Demand Tradesperson Marketplace Platform",
-    oneLiner: "An on-demand marketplace connecting local residents with verified tradespeople.",
-    description:
-      "Mileia connects homeowners and businesses in Cape Town with verified tradespeople. Demonstrates location-aware filtering, responsive service discovery UI, stateful booking request flows, and accessible form controls.",
-    features: [
-      "React component architecture & custom search filtering hooks",
-      "TypeScript type safety across booking workflows & service data schemas",
-      "Mobile-first responsive interface tailored for field tradespeople and customers",
-      "Tailwind CSS styling with consistent design tokens and accessible contrast",
-    ],
-    technologies: ["React", "TypeScript", "Next.js", "Tailwind CSS"],
-    tools: ["Component Architecture", "UI/UX Engineering"],
-    screenshots: [
-      {
-        src: "/projects/mileia-1.png",
-        alt: "Mileia marketplace homepage interface showing tradesperson discovery and service filtering",
-        type: "desktop",
-        label: "Marketplace View",
-      },
-      {
-        src: "/projects/mileia-2.png",
-        alt: "Mileia trade service listing page showing professional profiles and booking CTAs",
-        type: "desktop",
-        label: "Services Directory",
-      },
-    ],
-    liveUrl: "https://mileia.vercel.app",
-    githubUrl: "https://github.com/thembaxx/mileia",
-  },
-  lumni: {
-    id: "lumni",
-    title: "Lumni",
-    subtitle: "AI-Powered Study Ecosystem for Matric Students",
-    oneLiner: "An AI-powered web platform providing adaptive quizzes, past paper revisions, and study analytics.",
-    description:
-      "Lumni empowers South African Matric students with AI-assisted learning tools. Demonstrates React 19 features, Next.js 16 App Router architecture, state management with Zustand, Appwrite backend integration, and offline caching with IndexedDB.",
-    features: [
-      "AI model integration for dynamic quiz generation and explanation breakdowns",
-      "Zustand state management for interactive flashcards, session timers, and quiz scoring",
-      "Syllabus alignment with past paper PDF rendering & KaTeX mathematical expression support",
-      "Offline-first client caching using Dexie.js & IndexedDB for low-connectivity environments",
-    ],
-    technologies: ["React 19", "TypeScript", "Next.js 16", "Tailwind CSS", "Appwrite"],
-    tools: ["Zustand", "Vitest", "Playwright", "KaTeX"],
-    screenshots: [
-      {
-        src: "/projects/lumni-1.png",
-        alt: "Lumni AI learning companion home screen featuring study mode choices and course selection",
-        type: "desktop",
-        label: "Platform Overview",
-      },
-      {
-        src: "/projects/lumni-2.png",
-        alt: "Lumni student dashboard showing study stats, active flashcards, and progress tracking",
-        type: "desktop",
-        label: "Dashboard View",
-      },
-    ],
-    liveUrl: "https://lumni-psi.vercel.app",
-    githubUrl: "https://github.com/thembaxx/lumni",
-  },
-};
-
 export function generateStaticParams() {
-  return [{ id: "mileia" }, { id: "lumni" }];
+  return [...projects.map(project => ({ id: project.id })), { id: "lumni" }];
 }
 
 export async function generateMetadata({
@@ -101,7 +16,7 @@ export async function generateMetadata({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const project = projectsMap[id];
+  const project = getProject(id === "lumni" ? "lumnie" : id);
 
   if (!project) {
     return {
@@ -112,16 +27,19 @@ export async function generateMetadata({
   return {
     title: `${project.title} — ${project.subtitle} | Themba Mndebele`,
     description: project.description,
+    alternates: { canonical: `/projects/${project.id}` },
     openGraph: {
       title: `${project.title} — Case Study by Themba Mndebele`,
       description: project.description,
       url: `https://themba.dev/projects/${project.id}`,
+      images: [{ url: project.screenshots[0].src, width: project.screenshots[0].width, height: project.screenshots[0].height, alt: project.screenshots[0].alt }],
       siteName: "Themba Mndebele Portfolio",
       type: "article",
     },
     twitter: {
       card: "summary_large_image",
       title: `${project.title} Case Study — Themba Mndebele`,
+      images: [project.screenshots[0].src],
       description: project.description,
     },
   };
@@ -133,7 +51,8 @@ export default async function ProjectPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const project = projectsMap[id];
+  if (id === "lumni") permanentRedirect("/projects/lumnie");
+  const project = getProject(id);
 
   if (!project) {
     notFound();
@@ -167,7 +86,7 @@ export default async function ProjectPage({
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           {/* Back link */}
           <Link
-            href="/#projects"
+            href="/#work"
             className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[var(--mute)] hover:text-[var(--ink)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] rounded py-1"
           >
             <ArrowLeft className="w-4 h-4" />
@@ -229,8 +148,8 @@ export default async function ProjectPage({
           </div>
 
           {/* Case Study Details & Screenshots Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start pt-6 border-t border-[var(--line)]">
-            <div className="lg:col-span-5 space-y-6">
+          <div className="space-y-8 pt-6 border-t border-[var(--line)]">
+            <div className="space-y-6">
               <h2 className="font-serif text-xl text-[var(--ink)]">
                 Key Technical Features
               </h2>
@@ -244,7 +163,7 @@ export default async function ProjectPage({
               </ul>
             </div>
 
-            <div className="lg:col-span-7">
+            <div className="project-gallery">
               <ProjectScreenshotGallery
                 projectName={project.title}
                 screenshots={project.screenshots}

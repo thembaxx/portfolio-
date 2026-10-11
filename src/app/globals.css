@@ -137,3 +137,24 @@
 @media (prefers-reduced-motion: reduce) {
   *, ::before, ::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
+
+.project-preview {
+  display: block;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--card);
+}
+.project-preview img { display: block; width: 100%; height: auto; }
+.project-preview:hover { border-color: var(--accent); }
+.screenshot-gallery { min-width: 0; }
+.screenshot-tabs { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 16px; border-bottom: 1px solid var(--line); padding-bottom: 12px; }
+.screenshot-tabs button { border: 0; background: transparent; color: var(--mute); padding: 8px 0; }
+.screenshot-tabs button[aria-selected="true"] { color: var(--accent); border-bottom: 1px solid currentColor; }
+.screenshot-figure { margin: 0; }
+.screenshot-figure a { display: block; border: 1px solid var(--line); background: var(--card); }
+.screenshot-figure img { display: block; width: 100%; height: auto; }
+.screenshot-figure figcaption { color: var(--mute); margin-top: 12px; }
+.screenshot-mobile { max-width: 390px; margin-inline: auto; }
+@media (min-width: 760px) {
+  .project-preview { grid-column: 2 / 4; }
+}

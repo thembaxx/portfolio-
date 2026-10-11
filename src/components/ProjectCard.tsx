@@ -1,19 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
-import type { ScreenshotItem } from "./ProjectScreenshotGallery";
-
-export interface ProjectData {
-  id: string;
-  title: string;
-  subtitle: string;
-  oneLiner: string;
-  description: string;
-  features: string[];
-  technologies: string[];
-  tools?: string[];
-  screenshots: ScreenshotItem[];
-  liveUrl: string;
-  githubUrl: string;
-}
+import type { ProjectData } from "@/data/projects";
 
 interface ProjectCardProps {
   project: ProjectData;
@@ -21,10 +8,20 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ project, index }: ProjectCardProps) {
+  const screenshot = project.screenshots[0];
+
   return (
     <article className="editorial-project">
       <span className="project-number mono">{String(index + 1).padStart(2, "0")}</span>
       <h3>{project.title}</h3>
+      {screenshot && (
+        <Link className="project-preview" href={`/projects/${project.id}`}
+          aria-label={`Explore ${project.title}`}>
+          <Image src={screenshot.src} alt={screenshot.alt}
+            width={screenshot.width ?? 1280} height={screenshot.height ?? 668}
+            sizes="(min-width: 1280px) 1062px, (min-width: 760px) calc(100vw - 218px), calc(100vw - 40px)" />
+        </Link>
+      )}
       <div className="project-description">
         <p className="project-subtitle">{project.subtitle}</p>
         <p>{project.description}</p>

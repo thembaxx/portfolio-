@@ -78,33 +78,45 @@ describe("Themba Mndebele — editorial portfolio", () => {
     expect(screen.getByText(/Vitest, Playwright/)).toBeDefined();
   });
 
-  test("renders Featured Projects including Mileia and Lumni", () => {
+  test("renders the six supplied Featured projects in order with their screenshots and links", () => {
     render(<ProjectSection />);
-    expect(screen.getByText("Mileia")).toBeDefined();
-    expect(screen.getByText("Lumni")).toBeDefined();
-    expect(screen.getByRole("link", { name: "Read Mileia case study" })).toHaveAttribute("href", "/projects/mileia");
-    expect(screen.getByRole("link", { name: "Read Lumni case study" })).toHaveAttribute("href", "/projects/lumni");
-    expect(screen.getByRole("link", { name: /Open live demo for Mileia/ })).toHaveAttribute("href", "https://mileia.vercel.app");
-    expect(screen.getByRole("link", { name: /View GitHub repository for Lumni/ })).toHaveAttribute("href", "https://github.com/thembaxx/lumni");
+    const featured = [
+      ["Lumnie", "lumnie", "https://lumnie.vercel.app"],
+      ["CityLit", "citylit", "https://citylit.vercel.app"],
+      ["Hydromental", "hydromental", "https://hydromental.vercel.app"],
+      ["ProcodiApp", "procodiapp", "https://procodiapp.vercel.app"],
+      ["mypets", "mypets", "https://mypets-pi.vercel.app"],
+      ["leesmaat", "leesmaat", "https://leesmaat.vercel.app"],
+    ];
+    expect(screen.getAllByRole("heading", { level: 3 }).map(heading => heading.textContent))
+      .toEqual(featured.map(([name]) => name));
+    expect(screen.getByText("6 projects")).toBeDefined();
+    for (const [name, id, liveUrl] of featured) {
+      expect(screen.getByRole("link", { name: `Read ${name} case study` })).toHaveAttribute("href", `/projects/${id}`);
+      expect(screen.getByRole("link", { name: `Open live demo for ${name} (opens in a new tab)` })).toHaveAttribute("href", liveUrl);
+      const preview = screen.getByRole("link", { name: `Explore ${name}` });
+      expect(preview.querySelector("img")).toHaveAttribute("src", `/projects/${id}.jpg`);
+    }
+    expect(screen.queryByText("Mileia")).toBeNull();
   });
 
   test("renders screenshot gallery toggle buttons with accessible ARIA attributes and live region announcements", () => {
-    render(<ProjectScreenshotGallery projectName="Mileia" screenshots={[
-      { src: "/projects/mileia-1.png", alt: "Marketplace", type: "desktop", label: "Marketplace View" },
-      { src: "/projects/mileia-2.png", alt: "Services", type: "desktop", label: "Services Directory" },
+    render(<ProjectScreenshotGallery projectName="Lumnie" screenshots={[
+      { src: "/projects/lumnie.jpg", alt: "Marketplace", type: "desktop", label: "Dashboard" },
+      { src: "/projects/lumnie.jpg", alt: "Services", type: "desktop", label: "Lesson" },
     ]} />);
-    const marketplaceBtn = screen.getByRole("tab", { name: "Show Marketplace View screenshot for Mileia" });
-    const servicesBtn = screen.getByRole("tab", { name: "Show Services Directory screenshot for Mileia" });
+    const marketplaceBtn = screen.getByRole("tab", { name: "Show Dashboard screenshot for Lumnie" });
+    const servicesBtn = screen.getByRole("tab", { name: "Show Lesson screenshot for Lumnie" });
 
     expect(marketplaceBtn).toBeDefined();
     expect(servicesBtn).toBeDefined();
     expect(marketplaceBtn.getAttribute("aria-selected")).toBe("true");
     expect(servicesBtn.getAttribute("aria-selected")).toBe("false");
 
-    expect(screen.getByText("Showing Marketplace View screenshot for Mileia")).toBeDefined();
+    expect(screen.getByText("Showing Dashboard screenshot for Lumnie")).toBeDefined();
 
     fireEvent.click(servicesBtn);
-    expect(screen.getByText("Showing Services Directory screenshot for Mileia")).toBeDefined();
+    expect(screen.getByText("Showing Lesson screenshot for Lumnie")).toBeDefined();
     expect(servicesBtn.getAttribute("aria-selected")).toBe("true");
   });
 
