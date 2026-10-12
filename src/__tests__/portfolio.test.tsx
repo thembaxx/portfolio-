@@ -52,6 +52,7 @@ describe("Themba Mndebele — editorial portfolio", () => {
     }
     const themeToggle = screen.getByRole("button", { name: "Switch to light theme" });
     expect(themeToggle).toHaveAttribute("title", "Switch to light theme");
+    expect(themeToggle).toHaveAttribute("aria-pressed", "true");
   });
 
   test("hero presents the supplied name, availability, technology focus, and contact actions", () => {
