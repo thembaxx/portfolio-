@@ -1,6 +1,6 @@
 # Themba Mndebele — Portfolio
 
-A Next.js portfolio based on the supplied editorial design: warm paper tones, Instrument Serif and Geist typography, six numbered project sections, and a particle sphere that becomes a wave field on scroll.
+A Next.js portfolio with warm paper tones, Instrument Serif and Geist typography, curated case studies, an automatically synced GitHub project catalog, and a particle sphere that becomes a wave field on scroll.
 
 ## Run locally
 
@@ -19,13 +19,25 @@ npm run start
 ## Validation
 
 ```bash
-npx vitest run
+npm test
+npm run lint
 npx tsc --noEmit
+npm run build
 ```
+
+## Automatic GitHub projects
+
+[Sync GitHub projects](.github/workflows/sync-github-projects.yml) runs daily at **05:23 UTC**, when its configuration or sync script changes on `main`, and from **Actions → Sync GitHub projects → Run workflow**. It refreshes the catalog, runs tests, lint, TypeScript and a production build, then commits changes to `main` only when the generated data differs. GitHub's built-in `GITHUB_TOKEN` supplies API access and `contents: write`; no personal access token is needed. Keep `main` as the default branch so GitHub runs the schedule.
+
+[github-projects.config.json](github-projects.config.json) selects public repositories owned by `thembaxx`, created on or after **August 18, 2026**. This is a fixed start date: projects remain included as time passes, and future projects are picked up automatically. Forks, the portfolio itself and the GitHub profile repository are excluded. Add repository names to `exclude` to hide other entries. Private repositories are never published.
+
+The sync uses each repository's default branch, README summary (falling back to its GitHub description), package dependencies, language and homepage. Repositories without documentation, screenshots or a live app still have working project pages and GitHub links. The six curated case studies keep their existing order, copy and screenshots; matching GitHub entries are deduplicated. The homepage, case-study routes, sitemap, social metadata and LLM documents all use the merged catalog.
+
+To refresh locally, run `npm run projects:sync` (optionally with `GITHUB_TOKEN` or `GH_TOKEN` for a higher API rate limit). Generated data lives in [src/data/github-projects.json](src/data/github-projects.json); edit curated case studies in [src/data/projects.ts](src/data/projects.ts). API failures leave the last successful generated snapshot intact, and validation failures prevent the workflow from committing.
 
 ## Structure
 
-- `src/data/projects.ts` is the shared catalog for listings, case studies, and the sitemap.
+- `src/data/projects.ts` combines curated case studies with `src/data/github-projects.json` for listings, project pages and discovery documents.
 - `src/app/page.tsx` composes the portfolio sections.
 - `src/components/` contains the navigation, hero, projects, toolkit, about, contact, and footer.
 - `src/app/globals.css` defines the responsive layout, typography, and light/dark colors.
@@ -41,7 +53,7 @@ The [brand guide](docs/brand.md) documents the TM monogram, wordmark, palette an
 
 The public origin defaults to `https://themba.dev`. Set `SITE_URL` before building if the canonical domain changes; metadata, structured data, sitemap, robots and LLM documents use the same origin. See [.env.example](.env.example). Vercel previews default to noindex with no sitemap entries; `INDEXING_ENABLED=false` supports staging on other hosts.
 
-- `/llms.txt` provides a concise portfolio overview and links to all six case studies.
+- `/llms.txt` provides a concise portfolio overview and links to every project.
 - `/llm.txt` serves the same document with a canonical link to `/llms.txt`.
 - `/llms-full.txt` includes project features, technologies, demos and source links.
 

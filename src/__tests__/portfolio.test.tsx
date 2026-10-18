@@ -12,6 +12,7 @@ import { Footer } from "../components/Footer";
 import Home from "../app/page";
 import RootLayout from "../app/layout";
 import ProjectPage from "../app/projects/[id]/page";
+import { projects } from "../data/projects";
 
 // Mock next/font/google
 vitest.mock("next/font/google", () => ({
@@ -91,8 +92,10 @@ describe("Themba Mndebele — editorial portfolio", () => {
       ["leesmaat", "leesmaat", "https://leesmaat.vercel.app"],
     ];
     expect(screen.getAllByRole("heading", { level: 3 }).map(heading => heading.textContent))
-      .toEqual(featured.map(([name]) => name));
-    expect(screen.getByText("6 projects")).toBeDefined();
+      .toEqual(projects.map(project => project.title));
+    expect(projects.slice(0, 6).map(project => project.title)).toEqual(featured.map(([name]) => name));
+    expect(new Set(projects.map(project => project.githubUrl)).size).toBe(projects.length);
+    expect(screen.getByText(`${projects.length} projects`)).toBeDefined();
     for (const [name, id, liveUrl] of featured) {
       expect(screen.getByRole("link", { name: `Read ${name} case study` })).toHaveAttribute("href", `/projects/${id}`);
       expect(screen.getByRole("link", { name: `Open live demo for ${name} (opens in a new tab)` })).toHaveAttribute("href", liveUrl);
@@ -192,17 +195,17 @@ describe("Themba Mndebele — editorial portfolio", () => {
   });
 
   test("renders project detail page with accessible external action links and focus ring attributes", async () => {
-    const pageComponent = await ProjectPage({ params: Promise.resolve({ id: "mileia" }) });
+    const pageComponent = await ProjectPage({ params: Promise.resolve({ id: "hydromental" }) });
     render(pageComponent);
 
-    const liveDemoLink = screen.getByRole("link", { name: "Open Live Demo for Mileia" });
+    const liveDemoLink = screen.getByRole("link", { name: "Open Live Demo for Hydromental" });
     expect(liveDemoLink).toBeDefined();
-    expect(liveDemoLink.getAttribute("aria-label")).toBe("Open Live Demo for Mileia");
+    expect(liveDemoLink.getAttribute("aria-label")).toBe("Open Live Demo for Hydromental");
     expect(liveDemoLink.className).toContain("focus-visible:ring-2");
 
-    const githubLink = screen.getByRole("link", { name: "View GitHub repository for Mileia" });
+    const githubLink = screen.getByRole("link", { name: "View GitHub repository for Hydromental" });
     expect(githubLink).toBeDefined();
-    expect(githubLink.getAttribute("aria-label")).toBe("View GitHub repository for Mileia");
+    expect(githubLink.getAttribute("aria-label")).toBe("View GitHub repository for Hydromental");
     expect(githubLink.className).toContain("focus-visible:ring-2");
   });
 });

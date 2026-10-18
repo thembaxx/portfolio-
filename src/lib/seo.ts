@@ -43,15 +43,18 @@ export const identitySchema = {
 };
 
 export function projectMetadata(project: ProjectData): Metadata {
+  const images = project.screenshots.length ? project.screenshots : [{
+    src: "/brand/social.png", width: 1200, height: 630, alt: `${project.title} — ${brand.name}`,
+  }];
   return {
     title: project.title, description: project.description,
     alternates: { canonical: `/projects/${project.id}` },
     openGraph: {
       title: `${project.title} — A project by ${brand.name}`, description: project.description,
       url: absoluteUrl(`/projects/${project.id}`), siteName: `${brand.name} Portfolio`, type: "article",
-      images: project.screenshots.map(screenshot => ({ url: screenshot.src, width: screenshot.width, height: screenshot.height, alt: screenshot.alt })),
+      images: images.map(screenshot => ({ url: screenshot.src, width: screenshot.width, height: screenshot.height, alt: screenshot.alt })),
     },
-    twitter: { card: "summary_large_image", title: `${project.title} — ${brand.name}`, description: project.description, images: [project.screenshots[0].src] },
+    twitter: { card: "summary_large_image", title: `${project.title} — ${brand.name}`, description: project.description, images: [images[0].src] },
   };
 }
 
@@ -62,7 +65,7 @@ export function projectSchema(project: ProjectData) {
     "@graph": [
       { "@type": "SoftwareApplication", "@id": `${url}#application`, name: project.title,
         description: project.description, applicationCategory: "WebApplication", operatingSystem: "Web Browser",
-        url: project.liveUrl, sameAs: project.githubUrl, image: absoluteUrl(project.screenshots[0].src),
+        url: project.liveUrl || project.githubUrl, sameAs: project.githubUrl, image: absoluteUrl(project.screenshots[0]?.src ?? "/brand/social.png"),
         author: { "@id": absoluteUrl("/#person") }, mainEntityOfPage: url },
       { "@type": "BreadcrumbList", itemListElement: [
         { "@type": "ListItem", position: 1, name: brand.name, item: siteUrl },

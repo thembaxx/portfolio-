@@ -4,8 +4,12 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import { ProjectScreenshotGallery } from "../components/ProjectScreenshotGallery";
 import ProjectPage, { generateMetadata, generateStaticParams } from "../app/projects/[id]/page";
 import sitemap from "../app/sitemap";
+import { projects } from "../data/projects";
+import * as projectCatalog from "../data/projects";
+import { ProjectCard } from "../components/ProjectCard";
 
 vitest.mock("next/image", () => ({
+  // eslint-disable-next-line @next/next/no-img-element
   default: (props: React.ImgHTMLAttributes<HTMLImageElement>) => <img {...props} alt={props.alt} />,
 }));
 vitest.mock("../components/Navbar", () => ({ Navbar: () => <nav /> }));
@@ -14,7 +18,7 @@ vitest.mock("next/navigation", () => ({
   permanentRedirect: (url: string) => { throw new Error(`REDIRECT:${url}`); },
 }));
 
-const ids = ["lumnie", "citylit", "hydromental", "procodiapp", "mypets", "leesmaat"];
+const ids = projects.map(project => project.id);
 
 describe("Featured project routing and screenshots", () => {
   test("generates all featured pages and excludes the old listing from the sitemap", () => {
@@ -27,7 +31,7 @@ describe("Featured project routing and screenshots", () => {
   test("case study, social image, and canonical URL use the new project", async () => {
     render(await ProjectPage({ params: Promise.resolve({ id: "hydromental" }) }));
     expect(screen.getByRole("heading", { name: "Hydromental", level: 1 })).toBeDefined();
-    expect(screen.getByRole("link", { name: "Live Demo" })).toHaveAttribute("href", "https://hydromental.vercel.app");
+    expect(screen.getByRole("link", { name: "Open Live Demo for Hydromental" })).toHaveAttribute("href", "https://hydromental.vercel.app");
     expect(screen.getByRole("img")).toHaveAttribute("src", "/projects/hydromental.jpg");
     const metadata = await generateMetadata({ params: Promise.resolve({ id: "hydromental" }) });
     expect(metadata.alternates?.canonical).toBe("/projects/hydromental");
@@ -38,6 +42,27 @@ describe("Featured project routing and screenshots", () => {
     await expect(ProjectPage({ params: Promise.resolve({ id: "lumni" }) })).rejects.toThrow("REDIRECT:/projects/lumnie");
     for (const id of ["unknown", "toString"]) {
       await expect(ProjectPage({ params: Promise.resolve({ id }) })).rejects.toThrow("NOT_FOUND");
+    }
+  });
+
+  test("GitHub-only projects render details and social metadata without a demo or screenshot", async () => {
+    const project = { id: "example", title: "Example", subtitle: "Open-source project", oneLiner: "", description: "A GitHub-only project.", features: [], technologies: [], screenshots: [], liveUrl: "", githubUrl: "https://github.com/thembaxx/example" };
+    const lookup = vitest.spyOn(projectCatalog, "getProject").mockReturnValue(project);
+    try {
+      const { unmount } = render(await ProjectPage({ params: Promise.resolve({ id: project.id }) }));
+      expect(screen.getByRole("heading", { level: 1, name: project.title })).toBeDefined();
+      expect(screen.queryByRole("link", { name: /Live Demo/ })).toBeNull();
+      expect(screen.getByRole("link", { name: `View GitHub repository for ${project.title}` })).toHaveAttribute("href", project.githubUrl);
+      expect(screen.queryByRole("img")).toBeNull();
+      expect(screen.queryByRole("heading", { name: "Key Technical Features" })).toBeNull();
+      const metadata = await generateMetadata({ params: Promise.resolve({ id: project.id }) });
+      expect(metadata.openGraph?.images).toEqual([expect.objectContaining({ url: "/brand/social.png" })]);
+      unmount();
+      render(<ProjectCard project={project} index={0} />);
+      expect(screen.getByRole("link", { name: "Read Example project details" })).toHaveAttribute("href", "/projects/example");
+      expect(screen.queryByRole("link", { name: /live demo/i })).toBeNull();
+    } finally {
+      lookup.mockRestore();
     }
   });
 

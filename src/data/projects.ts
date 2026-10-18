@@ -1,4 +1,5 @@
 import type { ScreenshotItem } from "@/components/ProjectScreenshotGallery";
+import githubProjects from "./github-projects.json";
 
 export interface ProjectData {
   id: string;
@@ -15,7 +16,7 @@ export interface ProjectData {
 }
 
 // Order and screenshots match the supplied LinkedIn Featured project list.
-export const projects: ProjectData[] = [
+export const featuredProjects: ProjectData[] = [
   {
     "id": "lumnie",
     "title": "Lumnie",
@@ -208,6 +209,14 @@ export const projects: ProjectData[] = [
       }
     ]
   }
+];
+
+// Keep curated case studies first and avoid listing their repositories twice.
+export const projects: ProjectData[] = [
+  ...featuredProjects,
+  ...githubProjects.filter(project => !featuredProjects.some(featured =>
+    featured.id === project.id || featured.githubUrl.toLowerCase() === project.githubUrl.toLowerCase()
+  )),
 ];
 
 export function getProject(id: string) {

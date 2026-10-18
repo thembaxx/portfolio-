@@ -12,8 +12,8 @@ export function llmsDocument(full = false) {
   if (full) {
     sections.push(`## Project details\n\n${projects.map(project => [
       `### ${project.title}\n\n${project.description}`,
-      `- Live app: ${project.liveUrl}\n- Source: ${project.githubUrl}\n- Case study: ${absoluteUrl(`/projects/${project.id}`)}\n- Technologies: ${project.technologies.join(", ")}`,
-      `Features:\n${project.features.map(feature => `- ${feature}`).join("\n")}`,
+      `${project.liveUrl ? `- Live app: ${project.liveUrl}\n` : ""}- Source: ${project.githubUrl}\n- Case study: ${absoluteUrl(`/projects/${project.id}`)}\n- Technologies: ${project.technologies.join(", ")}`,
+      ...(project.features.length ? [`Features:\n${project.features.map(feature => `- ${feature}`).join("\n")}`] : []),
     ].join("\n\n")).join("\n\n")}`);
     sections.push("## Toolkit\n\nReact, Next.js, TypeScript, JavaScript, Tailwind CSS, HTML5 and CSS3. Component architecture, state management, REST APIs, responsive design and Git. Vitest, Playwright, accessibility and frontend testing. AI-assisted research and test writing with ownership of architecture, reliability and security.");
   }

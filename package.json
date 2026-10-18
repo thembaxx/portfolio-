@@ -7,6 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "test": "vitest run",
+    "projects:sync": "node scripts/sync-github-projects.mjs",
     "brand:assets": "node scripts/generate-brand-assets.mjs"
   },
   "dependencies": {

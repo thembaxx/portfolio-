@@ -1,0 +1,401 @@
+[
+  {
+    "id": "mentra",
+    "title": "Mentra",
+    "subtitle": "TypeScript project",
+    "oneLiner": "",
+    "description": "mentra",
+    "features": [],
+    "technologies": [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Three.js",
+      "Motion"
+    ],
+    "screenshots": [],
+    "liveUrl": "https://mentra-coral-chi.vercel.app/",
+    "githubUrl": "https://github.com/thembaxx/mentra"
+  },
+  {
+    "id": "pamoja",
+    "title": "Pamoja",
+    "subtitle": "TypeScript project",
+    "oneLiner": "",
+    "description": "A little each. A lot together. A runnable full-stack demo of community buying, from pooled demand and tier savings to supplier delivery and QR collection.",
+    "features": [],
+    "technologies": [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS"
+    ],
+    "screenshots": [],
+    "liveUrl": "https://pamoja-rose.vercel.app/",
+    "githubUrl": "https://github.com/thembaxx/pamoja"
+  },
+  {
+    "id": "hivebuy",
+    "title": "Hivebuy",
+    "subtitle": "Open-source project",
+    "oneLiner": "",
+    "description": "Source code and documentation for Hivebuy.",
+    "features": [],
+    "technologies": [],
+    "screenshots": [],
+    "liveUrl": "",
+    "githubUrl": "https://github.com/thembaxx/hivebuy"
+  },
+  {
+    "id": "subzero",
+    "title": "Subzero",
+    "subtitle": "TypeScript project",
+    "oneLiner": "",
+    "description": "A personal digital-footprint app built in the empty thembaxx/subzero repository on the themes branch. The Trace brand includes an original fingerprint mark, Satoshi typography, warm neutral and lime colors, light/dark themes, a Three.js identity sculpture, and GSAP scroll animation.",
+    "features": [],
+    "technologies": [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Three.js"
+    ],
+    "screenshots": [],
+    "liveUrl": "https://subzero-five.vercel.app/",
+    "githubUrl": "https://github.com/thembaxx/subzero"
+  },
+  {
+    "id": "substition",
+    "title": "Substition",
+    "subtitle": "TypeScript project",
+    "oneLiner": "",
+    "description": "A little clarity. A lot more control. A local-first subscription manager built with Next.js, TypeScript, Tailwind CSS, pnpm, Oxlint and Oxfmt.",
+    "features": [],
+    "technologies": [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS"
+    ],
+    "screenshots": [],
+    "liveUrl": "https://substition.vercel.app/",
+    "githubUrl": "https://github.com/thembaxx/substition"
+  },
+  {
+    "id": "baby",
+    "title": "Baby",
+    "subtitle": "TypeScript project",
+    "oneLiner": "",
+    "description": "An experimental infant-audio interface with recording, interactive 3D presentation and configurable model integrations.",
+    "features": [],
+    "technologies": [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Three.js",
+      "Motion"
+    ],
+    "screenshots": [],
+    "liveUrl": "https://baby-theta-peach.vercel.app/",
+    "githubUrl": "https://github.com/thembaxx/baby"
+  },
+  {
+    "id": "nest",
+    "title": "Nest",
+    "subtitle": "TypeScript project",
+    "oneLiner": "",
+    "description": "An offline-first personal bookmark library with collections, search, imports, exports and optional cloud sync.",
+    "features": [],
+    "technologies": [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Three.js",
+      "Motion"
+    ],
+    "screenshots": [],
+    "liveUrl": "https://nest-iota-three.vercel.app/",
+    "githubUrl": "https://github.com/thembaxx/nest"
+  },
+  {
+    "id": "civicwise",
+    "title": "Civicwise",
+    "subtitle": "TypeScript project",
+    "oneLiner": "",
+    "description": "A municipal-information interface combining resident issue records with public-finance context.",
+    "features": [],
+    "technologies": [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS"
+    ],
+    "screenshots": [],
+    "liveUrl": "https://civicwise-psi.vercel.app/",
+    "githubUrl": "https://github.com/thembaxx/civicwise"
+  },
+  {
+    "id": "stockvel",
+    "title": "Stockvel",
+    "subtitle": "TypeScript project",
+    "oneLiner": "",
+    "description": "A South African stokvel and burial-society administration prototype with financial test cases and a PostgreSQL foundation.",
+    "features": [],
+    "technologies": [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Motion"
+    ],
+    "screenshots": [],
+    "liveUrl": "https://stockvel-seven.vercel.app/",
+    "githubUrl": "https://github.com/thembaxx/stockvel"
+  },
+  {
+    "id": "nou2",
+    "title": "Nou2",
+    "subtitle": "TypeScript project",
+    "oneLiner": "",
+    "description": "A South African automotive marketplace project with editable vehicle-ownership forecasting.",
+    "features": [],
+    "technologies": [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Three.js",
+      "React Three Fiber",
+      "Motion"
+    ],
+    "screenshots": [],
+    "liveUrl": "https://nou2.vercel.app/",
+    "githubUrl": "https://github.com/thembaxx/nou2"
+  },
+  {
+    "id": "carpur",
+    "title": "Carpur",
+    "subtitle": "JavaScript project",
+    "oneLiner": "",
+    "description": "A South African automotive UI with a sourced Toyota catalogue, vehicle detail pages, comparison and an affordability calculator.",
+    "features": [],
+    "technologies": [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Three.js",
+      "JavaScript"
+    ],
+    "screenshots": [],
+    "liveUrl": "https://carpur.vercel.app/",
+    "githubUrl": "https://github.com/thembaxx/carpur"
+  },
+  {
+    "id": "nou",
+    "title": "Nou",
+    "subtitle": "TypeScript project",
+    "oneLiner": "",
+    "description": "A current-day weather experience with location-aware timing and a visual, interactive interface.",
+    "features": [],
+    "technologies": [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Three.js",
+      "React Three Fiber",
+      "Motion"
+    ],
+    "screenshots": [],
+    "liveUrl": "https://nou-six.vercel.app/",
+    "githubUrl": "https://github.com/thembaxx/nou"
+  },
+  {
+    "id": "homecheck",
+    "title": "Homecheck",
+    "subtitle": "TypeScript project",
+    "oneLiner": "",
+    "description": "A South African property-research interface for ownership-cost assumptions, municipal context, amenities and precinct-level crime trends.",
+    "features": [],
+    "technologies": [
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Three.js",
+      "React Three Fiber",
+      "Motion",
+      "Vite"
+    ],
+    "screenshots": [],
+    "liveUrl": "https://homecheck-dusky.vercel.app/",
+    "githubUrl": "https://github.com/thembaxx/homecheck"
+  },
+  {
+    "id": "homebuyer",
+    "title": "Homebuyer",
+    "subtitle": "TypeScript project",
+    "oneLiner": "",
+    "description": "A South African property due-diligence companion for comparing ownership budgets, nearby places and buyer checklists.",
+    "features": [],
+    "technologies": [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Three.js",
+      "Motion"
+    ],
+    "screenshots": [],
+    "liveUrl": "https://homebuyer-seven.vercel.app/",
+    "githubUrl": "https://github.com/thembaxx/homebuyer"
+  },
+  {
+    "id": "leesmaat",
+    "title": "Leesmaat",
+    "subtitle": "TypeScript project",
+    "oneLiner": "",
+    "description": "English and Afrikaans reading practice in short sessions, with bookmarks, placement and an offline reading archive.",
+    "features": [],
+    "technologies": [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Three.js",
+      "Firebase"
+    ],
+    "screenshots": [],
+    "liveUrl": "https://leesmaat.vercel.app/",
+    "githubUrl": "https://github.com/thembaxx/leesmaat"
+  },
+  {
+    "id": "mypets",
+    "title": "Mypets",
+    "subtitle": "TypeScript project",
+    "oneLiner": "",
+    "description": "A daily pet-care companion with species-specific routines, care logs and a lived-in sample experience.",
+    "features": [],
+    "technologies": [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Three.js",
+      "React Three Fiber",
+      "Motion"
+    ],
+    "screenshots": [],
+    "liveUrl": "https://mypets-pi.vercel.app/",
+    "githubUrl": "https://github.com/thembaxx/mypets"
+  },
+  {
+    "id": "lumnie",
+    "title": "Lumnie",
+    "subtitle": "TypeScript project",
+    "oneLiner": "",
+    "description": "A STEM learning playground for South African Grade 10–12 learners, combining short lessons, quizzes and interactive models.",
+    "features": [],
+    "technologies": [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Three.js",
+      "Motion"
+    ],
+    "screenshots": [],
+    "liveUrl": "https://lumnie.vercel.app/",
+    "githubUrl": "https://github.com/thembaxx/lumnie"
+  },
+  {
+    "id": "procodiapp",
+    "title": "Procodiapp",
+    "subtitle": "TypeScript project",
+    "oneLiner": "",
+    "description": "A South African grocery-promotion explorer with offer terms, saved offers and three switchable interface designs.",
+    "features": [],
+    "technologies": [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Three.js",
+      "Motion"
+    ],
+    "screenshots": [],
+    "liveUrl": "https://procodiapp.vercel.app/",
+    "githubUrl": "https://github.com/thembaxx/procodiapp"
+  },
+  {
+    "id": "citylit",
+    "title": "Citylit",
+    "subtitle": "TypeScript project",
+    "oneLiner": "",
+    "description": "Discover South Africa through 12 city guides, 89 places and saved day plans, with an optional interactive 3D atlas.",
+    "features": [],
+    "technologies": [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Three.js",
+      "React Three Fiber",
+      "Motion"
+    ],
+    "screenshots": [],
+    "liveUrl": "https://citylit.vercel.app/",
+    "githubUrl": "https://github.com/thembaxx/citylit"
+  },
+  {
+    "id": "hydromental",
+    "title": "Hydromental",
+    "subtitle": "TypeScript project",
+    "oneLiner": "",
+    "description": "Explore all 118 chemical elements through interactive models, sourced stories, property comparisons and learning games.",
+    "features": [],
+    "technologies": [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Three.js",
+      "React Three Fiber",
+      "Motion"
+    ],
+    "screenshots": [],
+    "liveUrl": "https://hydromental.vercel.app/",
+    "githubUrl": "https://github.com/thembaxx/hydromental"
+  },
+  {
+    "id": "elementals",
+    "title": "Elementals",
+    "subtitle": "Open-source project",
+    "oneLiner": "",
+    "description": "Source code and documentation for Elementals.",
+    "features": [],
+    "technologies": [],
+    "screenshots": [],
+    "liveUrl": "",
+    "githubUrl": "https://github.com/thembaxx/elementals"
+  },
+  {
+    "id": "elemental",
+    "title": "Elemental",
+    "subtitle": "TypeScript project",
+    "oneLiner": "",
+    "description": "A chemistry explorer with 23 selected elements, a 3D atom inspector, property heatmaps and quizzes.",
+    "features": [],
+    "technologies": [
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Three.js",
+      "React Three Fiber"
+    ],
+    "screenshots": [],
+    "liveUrl": "https://elemental-ashen.vercel.app/",
+    "githubUrl": "https://github.com/thembaxx/Elemental"
+  }
+]

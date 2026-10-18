@@ -64,9 +64,9 @@ export default async function ProjectPage({
             <h1 className="font-serif text-3xl sm:text-5xl font-normal text-[var(--ink)] tracking-tight">
               {project.title}
             </h1>
-            <p className="font-serif italic text-lg sm:text-xl text-[var(--ink)]">
+            {project.oneLiner && <p className="font-serif italic text-lg sm:text-xl text-[var(--ink)]">
               &quot;{project.oneLiner}&quot;
-            </p>
+            </p>}
             <p className="text-sm sm:text-base text-[var(--mute)] leading-relaxed font-sans">
               {project.description}
             </p>
@@ -93,7 +93,7 @@ export default async function ProjectPage({
 
             {/* Action buttons */}
             <div className="flex flex-wrap items-center gap-4 pt-4">
-              <a
+              {project.liveUrl && <a
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -102,7 +102,7 @@ export default async function ProjectPage({
               >
                 <span>Live Demo</span>
                 <ExternalLink className="w-3.5 h-3.5" aria-hidden="true" />
-              </a>
+              </a>}
               <a
                 href={project.githubUrl}
                 target="_blank"
@@ -119,8 +119,8 @@ export default async function ProjectPage({
           </div>
 
           {/* Case Study Details & Screenshots Grid */}
-          <div className="space-y-8 pt-6 border-t border-[var(--line)]">
-            <div className="space-y-6">
+          {(project.features.length > 0 || project.screenshots.length > 0) && <div className="space-y-8 pt-6 border-t border-[var(--line)]">
+            {project.features.length > 0 && <div className="space-y-6">
               <h2 className="font-serif text-xl text-[var(--ink)]">
                 Key Technical Features
               </h2>
@@ -132,7 +132,7 @@ export default async function ProjectPage({
                   </li>
                 ))}
               </ul>
-            </div>
+            </div>}
 
             <div className="project-gallery">
               <ProjectScreenshotGallery
@@ -140,7 +140,7 @@ export default async function ProjectPage({
                 screenshots={project.screenshots}
               />
             </div>
-          </div>
+          </div>}
         </div>
       </main>
       <Footer />
