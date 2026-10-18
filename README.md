@@ -27,7 +27,9 @@ npm run build
 
 ## Automatic GitHub projects
 
-[Sync GitHub projects](.github/workflows/sync-github-projects.yml) runs daily at **05:23 UTC**, when its configuration or sync script changes on `main`, and from **Actions → Sync GitHub projects → Run workflow**. It refreshes the catalog, runs tests, lint, TypeScript and a production build, then commits changes to `main` only when the generated data differs. GitHub's built-in `GITHUB_TOKEN` supplies API access and `contents: write`; no personal access token is needed. Keep `main` as the default branch so GitHub runs the schedule.
+[Sync GitHub projects](.github/workflows/sync-github-projects.yml) runs daily at **05:23 UTC**, when its configuration or sync script changes on `main`, and from **Actions → Sync GitHub projects → Run workflow**. It refreshes the catalog, runs tests, lint, TypeScript and a production build, then commits changes to `main` only when the generated data differs. GitHub's built-in `GITHUB_TOKEN` supplies API access and `contents: write`; no personal access token is needed.
+
+The repository currently uses `themba-mndebele-portfolio-13299115673946064689` as its default and Vercel production branch. The workflow also lives on that branch so GitHub runs the schedule, checks out `main` as the source, and fast-forwards the default branch after validation to publish updates through the existing Vercel connection. It never force-pushes. If `main` becomes the default branch later, the extra publishing step is automatically skipped. Keep future development on `main` so the publishing branch can fast-forward.
 
 [github-projects.config.json](github-projects.config.json) selects public repositories owned by `thembaxx`, created on or after **August 18, 2026**. This is a fixed start date: projects remain included as time passes, and future projects are picked up automatically. Forks, the portfolio itself and the GitHub profile repository are excluded. Add repository names to `exclude` to hide other entries. Private repositories are never published.
 
