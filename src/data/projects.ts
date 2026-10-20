@@ -1,5 +1,6 @@
 import type { ScreenshotItem } from "@/components/ProjectScreenshotGallery";
 import githubProjects from "./github-projects.json";
+import savedScreenshots from "./project-screenshots.json";
 
 export interface ProjectData {
   id: string;
@@ -211,12 +212,37 @@ export const featuredProjects: ProjectData[] = [
   }
 ];
 
+// Captured screenshots are saved independently of the automatically refreshed GitHub data.
+// Before CI captures a new live website, show its real-time screenshot preview instead.
+// Repositories without a website receive a clearly labeled GitHub repository image.
+function getScreenshots(project: ProjectData): ScreenshotItem[] {
+  const saved = (savedScreenshots as Record<string, ScreenshotItem[]>)[project.id];
+  if (saved?.length) return saved;
+  if (project.screenshots.length) return project.screenshots;
+  if (project.liveUrl) return [{
+    src: "https://image.thum.io/get/width/1200/crop/675/noanimate/" + project.liveUrl,
+    alt: "Public website preview for " + project.title,
+    label: "Live website preview",
+    type: "desktop",
+    width: 1200,
+    height: 675,
+  }];
+  return [{
+    src: "https://opengraph.githubassets.com/1/" + new URL(project.githubUrl).pathname.slice(1),
+    alt: "GitHub repository preview for " + project.title + " (not a website screenshot)",
+    label: "GitHub repository preview",
+    type: "desktop",
+    width: 1200,
+    height: 600,
+  }];
+}
+
 // Keep curated case studies first and avoid listing their repositories twice.
 export const projects: ProjectData[] = [
   ...featuredProjects,
   ...githubProjects.filter(project => !featuredProjects.some(featured =>
     featured.id === project.id || featured.githubUrl.toLowerCase() === project.githubUrl.toLowerCase()
-  )),
+  )).map(project => ({ ...project, screenshots: getScreenshots(project as ProjectData) })),
 ];
 
 export function getProject(id: string) {
