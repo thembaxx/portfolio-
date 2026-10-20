@@ -57,6 +57,35 @@
       "capturedAt": "2026-10-20T15:38:44.211Z"
     }
   ],
+  "citylit": [
+    {
+      "label": "Desktop",
+      "type": "desktop",
+      "width": 1440,
+      "height": 900,
+      "src": "/projects/citylit.jpg",
+      "alt": "Citylit public website captured at a desktop viewport",
+      "capturedAt": "2026-10-20T15:47:05.970Z"
+    },
+    {
+      "label": "Mobile screenshot",
+      "type": "mobile",
+      "width": 390,
+      "height": 844,
+      "src": "/projects/citylit-mobile.jpg",
+      "alt": "Citylit public website captured at a mobile viewport",
+      "capturedAt": "2026-10-20T15:47:05.970Z"
+    },
+    {
+      "label": "Tablet screenshot",
+      "type": "tablet",
+      "width": 820,
+      "height": 1180,
+      "src": "/projects/citylit-tablet.jpg",
+      "alt": "Citylit public website captured at a tablet viewport",
+      "capturedAt": "2026-10-20T15:47:05.970Z"
+    }
+  ],
   "civicwise": [
     {
       "label": "Desktop",
@@ -135,6 +164,64 @@
       "height": 600
     }
   ],
+  "hydromental": [
+    {
+      "label": "Desktop",
+      "type": "desktop",
+      "width": 1440,
+      "height": 900,
+      "src": "/projects/hydromental.jpg",
+      "alt": "Hydromental public website captured at a desktop viewport",
+      "capturedAt": "2026-10-20T15:47:10.507Z"
+    },
+    {
+      "label": "Mobile screenshot",
+      "type": "mobile",
+      "width": 390,
+      "height": 844,
+      "src": "/projects/hydromental-mobile.jpg",
+      "alt": "Hydromental public website captured at a mobile viewport",
+      "capturedAt": "2026-10-20T15:47:10.507Z"
+    },
+    {
+      "label": "Tablet screenshot",
+      "type": "tablet",
+      "width": 820,
+      "height": 1180,
+      "src": "/projects/hydromental-tablet.jpg",
+      "alt": "Hydromental public website captured at a tablet viewport",
+      "capturedAt": "2026-10-20T15:47:10.507Z"
+    }
+  ],
+  "leesmaat": [
+    {
+      "label": "Desktop",
+      "type": "desktop",
+      "width": 1440,
+      "height": 900,
+      "src": "/projects/leesmaat.jpg",
+      "alt": "Leesmaat public website captured at a desktop viewport",
+      "capturedAt": "2026-10-20T15:46:59.911Z"
+    },
+    {
+      "label": "Mobile screenshot",
+      "type": "mobile",
+      "width": 390,
+      "height": 844,
+      "src": "/projects/leesmaat-mobile.jpg",
+      "alt": "Leesmaat public website captured at a mobile viewport",
+      "capturedAt": "2026-10-20T15:46:59.911Z"
+    },
+    {
+      "label": "Tablet screenshot",
+      "type": "tablet",
+      "width": 820,
+      "height": 1180,
+      "src": "/projects/leesmaat-tablet.jpg",
+      "alt": "Leesmaat public website captured at a tablet viewport",
+      "capturedAt": "2026-10-20T15:46:59.911Z"
+    }
+  ],
   "mentra": [
     {
       "label": "Desktop",
@@ -162,6 +249,35 @@
       "src": "/projects/mentra-tablet.jpg",
       "alt": "Mentra public website captured at a tablet viewport",
       "capturedAt": "2026-10-20T15:38:15.165Z"
+    }
+  ],
+  "mypets": [
+    {
+      "label": "Desktop",
+      "type": "desktop",
+      "width": 1440,
+      "height": 900,
+      "src": "/projects/mypets.jpg",
+      "alt": "Mypets public website captured at a desktop viewport",
+      "capturedAt": "2026-10-20T15:46:59.547Z"
+    },
+    {
+      "label": "Mobile screenshot",
+      "type": "mobile",
+      "width": 390,
+      "height": 844,
+      "src": "/projects/mypets-mobile.jpg",
+      "alt": "Mypets public website captured at a mobile viewport",
+      "capturedAt": "2026-10-20T15:46:59.547Z"
+    },
+    {
+      "label": "Tablet screenshot",
+      "type": "tablet",
+      "width": 820,
+      "height": 1180,
+      "src": "/projects/mypets-tablet.jpg",
+      "alt": "Mypets public website captured at a tablet viewport",
+      "capturedAt": "2026-10-20T15:46:59.547Z"
     }
   ],
   "nest": [
@@ -259,6 +375,35 @@
       "src": "/projects/pamoja-tablet.jpg",
       "alt": "Pamoja public website captured at a tablet viewport",
       "capturedAt": "2026-10-20T15:38:12.410Z"
+    }
+  ],
+  "procodiapp": [
+    {
+      "label": "Desktop",
+      "type": "desktop",
+      "width": 1440,
+      "height": 900,
+      "src": "/projects/procodiapp.jpg",
+      "alt": "Procodiapp public website captured at a desktop viewport",
+      "capturedAt": "2026-10-20T15:47:04.315Z"
+    },
+    {
+      "label": "Mobile screenshot",
+      "type": "mobile",
+      "width": 390,
+      "height": 844,
+      "src": "/projects/procodiapp-mobile.jpg",
+      "alt": "Procodiapp public website captured at a mobile viewport",
+      "capturedAt": "2026-10-20T15:47:04.315Z"
+    },
+    {
+      "label": "Tablet screenshot",
+      "type": "tablet",
+      "width": 820,
+      "height": 1180,
+      "src": "/projects/procodiapp-tablet.jpg",
+      "alt": "Procodiapp public website captured at a tablet viewport",
+      "capturedAt": "2026-10-20T15:47:04.315Z"
     }
   ],
   "stockvel": [
