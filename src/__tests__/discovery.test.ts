@@ -28,7 +28,7 @@ describe("Portfolio discovery", () => {
       expect(projectMetadata(project).alternates?.canonical).toBe(`/projects/${project.id}`);
       const schema = projectSchema(project)["@graph"][0];
       expect(schema.mainEntityOfPage).toBe(`https://portfolio.example/projects/${project.id}`);
-      expect(schema.image).toBe(`https://portfolio.example${project.screenshots[0]?.src ?? "/brand/social.png"}`);
+      expect(schema.image).toBe(new URL(project.screenshots[0]?.src ?? "/brand/social.png", "https://portfolio.example/").href);
       expect(schema.url).toBe(project.liveUrl || project.githubUrl);
     }
   });
