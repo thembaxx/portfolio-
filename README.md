@@ -33,7 +33,7 @@ The repository currently uses `themba-mndebele-portfolio-13299115673946064689` a
 
 [github-projects.config.json](github-projects.config.json) selects public repositories owned by `thembaxx`, created on or after **August 18, 2026**. This is a fixed start date: projects remain included as time passes, and future projects are picked up automatically. Forks, the portfolio itself and the GitHub profile repository are excluded. Add repository names to `exclude` to hide other entries. Private repositories are never published.
 
-The sync uses each repository's default branch, README summary (falling back to its GitHub description), package dependencies, language and homepage. Repositories without documentation, screenshots or a live app still have working project pages and GitHub links. The six curated case studies keep their existing order, copy and screenshots; matching GitHub entries are deduplicated. The homepage, case-study routes, sitemap, social metadata and LLM documents all use the merged catalog.
+The sync uses each repository's default branch, README summary (falling back to its GitHub description), package dependencies, language and homepage. Repositories without documentation, screenshots or a live app still have working project pages and GitHub links. The six curated case studies keep their existing order, copy and screenshots; matching GitHub entries are deduplicated. Other projects display live-site image previews or clearly labeled GitHub repository cards, so no listing appears without an image. A browser capture step uses Playwright at 1440 × 900 to save genuine public website screenshots under `public/projects/`; capture locations persist in `src/data/project-screenshots.json` across future GitHub syncs. Protected or unavailable deployments are not misrepresented as screenshots. The homepage, case-study routes, sitemap, social metadata and LLM documents all use the merged catalog.
 
 To refresh locally, run `npm run projects:sync` (optionally with `GITHUB_TOKEN` or `GH_TOKEN` for a higher API rate limit). Generated data lives in [src/data/github-projects.json](src/data/github-projects.json); edit curated case studies in [src/data/projects.ts](src/data/projects.ts). API failures leave the last successful generated snapshot intact, and validation failures prevent the workflow from committing.
 
@@ -51,7 +51,7 @@ The homepage works with server-rendered content. Theme switching follows the sys
 
 ## Branding and discovery
 
-The [brand guide](docs/brand.md) documents the TM monogram, wordmark, palette and typography. Regenerate browser icons, SVG marks and the social sharing card with `npm run brand:assets` (Node 24+). Screenshot frames use squircles with rounded corners as a browser fallback.
+The [brand guide](docs/brand.md) documents the TM monogram, wordmark, palette and typography. Regenerate browser icons, SVG marks and the social sharing card with `npm run brand:assets` (Node 24+). Project thumbnails and screenshot frames use consistent squircles, falling back to rounded rectangles in browsers without `corner-shape` support.
 
 The public origin defaults to `https://themba.dev`. Set `SITE_URL` before building if the canonical domain changes; metadata, structured data, sitemap, robots and LLM documents use the same origin. See [.env.example](.env.example). Vercel previews default to noindex with no sitemap entries; `INDEXING_ENABLED=false` supports staging on other hosts.
 

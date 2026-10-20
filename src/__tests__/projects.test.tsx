@@ -21,6 +21,19 @@ vitest.mock("next/navigation", () => ({
 const ids = projects.map(project => project.id);
 
 describe("Featured project routing and screenshots", () => {
+  test("every listed project has imagery, including live-only and GitHub-only projects", () => {
+    expect(projects.length).toBeGreaterThan(6);
+    for (const project of projects) {
+      expect(project.screenshots.length).toBeGreaterThan(0);
+      expect(project.screenshots[0].src).toMatch(/^\/projects\/|^https:\/\//);
+      expect(project.screenshots[0].alt).toBeTruthy();
+    }
+    const githubOnly = projects.find(project => !project.liveUrl);
+    expect(githubOnly?.screenshots[0].label).toBe("GitHub repository preview");
+    const syncedLive = projects.find(project => project.id === "mentra");
+    expect(syncedLive?.screenshots[0].src).toMatch(/\/projects\/mentra\.jpg|image\.thum\.io/);
+  });
+
   test("generates all featured pages and excludes the old listing from the sitemap", () => {
     expect(generateStaticParams()).toEqual([...ids.map(id => ({ id })), { id: "lumni" }]);
     expect(sitemap().map(entry => entry.url)).toEqual([
