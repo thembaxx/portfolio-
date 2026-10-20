@@ -1,1 +1,142 @@
-{}
+{
+  "baby": [
+    {
+      "src": "/projects/baby.jpg",
+      "alt": "Baby public website captured at a desktop viewport",
+      "label": "Website screenshot",
+      "type": "desktop",
+      "width": 1440,
+      "height": 900
+    }
+  ],
+  "carpur": [
+    {
+      "src": "/projects/carpur.jpg",
+      "alt": "Carpur public website captured at a desktop viewport",
+      "label": "Website screenshot",
+      "type": "desktop",
+      "width": 1440,
+      "height": 900
+    }
+  ],
+  "civicwise": [
+    {
+      "src": "/projects/civicwise.jpg",
+      "alt": "Civicwise public website captured at a desktop viewport",
+      "label": "Website screenshot",
+      "type": "desktop",
+      "width": 1440,
+      "height": 900
+    }
+  ],
+  "elemental": [
+    {
+      "src": "https://opengraph.githubassets.com/1/thembaxx/Elemental",
+      "alt": "GitHub repository preview for Elemental (website screenshot unavailable)",
+      "label": "GitHub repository preview",
+      "type": "desktop",
+      "width": 1200,
+      "height": 600
+    }
+  ],
+  "homebuyer": [
+    {
+      "src": "/projects/homebuyer.jpg",
+      "alt": "Homebuyer public website captured at a desktop viewport",
+      "label": "Website screenshot",
+      "type": "desktop",
+      "width": 1440,
+      "height": 900
+    }
+  ],
+  "homecheck": [
+    {
+      "src": "https://opengraph.githubassets.com/1/thembaxx/homecheck",
+      "alt": "GitHub repository preview for Homecheck (website screenshot unavailable)",
+      "label": "GitHub repository preview",
+      "type": "desktop",
+      "width": 1200,
+      "height": 600
+    }
+  ],
+  "mentra": [
+    {
+      "src": "/projects/mentra.jpg",
+      "alt": "Mentra public website captured at a desktop viewport",
+      "label": "Website screenshot",
+      "type": "desktop",
+      "width": 1440,
+      "height": 900
+    }
+  ],
+  "nest": [
+    {
+      "src": "/projects/nest.jpg",
+      "alt": "Nest public website captured at a desktop viewport",
+      "label": "Website screenshot",
+      "type": "desktop",
+      "width": 1440,
+      "height": 900
+    }
+  ],
+  "nou": [
+    {
+      "src": "/projects/nou.jpg",
+      "alt": "Nou public website captured at a desktop viewport",
+      "label": "Website screenshot",
+      "type": "desktop",
+      "width": 1440,
+      "height": 900
+    }
+  ],
+  "nou2": [
+    {
+      "src": "https://opengraph.githubassets.com/1/thembaxx/nou2",
+      "alt": "GitHub repository preview for Nou2 (website screenshot unavailable)",
+      "label": "GitHub repository preview",
+      "type": "desktop",
+      "width": 1200,
+      "height": 600
+    }
+  ],
+  "pamoja": [
+    {
+      "src": "/projects/pamoja.jpg",
+      "alt": "Pamoja public website captured at a desktop viewport",
+      "label": "Website screenshot",
+      "type": "desktop",
+      "width": 1440,
+      "height": 900
+    }
+  ],
+  "stockvel": [
+    {
+      "src": "/projects/stockvel.jpg",
+      "alt": "Stockvel public website captured at a desktop viewport",
+      "label": "Website screenshot",
+      "type": "desktop",
+      "width": 1440,
+      "height": 900
+    }
+  ],
+  "substition": [
+    {
+      "src": "/projects/substition.jpg",
+      "alt": "Substition public website captured at a desktop viewport",
+      "label": "Website screenshot",
+      "type": "desktop",
+      "width": 1440,
+      "height": 900
+    }
+  ],
+  "subzero": [
+    {
+      "src": "/projects/subzero.jpg",
+      "alt": "Subzero public website captured at a desktop viewport",
+      "label": "Website screenshot",
+      "type": "desktop",
+      "width": 1440,
+      "height": 900
+    }
+  ]
+}
