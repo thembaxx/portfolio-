@@ -65,7 +65,7 @@ export function ProjectScreenshotGallery({ screenshots, projectName }: GalleryPr
         <figure className={`screenshot-figure screenshot-${current.type}`}>
           <a href={current.src} target="_blank" rel="noopener noreferrer"
             aria-label={`View full ${current.label} screenshot for ${projectName} (opens in a new tab)`}>
-            <Image src={current.src} alt={current.alt} width={current.width ?? 1280}
+            <Image src={current.src} alt={current.alt} unoptimized={current.src.startsWith("https://")} width={current.width ?? 1280}
               height={current.height ?? 668} sizes="(min-width: 1024px) 960px, calc(100vw - 48px)" />
           </a>
           <figcaption className="mono">{current.label} <span aria-hidden="true">↗</span></figcaption>
