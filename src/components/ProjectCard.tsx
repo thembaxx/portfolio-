@@ -18,7 +18,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         <Link className="project-preview" href={`/projects/${project.id}`}
           aria-label={`Explore ${project.title}`}>
           <Image src={screenshot.src} alt={screenshot.alt}
-            unoptimized={screenshot.src.startsWith("https://")}
+            unoptimized={screenshot.src.startsWith("https://") || undefined}
             width={screenshot.width ?? 1280} height={screenshot.height ?? 668}
             sizes="(min-width: 1280px) 1062px, (min-width: 760px) calc(100vw - 218px), calc(100vw - 40px)" />
         </Link>
