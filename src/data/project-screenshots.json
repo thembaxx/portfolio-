@@ -1,32 +1,89 @@
 {
   "baby": [
     {
-      "src": "/projects/baby.jpg",
-      "alt": "Baby public website captured at a desktop viewport",
-      "label": "Website screenshot",
+      "label": "Desktop",
       "type": "desktop",
       "width": 1440,
-      "height": 900
+      "height": 900,
+      "src": "/projects/baby.jpg",
+      "alt": "Baby public website captured at a desktop viewport",
+      "capturedAt": "2026-10-20T15:38:28.658Z"
+    },
+    {
+      "label": "Mobile screenshot",
+      "type": "mobile",
+      "width": 390,
+      "height": 844,
+      "src": "/projects/baby-mobile.jpg",
+      "alt": "Baby public website captured at a mobile viewport",
+      "capturedAt": "2026-10-20T15:38:28.658Z"
+    },
+    {
+      "label": "Tablet screenshot",
+      "type": "tablet",
+      "width": 820,
+      "height": 1180,
+      "src": "/projects/baby-tablet.jpg",
+      "alt": "Baby public website captured at a tablet viewport",
+      "capturedAt": "2026-10-20T15:38:28.658Z"
     }
   ],
   "carpur": [
     {
-      "src": "/projects/carpur.jpg",
-      "alt": "Carpur public website captured at a desktop viewport",
-      "label": "Website screenshot",
+      "label": "Desktop",
       "type": "desktop",
       "width": 1440,
-      "height": 900
+      "height": 900,
+      "src": "/projects/carpur.jpg",
+      "alt": "Carpur public website captured at a desktop viewport",
+      "capturedAt": "2026-10-20T15:38:44.211Z"
+    },
+    {
+      "label": "Mobile screenshot",
+      "type": "mobile",
+      "width": 390,
+      "height": 844,
+      "src": "/projects/carpur-mobile.jpg",
+      "alt": "Carpur public website captured at a mobile viewport",
+      "capturedAt": "2026-10-20T15:38:44.211Z"
+    },
+    {
+      "label": "Tablet screenshot",
+      "type": "tablet",
+      "width": 820,
+      "height": 1180,
+      "src": "/projects/carpur-tablet.jpg",
+      "alt": "Carpur public website captured at a tablet viewport",
+      "capturedAt": "2026-10-20T15:38:44.211Z"
     }
   ],
   "civicwise": [
     {
-      "src": "/projects/civicwise.jpg",
-      "alt": "Civicwise public website captured at a desktop viewport",
-      "label": "Website screenshot",
+      "label": "Desktop",
       "type": "desktop",
       "width": 1440,
-      "height": 900
+      "height": 900,
+      "src": "/projects/civicwise.jpg",
+      "alt": "Civicwise public website captured at a desktop viewport",
+      "capturedAt": "2026-10-20T15:38:36.745Z"
+    },
+    {
+      "label": "Mobile screenshot",
+      "type": "mobile",
+      "width": 390,
+      "height": 844,
+      "src": "/projects/civicwise-mobile.jpg",
+      "alt": "Civicwise public website captured at a mobile viewport",
+      "capturedAt": "2026-10-20T15:38:36.745Z"
+    },
+    {
+      "label": "Tablet screenshot",
+      "type": "tablet",
+      "width": 820,
+      "height": 1180,
+      "src": "/projects/civicwise-tablet.jpg",
+      "alt": "Civicwise public website captured at a tablet viewport",
+      "capturedAt": "2026-10-20T15:38:36.745Z"
     }
   ],
   "elemental": [
@@ -41,12 +98,31 @@
   ],
   "homebuyer": [
     {
-      "src": "/projects/homebuyer.jpg",
-      "alt": "Homebuyer public website captured at a desktop viewport",
-      "label": "Website screenshot",
+      "label": "Desktop",
       "type": "desktop",
       "width": 1440,
-      "height": 900
+      "height": 900,
+      "src": "/projects/homebuyer.jpg",
+      "alt": "Homebuyer public website captured at a desktop viewport",
+      "capturedAt": "2026-10-20T15:38:59.646Z"
+    },
+    {
+      "label": "Mobile screenshot",
+      "type": "mobile",
+      "width": 390,
+      "height": 844,
+      "src": "/projects/homebuyer-mobile.jpg",
+      "alt": "Homebuyer public website captured at a mobile viewport",
+      "capturedAt": "2026-10-20T15:38:59.646Z"
+    },
+    {
+      "label": "Tablet screenshot",
+      "type": "tablet",
+      "width": 820,
+      "height": 1180,
+      "src": "/projects/homebuyer-tablet.jpg",
+      "alt": "Homebuyer public website captured at a tablet viewport",
+      "capturedAt": "2026-10-20T15:38:59.646Z"
     }
   ],
   "homecheck": [
@@ -61,32 +137,89 @@
   ],
   "mentra": [
     {
-      "src": "/projects/mentra.jpg",
-      "alt": "Mentra public website captured at a desktop viewport",
-      "label": "Website screenshot",
+      "label": "Desktop",
       "type": "desktop",
       "width": 1440,
-      "height": 900
+      "height": 900,
+      "src": "/projects/mentra.jpg",
+      "alt": "Mentra public website captured at a desktop viewport",
+      "capturedAt": "2026-10-20T15:38:15.165Z"
+    },
+    {
+      "label": "Mobile screenshot",
+      "type": "mobile",
+      "width": 390,
+      "height": 844,
+      "src": "/projects/mentra-mobile.jpg",
+      "alt": "Mentra public website captured at a mobile viewport",
+      "capturedAt": "2026-10-20T15:38:15.165Z"
+    },
+    {
+      "label": "Tablet screenshot",
+      "type": "tablet",
+      "width": 820,
+      "height": 1180,
+      "src": "/projects/mentra-tablet.jpg",
+      "alt": "Mentra public website captured at a tablet viewport",
+      "capturedAt": "2026-10-20T15:38:15.165Z"
     }
   ],
   "nest": [
     {
-      "src": "/projects/nest.jpg",
-      "alt": "Nest public website captured at a desktop viewport",
-      "label": "Website screenshot",
+      "label": "Desktop",
       "type": "desktop",
       "width": 1440,
-      "height": 900
+      "height": 900,
+      "src": "/projects/nest.jpg",
+      "alt": "Nest public website captured at a desktop viewport",
+      "capturedAt": "2026-10-20T15:38:27.599Z"
+    },
+    {
+      "label": "Mobile screenshot",
+      "type": "mobile",
+      "width": 390,
+      "height": 844,
+      "src": "/projects/nest-mobile.jpg",
+      "alt": "Nest public website captured at a mobile viewport",
+      "capturedAt": "2026-10-20T15:38:27.599Z"
+    },
+    {
+      "label": "Tablet screenshot",
+      "type": "tablet",
+      "width": 820,
+      "height": 1180,
+      "src": "/projects/nest-tablet.jpg",
+      "alt": "Nest public website captured at a tablet viewport",
+      "capturedAt": "2026-10-20T15:38:27.599Z"
     }
   ],
   "nou": [
     {
-      "src": "/projects/nou.jpg",
-      "alt": "Nou public website captured at a desktop viewport",
-      "label": "Website screenshot",
+      "label": "Desktop",
       "type": "desktop",
       "width": 1440,
-      "height": 900
+      "height": 900,
+      "src": "/projects/nou.jpg",
+      "alt": "Nou public website captured at a desktop viewport",
+      "capturedAt": "2026-10-20T15:38:55.868Z"
+    },
+    {
+      "label": "Mobile screenshot",
+      "type": "mobile",
+      "width": 390,
+      "height": 844,
+      "src": "/projects/nou-mobile.jpg",
+      "alt": "Nou public website captured at a mobile viewport",
+      "capturedAt": "2026-10-20T15:38:55.868Z"
+    },
+    {
+      "label": "Tablet screenshot",
+      "type": "tablet",
+      "width": 820,
+      "height": 1180,
+      "src": "/projects/nou-tablet.jpg",
+      "alt": "Nou public website captured at a tablet viewport",
+      "capturedAt": "2026-10-20T15:38:55.868Z"
     }
   ],
   "nou2": [
@@ -101,42 +234,118 @@
   ],
   "pamoja": [
     {
-      "src": "/projects/pamoja.jpg",
-      "alt": "Pamoja public website captured at a desktop viewport",
-      "label": "Website screenshot",
+      "label": "Desktop",
       "type": "desktop",
       "width": 1440,
-      "height": 900
+      "height": 900,
+      "src": "/projects/pamoja.jpg",
+      "alt": "Pamoja public website captured at a desktop viewport",
+      "capturedAt": "2026-10-20T15:38:12.410Z"
+    },
+    {
+      "label": "Mobile screenshot",
+      "type": "mobile",
+      "width": 390,
+      "height": 844,
+      "src": "/projects/pamoja-mobile.jpg",
+      "alt": "Pamoja public website captured at a mobile viewport",
+      "capturedAt": "2026-10-20T15:38:12.410Z"
+    },
+    {
+      "label": "Tablet screenshot",
+      "type": "tablet",
+      "width": 820,
+      "height": 1180,
+      "src": "/projects/pamoja-tablet.jpg",
+      "alt": "Pamoja public website captured at a tablet viewport",
+      "capturedAt": "2026-10-20T15:38:12.410Z"
     }
   ],
   "stockvel": [
     {
-      "src": "/projects/stockvel.jpg",
-      "alt": "Stockvel public website captured at a desktop viewport",
-      "label": "Website screenshot",
+      "label": "Desktop",
       "type": "desktop",
       "width": 1440,
-      "height": 900
+      "height": 900,
+      "src": "/projects/stockvel.jpg",
+      "alt": "Stockvel public website captured at a desktop viewport",
+      "capturedAt": "2026-10-20T15:38:33.496Z"
+    },
+    {
+      "label": "Mobile screenshot",
+      "type": "mobile",
+      "width": 390,
+      "height": 844,
+      "src": "/projects/stockvel-mobile.jpg",
+      "alt": "Stockvel public website captured at a mobile viewport",
+      "capturedAt": "2026-10-20T15:38:33.496Z"
+    },
+    {
+      "label": "Tablet screenshot",
+      "type": "tablet",
+      "width": 820,
+      "height": 1180,
+      "src": "/projects/stockvel-tablet.jpg",
+      "alt": "Stockvel public website captured at a tablet viewport",
+      "capturedAt": "2026-10-20T15:38:33.496Z"
     }
   ],
   "substition": [
     {
-      "src": "/projects/substition.jpg",
-      "alt": "Substition public website captured at a desktop viewport",
-      "label": "Website screenshot",
+      "label": "Desktop",
       "type": "desktop",
       "width": 1440,
-      "height": 900
+      "height": 900,
+      "src": "/projects/substition.jpg",
+      "alt": "Substition public website captured at a desktop viewport",
+      "capturedAt": "2026-10-20T15:38:21.541Z"
+    },
+    {
+      "label": "Mobile screenshot",
+      "type": "mobile",
+      "width": 390,
+      "height": 844,
+      "src": "/projects/substition-mobile.jpg",
+      "alt": "Substition public website captured at a mobile viewport",
+      "capturedAt": "2026-10-20T15:38:21.541Z"
+    },
+    {
+      "label": "Tablet screenshot",
+      "type": "tablet",
+      "width": 820,
+      "height": 1180,
+      "src": "/projects/substition-tablet.jpg",
+      "alt": "Substition public website captured at a tablet viewport",
+      "capturedAt": "2026-10-20T15:38:21.541Z"
     }
   ],
   "subzero": [
     {
-      "src": "/projects/subzero.jpg",
-      "alt": "Subzero public website captured at a desktop viewport",
-      "label": "Website screenshot",
+      "label": "Desktop",
       "type": "desktop",
       "width": 1440,
-      "height": 900
+      "height": 900,
+      "src": "/projects/subzero.jpg",
+      "alt": "Subzero public website captured at a desktop viewport",
+      "capturedAt": "2026-10-20T15:38:23.681Z"
+    },
+    {
+      "label": "Mobile screenshot",
+      "type": "mobile",
+      "width": 390,
+      "height": 844,
+      "src": "/projects/subzero-mobile.jpg",
+      "alt": "Subzero public website captured at a mobile viewport",
+      "capturedAt": "2026-10-20T15:38:23.681Z"
+    },
+    {
+      "label": "Tablet screenshot",
+      "type": "tablet",
+      "width": 820,
+      "height": 1180,
+      "src": "/projects/subzero-tablet.jpg",
+      "alt": "Subzero public website captured at a tablet viewport",
+      "capturedAt": "2026-10-20T15:38:23.681Z"
     }
   ]
 }
