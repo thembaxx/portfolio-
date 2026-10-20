@@ -52,56 +52,54 @@ async function main() {
   let failed = 0;
 
   async function capture(project) {
-    const page = await browser.newPage({
-      viewport: { width: 1440, height: 900 },
-      deviceScaleFactor: 1,
-      reducedMotion: "reduce",
-      colorScheme: "light",
-    });
+    const screenshots = [];
     try {
-      const response = await page.goto(project.liveUrl, { waitUntil: "domcontentloaded", timeout: 35000 });
-      if (response && response.status() >= 400) throw new Error("HTTP " + response.status());
-      await page.waitForLoadState("networkidle", { timeout: 6000 }).catch(() => {});
-      await page.evaluate(() => document.fonts.ready).catch(() => {});
-      await page.waitForTimeout(1500);
-      const title = await page.title();
-      const body = await page.locator("body").innerText({ timeout: 5000 }).catch(() => "");
-      if (/authentication required|vercel authentication|deployment protection|404: not_found|deployment_not_found/i.test(title + " " + body.slice(0, 300))) {
-        throw new Error("Protected or unavailable deployment");
-      }
-      if ((await page.locator("body").count()) === 0) throw new Error("No document body");
-      await page.screenshot({
-        path: path.join(imagesDir, project.id + ".jpg"),
-        type: "jpeg",
-        quality: 82,
-        animations: "disabled",
-        caret: "hide",
-        fullPage: false,
-      });
-      const capturedAt = new Date().toISOString();
-      const captures = [{ label: "Desktop", type: "desktop", width: 1440, height: 900, src: "/projects/" + project.id + ".jpg" }];
-      for (const view of [
-        { label: "Mobile", type: "mobile", width: 390, height: 844, suffix: "-mobile" },
-        { label: "Tablet", type: "tablet", width: 820, height: 1180, suffix: "-tablet" },
+      for (const variant of [
+        { type: "desktop", width: 1440, height: 900, mobile: false },
+        { type: "mobile", width: 390, height: 844, mobile: true },
       ]) {
-        await page.setViewportSize({ width: view.width, height: view.height });
-        await page.waitForTimeout(450);
-        await page.screenshot({
-          path: path.join(imagesDir, project.id + view.suffix + ".jpg"),
-          type: "jpeg", quality: 82, animations: "disabled", caret: "hide", fullPage: false,
+        const page = await browser.newPage({
+          viewport: { width: variant.width, height: variant.height },
+          deviceScaleFactor: 1,
+          isMobile: variant.mobile,
+          hasTouch: variant.mobile,
+          reducedMotion: "reduce",
+          colorScheme: "light",
         });
-        captures.push({ label: view.label + " screenshot", type: view.type, width: view.width, height: view.height, src: "/projects/" + project.id + view.suffix + ".jpg" });
+        try {
+          const response = await page.goto(project.liveUrl, { waitUntil: "domcontentloaded", timeout: 35000 });
+          if (!response || response.status() >= 400) throw new Error("HTTP " + response?.status());
+          await page.waitForLoadState("networkidle", { timeout: 6000 }).catch(() => {});
+          await page.evaluate(() => document.fonts.ready).catch(() => {});
+          await page.waitForTimeout(1200);
+          const title = await page.title();
+          const body = await page.locator("body").innerText({ timeout: 5000 }).catch(() => "");
+          if (/authentication required|vercel authentication|deployment protection|404: not_found|deployment_not_found/i.test(title + " " + body.slice(0, 300))) {
+            throw new Error("Protected or unavailable deployment");
+          }
+          if (!body.trim()) throw new Error("Empty page");
+          const filename = project.id + "-" + variant.type + ".png";
+          await page.screenshot({
+            path: path.join(imagesDir, filename), type: "png",
+            animations: "disabled", caret: "hide", fullPage: false,
+          });
+          screenshots.push({
+            src: "/projects/" + filename,
+            alt: project.title + " actual public website at " + variant.width + " × " + variant.height,
+            label: "Website screenshot", type: variant.type,
+            width: variant.width, height: variant.height,
+          });
+        } finally {
+          await page.close();
+        }
       }
-      overrides[project.id] = captures.map(item => ({ ...item, alt: project.title + " public website captured at a " + item.type + " viewport", capturedAt }));
+      overrides[project.id] = screenshots;
       captured++;
-      console.log("Captured " + project.id + " (" + page.url() + ")");
+      console.log("Captured desktop and mobile: " + project.id);
     } catch (error) {
       failed++;
-      // Failed or protected sites must not be represented by a screenshot of an error page.
-      // Keep a truthful repository card while retrying the capture on the next sync.
-      if (await exists(path.join(imagesDir, project.id + ".jpg")) && overrides[project.id]?.[0]?.src === "/projects/" + project.id + ".jpg") {
-        console.warn("Retaining previous screenshot for " + project.id + " after a failed refresh.");
-      } else {
+      // Never replace a working previous screenshot with an error or authentication page.
+      if (!overrides[project.id]?.some(item => item.src?.startsWith("/projects/"))) {
         overrides[project.id] = [{
           src: "https://opengraph.githubassets.com/1/" + new URL(project.githubUrl).pathname.slice(1),
           alt: "GitHub repository preview for " + project.title + " (website screenshot unavailable)",
@@ -109,8 +107,6 @@ async function main() {
         }];
       }
       console.warn("Could not capture " + project.id + ": " + error.message);
-    } finally {
-      await page.close();
     }
   }
   try {

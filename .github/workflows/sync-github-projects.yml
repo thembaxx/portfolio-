@@ -2,12 +2,15 @@ name: Sync GitHub projects
 
 on:
   schedule:
-    - cron: "23 5 * * *"
+    - cron: "23 5 * * 0,2-6"
+    - cron: "25 5 * * 1"
   workflow_dispatch:
   push:
     paths:
       - github-projects.config.json
       - scripts/sync-github-projects.mjs
+      - scripts/capture-project-screenshots.mjs
+      - src/__tests__/discovery.test.ts
       - .github/workflows/sync-github-projects.yml
 
 permissions:
@@ -36,6 +39,14 @@ jobs:
         run: npm run projects:sync
         env:
           GITHUB_TOKEN: ${{ github.token }}
+      - name: Install screenshot browser
+        run: |
+          npm install --no-save --package-lock=false playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Capture real desktop and mobile screenshots
+        env:
+          CAPTURE_REFRESH: ${{ (github.event_name == 'workflow_dispatch' || github.event.schedule == '25 5 * * 1') && 'all' || '' }}
+        run: node scripts/capture-project-screenshots.mjs
       - name: Validate catalog and portfolio
         run: |
           npm test
@@ -48,9 +59,9 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if ! git diff --quiet -- src/data/github-projects.json; then
-            git add src/data/github-projects.json
-            git commit -m "chore: sync GitHub projects"
+          git add src/data/github-projects.json src/data/project-screenshots.json public/projects/
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: sync projects and capture real screenshots"
             git pull --rebase origin "$PUBLISH_BRANCH"
             git push origin "HEAD:refs/heads/$PUBLISH_BRANCH"
           else
