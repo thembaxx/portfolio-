@@ -85,6 +85,16 @@ async function main() {
       console.log("Captured " + project.id + " (" + page.url() + ")");
     } catch (error) {
       failed++;
+      // Failed or protected sites must not be represented by a screenshot of an error page.
+      // Keep a truthful repository card while retrying the capture on the next sync.
+      overrides[project.id] = [{
+        src: "https://opengraph.githubassets.com/1/" + new URL(project.githubUrl).pathname.slice(1),
+        alt: "GitHub repository preview for " + project.title + " (website screenshot unavailable)",
+        label: "GitHub repository preview",
+        type: "desktop",
+        width: 1200,
+        height: 600,
+      }];
       console.warn("Could not capture " + project.id + ": " + error.message);
     } finally {
       await page.close();

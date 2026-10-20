@@ -9,6 +9,7 @@ on:
       - github-projects.config.json
       - scripts/sync-github-projects.mjs
       - scripts/capture-project-screenshots.mjs
+      - src/__tests__/discovery.test.ts
       - .github/workflows/sync-github-projects.yml
 
 permissions:
