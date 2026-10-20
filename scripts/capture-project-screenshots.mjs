@@ -11,7 +11,8 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const catalogPath = path.join(root, "src/data/github-projects.json");
 const manifestPath = path.join(root, "src/data/project-screenshots.json");
 const imagesDir = path.join(root, "public/projects");
-const featuredIds = new Set(["lumnie", "citylit", "hydromental", "procodiapp", "mypets", "leesmaat"]);
+// The user excluded Lumni/Lumnie and MatricMaster AI from automated project work.
+const featuredIds = new Set(["lumnie", "lumni", "matricmaster-ai"]);
 const recaptureAfterMs = 30 * 24 * 60 * 60 * 1000;
 
 const exists = async (file) => access(file).then(() => true, () => false);
