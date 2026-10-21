@@ -100,7 +100,7 @@ async function main() {
       failed++;
       // Failed or protected sites must not be represented by a screenshot of an error page.
       // Keep a truthful repository card while retrying the capture on the next sync.
-      if (await exists(file) && (previous?.src === "/projects/" + project.id + ".jpg" || project.id === "lumnie")) {
+      if (await exists(path.join(imagesDir, project.id + ".jpg")) && (overrides[project.id]?.[0]?.src === "/projects/" + project.id + ".jpg" || project.id === "lumnie")) {
         console.warn("Retaining previous screenshot for " + project.id + " after a failed refresh.");
       } else {
         overrides[project.id] = [{
