@@ -6,7 +6,7 @@ import Image from "next/image";
 export interface ScreenshotItem {
   src: string;
   alt: string;
-  type: "desktop" | "mobile";
+  type: "desktop" | "mobile" | "tablet";
   label: string;
   width?: number;
   height?: number;
