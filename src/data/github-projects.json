@@ -36,18 +36,6 @@
     "githubUrl": "https://github.com/thembaxx/pamoja"
   },
   {
-    "id": "hivebuy",
-    "title": "Hivebuy",
-    "subtitle": "Open-source project",
-    "oneLiner": "",
-    "description": "Source code and documentation for Hivebuy.",
-    "features": [],
-    "technologies": [],
-    "screenshots": [],
-    "liveUrl": "",
-    "githubUrl": "https://github.com/thembaxx/hivebuy"
-  },
-  {
     "id": "subzero",
     "title": "Subzero",
     "subtitle": "TypeScript project",
