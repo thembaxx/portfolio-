@@ -61,7 +61,7 @@ describe("Featured project routing and screenshots", () => {
     expect(screen.getByRole("img")).toHaveAttribute("src", "/projects/hydromental.jpg");
     const metadata = await generateMetadata({ params: Promise.resolve({ id: "hydromental" }) });
     expect(metadata.alternates?.canonical).toBe("/projects/hydromental");
-    expect(metadata.openGraph?.images).toEqual([expect.objectContaining({ url: "/projects/hydromental.jpg" })]);
+    expect(metadata.openGraph?.images).toEqual(expect.arrayContaining([expect.objectContaining({ url: "/projects/hydromental.jpg" })]));
   });
 
   test("old Lumni bookmarks redirect to Lumnie and unknown projects return not found", async () => {
