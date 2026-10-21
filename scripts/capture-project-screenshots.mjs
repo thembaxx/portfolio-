@@ -11,9 +11,10 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const catalogPath = path.join(root, "src/data/github-projects.json");
 const manifestPath = path.join(root, "src/data/project-screenshots.json");
 const imagesDir = path.join(root, "public/projects");
-// The user excluded Lumni/Lumnie and MatricMaster AI from automated project work.
-const featuredIds = new Set(["lumnie", "lumni", "matricmaster-ai"]);
-const recaptureAfterMs = 30 * 24 * 60 * 60 * 1000;
+// A manual or catalog-code update can force a current capture of every live app.
+// Scheduled captures age out weekly rather than keeping potentially obsolete UI for a month.
+const forceRefresh = process.env.FORCE_SCREENSHOT_REFRESH === "true";
+const recaptureAfterMs = 7 * 24 * 60 * 60 * 1000;
 
 const exists = async (file) => access(file).then(() => true, () => false);
 
@@ -24,7 +25,7 @@ async function main() {
   await mkdir(imagesDir, { recursive: true });
 
   const targets = catalog.filter((project) => {
-    if (featuredIds.has(project.id) || !/^[a-z0-9][a-z0-9_-]*$/.test(project.id)) return false;
+    if (!/^[a-z0-9][a-z0-9_-]*$/.test(project.id)) return false;
     try {
       const url = new URL(project.liveUrl);
       return url.protocol === "https:" && url.hostname.endsWith(".vercel.app") && !url.username && !url.password;
@@ -38,7 +39,7 @@ async function main() {
     const previous = overrides[project.id]?.[0];
     const checkedAt = Date.parse(previous?.capturedAt || "");
     const fresh = Number.isFinite(checkedAt) && Date.now() - checkedAt < recaptureAfterMs;
-    if (fresh && await exists(file) && await exists(path.join(imagesDir, project.id + "-mobile.jpg")) && await exists(path.join(imagesDir, project.id + "-tablet.jpg"))) continue;
+    if (!forceRefresh && fresh && await exists(file) && await exists(path.join(imagesDir, project.id + "-mobile.jpg")) && await exists(path.join(imagesDir, project.id + "-tablet.jpg"))) continue;
     pending.push(project);
   }
   if (!pending.length) {
@@ -99,7 +100,7 @@ async function main() {
       failed++;
       // Failed or protected sites must not be represented by a screenshot of an error page.
       // Keep a truthful repository card while retrying the capture on the next sync.
-      if (await exists(path.join(imagesDir, project.id + ".jpg")) && overrides[project.id]?.[0]?.src === "/projects/" + project.id + ".jpg") {
+      if (await exists(path.join(imagesDir, project.id + ".jpg")) && (overrides[project.id]?.[0]?.src === "/projects/" + project.id + ".jpg" || project.id === "lumnie")) {
         console.warn("Retaining previous screenshot for " + project.id + " after a failed refresh.");
       } else {
         overrides[project.id] = [{

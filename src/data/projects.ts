@@ -212,8 +212,8 @@ export const featuredProjects: ProjectData[] = [
   }
 ];
 
-// Captured screenshots are saved independently of the automatically refreshed GitHub data.
-// Before CI captures a new live website, show its real-time screenshot preview instead.
+// Curated copy remains independent of the GitHub sync, but every project (including
+// featured case studies) uses the newest successfully captured live screenshots.
 // Repositories without a website receive a clearly labeled GitHub repository image.
 function getScreenshots(project: ProjectData): ScreenshotItem[] {
   const saved = (savedScreenshots as Record<string, ScreenshotItem[]>)[project.id];
@@ -239,7 +239,7 @@ function getScreenshots(project: ProjectData): ScreenshotItem[] {
 
 // Keep curated case studies first and avoid listing their repositories twice.
 export const projects: ProjectData[] = [
-  ...featuredProjects,
+  ...featuredProjects.map(project => ({ ...project, screenshots: getScreenshots(project) })),
   ...githubProjects.filter(project => !featuredProjects.some(featured =>
     featured.id === project.id || featured.githubUrl.toLowerCase() === project.githubUrl.toLowerCase()
   )).map(project => ({ ...project, screenshots: getScreenshots(project as ProjectData) })),

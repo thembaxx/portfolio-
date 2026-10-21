@@ -34,6 +34,19 @@ describe("Featured project routing and screenshots", () => {
     expect(syncedLive?.screenshots[0].src).toMatch(/\/projects\/mentra\.jpg|image\.thum\.io/);
   });
 
+  test("featured projects use refreshed captures in desktop, mobile and tablet order", () => {
+    const featured = projects.find(project => project.id === "hydromental");
+    expect(featured?.screenshots.map(shot => shot.type)).toEqual(["desktop", "mobile", "tablet"]);
+    expect(featured?.screenshots[0]).toMatchObject({
+      src: "/projects/hydromental.jpg",
+      width: 1440,
+      height: 900,
+    });
+    // A curated case study without a recent capture keeps its original screenshot.
+    const lumnie = projects.find(project => project.id === "lumnie");
+    expect(lumnie?.screenshots[0].src).toBe("/projects/lumnie.jpg");
+  });
+
   test("generates all featured pages and excludes the old listing from the sitemap", () => {
     expect(generateStaticParams()).toEqual([...ids.map(id => ({ id })), { id: "lumni" }]);
     expect(sitemap().map(entry => entry.url)).toEqual([
