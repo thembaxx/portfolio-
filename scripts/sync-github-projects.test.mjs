@@ -98,7 +98,7 @@ describe("GitHub project sync", () => {
     await writeFile(outputPath, JSON.stringify([
       { id: "private-live", title: "Private Live", liveUrl: "https://private-live.vercel.app", githubUrl: "" },
       { id: "archived", title: "Archived", liveUrl: "https://archived.vercel.app", githubUrl: "" }
-    ]) + "\\n");
+    ]) + "\n");
     const fetchImpl = async url => url.includes("/users/")
       ? response([repository("public-live", { homepage: "https://public-live.vercel.app" })])
       : response(null, 404);
