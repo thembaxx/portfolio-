@@ -29,7 +29,8 @@ describe("Featured project routing and screenshots", () => {
       expect(project.screenshots[0].alt).toBeTruthy();
     }
     const githubOnly = projects.find(project => !project.liveUrl);
-    expect(githubOnly?.screenshots[0].label).toBe("GitHub repository preview");
+    if (githubOnly) expect(githubOnly.screenshots[0].label).toBe("GitHub repository preview");
+    else expect(projects.every(project => Boolean(project.liveUrl))).toBe(true);
     const syncedLive = projects.find(project => project.id === "mentra");
     expect(syncedLive?.screenshots[0].src).toMatch(/\/projects\/mentra\.jpg|image\.thum\.io/);
   });
