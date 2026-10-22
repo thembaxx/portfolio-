@@ -241,7 +241,7 @@ function getScreenshots(project: ProjectData): ScreenshotItem[] {
 export const projects: ProjectData[] = [
   ...featuredProjects.map(project => ({ ...project, screenshots: getScreenshots(project) })),
   ...githubProjects.filter(project => !featuredProjects.some(featured =>
-    featured.id === project.id || featured.githubUrl.toLowerCase() === project.githubUrl.toLowerCase()
+    featured.id === project.id || (Boolean(featured.githubUrl) && featured.githubUrl.toLowerCase() === project.githubUrl.toLowerCase())
   )).map(project => ({ ...project, screenshots: getScreenshots(project as ProjectData) })),
 ];
 
