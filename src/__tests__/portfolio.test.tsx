@@ -203,9 +203,7 @@ describe("Themba Mndebele — editorial portfolio", () => {
     expect(liveDemoLink.getAttribute("aria-label")).toBe("Open Live Demo for Hydromental");
     expect(liveDemoLink.className).toContain("focus-visible:ring-2");
 
-    const githubLink = screen.getByRole("link", { name: "View GitHub repository for Hydromental" });
-    expect(githubLink).toBeDefined();
-    expect(githubLink.getAttribute("aria-label")).toBe("View GitHub repository for Hydromental");
-    expect(githubLink.className).toContain("focus-visible:ring-2");
+    // Private source repositories must not expose dead GitHub links.
+    expect(screen.queryByRole("link", { name: "View GitHub repository for Hydromental" })).toBeNull();
   });
 });
