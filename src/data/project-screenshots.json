@@ -7,7 +7,7 @@
       "height": 900,
       "src": "/projects/baby.jpg",
       "alt": "Baby public website captured at a desktop viewport",
-      "capturedAt": "2026-10-21T11:57:26.649Z"
+      "capturedAt": "2026-10-22T20:25:33.622Z"
     },
     {
       "label": "Mobile screenshot",
@@ -16,7 +16,7 @@
       "height": 844,
       "src": "/projects/baby-mobile.jpg",
       "alt": "Baby public website captured at a mobile viewport",
-      "capturedAt": "2026-10-21T11:57:26.649Z"
+      "capturedAt": "2026-10-22T20:25:33.622Z"
     },
     {
       "label": "Tablet screenshot",
@@ -25,7 +25,94 @@
       "height": 1180,
       "src": "/projects/baby-tablet.jpg",
       "alt": "Baby public website captured at a tablet viewport",
-      "capturedAt": "2026-10-21T11:57:26.649Z"
+      "capturedAt": "2026-10-22T20:25:33.622Z"
+    }
+  ],
+  "bhahiapp": [
+    {
+      "label": "Desktop",
+      "type": "desktop",
+      "width": 1440,
+      "height": 900,
+      "src": "/projects/bhahiapp.jpg",
+      "alt": "BahiApp public website captured at a desktop viewport",
+      "capturedAt": "2026-10-22T20:26:12.779Z"
+    },
+    {
+      "label": "Mobile screenshot",
+      "type": "mobile",
+      "width": 390,
+      "height": 844,
+      "src": "/projects/bhahiapp-mobile.jpg",
+      "alt": "BahiApp public website captured at a mobile viewport",
+      "capturedAt": "2026-10-22T20:26:12.779Z"
+    },
+    {
+      "label": "Tablet screenshot",
+      "type": "tablet",
+      "width": 820,
+      "height": 1180,
+      "src": "/projects/bhahiapp-tablet.jpg",
+      "alt": "BahiApp public website captured at a tablet viewport",
+      "capturedAt": "2026-10-22T20:26:12.779Z"
+    }
+  ],
+  "bidcraft": [
+    {
+      "label": "Desktop",
+      "type": "desktop",
+      "width": 1440,
+      "height": 900,
+      "src": "/projects/bidcraft.jpg",
+      "alt": "Bidcraft public website captured at a desktop viewport",
+      "capturedAt": "2026-10-22T20:24:55.285Z"
+    },
+    {
+      "label": "Mobile screenshot",
+      "type": "mobile",
+      "width": 390,
+      "height": 844,
+      "src": "/projects/bidcraft-mobile.jpg",
+      "alt": "Bidcraft public website captured at a mobile viewport",
+      "capturedAt": "2026-10-22T20:24:55.285Z"
+    },
+    {
+      "label": "Tablet screenshot",
+      "type": "tablet",
+      "width": 820,
+      "height": 1180,
+      "src": "/projects/bidcraft-tablet.jpg",
+      "alt": "Bidcraft public website captured at a tablet viewport",
+      "capturedAt": "2026-10-22T20:24:55.285Z"
+    }
+  ],
+  "billora": [
+    {
+      "label": "Desktop",
+      "type": "desktop",
+      "width": 1440,
+      "height": 900,
+      "src": "/projects/billora.jpg",
+      "alt": "Billora public website captured at a desktop viewport",
+      "capturedAt": "2026-10-22T20:24:50.056Z"
+    },
+    {
+      "label": "Mobile screenshot",
+      "type": "mobile",
+      "width": 390,
+      "height": 844,
+      "src": "/projects/billora-mobile.jpg",
+      "alt": "Billora public website captured at a mobile viewport",
+      "capturedAt": "2026-10-22T20:24:50.056Z"
+    },
+    {
+      "label": "Tablet screenshot",
+      "type": "tablet",
+      "width": 820,
+      "height": 1180,
+      "src": "/projects/billora-tablet.jpg",
+      "alt": "Billora public website captured at a tablet viewport",
+      "capturedAt": "2026-10-22T20:24:50.056Z"
     }
   ],
   "carpur": [
@@ -36,7 +123,7 @@
       "height": 900,
       "src": "/projects/carpur.jpg",
       "alt": "Carpur public website captured at a desktop viewport",
-      "capturedAt": "2026-10-21T11:57:41.778Z"
+      "capturedAt": "2026-10-22T20:25:43.695Z"
     },
     {
       "label": "Mobile screenshot",
@@ -45,7 +132,7 @@
       "height": 844,
       "src": "/projects/carpur-mobile.jpg",
       "alt": "Carpur public website captured at a mobile viewport",
-      "capturedAt": "2026-10-21T11:57:41.778Z"
+      "capturedAt": "2026-10-22T20:25:43.695Z"
     },
     {
       "label": "Tablet screenshot",
@@ -54,7 +141,7 @@
       "height": 1180,
       "src": "/projects/carpur-tablet.jpg",
       "alt": "Carpur public website captured at a tablet viewport",
-      "capturedAt": "2026-10-21T11:57:41.778Z"
+      "capturedAt": "2026-10-22T20:25:43.695Z"
     }
   ],
   "citylit": [
@@ -65,7 +152,7 @@
       "height": 900,
       "src": "/projects/citylit.jpg",
       "alt": "Citylit public website captured at a desktop viewport",
-      "capturedAt": "2026-10-21T11:58:12.264Z"
+      "capturedAt": "2026-10-22T20:25:28.157Z"
     },
     {
       "label": "Mobile screenshot",
@@ -74,7 +161,7 @@
       "height": 844,
       "src": "/projects/citylit-mobile.jpg",
       "alt": "Citylit public website captured at a mobile viewport",
-      "capturedAt": "2026-10-21T11:58:12.264Z"
+      "capturedAt": "2026-10-22T20:25:28.157Z"
     },
     {
       "label": "Tablet screenshot",
@@ -83,7 +170,7 @@
       "height": 1180,
       "src": "/projects/citylit-tablet.jpg",
       "alt": "Citylit public website captured at a tablet viewport",
-      "capturedAt": "2026-10-21T11:58:12.264Z"
+      "capturedAt": "2026-10-22T20:25:28.157Z"
     }
   ],
   "civicwise": [
@@ -94,7 +181,7 @@
       "height": 900,
       "src": "/projects/civicwise.jpg",
       "alt": "Civicwise public website captured at a desktop viewport",
-      "capturedAt": "2026-10-21T11:57:32.182Z"
+      "capturedAt": "2026-10-22T20:25:03.365Z"
     },
     {
       "label": "Mobile screenshot",
@@ -103,7 +190,7 @@
       "height": 844,
       "src": "/projects/civicwise-mobile.jpg",
       "alt": "Civicwise public website captured at a mobile viewport",
-      "capturedAt": "2026-10-21T11:57:32.182Z"
+      "capturedAt": "2026-10-22T20:25:03.365Z"
     },
     {
       "label": "Tablet screenshot",
@@ -112,7 +199,36 @@
       "height": 1180,
       "src": "/projects/civicwise-tablet.jpg",
       "alt": "Civicwise public website captured at a tablet viewport",
-      "capturedAt": "2026-10-21T11:57:32.182Z"
+      "capturedAt": "2026-10-22T20:25:03.365Z"
+    }
+  ],
+  "edx": [
+    {
+      "label": "Desktop",
+      "type": "desktop",
+      "width": 1440,
+      "height": 900,
+      "src": "/projects/edx.jpg",
+      "alt": "Kinlo public website captured at a desktop viewport",
+      "capturedAt": "2026-10-22T20:24:26.141Z"
+    },
+    {
+      "label": "Mobile screenshot",
+      "type": "mobile",
+      "width": 390,
+      "height": 844,
+      "src": "/projects/edx-mobile.jpg",
+      "alt": "Kinlo public website captured at a mobile viewport",
+      "capturedAt": "2026-10-22T20:24:26.141Z"
+    },
+    {
+      "label": "Tablet screenshot",
+      "type": "tablet",
+      "width": 820,
+      "height": 1180,
+      "src": "/projects/edx-tablet.jpg",
+      "alt": "Kinlo public website captured at a tablet viewport",
+      "capturedAt": "2026-10-22T20:24:26.141Z"
     }
   ],
   "homebuyer": [
@@ -123,7 +239,7 @@
       "height": 900,
       "src": "/projects/homebuyer.jpg",
       "alt": "Homebuyer public website captured at a desktop viewport",
-      "capturedAt": "2026-10-21T11:58:03.081Z"
+      "capturedAt": "2026-10-22T20:25:39.495Z"
     },
     {
       "label": "Mobile screenshot",
@@ -132,7 +248,7 @@
       "height": 844,
       "src": "/projects/homebuyer-mobile.jpg",
       "alt": "Homebuyer public website captured at a mobile viewport",
-      "capturedAt": "2026-10-21T11:58:03.081Z"
+      "capturedAt": "2026-10-22T20:25:39.495Z"
     },
     {
       "label": "Tablet screenshot",
@@ -141,7 +257,7 @@
       "height": 1180,
       "src": "/projects/homebuyer-tablet.jpg",
       "alt": "Homebuyer public website captured at a tablet viewport",
-      "capturedAt": "2026-10-21T11:58:03.081Z"
+      "capturedAt": "2026-10-22T20:25:39.495Z"
     }
   ],
   "hydromental": [
@@ -152,7 +268,7 @@
       "height": 900,
       "src": "/projects/hydromental.jpg",
       "alt": "Hydromental public website captured at a desktop viewport",
-      "capturedAt": "2026-10-21T11:58:16.508Z"
+      "capturedAt": "2026-10-22T20:25:34.247Z"
     },
     {
       "label": "Mobile screenshot",
@@ -161,7 +277,7 @@
       "height": 844,
       "src": "/projects/hydromental-mobile.jpg",
       "alt": "Hydromental public website captured at a mobile viewport",
-      "capturedAt": "2026-10-21T11:58:16.508Z"
+      "capturedAt": "2026-10-22T20:25:34.247Z"
     },
     {
       "label": "Tablet screenshot",
@@ -170,7 +286,7 @@
       "height": 1180,
       "src": "/projects/hydromental-tablet.jpg",
       "alt": "Hydromental public website captured at a tablet viewport",
-      "capturedAt": "2026-10-21T11:58:16.508Z"
+      "capturedAt": "2026-10-22T20:25:34.247Z"
     }
   ],
   "leesmaat": [
@@ -181,7 +297,7 @@
       "height": 900,
       "src": "/projects/leesmaat.jpg",
       "alt": "Leesmaat public website captured at a desktop viewport",
-      "capturedAt": "2026-10-21T11:58:02.990Z"
+      "capturedAt": "2026-10-22T20:25:27.827Z"
     },
     {
       "label": "Mobile screenshot",
@@ -190,7 +306,7 @@
       "height": 844,
       "src": "/projects/leesmaat-mobile.jpg",
       "alt": "Leesmaat public website captured at a mobile viewport",
-      "capturedAt": "2026-10-21T11:58:02.990Z"
+      "capturedAt": "2026-10-22T20:25:27.827Z"
     },
     {
       "label": "Tablet screenshot",
@@ -199,7 +315,7 @@
       "height": 1180,
       "src": "/projects/leesmaat-tablet.jpg",
       "alt": "Leesmaat public website captured at a tablet viewport",
-      "capturedAt": "2026-10-21T11:58:02.990Z"
+      "capturedAt": "2026-10-22T20:25:27.827Z"
     }
   ],
   "lumnie": [
@@ -210,7 +326,7 @@
       "height": 900,
       "src": "/projects/lumnie.jpg",
       "alt": "Lumnie public website captured at a desktop viewport",
-      "capturedAt": "2026-10-21T11:58:07.344Z"
+      "capturedAt": "2026-10-22T20:26:13.716Z"
     },
     {
       "label": "Mobile screenshot",
@@ -219,7 +335,7 @@
       "height": 844,
       "src": "/projects/lumnie-mobile.jpg",
       "alt": "Lumnie public website captured at a mobile viewport",
-      "capturedAt": "2026-10-21T11:58:07.344Z"
+      "capturedAt": "2026-10-22T20:26:13.716Z"
     },
     {
       "label": "Tablet screenshot",
@@ -228,7 +344,7 @@
       "height": 1180,
       "src": "/projects/lumnie-tablet.jpg",
       "alt": "Lumnie public website captured at a tablet viewport",
-      "capturedAt": "2026-10-21T11:58:07.344Z"
+      "capturedAt": "2026-10-22T20:26:13.716Z"
     }
   ],
   "mentra": [
@@ -239,7 +355,7 @@
       "height": 900,
       "src": "/projects/mentra.jpg",
       "alt": "Mentra public website captured at a desktop viewport",
-      "capturedAt": "2026-10-21T11:57:14.573Z"
+      "capturedAt": "2026-10-22T20:25:19.668Z"
     },
     {
       "label": "Mobile screenshot",
@@ -248,7 +364,7 @@
       "height": 844,
       "src": "/projects/mentra-mobile.jpg",
       "alt": "Mentra public website captured at a mobile viewport",
-      "capturedAt": "2026-10-21T11:57:14.573Z"
+      "capturedAt": "2026-10-22T20:25:19.668Z"
     },
     {
       "label": "Tablet screenshot",
@@ -257,7 +373,7 @@
       "height": 1180,
       "src": "/projects/mentra-tablet.jpg",
       "alt": "Mentra public website captured at a tablet viewport",
-      "capturedAt": "2026-10-21T11:57:14.573Z"
+      "capturedAt": "2026-10-22T20:25:19.668Z"
     }
   ],
   "mypets": [
@@ -268,7 +384,7 @@
       "height": 900,
       "src": "/projects/mypets.jpg",
       "alt": "Mypets public website captured at a desktop viewport",
-      "capturedAt": "2026-10-21T11:58:06.972Z"
+      "capturedAt": "2026-10-22T20:24:54.479Z"
     },
     {
       "label": "Mobile screenshot",
@@ -277,7 +393,7 @@
       "height": 844,
       "src": "/projects/mypets-mobile.jpg",
       "alt": "Mypets public website captured at a mobile viewport",
-      "capturedAt": "2026-10-21T11:58:06.972Z"
+      "capturedAt": "2026-10-22T20:24:54.479Z"
     },
     {
       "label": "Tablet screenshot",
@@ -286,7 +402,7 @@
       "height": 1180,
       "src": "/projects/mypets-tablet.jpg",
       "alt": "Mypets public website captured at a tablet viewport",
-      "capturedAt": "2026-10-21T11:58:06.972Z"
+      "capturedAt": "2026-10-22T20:24:54.479Z"
     }
   ],
   "nest": [
@@ -297,7 +413,7 @@
       "height": 900,
       "src": "/projects/nest.jpg",
       "alt": "Nest public website captured at a desktop viewport",
-      "capturedAt": "2026-10-21T11:57:26.759Z"
+      "capturedAt": "2026-10-22T20:26:06.844Z"
     },
     {
       "label": "Mobile screenshot",
@@ -306,7 +422,7 @@
       "height": 844,
       "src": "/projects/nest-mobile.jpg",
       "alt": "Nest public website captured at a mobile viewport",
-      "capturedAt": "2026-10-21T11:57:26.759Z"
+      "capturedAt": "2026-10-22T20:26:06.844Z"
     },
     {
       "label": "Tablet screenshot",
@@ -315,7 +431,7 @@
       "height": 1180,
       "src": "/projects/nest-tablet.jpg",
       "alt": "Nest public website captured at a tablet viewport",
-      "capturedAt": "2026-10-21T11:57:26.759Z"
+      "capturedAt": "2026-10-22T20:26:06.844Z"
     }
   ],
   "nou": [
@@ -326,7 +442,7 @@
       "height": 900,
       "src": "/projects/nou.jpg",
       "alt": "Nou public website captured at a desktop viewport",
-      "capturedAt": "2026-10-21T11:57:58.503Z"
+      "capturedAt": "2026-10-22T20:26:02.469Z"
     },
     {
       "label": "Mobile screenshot",
@@ -335,7 +451,7 @@
       "height": 844,
       "src": "/projects/nou-mobile.jpg",
       "alt": "Nou public website captured at a mobile viewport",
-      "capturedAt": "2026-10-21T11:57:58.503Z"
+      "capturedAt": "2026-10-22T20:26:02.469Z"
     },
     {
       "label": "Tablet screenshot",
@@ -344,7 +460,7 @@
       "height": 1180,
       "src": "/projects/nou-tablet.jpg",
       "alt": "Nou public website captured at a tablet viewport",
-      "capturedAt": "2026-10-21T11:57:58.503Z"
+      "capturedAt": "2026-10-22T20:26:02.469Z"
     }
   ],
   "pamoja": [
@@ -355,7 +471,7 @@
       "height": 900,
       "src": "/projects/pamoja.jpg",
       "alt": "Pamoja public website captured at a desktop viewport",
-      "capturedAt": "2026-10-21T11:57:08.861Z"
+      "capturedAt": "2026-10-22T20:26:00.904Z"
     },
     {
       "label": "Mobile screenshot",
@@ -364,7 +480,7 @@
       "height": 844,
       "src": "/projects/pamoja-mobile.jpg",
       "alt": "Pamoja public website captured at a mobile viewport",
-      "capturedAt": "2026-10-21T11:57:08.861Z"
+      "capturedAt": "2026-10-22T20:26:00.904Z"
     },
     {
       "label": "Tablet screenshot",
@@ -373,7 +489,7 @@
       "height": 1180,
       "src": "/projects/pamoja-tablet.jpg",
       "alt": "Pamoja public website captured at a tablet viewport",
-      "capturedAt": "2026-10-21T11:57:08.861Z"
+      "capturedAt": "2026-10-22T20:26:00.904Z"
     }
   ],
   "procodiapp": [
@@ -384,7 +500,7 @@
       "height": 900,
       "src": "/projects/procodiapp.jpg",
       "alt": "Procodiapp public website captured at a desktop viewport",
-      "capturedAt": "2026-10-21T11:58:11.242Z"
+      "capturedAt": "2026-10-22T20:25:00.213Z"
     },
     {
       "label": "Mobile screenshot",
@@ -393,7 +509,7 @@
       "height": 844,
       "src": "/projects/procodiapp-mobile.jpg",
       "alt": "Procodiapp public website captured at a mobile viewport",
-      "capturedAt": "2026-10-21T11:58:11.242Z"
+      "capturedAt": "2026-10-22T20:25:00.213Z"
     },
     {
       "label": "Tablet screenshot",
@@ -402,7 +518,7 @@
       "height": 1180,
       "src": "/projects/procodiapp-tablet.jpg",
       "alt": "Procodiapp public website captured at a tablet viewport",
-      "capturedAt": "2026-10-21T11:58:11.242Z"
+      "capturedAt": "2026-10-22T20:25:00.213Z"
     }
   ],
   "stockvel": [
@@ -413,7 +529,7 @@
       "height": 900,
       "src": "/projects/stockvel.jpg",
       "alt": "Stockvel public website captured at a desktop viewport",
-      "capturedAt": "2026-10-21T11:57:30.901Z"
+      "capturedAt": "2026-10-22T20:25:09.005Z"
     },
     {
       "label": "Mobile screenshot",
@@ -422,7 +538,7 @@
       "height": 844,
       "src": "/projects/stockvel-mobile.jpg",
       "alt": "Stockvel public website captured at a mobile viewport",
-      "capturedAt": "2026-10-21T11:57:30.901Z"
+      "capturedAt": "2026-10-22T20:25:09.005Z"
     },
     {
       "label": "Tablet screenshot",
@@ -431,7 +547,7 @@
       "height": 1180,
       "src": "/projects/stockvel-tablet.jpg",
       "alt": "Stockvel public website captured at a tablet viewport",
-      "capturedAt": "2026-10-21T11:57:30.901Z"
+      "capturedAt": "2026-10-22T20:25:09.005Z"
     }
   ],
   "substition": [
@@ -442,7 +558,7 @@
       "height": 900,
       "src": "/projects/substition.jpg",
       "alt": "Substition public website captured at a desktop viewport",
-      "capturedAt": "2026-10-21T11:57:21.161Z"
+      "capturedAt": "2026-10-22T20:24:46.699Z"
     },
     {
       "label": "Mobile screenshot",
@@ -451,7 +567,7 @@
       "height": 844,
       "src": "/projects/substition-mobile.jpg",
       "alt": "Substition public website captured at a mobile viewport",
-      "capturedAt": "2026-10-21T11:57:21.161Z"
+      "capturedAt": "2026-10-22T20:24:46.699Z"
     },
     {
       "label": "Tablet screenshot",
@@ -460,7 +576,7 @@
       "height": 1180,
       "src": "/projects/substition-tablet.jpg",
       "alt": "Substition public website captured at a tablet viewport",
-      "capturedAt": "2026-10-21T11:57:21.161Z"
+      "capturedAt": "2026-10-22T20:24:46.699Z"
     }
   ],
   "subzero": [
@@ -471,7 +587,7 @@
       "height": 900,
       "src": "/projects/subzero.jpg",
       "alt": "Subzero public website captured at a desktop viewport",
-      "capturedAt": "2026-10-21T11:57:22.728Z"
+      "capturedAt": "2026-10-22T20:26:08.682Z"
     },
     {
       "label": "Mobile screenshot",
@@ -480,7 +596,7 @@
       "height": 844,
       "src": "/projects/subzero-mobile.jpg",
       "alt": "Subzero public website captured at a mobile viewport",
-      "capturedAt": "2026-10-21T11:57:22.728Z"
+      "capturedAt": "2026-10-22T20:26:08.682Z"
     },
     {
       "label": "Tablet screenshot",
@@ -489,7 +605,65 @@
       "height": 1180,
       "src": "/projects/subzero-tablet.jpg",
       "alt": "Subzero public website captured at a tablet viewport",
-      "capturedAt": "2026-10-21T11:57:22.728Z"
+      "capturedAt": "2026-10-22T20:26:08.682Z"
+    }
+  ],
+  "varda": [
+    {
+      "label": "Desktop",
+      "type": "desktop",
+      "width": 1440,
+      "height": 900,
+      "src": "/projects/varda.jpg",
+      "alt": "Varda public website captured at a desktop viewport",
+      "capturedAt": "2026-10-22T20:26:54.078Z"
+    },
+    {
+      "label": "Mobile screenshot",
+      "type": "mobile",
+      "width": 390,
+      "height": 844,
+      "src": "/projects/varda-mobile.jpg",
+      "alt": "Varda public website captured at a mobile viewport",
+      "capturedAt": "2026-10-22T20:26:54.078Z"
+    },
+    {
+      "label": "Tablet screenshot",
+      "type": "tablet",
+      "width": 820,
+      "height": 1180,
+      "src": "/projects/varda-tablet.jpg",
+      "alt": "Varda public website captured at a tablet viewport",
+      "capturedAt": "2026-10-22T20:26:54.078Z"
+    }
+  ],
+  "wavelet": [
+    {
+      "label": "Desktop",
+      "type": "desktop",
+      "width": 1440,
+      "height": 900,
+      "src": "/projects/wavelet.jpg",
+      "alt": "Wavelet public website captured at a desktop viewport",
+      "capturedAt": "2026-10-22T20:24:39.133Z"
+    },
+    {
+      "label": "Mobile screenshot",
+      "type": "mobile",
+      "width": 390,
+      "height": 844,
+      "src": "/projects/wavelet-mobile.jpg",
+      "alt": "Wavelet public website captured at a mobile viewport",
+      "capturedAt": "2026-10-22T20:24:39.133Z"
+    },
+    {
+      "label": "Tablet screenshot",
+      "type": "tablet",
+      "width": 820,
+      "height": 1180,
+      "src": "/projects/wavelet-tablet.jpg",
+      "alt": "Wavelet public website captured at a tablet viewport",
+      "capturedAt": "2026-10-22T20:24:39.133Z"
     }
   ]
 }
