@@ -21,14 +21,16 @@ const exists = async (file) => access(file).then(() => true, () => false);
 async function main() {
   const catalog = JSON.parse(await readFile(catalogPath, "utf8"));
   const existing = JSON.parse(await readFile(manifestPath, "utf8"));
-  const overrides = { ...existing };
+  // Drop screenshot metadata for entries removed from the active catalog.
+  const activeIds = new Set(catalog.map(project => project.id));
+  const overrides = Object.fromEntries(Object.entries(existing).filter(([id]) => activeIds.has(id)));
   await mkdir(imagesDir, { recursive: true });
 
   const targets = catalog.filter((project) => {
     if (!/^[a-z0-9][a-z0-9_-]*$/.test(project.id)) return false;
     try {
       const url = new URL(project.liveUrl);
-      return url.protocol === "https:" && url.hostname.endsWith(".vercel.app") && !url.username && !url.password;
+      return url.protocol === "https:" && (url.hostname.endsWith(".vercel.app") || url.hostname.endsWith(".themba.dev")) && !url.username && !url.password;
     } catch {
       return false;
     }
@@ -43,6 +45,9 @@ async function main() {
     pending.push(project);
   }
   if (!pending.length) {
+    await writeFile(manifestPath, JSON.stringify(Object.fromEntries(
+      Object.entries(overrides).sort(([a], [b]) => a.localeCompare(b))
+    ), null, 2) + "\n");
     console.log("All available live project screenshots are already captured.");
     return;
   }
