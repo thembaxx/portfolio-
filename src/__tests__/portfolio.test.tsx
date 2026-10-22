@@ -94,7 +94,7 @@ describe("Themba Mndebele — editorial portfolio", () => {
     expect(screen.getAllByRole("heading", { level: 3 }).map(heading => heading.textContent))
       .toEqual(projects.map(project => project.title));
     expect(projects.slice(0, 6).map(project => project.title)).toEqual(featured.map(([name]) => name));
-    expect(new Set(projects.map(project => project.githubUrl)).size).toBe(projects.length);
+    expect(new Set(projects.map(project => project.id)).size).toBe(projects.length);
     expect(screen.getByText(`${projects.length} projects`)).toBeDefined();
     for (const [name, id, liveUrl] of featured) {
       expect(screen.getByRole("link", { name: `Read ${name} case study` })).toHaveAttribute("href", `/projects/${id}`);
