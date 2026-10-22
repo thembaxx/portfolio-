@@ -1,5 +1,17 @@
 [
   {
+    "id": "billora",
+    "title": "Billora",
+    "subtitle": "Open-source project",
+    "oneLiner": "",
+    "description": "Source code and documentation for Billora.",
+    "features": [],
+    "technologies": [],
+    "screenshots": [],
+    "liveUrl": "",
+    "githubUrl": "https://github.com/thembaxx/billora"
+  },
+  {
     "id": "mentra",
     "title": "Mentra",
     "subtitle": "TypeScript project",
