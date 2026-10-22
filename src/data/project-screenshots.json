@@ -115,16 +115,6 @@
       "capturedAt": "2026-10-21T11:57:32.182Z"
     }
   ],
-  "elemental": [
-    {
-      "src": "https://opengraph.githubassets.com/1/thembaxx/Elemental",
-      "alt": "GitHub repository preview for Elemental (website screenshot unavailable)",
-      "label": "GitHub repository preview",
-      "type": "desktop",
-      "width": 1200,
-      "height": 600
-    }
-  ],
   "homebuyer": [
     {
       "label": "Desktop",
@@ -152,16 +142,6 @@
       "src": "/projects/homebuyer-tablet.jpg",
       "alt": "Homebuyer public website captured at a tablet viewport",
       "capturedAt": "2026-10-21T11:58:03.081Z"
-    }
-  ],
-  "homecheck": [
-    {
-      "src": "https://opengraph.githubassets.com/1/thembaxx/homecheck",
-      "alt": "GitHub repository preview for Homecheck (website screenshot unavailable)",
-      "label": "GitHub repository preview",
-      "type": "desktop",
-      "width": 1200,
-      "height": 600
     }
   ],
   "hydromental": [
@@ -365,16 +345,6 @@
       "src": "/projects/nou-tablet.jpg",
       "alt": "Nou public website captured at a tablet viewport",
       "capturedAt": "2026-10-21T11:57:58.503Z"
-    }
-  ],
-  "nou2": [
-    {
-      "src": "https://opengraph.githubassets.com/1/thembaxx/nou2",
-      "alt": "GitHub repository preview for Nou2 (website screenshot unavailable)",
-      "label": "GitHub repository preview",
-      "type": "desktop",
-      "width": 1200,
-      "height": 600
     }
   ],
   "pamoja": [
