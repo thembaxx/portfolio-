@@ -65,7 +65,7 @@ export function projectSchema(project: ProjectData) {
     "@graph": [
       { "@type": "SoftwareApplication", "@id": `${url}#application`, name: project.title,
         description: project.description, applicationCategory: "WebApplication", operatingSystem: "Web Browser",
-        url: project.liveUrl || project.githubUrl, sameAs: project.githubUrl, image: absoluteUrl(project.screenshots[0]?.src ?? "/brand/social.png"),
+        url: project.liveUrl || project.githubUrl, ...(project.githubUrl ? { sameAs: project.githubUrl } : {}), image: absoluteUrl(project.screenshots[0]?.src ?? "/brand/social.png"),
         author: { "@id": absoluteUrl("/#person") }, mainEntityOfPage: url },
       { "@type": "BreadcrumbList", itemListElement: [
         { "@type": "ListItem", position: 1, name: brand.name, item: siteUrl },
