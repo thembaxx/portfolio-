@@ -1,5 +1,38 @@
 {
   "owner": "thembaxx",
   "since": "2026-08-18",
-  "exclude": ["portfolio-", "thembaxx"]
+  "exclude": [
+    "portfolio-",
+    "thembaxx",
+    "homecheck",
+    "nou2",
+    "Elemental",
+    "elementals",
+    "varda-b8t9"
+  ],
+  "activeRepoNames": [
+    "wavelet",
+    "edx",
+    "billora",
+    "substition",
+    "bidcraft",
+    "mypets",
+    "procodiapp",
+    "civicwise",
+    "stockvel",
+    "mentra",
+    "citylit",
+    "leesmaat",
+    "baby",
+    "hydromental",
+    "homebuyer",
+    "carpur",
+    "pamoja",
+    "nou",
+    "subzero",
+    "nest",
+    "lumnie",
+    "bhahiapp",
+    "varda"
+  ]
 }

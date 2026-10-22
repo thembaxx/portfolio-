@@ -9,11 +9,25 @@ on:
         description: "Recapture every live project at desktop, tablet and mobile sizes"
         type: boolean
         default: false
+  pull_request:
+    paths:
+      - github-projects.config.json
+      - src/data/github-projects.json
+      - src/data/project-screenshots.json
+      - src/data/projects.ts
+      - scripts/**
+      - src/components/ProjectCard.tsx
+      - src/app/projects/**
+      - src/lib/**
+      - src/__tests__/**
+      - .github/workflows/sync-github-projects.yml
   push:
     paths:
       - github-projects.config.json
       - scripts/sync-github-projects.mjs
       - scripts/capture-project-screenshots.mjs
+      - src/data/github-projects.json
+      - src/data/project-screenshots.json
       - src/data/projects.ts
       - src/__tests__/projects.test.tsx
       - src/__tests__/discovery.test.ts
@@ -27,8 +41,28 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  validate:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: Test, lint, typecheck and build
+        run: |
+          npm test
+          npm run lint
+          npx tsc --noEmit
+          npm run build
+
   sync:
-    if: github.event_name != 'push' || github.ref_name == github.event.repository.default_branch
+    if: github.event_name != 'pull_request' && (github.event_name != 'push' || github.ref_name == github.event.repository.default_branch)
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:

@@ -72,7 +72,7 @@ export async function fetchProjects(config, { fetchImpl = fetch, token = process
 
   const eligible = repositories.filter(repo =>
     repo.owner.login.toLowerCase() === config.owner.toLowerCase() &&
-    !repo.private && !repo.fork && Date.parse(repo.created_at) >= since &&
+    !repo.private && !repo.fork && !repo.archived && !repo.disabled && Date.parse(repo.created_at) >= since &&
     !excluded.has(repo.name.toLowerCase())
   ).sort((a, b) => b.created_at.localeCompare(a.created_at) || a.name.localeCompare(b.name));
 
@@ -108,15 +108,33 @@ export async function syncProjects({
   token = process.env.GITHUB_TOKEN ?? process.env.GH_TOKEN,
 } = {}) {
   const config = JSON.parse(await readFile(configPath, "utf8"));
-  // Finish every request before replacing the last successful snapshot.
-  const projects = await fetchProjects(config, { fetchImpl, token });
-  const content = `${JSON.stringify(projects, null, 2)}\n`;
+  // Keep reviewed active live projects when their repositories are private.
+  // The portfolio's Actions token cannot enumerate other private repositories.
+  const published = await fetchProjects(config, { fetchImpl, token });
   let previous = "";
   try {
     previous = await readFile(outputPath, "utf8");
   } catch (error) {
     if (error.code !== "ENOENT") throw error;
   }
+  const allowlist = Array.isArray(config.activeRepoNames)
+    ? new Set(config.activeRepoNames.map(name => name.toLowerCase()))
+    : null;
+  const publicProjects = allowlist ? published.filter(p => allowlist.has(p.id)) : published;
+  const merged = new Map(publicProjects.map(p => [p.id, p]));
+  if (allowlist && previous) {
+    const saved = JSON.parse(previous);
+    if (!Array.isArray(saved)) throw new Error("Invalid saved project catalog.");
+    for (const project of saved) {
+      if (allowlist.has(project.id) && project.liveUrl && !merged.has(project.id)) {
+        merged.set(project.id, project);
+      }
+    }
+  }
+  const projects = allowlist
+    ? [...allowlist].map(id => merged.get(id)).filter(Boolean)
+    : publicProjects;
+  const content = `${JSON.stringify(projects, null, 2)}\n`;
   if (content !== previous) await writeFile(outputPath, content);
   return { count: projects.length, changed: content !== previous };
 }

@@ -33,8 +33,8 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         <div className="action-row mono">
           {project.liveUrl && <a className="text-link" href={project.liveUrl} target="_blank" rel="noopener noreferrer"
             aria-label={`Open live demo for ${project.title} (opens in a new tab)`}>Live demo ↗</a>}
-          <a className="text-link" href={project.githubUrl} target="_blank" rel="noopener noreferrer"
-            aria-label={`View GitHub repository for ${project.title} (opens in a new tab)`}>GitHub ↗</a>
+          {project.githubUrl && <a className="text-link" href={project.githubUrl} target="_blank" rel="noopener noreferrer"
+            aria-label={`View GitHub repository for ${project.title} (opens in a new tab)`}>GitHub ↗</a>}
           <Link className="text-link" href={`/projects/${project.id}`} aria-label={`Read ${project.title} ${screenshot ? "case study" : "project details"}`}>{screenshot ? "Case study" : "Project details"} →</Link>
         </div>
       </div>

@@ -94,7 +94,7 @@ describe("Themba Mndebele — editorial portfolio", () => {
     expect(screen.getAllByRole("heading", { level: 3 }).map(heading => heading.textContent))
       .toEqual(projects.map(project => project.title));
     expect(projects.slice(0, 6).map(project => project.title)).toEqual(featured.map(([name]) => name));
-    expect(new Set(projects.map(project => project.githubUrl)).size).toBe(projects.length);
+    expect(new Set(projects.map(project => project.id)).size).toBe(projects.length);
     expect(screen.getByText(`${projects.length} projects`)).toBeDefined();
     for (const [name, id, liveUrl] of featured) {
       expect(screen.getByRole("link", { name: `Read ${name} case study` })).toHaveAttribute("href", `/projects/${id}`);
@@ -203,9 +203,7 @@ describe("Themba Mndebele — editorial portfolio", () => {
     expect(liveDemoLink.getAttribute("aria-label")).toBe("Open Live Demo for Hydromental");
     expect(liveDemoLink.className).toContain("focus-visible:ring-2");
 
-    const githubLink = screen.getByRole("link", { name: "View GitHub repository for Hydromental" });
-    expect(githubLink).toBeDefined();
-    expect(githubLink.getAttribute("aria-label")).toBe("View GitHub repository for Hydromental");
-    expect(githubLink.className).toContain("focus-visible:ring-2");
+    // Private source repositories must not expose dead GitHub links.
+    expect(screen.queryByRole("link", { name: "View GitHub repository for Hydromental" })).toBeNull();
   });
 });

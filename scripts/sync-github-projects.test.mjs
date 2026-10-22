@@ -33,6 +33,7 @@ describe("GitHub project sync", () => {
       repository("boundary", { created_at: "2026-08-18T00:00:00Z" }),
       repository("old", { created_at: "2026-08-17T23:59:59Z", pushed_at: "2026-10-18T00:00:00Z" }),
       repository("private", { private: true }), repository("fork", { fork: true }),
+      repository("archived", { archived: true }), repository("disabled", { disabled: true }),
       repository("Portfolio-"), repository("thembaxx"),
       repository("other-owner", { owner: { login: "someone-else" } }),
     ];
@@ -85,6 +86,25 @@ describe("GitHub project sync", () => {
     }
     await expect(fetchProjects(config, { fetchImpl: async () => response({}), token: "" })).rejects.toThrow("invalid repository list");
     await expect(fetchProjects({ ...config, since: "bad-date" })).rejects.toThrow("valid YYYY-MM-DD");
+  });
+
+
+  test("preserves reviewed private live projects and removes inactive saved entries", async () => {
+    const directory = await mkdtemp(join(tmpdir(), "portfolio-active-sync-"));
+    directories.push(directory);
+    const configPath = join(directory, "config.json");
+    const outputPath = join(directory, "projects.json");
+    await writeFile(configPath, JSON.stringify({ ...config, activeRepoNames: ["private-live", "public-live"] }));
+    await writeFile(outputPath, JSON.stringify([
+      { id: "private-live", title: "Private Live", liveUrl: "https://private-live.vercel.app", githubUrl: "" },
+      { id: "archived", title: "Archived", liveUrl: "https://archived.vercel.app", githubUrl: "" }
+    ]) + "\n");
+    const fetchImpl = async url => url.includes("/users/")
+      ? response([repository("public-live", { homepage: "https://public-live.vercel.app" })])
+      : response(null, 404);
+    const result = await syncProjects({ configPath, outputPath, fetchImpl, token: "" });
+    expect(result).toEqual({ count: 2, changed: true });
+    expect(JSON.parse(await readFile(outputPath, "utf8")).map(project => project.id)).toEqual(["private-live", "public-live"]);
   });
 
   test("keeps the last catalog after a partial failure and leaves an unchanged snapshot untouched", async () => {

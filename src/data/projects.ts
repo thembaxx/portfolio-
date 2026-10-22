@@ -38,7 +38,7 @@ export const featuredProjects: ProjectData[] = [
       "KaTeX"
     ],
     "liveUrl": "https://lumnie.vercel.app",
-    "githubUrl": "https://github.com/thembaxx/lumnie",
+    "githubUrl": "",
     "screenshots": [
       {
         "src": "/projects/lumnie.jpg",
@@ -70,7 +70,7 @@ export const featuredProjects: ProjectData[] = [
       "MapLibre"
     ],
     "liveUrl": "https://citylit.vercel.app",
-    "githubUrl": "https://github.com/thembaxx/citylit",
+    "githubUrl": "",
     "screenshots": [
       {
         "src": "/projects/citylit.jpg",
@@ -102,7 +102,7 @@ export const featuredProjects: ProjectData[] = [
       "Radix UI"
     ],
     "liveUrl": "https://hydromental.vercel.app",
-    "githubUrl": "https://github.com/thembaxx/hydromental",
+    "githubUrl": "",
     "screenshots": [
       {
         "src": "/projects/hydromental.jpg",
@@ -134,7 +134,7 @@ export const featuredProjects: ProjectData[] = [
       "Motion"
     ],
     "liveUrl": "https://procodiapp.vercel.app",
-    "githubUrl": "https://github.com/thembaxx/procodiapp",
+    "githubUrl": "",
     "screenshots": [
       {
         "src": "/projects/procodiapp.jpg",
@@ -166,7 +166,7 @@ export const featuredProjects: ProjectData[] = [
       "Transformers.js"
     ],
     "liveUrl": "https://mypets-pi.vercel.app",
-    "githubUrl": "https://github.com/thembaxx/mypets",
+    "githubUrl": "",
     "screenshots": [
       {
         "src": "/projects/mypets.jpg",
@@ -198,7 +198,7 @@ export const featuredProjects: ProjectData[] = [
       "Firebase"
     ],
     "liveUrl": "https://leesmaat.vercel.app",
-    "githubUrl": "https://github.com/thembaxx/leesmaat",
+    "githubUrl": "",
     "screenshots": [
       {
         "src": "/projects/leesmaat.jpg",
@@ -241,7 +241,7 @@ function getScreenshots(project: ProjectData): ScreenshotItem[] {
 export const projects: ProjectData[] = [
   ...featuredProjects.map(project => ({ ...project, screenshots: getScreenshots(project) })),
   ...githubProjects.filter(project => !featuredProjects.some(featured =>
-    featured.id === project.id || featured.githubUrl.toLowerCase() === project.githubUrl.toLowerCase()
+    featured.id === project.id || (Boolean(featured.githubUrl) && featured.githubUrl.toLowerCase() === project.githubUrl.toLowerCase())
   )).map(project => ({ ...project, screenshots: getScreenshots(project as ProjectData) })),
 ];
 
