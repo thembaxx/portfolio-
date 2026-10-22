@@ -71,7 +71,7 @@ export function projectSchema(project: ProjectData) {
         { "@type": "ListItem", position: 1, name: brand.name, item: siteUrl },
         { "@type": "ListItem", position: 2, name: project.title, item: url },
       ] },
-    ],
+    ] as const,
   };
 }
 
