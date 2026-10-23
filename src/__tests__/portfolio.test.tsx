@@ -27,10 +27,12 @@ vitest.mock("../components/ParticleBackground", () => ({
 
 // Mock next/image cleanly for JSDOM
 vitest.mock("next/image", () => ({
-  default: (props: React.ImgHTMLAttributes<HTMLImageElement> & { fill?: boolean; priority?: boolean }) => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  default: (
+    props: React.ImgHTMLAttributes<HTMLImageElement> & { fill?: boolean; priority?: boolean },
+  ) => {
+    // oxlint-disable-next-line @typescript-eslint/no-unused-vars
     const { fill, priority, ...rest } = props;
-    // eslint-disable-next-line @next/next/no-img-element
+    // oxlint-disable-next-line @next/next/no-img-element
     return <img {...rest} alt={props.alt || ""} />;
   },
 }));
@@ -48,8 +50,15 @@ vitest.mock("next-themes", () => ({
 describe("Themba Mndebele — editorial portfolio", () => {
   test("navigation works from the homepage and project detail pages, with an accessible theme toggle", () => {
     render(<Navbar />);
-    expect(screen.getByRole("link", { name: "Themba Mndebele, top" })).toHaveAttribute("href", "/#top");
-    for (const [name, href] of [["Work", "/#work"], ["About", "/#about"], ["Contact", "/#contact"]]) {
+    expect(screen.getByRole("link", { name: "Themba Mndebele, top" })).toHaveAttribute(
+      "href",
+      "/#top",
+    );
+    for (const [name, href] of [
+      ["Work", "/#work"],
+      ["About", "/#about"],
+      ["Contact", "/#contact"],
+    ]) {
       expect(screen.getByRole("link", { name })).toHaveAttribute("href", href);
     }
     const themeToggle = screen.getByRole("button", { name: "Switch to light theme" });
@@ -63,7 +72,10 @@ describe("Themba Mndebele — editorial portfolio", () => {
     expect(screen.getByText("South Africa")).toBeDefined();
     expect(screen.getByText("Open to remote roles")).toBeDefined();
     expect(screen.getByRole("link", { name: /Selected work/ })).toHaveAttribute("href", "#work");
-    expect(screen.getByRole("link", { name: "me@themba.dev" })).toHaveAttribute("href", "mailto:me@themba.dev");
+    expect(screen.getByRole("link", { name: "me@themba.dev" })).toHaveAttribute(
+      "href",
+      "mailto:me@themba.dev",
+    );
   });
 
   test("about preserves the supplied experience and engineering ownership", () => {
@@ -91,14 +103,22 @@ describe("Themba Mndebele — editorial portfolio", () => {
       ["mypets", "mypets", "https://mypets-pi.vercel.app"],
       ["leesmaat", "leesmaat", "https://leesmaat.vercel.app"],
     ];
-    expect(screen.getAllByRole("heading", { level: 3 }).map(heading => heading.textContent))
-      .toEqual(projects.map(project => project.title));
-    expect(projects.slice(0, 6).map(project => project.title)).toEqual(featured.map(([name]) => name));
-    expect(new Set(projects.map(project => project.id)).size).toBe(projects.length);
+    expect(
+      screen.getAllByRole("heading", { level: 3 }).map((heading) => heading.textContent),
+    ).toEqual(projects.map((project) => project.title));
+    expect(projects.slice(0, 6).map((project) => project.title)).toEqual(
+      featured.map(([name]) => name),
+    );
+    expect(new Set(projects.map((project) => project.id)).size).toBe(projects.length);
     expect(screen.getByText(`${projects.length} projects`)).toBeDefined();
     for (const [name, id, liveUrl] of featured) {
-      expect(screen.getByRole("link", { name: `Read ${name} case study` })).toHaveAttribute("href", `/projects/${id}`);
-      expect(screen.getByRole("link", { name: `Open live demo for ${name} (opens in a new tab)` })).toHaveAttribute("href", liveUrl);
+      expect(screen.getByRole("link", { name: `Read ${name} case study` })).toHaveAttribute(
+        "href",
+        `/projects/${id}`,
+      );
+      expect(
+        screen.getByRole("link", { name: `Open live demo for ${name} (opens in a new tab)` }),
+      ).toHaveAttribute("href", liveUrl);
       const preview = screen.getByRole("link", { name: `Explore ${name}` });
       expect(preview.querySelector("img")).toHaveAttribute("src", `/projects/${id}.jpg`);
     }
@@ -106,11 +126,18 @@ describe("Themba Mndebele — editorial portfolio", () => {
   });
 
   test("renders screenshot gallery toggle buttons with accessible ARIA attributes and live region announcements", () => {
-    render(<ProjectScreenshotGallery projectName="Lumnie" screenshots={[
-      { src: "/projects/lumnie.jpg", alt: "Marketplace", type: "desktop", label: "Dashboard" },
-      { src: "/projects/lumnie.jpg", alt: "Services", type: "desktop", label: "Lesson" },
-    ]} />);
-    const marketplaceBtn = screen.getByRole("tab", { name: "Show Dashboard screenshot for Lumnie" });
+    render(
+      <ProjectScreenshotGallery
+        projectName="Lumnie"
+        screenshots={[
+          { src: "/projects/lumnie.jpg", alt: "Marketplace", type: "desktop", label: "Dashboard" },
+          { src: "/projects/lumnie.jpg", alt: "Services", type: "desktop", label: "Lesson" },
+        ]}
+      />,
+    );
+    const marketplaceBtn = screen.getByRole("tab", {
+      name: "Show Dashboard screenshot for Lumnie",
+    });
     const servicesBtn = screen.getByRole("tab", { name: "Show Lesson screenshot for Lumnie" });
 
     expect(marketplaceBtn).toBeDefined();
@@ -151,23 +178,34 @@ describe("Themba Mndebele — editorial portfolio", () => {
   });
 
   test("clipboard rejection provides an accessible recovery message", async () => {
-    Object.assign(navigator, { clipboard: { writeText: vitest.fn().mockRejectedValue(new Error("Permission denied")) } });
+    Object.assign(navigator, {
+      clipboard: { writeText: vitest.fn().mockRejectedValue(new Error("Permission denied")) },
+    });
     render(<Contact />);
     fireEvent.click(screen.getByRole("button", { name: /copy email address/i }));
     expect(await screen.findByRole("status")).toHaveTextContent(/Could not copy automatically/);
-    expect(screen.getByRole("link", { name: "me@themba.dev" })).toHaveAttribute("href", "mailto:me@themba.dev");
+    expect(screen.getByRole("link", { name: "me@themba.dev" })).toHaveAttribute(
+      "href",
+      "mailto:me@themba.dev",
+    );
   });
 
   test("copy confirmation resets and its timer is cleaned up on unmount", async () => {
     vitest.useFakeTimers();
     try {
-      Object.assign(navigator, { clipboard: { writeText: vitest.fn().mockResolvedValue(undefined) } });
+      Object.assign(navigator, {
+        clipboard: { writeText: vitest.fn().mockResolvedValue(undefined) },
+      });
       const { unmount } = render(<Contact />);
-      await act(async () => { fireEvent.click(screen.getByRole("button", { name: /copy email address/i })); });
+      await act(async () => {
+        fireEvent.click(screen.getByRole("button", { name: /copy email address/i }));
+      });
       expect(screen.getByText("Copied ✓")).toBeDefined();
       act(() => vitest.advanceTimersByTime(2000));
       expect(screen.getByText("Copy email")).toBeDefined();
-      await act(async () => { fireEvent.click(screen.getByRole("button", { name: /copy email address/i })); });
+      await act(async () => {
+        fireEvent.click(screen.getByRole("button", { name: /copy email address/i }));
+      });
       unmount();
       expect(vitest.getTimerCount()).toBe(0);
     } finally {
@@ -185,7 +223,7 @@ describe("Themba Mndebele — editorial portfolio", () => {
       <RootLayout>
         <Home />
       </RootLayout>,
-      { container: document.body }
+      { container: document.body },
     );
     const skipLinks = screen.getAllByRole("link", { name: "Skip to content" });
     expect(skipLinks.length).toBe(1);
@@ -204,6 +242,8 @@ describe("Themba Mndebele — editorial portfolio", () => {
     expect(liveDemoLink.className).toContain("focus-visible:ring-2");
 
     // Private source repositories must not expose dead GitHub links.
-    expect(screen.queryByRole("link", { name: "View GitHub repository for Hydromental" })).toBeNull();
+    expect(
+      screen.queryByRole("link", { name: "View GitHub repository for Hydromental" }),
+    ).toBeNull();
   });
 });

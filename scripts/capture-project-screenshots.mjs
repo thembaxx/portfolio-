@@ -16,21 +16,32 @@ const imagesDir = path.join(root, "public/projects");
 const forceRefresh = process.env.FORCE_SCREENSHOT_REFRESH === "true";
 const recaptureAfterMs = 7 * 24 * 60 * 60 * 1000;
 
-const exists = async (file) => access(file).then(() => true, () => false);
+const exists = async (file) =>
+  access(file).then(
+    () => true,
+    () => false,
+  );
 
 async function main() {
   const catalog = JSON.parse(await readFile(catalogPath, "utf8"));
   const existing = JSON.parse(await readFile(manifestPath, "utf8"));
   // Drop screenshot metadata for entries removed from the active catalog.
-  const activeIds = new Set(catalog.map(project => project.id));
-  const overrides = Object.fromEntries(Object.entries(existing).filter(([id]) => activeIds.has(id)));
+  const activeIds = new Set(catalog.map((project) => project.id));
+  const overrides = Object.fromEntries(
+    Object.entries(existing).filter(([id]) => activeIds.has(id)),
+  );
   await mkdir(imagesDir, { recursive: true });
 
   const targets = catalog.filter((project) => {
     if (!/^[a-z0-9][a-z0-9_-]*$/.test(project.id)) return false;
     try {
       const url = new URL(project.liveUrl);
-      return url.protocol === "https:" && (url.hostname.endsWith(".vercel.app") || url.hostname.endsWith(".themba.dev")) && !url.username && !url.password;
+      return (
+        url.protocol === "https:" &&
+        (url.hostname.endsWith(".vercel.app") || url.hostname.endsWith(".themba.dev")) &&
+        !url.username &&
+        !url.password
+      );
     } catch {
       return false;
     }
@@ -41,13 +52,25 @@ async function main() {
     const previous = overrides[project.id]?.[0];
     const checkedAt = Date.parse(previous?.capturedAt || "");
     const fresh = Number.isFinite(checkedAt) && Date.now() - checkedAt < recaptureAfterMs;
-    if (!forceRefresh && fresh && await exists(file) && await exists(path.join(imagesDir, project.id + "-mobile.jpg")) && await exists(path.join(imagesDir, project.id + "-tablet.jpg"))) continue;
+    if (
+      !forceRefresh &&
+      fresh &&
+      (await exists(file)) &&
+      (await exists(path.join(imagesDir, project.id + "-mobile.jpg"))) &&
+      (await exists(path.join(imagesDir, project.id + "-tablet.jpg")))
+    )
+      continue;
     pending.push(project);
   }
   if (!pending.length) {
-    await writeFile(manifestPath, JSON.stringify(Object.fromEntries(
-      Object.entries(overrides).sort(([a], [b]) => a.localeCompare(b))
-    ), null, 2) + "\n");
+    await writeFile(
+      manifestPath,
+      JSON.stringify(
+        Object.fromEntries(Object.entries(overrides).sort(([a], [b]) => a.localeCompare(b))),
+        null,
+        2,
+      ) + "\n",
+    );
     console.log("All available live project screenshots are already captured.");
     return;
   }
@@ -65,14 +88,24 @@ async function main() {
       colorScheme: "light",
     });
     try {
-      const response = await page.goto(project.liveUrl, { waitUntil: "domcontentloaded", timeout: 35000 });
+      const response = await page.goto(project.liveUrl, {
+        waitUntil: "domcontentloaded",
+        timeout: 35000,
+      });
       if (response && response.status() >= 400) throw new Error("HTTP " + response.status());
       await page.waitForLoadState("networkidle", { timeout: 6000 }).catch(() => {});
       await page.evaluate(() => document.fonts.ready).catch(() => {});
       await page.waitForTimeout(1500);
       const title = await page.title();
-      const body = await page.locator("body").innerText({ timeout: 5000 }).catch(() => "");
-      if (/authentication required|vercel authentication|deployment protection|404: not_found|deployment_not_found/i.test(title + " " + body.slice(0, 300))) {
+      const body = await page
+        .locator("body")
+        .innerText({ timeout: 5000 })
+        .catch(() => "");
+      if (
+        /authentication required|vercel authentication|deployment protection|404: not_found|deployment_not_found/i.test(
+          title + " " + body.slice(0, 300),
+        )
+      ) {
         throw new Error("Protected or unavailable deployment");
       }
       if ((await page.locator("body").count()) === 0) throw new Error("No document body");
@@ -85,7 +118,15 @@ async function main() {
         fullPage: false,
       });
       const capturedAt = new Date().toISOString();
-      const captures = [{ label: "Desktop", type: "desktop", width: 1440, height: 900, src: "/projects/" + project.id + ".jpg" }];
+      const captures = [
+        {
+          label: "Desktop",
+          type: "desktop",
+          width: 1440,
+          height: 900,
+          src: "/projects/" + project.id + ".jpg",
+        },
+      ];
       for (const view of [
         { label: "Mobile", type: "mobile", width: 390, height: 844, suffix: "-mobile" },
         { label: "Tablet", type: "tablet", width: 820, height: 1180, suffix: "-tablet" },
@@ -94,25 +135,55 @@ async function main() {
         await page.waitForTimeout(450);
         await page.screenshot({
           path: path.join(imagesDir, project.id + view.suffix + ".jpg"),
-          type: "jpeg", quality: 82, animations: "disabled", caret: "hide", fullPage: false,
+          type: "jpeg",
+          quality: 82,
+          animations: "disabled",
+          caret: "hide",
+          fullPage: false,
         });
-        captures.push({ label: view.label + " screenshot", type: view.type, width: view.width, height: view.height, src: "/projects/" + project.id + view.suffix + ".jpg" });
+        captures.push({
+          label: view.label + " screenshot",
+          type: view.type,
+          width: view.width,
+          height: view.height,
+          src: "/projects/" + project.id + view.suffix + ".jpg",
+        });
       }
-      overrides[project.id] = captures.map(item => ({ ...item, alt: project.title + " public website captured at a " + item.type + " viewport", capturedAt }));
+      overrides[project.id] = captures.map((item) => ({
+        ...item,
+        alt: project.title + " public website captured at a " + item.type + " viewport",
+        capturedAt,
+      }));
       captured++;
       console.log("Captured " + project.id + " (" + page.url() + ")");
     } catch (error) {
       failed++;
       // Failed or protected sites must not be represented by a screenshot of an error page.
       // Keep a truthful repository card while retrying the capture on the next sync.
-      if (await exists(path.join(imagesDir, project.id + ".jpg")) && (overrides[project.id]?.[0]?.src === "/projects/" + project.id + ".jpg" || project.id === "lumnie")) {
-        console.warn("Retaining previous screenshot for " + project.id + " after a failed refresh.");
+      if (
+        (await exists(path.join(imagesDir, project.id + ".jpg"))) &&
+        (overrides[project.id]?.[0]?.src === "/projects/" + project.id + ".jpg" ||
+          project.id === "lumnie")
+      ) {
+        console.warn(
+          "Retaining previous screenshot for " + project.id + " after a failed refresh.",
+        );
       } else {
-        overrides[project.id] = [{
-          src: "https://opengraph.githubassets.com/1/" + new URL(project.githubUrl).pathname.slice(1),
-          alt: "GitHub repository preview for " + project.title + " (website screenshot unavailable)",
-          label: "GitHub repository preview", type: "desktop", width: 1200, height: 600,
-        }];
+        overrides[project.id] = [
+          {
+            src:
+              "https://opengraph.githubassets.com/1/" +
+              new URL(project.githubUrl).pathname.slice(1),
+            alt:
+              "GitHub repository preview for " +
+              project.title +
+              " (website screenshot unavailable)",
+            label: "GitHub repository preview",
+            type: "desktop",
+            width: 1200,
+            height: 600,
+          },
+        ];
       }
       console.warn("Could not capture " + project.id + ": " + error.message);
     } finally {
@@ -127,10 +198,18 @@ async function main() {
   } finally {
     await browser.close();
   }
-  await writeFile(manifestPath, JSON.stringify(Object.fromEntries(
-    Object.entries(overrides).sort(([a], [b]) => a.localeCompare(b))
-  ), null, 2) + "\n");
+  await writeFile(
+    manifestPath,
+    JSON.stringify(
+      Object.fromEntries(Object.entries(overrides).sort(([a], [b]) => a.localeCompare(b))),
+      null,
+      2,
+    ) + "\n",
+  );
   console.log("Desktop captures: " + captured + " successful, " + failed + " unavailable.");
 }
 
-main().catch((error) => { console.error(error); process.exitCode = 1; });
+main().catch((error) => {
+  console.error(error);
+  process.exitCode = 1;
+});

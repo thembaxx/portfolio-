@@ -12,15 +12,20 @@ afterEach(() => vi.unstubAllEnvs());
 describe("Portfolio discovery", () => {
   test("all public discovery documents use the configured canonical origin", async () => {
     vi.stubEnv("SITE_URL", "https://portfolio.example/");
-    const { siteMetadata, identitySchema, projectMetadata, projectSchema } = await import("@/lib/seo");
+    const { siteMetadata, identitySchema, projectMetadata, projectSchema } =
+      await import("@/lib/seo");
     const { llmsDocument } = await import("@/lib/llms");
     const { default: sitemap } = await import("@/app/sitemap");
     const { default: robots } = await import("@/app/robots");
     expect(siteMetadata.metadataBase).toEqual(new URL("https://portfolio.example"));
-    expect(siteMetadata.title).toEqual({ default: "Themba Mndebele — Frontend Developer", template: "%s | Themba Mndebele" });
+    expect(siteMetadata.title).toEqual({
+      default: "Themba Mndebele — Frontend Developer",
+      template: "%s | Themba Mndebele",
+    });
     expect(identitySchema["@graph"][0]["@id"]).toBe("https://portfolio.example/#person");
-    expect(sitemap().map(entry => entry.url)).toEqual([
-      "https://portfolio.example", ...projects.map(project => `https://portfolio.example/projects/${project.id}`),
+    expect(sitemap().map((entry) => entry.url)).toEqual([
+      "https://portfolio.example",
+      ...projects.map((project) => `https://portfolio.example/projects/${project.id}`),
     ]);
     expect(robots().sitemap).toBe("https://portfolio.example/sitemap.xml");
     expect(llmsDocument()).not.toContain("https://themba.dev");
@@ -28,7 +33,10 @@ describe("Portfolio discovery", () => {
       expect(projectMetadata(project).alternates?.canonical).toBe(`/projects/${project.id}`);
       const schema = projectSchema(project)["@graph"][0];
       expect(schema.mainEntityOfPage).toBe(`https://portfolio.example/projects/${project.id}`);
-      expect(schema.image).toBe(new URL(project.screenshots[0]?.src ?? "/brand/social.png", "https://portfolio.example/").href);
+      expect(schema.image).toBe(
+        new URL(project.screenshots[0]?.src ?? "/brand/social.png", "https://portfolio.example/")
+          .href,
+      );
       expect(schema.url).toBe(project.liveUrl || project.githubUrl);
     }
   });

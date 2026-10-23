@@ -14,12 +14,29 @@ import { Footer } from "@/components/Footer";
 export default function Home() {
   return (
     <div className="portfolio-page">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeSchema({
-        "@context": "https://schema.org", "@type": "CollectionPage", "@id": absoluteUrl("/#portfolio"),
-        url: siteUrl, name: `${brand.name} — Selected work`, about: { "@id": absoluteUrl("/#person") },
-        mainEntity: { "@type": "ItemList", numberOfItems: projects.length,
-          itemListElement: projects.map((project, index) => ({ "@type": "ListItem", position: index + 1, name: project.title, url: absoluteUrl(`/projects/${project.id}`) })) },
-      }) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: serializeSchema({
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            "@id": absoluteUrl("/#portfolio"),
+            url: siteUrl,
+            name: `${brand.name} — Selected work`,
+            about: { "@id": absoluteUrl("/#person") },
+            mainEntity: {
+              "@type": "ItemList",
+              numberOfItems: projects.length,
+              itemListElement: projects.map((project, index) => ({
+                "@type": "ListItem",
+                position: index + 1,
+                name: project.title,
+                url: absoluteUrl(`/projects/${project.id}`),
+              })),
+            },
+          }),
+        }}
+      />
       <ParticleBackground />
       <Navbar />
       <main id="main-content" className="portfolio-main" tabIndex={-1}>

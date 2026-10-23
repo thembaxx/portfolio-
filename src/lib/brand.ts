@@ -5,12 +5,19 @@ export const brand = {
   title: "Themba Mndebele — Frontend Developer",
   tagline: "Thoughtful interfaces. Built to last.",
   role: "Frontend Developer",
-  description: "Frontend developer in South Africa building fast, accessible React, TypeScript and Next.js products. Explore six projects in learning, discovery and everyday life.",
+  description:
+    "Frontend developer in South Africa building fast, accessible React, TypeScript and Next.js products. Explore six projects in learning, discovery and everyday life.",
   email: "me@themba.dev",
   location: "South Africa",
   github: "https://github.com/thembaxx",
   linkedin: "https://www.linkedin.com/in/themba-p",
-  colors: { paper: "#efeae0", ink: "#14130f", orange: "#c93614", dark: "#0f0e0c", lightOrange: "#ff6a3d" },
+  colors: {
+    paper: "#efeae0",
+    ink: "#14130f",
+    orange: "#c93614",
+    dark: "#0f0e0c",
+    lightOrange: "#ff6a3d",
+  },
 } as const;
 
 /** Vector artwork is shared by the live logo and exported brand assets. */

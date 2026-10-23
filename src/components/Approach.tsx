@@ -40,7 +40,8 @@ export function Approach() {
             How I approach software engineering
           </h2>
           <p className="text-sm sm:text-base text-muted-foreground [text-wrap:pretty]">
-            Principled execution combining engineering rigor, visual design craft, and modern AI acceleration.
+            Principled execution combining engineering rigor, visual design craft, and modern AI
+            acceleration.
           </p>
         </div>
 
@@ -56,8 +57,12 @@ export function Approach() {
                 <div className="p-2.5 w-fit rounded-lg bg-secondary text-primary border border-border">
                   <Icon className="w-5 h-5" strokeWidth={1.75} aria-hidden="true" />
                 </div>
-                <h3 className="text-base font-semibold text-foreground [text-wrap:balance]">{item.title}</h3>
-                <p className="text-xs text-muted-foreground leading-relaxed [text-wrap:pretty]">{item.description}</p>
+                <h3 className="text-base font-semibold text-foreground [text-wrap:balance]">
+                  {item.title}
+                </h3>
+                <p className="text-xs text-muted-foreground leading-relaxed [text-wrap:pretty]">
+                  {item.description}
+                </p>
               </div>
             );
           })}

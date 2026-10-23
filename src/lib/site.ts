@@ -5,5 +5,6 @@ if (!["https:", "http:"].includes(origin.protocol) || origin.username || origin.
 }
 export const siteUrl = origin.origin;
 export const absoluteUrl = (path: string) => new URL(path, `${siteUrl}/`).toString();
-export const isIndexable = process.env.INDEXING_ENABLED === "true" ||
+export const isIndexable =
+  process.env.INDEXING_ENABLED === "true" ||
   (process.env.INDEXING_ENABLED !== "false" && process.env.VERCEL_ENV !== "preview");

@@ -18,15 +18,15 @@ export function ParticleBackground() {
     const rows = Math.ceil(count / columns);
     const goldenAngle = Math.PI * (3 - Math.sqrt(5));
     const points = Array.from({ length: count }, (_, index) => {
-      const y = 1 - 2 * (index + .5) / count;
+      const y = 1 - (2 * (index + 0.5)) / count;
       const radius = Math.sqrt(1 - y * y);
       return {
         x: Math.cos(goldenAngle * index) * radius * 1.7,
         y: y * 1.7,
         z: Math.sin(goldenAngle * index) * radius * 1.7,
-        fieldX: (index % columns / columns - .5) * 13,
-        fieldZ: (Math.floor(index / columns) / rows - .5) * 7,
-        seed: (index * .61803398875) % 1,
+        fieldX: ((index % columns) / columns - 0.5) * 13,
+        fieldZ: (Math.floor(index / columns) / rows - 0.5) * 7,
+        seed: (index * 0.61803398875) % 1,
       };
     });
     let width = window.innerWidth;
@@ -41,39 +41,49 @@ export function ParticleBackground() {
       if (!context || !canvas) return;
       const time = motion.matches ? 2 : (now - started) / 1000;
       const progress = Math.min(1, window.scrollY / (height * 1.1));
-      const end = Math.max(0, Math.min(1, (window.scrollY - (root.scrollHeight - height * 2.2)) / (height * 1.2)));
+      const end = Math.max(
+        0,
+        Math.min(1, (window.scrollY - (root.scrollHeight - height * 2.2)) / (height * 1.2)),
+      );
       const morph = progress * (1 - end);
-      const angle = time * .07 + morph * .6;
-      const tilt = .25 + morph * .1;
-      const cos = Math.cos(angle), sin = Math.sin(angle);
-      const tiltCos = Math.cos(tilt), tiltSin = Math.sin(tilt);
+      const angle = time * 0.07 + morph * 0.6;
+      const tilt = 0.25 + morph * 0.1;
+      const cos = Math.cos(angle),
+        sin = Math.sin(angle);
+      const tiltCos = Math.cos(tilt),
+        tiltSin = Math.sin(tilt);
       const mobile = width < 760;
       const camera = mobile ? 9.5 : 6.8;
       const focal = height / (2 * Math.tan(Math.PI / 8));
       context.clearRect(0, 0, width, height);
       context.fillStyle = color;
-      canvas.style.opacity = String(Math.max(.22, 1 - progress * .78));
+      canvas.style.opacity = String(Math.max(0.22, 1 - progress * 0.78));
 
       for (const point of points) {
-        const noise = Math.sin(point.x * 1.7 + time * .6 + point.seed * 6) * .05;
+        const noise = Math.sin(point.x * 1.7 + time * 0.6 + point.seed * 6) * 0.05;
         const x = point.x * (1 + noise) * (1 - morph) + point.fieldX * morph;
-        const y = point.y * (1 + noise) * (1 - morph) + (Math.sin(point.fieldX * .9 + time * .5) + Math.cos(point.fieldZ * 1.3 - time * .4)) * .35 * morph;
+        const y =
+          point.y * (1 + noise) * (1 - morph) +
+          (Math.sin(point.fieldX * 0.9 + time * 0.5) + Math.cos(point.fieldZ * 1.3 - time * 0.4)) *
+            0.35 *
+            morph;
         const z = point.z * (1 + noise) * (1 - morph) + point.fieldZ * morph;
         const rotatedX = x * cos + z * sin;
         const rotatedZ = z * cos - x * sin;
         const rotatedY = y * tiltCos - rotatedZ * tiltSin;
         const depth = camera - (y * tiltSin + rotatedZ * tiltCos);
-        let screenX = width / 2 + rotatedX * focal / depth;
-        let screenY = height / 2 - (rotatedY + (mobile ? 1.4 : 0)) * focal / depth;
-        const dx = screenX - pointer.x, dy = screenY - pointer.y;
+        let screenX = width / 2 + (rotatedX * focal) / depth;
+        let screenY = height / 2 - ((rotatedY + (mobile ? 1.4 : 0)) * focal) / depth;
+        const dx = screenX - pointer.x,
+          dy = screenY - pointer.y;
         const distance = Math.hypot(dx, dy);
         if (!motion.matches && distance < 100 && distance > 0) {
           const force = (1 - distance / 100) * 18;
-          screenX += dx / distance * force;
-          screenY += dy / distance * force;
+          screenX += (dx / distance) * force;
+          screenY += (dy / distance) * force;
         }
-        const size = Math.max(.6, (1.1 + point.seed * 1.7) * 2.5 / depth);
-        context.globalAlpha = (.3 + .7 * point.seed) * .7;
+        const size = Math.max(0.6, ((1.1 + point.seed * 1.7) * 2.5) / depth);
+        context.globalAlpha = (0.3 + 0.7 * point.seed) * 0.7;
         context.fillRect(screenX, screenY, size, size);
       }
       context.globalAlpha = 1;
@@ -106,9 +116,15 @@ export function ParticleBackground() {
       color = getComputedStyle(root).getPropertyValue("--ink").trim();
       draw(performance.now());
     }
-    function move(event: PointerEvent) { pointer = { x: event.clientX, y: event.clientY }; }
-    function leave() { pointer = { x: -1000, y: -1000 }; }
-    function scroll() { if (motion.matches) draw(performance.now()); }
+    function move(event: PointerEvent) {
+      pointer = { x: event.clientX, y: event.clientY };
+    }
+    function leave() {
+      pointer = { x: -1000, y: -1000 };
+    }
+    function scroll() {
+      if (motion.matches) draw(performance.now());
+    }
     const observer = new MutationObserver(updateColor);
     observer.observe(root, { attributes: true, attributeFilter: ["data-theme"] });
     updateColor();
