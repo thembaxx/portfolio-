@@ -9,7 +9,11 @@ import { useTheme } from "next-themes";
 const emptySubscribe = () => () => {};
 
 export function Navbar() {
-  const mounted = useSyncExternalStore(emptySubscribe, () => true, () => false);
+  const mounted = useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false,
+  );
   const { resolvedTheme, setTheme } = useTheme();
   const isDark = mounted && resolvedTheme === "dark";
   const label = isDark ? "Switch to light theme" : "Switch to dark theme";
@@ -17,7 +21,11 @@ export function Navbar() {
   return (
     <header className="portfolio-header">
       <Link href="/#top" className="portfolio-brand" aria-label="Themba Mndebele, top">
-        <LogoMark size={32} /><span className="brand-wordmark">{brand.name}<i aria-hidden="true">.</i></span>
+        <LogoMark size={32} />
+        <span className="brand-wordmark">
+          {brand.name}
+          <i aria-hidden="true">.</i>
+        </span>
       </Link>
       <nav className="mono" aria-label="Main navigation">
         <Link href="/#work">Work</Link>

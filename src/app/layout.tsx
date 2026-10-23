@@ -27,7 +27,10 @@ const mono = Geist_Mono({
 
 export const metadata: Metadata = siteMetadata;
 export const viewport: Viewport = {
-  themeColor: [{ media: "(prefers-color-scheme: light)", color: "#efeae0" }, { media: "(prefers-color-scheme: dark)", color: "#0f0e0c" }],
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#efeae0" },
+    { media: "(prefers-color-scheme: dark)", color: "#0f0e0c" },
+  ],
 };
 
 export default function RootLayout({

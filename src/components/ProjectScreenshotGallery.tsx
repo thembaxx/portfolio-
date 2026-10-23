@@ -30,11 +30,20 @@ export function ProjectScreenshotGallery({ screenshots, projectName }: GalleryPr
   function handleKey(event: React.KeyboardEvent<HTMLButtonElement>, index: number) {
     let next: number;
     switch (event.key) {
-      case "ArrowRight": next = (index + 1) % screenshots.length; break;
-      case "ArrowLeft": next = (index - 1 + screenshots.length) % screenshots.length; break;
-      case "Home": next = 0; break;
-      case "End": next = screenshots.length - 1; break;
-      default: return;
+      case "ArrowRight":
+        next = (index + 1) % screenshots.length;
+        break;
+      case "ArrowLeft":
+        next = (index - 1 + screenshots.length) % screenshots.length;
+        break;
+      case "Home":
+        next = 0;
+        break;
+      case "End":
+        next = screenshots.length - 1;
+        break;
+      default:
+        return;
     }
     event.preventDefault();
     setActiveTab(next);
@@ -44,14 +53,27 @@ export function ProjectScreenshotGallery({ screenshots, projectName }: GalleryPr
   return (
     <div className="screenshot-gallery">
       {hasTabs && (
-        <div role="tablist" aria-label={`Screenshot view options for ${projectName}`} className="screenshot-tabs mono">
+        <div
+          role="tablist"
+          aria-label={`Screenshot view options for ${projectName}`}
+          className="screenshot-tabs mono"
+        >
           {screenshots.map((screenshot, index) => (
-            <button key={screenshot.label} type="button" role="tab"
-              ref={element => { tabs.current[index] = element; }}
-              id={`${id}-tab-${index}`} aria-controls={panelId}
-              aria-selected={activeTab === index} tabIndex={activeTab === index ? 0 : -1}
+            <button
+              key={screenshot.label}
+              type="button"
+              role="tab"
+              ref={(element) => {
+                tabs.current[index] = element;
+              }}
+              id={`${id}-tab-${index}`}
+              aria-controls={panelId}
+              aria-selected={activeTab === index}
+              tabIndex={activeTab === index ? 0 : -1}
               aria-label={`Show ${screenshot.label} screenshot for ${projectName}`}
-              onClick={() => setActiveTab(index)} onKeyDown={event => handleKey(event, index)}>
+              onClick={() => setActiveTab(index)}
+              onKeyDown={(event) => handleKey(event, index)}
+            >
               {screenshot.label}
             </button>
           ))}
@@ -60,15 +82,30 @@ export function ProjectScreenshotGallery({ screenshots, projectName }: GalleryPr
       <p className="sr-only" aria-live="polite" aria-atomic="true">
         {`Showing ${current.label} screenshot for ${projectName}`}
       </p>
-      <div id={panelId} role={hasTabs ? "tabpanel" : undefined}
-        aria-labelledby={hasTabs ? `${id}-tab-${activeTab}` : undefined}>
+      <div
+        id={panelId}
+        role={hasTabs ? "tabpanel" : undefined}
+        aria-labelledby={hasTabs ? `${id}-tab-${activeTab}` : undefined}
+      >
         <figure className={`screenshot-figure screenshot-${current.type}`}>
-          <a href={current.src} target="_blank" rel="noopener noreferrer"
-            aria-label={`View full ${current.label} screenshot for ${projectName} (opens in a new tab)`}>
-            <Image src={current.src} alt={current.alt} unoptimized={current.src.startsWith("https://") || undefined} width={current.width ?? 1280}
-              height={current.height ?? 668} sizes="(min-width: 1024px) 960px, calc(100vw - 48px)" />
+          <a
+            href={current.src}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`View full ${current.label} screenshot for ${projectName} (opens in a new tab)`}
+          >
+            <Image
+              src={current.src}
+              alt={current.alt}
+              unoptimized={current.src.startsWith("https://") || undefined}
+              width={current.width ?? 1280}
+              height={current.height ?? 668}
+              sizes="(min-width: 1024px) 960px, calc(100vw - 48px)"
+            />
           </a>
-          <figcaption className="mono">{current.label} <span aria-hidden="true">↗</span></figcaption>
+          <figcaption className="mono">
+            {current.label} <span aria-hidden="true">↗</span>
+          </figcaption>
         </figure>
       </div>
     </div>

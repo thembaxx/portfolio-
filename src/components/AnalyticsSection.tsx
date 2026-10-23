@@ -36,7 +36,7 @@ export function AnalyticsSection() {
   const mounted = useSyncExternalStore(
     emptySubscribe,
     () => true,
-    () => false
+    () => false,
   );
 
   return (
@@ -52,7 +52,8 @@ export function AnalyticsSection() {
             Performance &amp; Core Web Vitals
           </h2>
           <p className="text-sm sm:text-base text-muted-foreground [text-wrap:pretty]">
-            Measured quality benchmarks demonstrating production speed, accessibility, SEO, and structural performance across desktop and mobile devices.
+            Measured quality benchmarks demonstrating production speed, accessibility, SEO, and
+            structural performance across desktop and mobile devices.
           </p>
         </div>
 
@@ -75,7 +76,9 @@ export function AnalyticsSection() {
               <div className="text-2xl font-bold font-mono tabular-nums tracking-tight text-foreground">
                 {item.value}
               </div>
-              <p className="text-[11px] font-mono tabular-nums text-muted-foreground">Target: {item.benchmark}</p>
+              <p className="text-[11px] font-mono tabular-nums text-muted-foreground">
+                Target: {item.benchmark}
+              </p>
             </div>
           ))}
         </div>
@@ -102,10 +105,21 @@ export function AnalyticsSection() {
             <div className="h-64 w-full">
               {mounted ? (
                 <ResponsiveContainer width="100%" height="100%">
-                  <AreaChart data={performanceData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+                  <AreaChart
+                    data={performanceData}
+                    margin={{ top: 10, right: 10, left: -20, bottom: 0 }}
+                  >
                     <CartesianGrid strokeDasharray="3 3" opacity={0.15} />
-                    <XAxis dataKey="month" stroke="currentColor" className="text-xs text-muted-foreground" />
-                    <YAxis domain={[80, 100]} stroke="currentColor" className="text-xs text-muted-foreground" />
+                    <XAxis
+                      dataKey="month"
+                      stroke="currentColor"
+                      className="text-xs text-muted-foreground"
+                    />
+                    <YAxis
+                      domain={[80, 100]}
+                      stroke="currentColor"
+                      className="text-xs text-muted-foreground"
+                    />
                     <Tooltip
                       contentStyle={{
                         backgroundColor: "var(--card)",
@@ -138,7 +152,11 @@ export function AnalyticsSection() {
             <div className="flex items-center justify-between">
               <div className="space-y-1">
                 <h3 className="text-base font-semibold flex items-center gap-2 [text-wrap:balance]">
-                  <Activity className="w-4 h-4 text-primary" strokeWidth={1.75} aria-hidden="true" />
+                  <Activity
+                    className="w-4 h-4 text-primary"
+                    strokeWidth={1.75}
+                    aria-hidden="true"
+                  />
                   Page Load &amp; Interactive Efficiency
                 </h3>
                 <p className="text-xs text-muted-foreground [text-wrap:pretty]">
@@ -153,10 +171,21 @@ export function AnalyticsSection() {
             <div className="h-64 w-full">
               {mounted ? (
                 <ResponsiveContainer width="100%" height="100%">
-                  <BarChart data={performanceData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+                  <BarChart
+                    data={performanceData}
+                    margin={{ top: 10, right: 10, left: -20, bottom: 0 }}
+                  >
                     <CartesianGrid strokeDasharray="3 3" opacity={0.15} />
-                    <XAxis dataKey="month" stroke="currentColor" className="text-xs text-muted-foreground" />
-                    <YAxis domain={[80, 100]} stroke="currentColor" className="text-xs text-muted-foreground" />
+                    <XAxis
+                      dataKey="month"
+                      stroke="currentColor"
+                      className="text-xs text-muted-foreground"
+                    />
+                    <YAxis
+                      domain={[80, 100]}
+                      stroke="currentColor"
+                      className="text-xs text-muted-foreground"
+                    />
                     <Tooltip
                       contentStyle={{
                         backgroundColor: "var(--card)",

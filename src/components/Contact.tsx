@@ -6,7 +6,12 @@ import { SectionLabel } from "./SectionLabel";
 export function Contact() {
   const [status, setStatus] = useState<"idle" | "copied" | "failed">("idle");
   const timeout = useRef<ReturnType<typeof setTimeout> | null>(null);
-  useEffect(() => () => { if (timeout.current) clearTimeout(timeout.current); }, []);
+  useEffect(
+    () => () => {
+      if (timeout.current) clearTimeout(timeout.current);
+    },
+    [],
+  );
 
   async function handleCopy() {
     if (timeout.current) clearTimeout(timeout.current);
@@ -23,21 +28,55 @@ export function Contact() {
     <section id="contact" className="portfolio-section" aria-labelledby="contact-heading">
       <div className="portfolio-wrap">
         <SectionLabel title="04 — Contact" note="Available now" />
-        <h2 id="contact-heading" className="section-heading">Have a role or project in <em>mind?</em></h2>
-        <a className="contact-email" href="mailto:me@themba.dev">me@themba.dev</a>
+        <h2 id="contact-heading" className="section-heading">
+          Have a role or project in <em>mind?</em>
+        </h2>
+        <a className="contact-email" href="mailto:me@themba.dev">
+          me@themba.dev
+        </a>
         <div className="action-row">
-          <button className="portfolio-button" type="button" onClick={handleCopy}
-            aria-label={status === "copied" ? "Email address me@themba.dev copied to clipboard" : "Copy email address me@themba.dev to clipboard"}>
+          <button
+            className="portfolio-button"
+            type="button"
+            onClick={handleCopy}
+            aria-label={
+              status === "copied"
+                ? "Email address me@themba.dev copied to clipboard"
+                : "Copy email address me@themba.dev to clipboard"
+            }
+          >
             {status === "copied" ? "Copied ✓" : "Copy email"}
           </button>
-          <a className="text-link mono" href="https://www.linkedin.com/in/themba-p" target="_blank"
-            rel="noopener noreferrer" aria-label="LinkedIn profile (opens in a new tab)">LinkedIn ↗</a>
-          <a className="text-link mono" href="https://github.com/thembaxx" target="_blank"
-            rel="noopener noreferrer" aria-label="GitHub profile (opens in a new tab)">GitHub ↗</a>
+          <a
+            className="text-link mono"
+            href="https://www.linkedin.com/in/themba-p"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn profile (opens in a new tab)"
+          >
+            LinkedIn ↗
+          </a>
+          <a
+            className="text-link mono"
+            href="https://github.com/thembaxx"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub profile (opens in a new tab)"
+          >
+            GitHub ↗
+          </a>
         </div>
-        <p className={status === "failed" ? "copy-status" : "sr-only"} role="status" aria-live="polite" aria-atomic="true">
-          {status === "copied" ? "Email address me@themba.dev copied to clipboard" :
-            status === "failed" ? "Could not copy automatically. Select the email address above to copy it, or click it to open your email app." : ""}
+        <p
+          className={status === "failed" ? "copy-status" : "sr-only"}
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+        >
+          {status === "copied"
+            ? "Email address me@themba.dev copied to clipboard"
+            : status === "failed"
+              ? "Could not copy automatically. Select the email address above to copy it, or click it to open your email app."
+              : ""}
         </p>
       </div>
     </section>

@@ -4,11 +4,11 @@ The identity extends the portfolio's editorial design with a geometric TM monogr
 
 ## Palette and type
 
-| Role | Light | Dark |
-| --- | --- | --- |
+| Role             | Light     | Dark      |
+| ---------------- | --------- | --------- |
 | Paper/background | `#efeae0` | `#0f0e0c` |
-| Ink/text | `#14130f` | `#efeae0` |
-| Accent | `#c93614` | `#ff6a3d` |
+| Ink/text         | `#14130f` | `#efeae0` |
+| Accent           | `#c93614` | `#ff6a3d` |
 
 Instrument Serif supplies the editorial voice, including italic accents. Geist handles body text and Geist Mono handles labels. Keep orange for emphasis, links and the signature dot.
 

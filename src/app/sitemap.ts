@@ -7,11 +7,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = siteUrl;
   return [
     { url: baseUrl, lastModified: new Date(), changeFrequency: "monthly", priority: 1 },
-    ...projects.map(project => ({
+    ...projects.map((project) => ({
       url: `${baseUrl}/projects/${project.id}`,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
-      priority: .8,
+      priority: 0.8,
     })),
   ];
 }

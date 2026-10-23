@@ -26,10 +26,13 @@ function summaryFromReadme(markdown) {
     const text = paragraph.trim();
     if (!text || /^(?:#|[>|!]|[-*+]\s|\d+\.\s|<)/.test(text)) continue;
     if (/create-next-app|create-react-app|first, run the development server/i.test(text)) continue;
-    const plain = text.replace(/!\[[^\]]*\]\([^)]*\)/g, "")
+    const plain = text
+      .replace(/!\[[^\]]*\]\([^)]*\)/g, "")
       .replace(/\[([^\]]+)\]\([^)]*\)/g, "$1")
-      .replace(/<[^>]*>/g, "").replace(/[*_`]/g, "")
-      .replace(/\s+/g, " ").trim();
+      .replace(/<[^>]*>/g, "")
+      .replace(/[*_`]/g, "")
+      .replace(/\s+/g, " ")
+      .trim();
     if (plain.length >= 30) return plain.length > 420 ? `${plain.slice(0, 417)}…` : plain;
   }
   return "";
@@ -38,24 +41,35 @@ function summaryFromReadme(markdown) {
 function liveUrl(homepage) {
   try {
     const url = new URL(homepage);
-    return ["https:", "http:"].includes(url.protocol) && !url.username && !url.password ? url.href : "";
+    return ["https:", "http:"].includes(url.protocol) && !url.username && !url.password
+      ? url.href
+      : "";
   } catch {
     return "";
   }
 }
 
-export async function fetchProjects(config, { fetchImpl = fetch, token = process.env.GITHUB_TOKEN ?? process.env.GH_TOKEN } = {}) {
+export async function fetchProjects(
+  config,
+  { fetchImpl = fetch, token = process.env.GITHUB_TOKEN ?? process.env.GH_TOKEN } = {},
+) {
   const since = Date.parse(`${config.since}T00:00:00Z`);
-  if (!/^[\w-]+$/.test(config.owner) || !/^\d{4}-\d{2}-\d{2}$/.test(config.since) || !Number.isFinite(since) || new Date(since).toISOString().slice(0, 10) !== config.since) {
+  if (
+    !/^[\w-]+$/.test(config.owner) ||
+    !/^\d{4}-\d{2}-\d{2}$/.test(config.since) ||
+    !Number.isFinite(since) ||
+    new Date(since).toISOString().slice(0, 10) !== config.since
+  ) {
     throw new Error("Configure a GitHub owner and a valid YYYY-MM-DD start date.");
   }
-  const excluded = new Set(config.exclude.map(name => name.toLowerCase()));
+  const excluded = new Set(config.exclude.map((name) => name.toLowerCase()));
   const headers = { Accept: "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28" };
   if (token) headers.Authorization = `Bearer ${token}`;
 
   async function request(path, optional = false) {
     const response = await fetchImpl(`https://api.github.com${path}`, {
-      headers, signal: AbortSignal.timeout(30_000),
+      headers,
+      signal: AbortSignal.timeout(30_000),
     });
     if (optional && response.status === 404) return null;
     if (!response.ok) throw new Error(`GitHub request failed (${response.status}): ${path}`);
@@ -64,36 +78,59 @@ export async function fetchProjects(config, { fetchImpl = fetch, token = process
 
   const repositories = [];
   for (let page = 1; ; page++) {
-    const batch = await request(`/users/${config.owner}/repos?type=owner&sort=created&direction=desc&per_page=100&page=${page}`);
+    const batch = await request(
+      `/users/${config.owner}/repos?type=owner&sort=created&direction=desc&per_page=100&page=${page}`,
+    );
     if (!Array.isArray(batch)) throw new Error("GitHub returned an invalid repository list.");
     repositories.push(...batch);
     if (batch.length < 100) break;
   }
 
-  const eligible = repositories.filter(repo =>
-    repo.owner.login.toLowerCase() === config.owner.toLowerCase() &&
-    !repo.private && !repo.fork && !repo.archived && !repo.disabled && Date.parse(repo.created_at) >= since &&
-    !excluded.has(repo.name.toLowerCase())
-  ).sort((a, b) => b.created_at.localeCompare(a.created_at) || a.name.localeCompare(b.name));
+  const eligible = repositories
+    .filter(
+      (repo) =>
+        repo.owner.login.toLowerCase() === config.owner.toLowerCase() &&
+        !repo.private &&
+        !repo.fork &&
+        !repo.archived &&
+        !repo.disabled &&
+        Date.parse(repo.created_at) >= since &&
+        !excluded.has(repo.name.toLowerCase()),
+    )
+    .sort((a, b) => b.created_at.localeCompare(a.created_at) || a.name.localeCompare(b.name));
 
   const projects = [];
   for (const repo of eligible) {
     const path = `/repos/${config.owner}/${encodeURIComponent(repo.name)}`;
     const readme = await request(`${path}/readme`, true);
     const packageFile = await request(`${path}/contents/package.json`, true);
-    const packageJson = packageFile?.content ? JSON.parse(Buffer.from(packageFile.content, "base64").toString("utf8")) : {};
+    const packageJson = packageFile?.content
+      ? JSON.parse(Buffer.from(packageFile.content, "base64").toString("utf8"))
+      : {};
     const dependencies = { ...packageJson.dependencies, ...packageJson.devDependencies };
-    const technologies = [...new Set([
-      ...Object.entries(technologyNames).filter(([name]) => name in dependencies).map(([, name]) => name),
-      ...(repo.language ? [repo.language] : []),
-    ])];
-    const title = repo.name.replace(/[-_]+/g, " ").replace(/^./, char => char.toUpperCase());
-    const summary = readme?.content ? summaryFromReadme(Buffer.from(readme.content, "base64").toString("utf8")) : "";
-    const description = summary || repo.description?.trim() || `Source code and documentation for ${title}.`;
+    const technologies = [
+      ...new Set([
+        ...Object.entries(technologyNames)
+          .filter(([name]) => name in dependencies)
+          .map(([, name]) => name),
+        ...(repo.language ? [repo.language] : []),
+      ]),
+    ];
+    const title = repo.name.replace(/[-_]+/g, " ").replace(/^./, (char) => char.toUpperCase());
+    const summary = readme?.content
+      ? summaryFromReadme(Buffer.from(readme.content, "base64").toString("utf8"))
+      : "";
+    const description =
+      summary || repo.description?.trim() || `Source code and documentation for ${title}.`;
     projects.push({
-      id: repo.name.toLowerCase(), title,
+      id: repo.name.toLowerCase(),
+      title,
       subtitle: repo.language ? `${repo.language} project` : "Open-source project",
-      oneLiner: "", description, features: [], technologies, screenshots: [],
+      oneLiner: "",
+      description,
+      features: [],
+      technologies,
+      screenshots: [],
       liveUrl: liveUrl(repo.homepage),
       githubUrl: repo.html_url,
     });
@@ -118,10 +155,10 @@ export async function syncProjects({
     if (error.code !== "ENOENT") throw error;
   }
   const allowlist = Array.isArray(config.activeRepoNames)
-    ? new Set(config.activeRepoNames.map(name => name.toLowerCase()))
+    ? new Set(config.activeRepoNames.map((name) => name.toLowerCase()))
     : null;
-  const publicProjects = allowlist ? published.filter(p => allowlist.has(p.id)) : published;
-  const merged = new Map(publicProjects.map(p => [p.id, p]));
+  const publicProjects = allowlist ? published.filter((p) => allowlist.has(p.id)) : published;
+  const merged = new Map(publicProjects.map((p) => [p.id, p]));
   if (allowlist && previous) {
     const saved = JSON.parse(previous);
     if (!Array.isArray(saved)) throw new Error("Invalid saved project catalog.");
@@ -132,7 +169,7 @@ export async function syncProjects({
     }
   }
   const projects = allowlist
-    ? [...allowlist].map(id => merged.get(id)).filter(Boolean)
+    ? [...allowlist].map((id) => merged.get(id)).filter(Boolean)
     : publicProjects;
   const content = `${JSON.stringify(projects, null, 2)}\n`;
   if (content !== previous) await writeFile(outputPath, content);
