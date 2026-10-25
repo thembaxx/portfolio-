@@ -38,7 +38,11 @@ describe("Featured project routing and screenshots", () => {
       "/projects/tally.png",
       "/projects/tally-mobile.png",
     ]);
-    expect(["edx", "billora", "wavelet", "bidcraft"].every((id) => projects.some((project) => project.id === id))).toBe(true);
+    expect(
+      ["edx", "billora", "wavelet", "bidcraft"].every((id) =>
+        projects.some((project) => project.id === id),
+      ),
+    ).toBe(true);
   });
 
   test("every listed project has imagery, including live-only and GitHub-only projects", () => {

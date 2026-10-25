@@ -168,14 +168,19 @@ async function main() {
           ? path.join(imagesDir, path.basename(lastCapture))
           : "";
       if (localCapture && (await exists(localCapture))) {
-        console.warn("Retaining previous screenshot for " + project.id + " after a failed refresh.");
+        console.warn(
+          "Retaining previous screenshot for " + project.id + " after a failed refresh.",
+        );
       } else if (project.githubUrl) {
         overrides[project.id] = [
           {
             src:
               "https://opengraph.githubassets.com/1/" +
               new URL(project.githubUrl).pathname.slice(1),
-            alt: "GitHub repository preview for " + project.title + " (website screenshot unavailable)",
+            alt:
+              "GitHub repository preview for " +
+              project.title +
+              " (website screenshot unavailable)",
             label: "GitHub repository preview",
             type: "desktop",
             width: 1200,

@@ -17,11 +17,7 @@ jobs:
         with:
           node-version: 24
       - run: npm ci --ignore-scripts --no-audit --no-fund
-      - name: Inspect formatting differences
-        run: |
-          npm run format
-          git diff -- scripts/capture-project-screenshots.mjs src/__tests__/projects.test.tsx src/data/github-projects.json
-          exit 1
+      - run: npm run format:check
       - run: npm run typecheck
       - run: npm run lint
       - run: npm run test
