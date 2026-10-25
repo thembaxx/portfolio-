@@ -1,5 +1,28 @@
 [
   {
+    "id": "tally",
+    "title": "Tally",
+    "subtitle": "Interactive accounting tutor for South African learners",
+    "oneLiner": "Small lessons. Big lightbulb moments.",
+    "description": "A mobile-first accounting tutor with interactive 3D explanations, South African examples, scenario-based lessons, adaptive practice and offline learning.",
+    "features": [
+      "Interactive journal entries, cash-flow stories and balance-sheet explorations",
+      "Guided practice and adaptive spaced review",
+      "Offline-capable PWA with local progress and optional encrypted sync"
+    ],
+    "technologies": [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Three.js",
+      "Motion",
+      "GSAP"
+    ],
+    "screenshots": [],
+    "liveUrl": "https://tally-wine-alpha.vercel.app",
+    "githubUrl": ""
+  },
+  {
     "id": "wavelet",
     "title": "Wavelet",
     "subtitle": "Interactive music-guessing game",

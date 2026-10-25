@@ -25,6 +25,22 @@ vitest.mock("next/navigation", () => ({
 const ids = projects.map((project) => project.id);
 
 describe("Featured project routing and screenshots", () => {
+  test("showcases the latest Tally launch with genuine local screenshots and no private source link", () => {
+    expect(projects[0].id).toBe("tally");
+    const tally = projects.filter((project) => project.id === "tally");
+    expect(tally).toHaveLength(1);
+    expect(tally[0]).toMatchObject({
+      title: "Tally",
+      liveUrl: "https://tally-wine-alpha.vercel.app",
+      githubUrl: "",
+    });
+    expect(tally[0].screenshots.map((screenshot) => screenshot.src)).toEqual([
+      "/projects/tally.png",
+      "/projects/tally-mobile.png",
+    ]);
+    expect(["edx", "billora", "wavelet", "bidcraft"].every((id) => projects.some((project) => project.id === id))).toBe(true);
+  });
+
   test("every listed project has imagery, including live-only and GitHub-only projects", () => {
     expect(projects.length).toBeGreaterThan(6);
     for (const project of projects) {
