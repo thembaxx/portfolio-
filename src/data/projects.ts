@@ -16,8 +16,25 @@ export interface ProjectData {
   githubUrl: string;
 }
 
-// Order and screenshots match the supplied LinkedIn Featured project list.
+// Showcase the newest launch first while preserving the established featured case studies.
 export const featuredProjects: ProjectData[] = [
+  {
+    id: "tally",
+    title: "Tally",
+    subtitle: "Interactive accounting tutor for South African learners",
+    oneLiner: "Small lessons. Big lightbulb moments.",
+    description:
+      "A mobile-first accounting tutor with South African examples and rand-based practice. Learn through 16 interactive lessons, 3D explanations, guided challenges and adaptive reviews that reinforce ideas over time.",
+    features: [
+      "Interactive journal entries, cash-flow stories and balance-sheet simulations",
+      "Guided, standard and stretch practice with spaced review",
+      "Offline-capable PWA, local progress backups and optional encrypted sync",
+    ],
+    technologies: ["React", "Next.js", "TypeScript", "Three.js", "Motion", "GSAP"],
+    liveUrl: "https://tally-wine-alpha.vercel.app",
+    githubUrl: "",
+    screenshots: [],
+  },
   {
     id: "lumnie",
     title: "Lumnie",

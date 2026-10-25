@@ -608,6 +608,24 @@
       "capturedAt": "2026-10-23T08:44:43.270Z"
     }
   ],
+  "tally": [
+    {
+      "label": "Desktop",
+      "type": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "src": "/projects/tally.png",
+      "alt": "Tally accounting tutor desktop dashboard with personalized review, lessons and interactive balance-scale illustration"
+    },
+    {
+      "label": "Mobile screenshot",
+      "type": "mobile",
+      "width": 390,
+      "height": 844,
+      "src": "/projects/tally-mobile.png",
+      "alt": "Tally accounting tutor mobile dashboard showing the lesson overview, daily review and navigation"
+    }
+  ],
   "varda": [
     {
       "label": "Desktop",

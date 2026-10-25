@@ -160,15 +160,18 @@ async function main() {
       failed++;
       // Failed or protected sites must not be represented by a screenshot of an error page.
       // Keep a truthful repository card while retrying the capture on the next sync.
-      if (
-        (await exists(path.join(imagesDir, project.id + ".jpg"))) &&
-        (overrides[project.id]?.[0]?.src === "/projects/" + project.id + ".jpg" ||
-          project.id === "lumnie")
-      ) {
+      // Preserve a genuine checked-in capture (including PNGs imported from the
+      // application's own repository) when a refreshed browser capture fails.
+      const lastCapture = overrides[project.id]?.[0]?.src;
+      const localCapture =
+        typeof lastCapture === "string" && lastCapture.startsWith("/projects/")
+          ? path.join(imagesDir, path.basename(lastCapture))
+          : "";
+      if (localCapture && (await exists(localCapture))) {
         console.warn(
           "Retaining previous screenshot for " + project.id + " after a failed refresh.",
         );
-      } else {
+      } else if (project.githubUrl) {
         overrides[project.id] = [
           {
             src:
@@ -182,6 +185,18 @@ async function main() {
             type: "desktop",
             width: 1200,
             height: 600,
+          },
+        ];
+      } else {
+        // A private source repository must never produce a broken GitHub URL.
+        overrides[project.id] = [
+          {
+            src: "https://image.thum.io/get/width/1200/crop/675/noanimate/" + project.liveUrl,
+            alt: "Live website preview for " + project.title + " (capture unavailable)",
+            label: "Live website preview",
+            type: "desktop",
+            width: 1200,
+            height: 675,
           },
         ];
       }

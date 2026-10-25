@@ -106,7 +106,7 @@ describe("Themba Mndebele — editorial portfolio", () => {
     expect(
       screen.getAllByRole("heading", { level: 3 }).map((heading) => heading.textContent),
     ).toEqual(projects.map((project) => project.title));
-    expect(projects.slice(0, 6).map((project) => project.title)).toEqual(
+    expect(projects.slice(1, 7).map((project) => project.title)).toEqual(
       featured.map(([name]) => name),
     );
     expect(new Set(projects.map((project) => project.id)).size).toBe(projects.length);
