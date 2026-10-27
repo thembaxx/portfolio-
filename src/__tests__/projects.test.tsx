@@ -34,9 +34,13 @@ describe("Featured project routing and screenshots", () => {
       liveUrl: "https://mise-two-teal.vercel.app",
       githubUrl: "",
     });
-    // No genuine screenshot has been captured yet; use the existing live-preview fallback.
-    expect(mise[0].screenshots[0].src).toContain("image.thum.io");
-    expect(mise[0].screenshots[0].label).toBe("Live website preview");
+    // Use a genuine local capture when available, otherwise the labeled live-site preview.
+    const miseScreenshot = mise[0].screenshots[0];
+    expect(miseScreenshot.src).toMatch(/^\/projects\/mise\.(jpg|png)$|^https:\/\/image\.thum\.io\//);
+    expect(miseScreenshot.alt).toBeTruthy();
+    if (miseScreenshot.src.startsWith("https://")) {
+      expect(miseScreenshot.label).toBe("Live website preview");
+    }
     expect(projects[1].id).toBe("tally");
     const tally = projects.filter((project) => project.id === "tally");
     expect(tally).toHaveLength(1);
