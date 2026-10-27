@@ -120,6 +120,67 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
             </div>
           </div>
 
+          {project.caseStudy && (
+            <section
+              aria-labelledby="case-study-title"
+              className="space-y-6 pt-6 border-t border-[var(--line)]"
+            >
+              <h2 id="case-study-title" className="font-serif text-2xl text-[var(--ink)]">
+                Behind the project
+              </h2>
+              <div className="grid gap-6 sm:grid-cols-2">
+                <div className="space-y-2">
+                  <h3 className="text-sm font-semibold">The problem</h3>
+                  <p className="text-sm leading-relaxed text-[var(--mute)]">
+                    {project.caseStudy.problem}
+                  </p>
+                </div>
+                <div className="space-y-2">
+                  <h3 className="text-sm font-semibold">The decision</h3>
+                  <p className="text-sm leading-relaxed text-[var(--mute)]">
+                    {project.caseStudy.decision}
+                  </p>
+                </div>
+              </div>
+              <div className="space-y-3">
+                <h3 className="text-sm font-semibold">Evidence to inspect</h3>
+                <p className="text-xs leading-relaxed text-[var(--mute)]">
+                  Explore the current demo or inspect the source revision used for this case study.
+                  Restricted source links need repository access. Test scenarios describe what is
+                  checked; they are not a claim about a current test run.
+                </p>
+                <ul className="space-y-3 text-sm">
+                  {project.caseStudy.evidence.map((item) => (
+                    <li key={item.url}>
+                      <a
+                        href={item.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-start gap-2 text-[var(--ink)] underline decoration-[var(--accent)] underline-offset-4 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+                      >
+                        <span>
+                          {item.label}
+                          {item.requiresRepositoryAccess && (
+                            <span className="block text-xs text-[var(--mute)] font-normal">
+                              Repository access required
+                            </span>
+                          )}
+                        </span>
+                        <ExternalLink className="w-4 h-4 shrink-0 mt-0.5" aria-hidden="true" />
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="space-y-2 rounded-2xl border border-[var(--line)] p-4 sm:p-5">
+                <h3 className="text-sm font-semibold">Validation and outcomes</h3>
+                <p className="text-sm leading-relaxed text-[var(--mute)]">
+                  {project.caseStudy.validationStatus}
+                </p>
+              </div>
+            </section>
+          )}
+
           {/* Case Study Details & Screenshots Grid */}
           {(project.features.length > 0 || project.screenshots.length > 0) && (
             <div className="space-y-8 pt-6 border-t border-[var(--line)]">

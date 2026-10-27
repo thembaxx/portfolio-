@@ -14,12 +14,42 @@ export interface ProjectData {
   screenshots: ScreenshotItem[];
   liveUrl: string;
   githubUrl: string;
+  caseStudy?: {
+    problem: string;
+    decision: string;
+    evidence: { label: string; url: string; requiresRepositoryAccess?: boolean }[];
+    validationStatus: string;
+  };
 }
 
 // Showcase the newest launch first while preserving the established featured case studies.
 export const featuredProjects: ProjectData[] = [
   {
     id: "tally",
+    caseStudy: {
+      problem:
+        "Accounting learners need to connect calculations to business events and distinguish supported practice from independent recall.",
+      decision:
+        "Use rand-based business stories, worked examples and adjustable guidance. Keep hints and retries in the review evidence, and require recall on separate days before extending review intervals.",
+      evidence: [
+        {
+          label: "Explore the current application",
+          url: "https://tally-wine-alpha.vercel.app",
+        },
+        {
+          label: "Tutoring decisions and evidence limits",
+          url: "https://github.com/thembaxx/tally/blob/a71f248b6adbe4ec83913b08fc7344f4066e53b4/docs/personal-tutoring.md",
+          requiresRepositoryAccess: true,
+        },
+        {
+          label: "Learning and review test scenarios",
+          url: "https://github.com/thembaxx/tally/blob/a71f248b6adbe4ec83913b08fc7344f4066e53b4/tests/learning.spec.ts",
+          requiresRepositoryAccess: true,
+        },
+      ],
+      validationStatus:
+        "The linked source documents the tutoring rules and includes practice scenarios. Improvement in learners’ accounting understanding has not yet been measured.",
+    },
     title: "Tally",
     subtitle: "Interactive accounting tutor for South African learners",
     oneLiner: "Small lessons. Big lightbulb moments.",
@@ -37,6 +67,30 @@ export const featuredProjects: ProjectData[] = [
   },
   {
     id: "lumnie",
+    caseStudy: {
+      problem:
+        "Abstract STEM ideas are difficult to explore through a static diagram, especially when learners have limited connectivity.",
+      decision:
+        "Pair short explanations with manipulable models and keyboard alternatives, and package lessons for offline download. Explain where simplified atom, circuit and force models differ from physical systems.",
+      evidence: [
+        {
+          label: "Explore the current application",
+          url: "https://lumnie.vercel.app",
+        },
+        {
+          label: "Model assumptions, controls and offline architecture",
+          url: "https://github.com/thembaxx/lumnie/blob/5aa90284ce5c4d1f479084dcf18a42e042510c9c/README.md",
+          requiresRepositoryAccess: true,
+        },
+        {
+          label: "Offline installation and caching test scenarios",
+          url: "https://github.com/thembaxx/lumnie/blob/5aa90284ce5c4d1f479084dcf18a42e042510c9c/tests/pwa.spec.ts",
+          requiresRepositoryAccess: true,
+        },
+      ],
+      validationStatus:
+        "The repository documents the model assumptions and offline design; the linked test file covers PWA behavior. Learning gains and sustained learner use have not yet been measured.",
+    },
     title: "Lumnie",
     subtitle: "Interactive STEM learning for South African learners",
     oneLiner: "A little more curious, every day.",
@@ -63,6 +117,30 @@ export const featuredProjects: ProjectData[] = [
   },
   {
     id: "citylit",
+    caseStudy: {
+      problem:
+        "An exploratory 3D map needs a direct route from finding a city to reading visitor details and keeping a day plan.",
+      decision:
+        "Add a searchable editorial guide with real destination links, source-linked visitor information and explicit save controls. Retain the 3D atlas as an optional way to explore.",
+      evidence: [
+        {
+          label: "Explore the current application",
+          url: "https://citylit.vercel.app",
+        },
+        {
+          label: "Documented discovery-to-plan design decisions",
+          url: "https://github.com/thembaxx/citylit/blob/9536de873fb2236640f812ea9d74bb29e3f586b7/docs/redesign/README.md",
+          requiresRepositoryAccess: true,
+        },
+        {
+          label: "Guide navigation and planning test scenarios",
+          url: "https://github.com/thembaxx/citylit/blob/9536de873fb2236640f812ea9d74bb29e3f586b7/tests/redesign.spec.ts",
+          requiresRepositoryAccess: true,
+        },
+      ],
+      validationStatus:
+        "The redesign notes and test scenarios document navigation and planning behavior. Effects on visit planning, task completion and real trips have not yet been measured.",
+    },
     title: "CityLit",
     subtitle: "A playful guide to South African cities",
     oneLiner: "Every city has a spark.",
@@ -89,6 +167,30 @@ export const featuredProjects: ProjectData[] = [
   },
   {
     id: "hydromental",
+    caseStudy: {
+      problem:
+        "An engaging element model can blur the distinction between a teaching illustration and sourced scientific data.",
+      decision:
+        "Keep quantitative properties in an attributed local snapshot, show units and unknown values, and document isotope, shell and model limitations alongside interactive exploration.",
+      evidence: [
+        {
+          label: "Explore the current application",
+          url: "https://hydromental.vercel.app",
+        },
+        {
+          label: "Scientific provenance and model limitations",
+          url: "https://github.com/thembaxx/hydromental/blob/9fe537e19f05f766d3ed6fbb0cf317f635db83dd/docs/sources.md",
+          requiresRepositoryAccess: true,
+        },
+        {
+          label: "Science snapshot ingestion test scenarios",
+          url: "https://github.com/thembaxx/hydromental/blob/9fe537e19f05f766d3ed6fbb0cf317f635db83dd/tests/science-ingestion.test.mjs",
+          requiresRepositoryAccess: true,
+        },
+      ],
+      validationStatus:
+        "The source policy and ingestion tests make the data contract inspectable. They do not establish classroom learning gains, which have not yet been measured.",
+    },
     title: "Hydromental",
     subtitle: "Elementals · an interactive chemistry playground",
     oneLiner: "Meet the elements.",
@@ -115,6 +217,28 @@ export const featuredProjects: ProjectData[] = [
   },
   {
     id: "procodiapp",
+    caseStudy: {
+      problem:
+        "A saved grocery promotion can mislead shoppers after its terms, expiry or source freshness change.",
+      decision:
+        "Keep source evidence and qualifying terms with each offer, hide expired or stale records, and apply the same freshness policy to offline snapshots. Expose source health for retailer ingestion.",
+      evidence: [
+        {
+          label: "Explore the current application",
+          url: "https://procodiapp.vercel.app",
+        },
+        {
+          label: "Offer freshness, expiry and offline policy",
+          url: "https://github.com/thembaxx/procodiapp/blob/5f3f7da9ceb41562d1f9183f80f524c31638c8cd/README.md",
+        },
+        {
+          label: "Retailer ingestion and source-health implementation",
+          url: "https://github.com/thembaxx/procodiapp/blob/5f3f7da9ceb41562d1f9183f80f524c31638c8cd/coupon-scraper/src/index.ts",
+        },
+      ],
+      validationStatus:
+        "The linked source documents the freshness policy and implements source-health tracking. Retailer coverage needs continuing checks; verified shopper savings have not yet been measured.",
+    },
     title: "ProcodiApp",
     subtitle: "Little Less · South African grocery promotions",
     oneLiner: "A little less at checkout.",
@@ -141,6 +265,30 @@ export const featuredProjects: ProjectData[] = [
   },
   {
     id: "mypets",
+    caseStudy: {
+      problem:
+        "A multi-pet companion must adapt routines to different species while keeping demonstration history separate from an owner’s real care records.",
+      decision:
+        "Use species-specific care and learning content, editable schedules and browser-local records. Label sample observations and clear sample history when the first personal pet is created.",
+      evidence: [
+        {
+          label: "Explore the current application",
+          url: "https://mypets-pi.vercel.app",
+        },
+        {
+          label: "Personal records, sample data and recognition limits",
+          url: "https://github.com/thembaxx/mypets/blob/482bb9ba875babb04ff0bb4b1feddbe1d942e1e1/README.md",
+          requiresRepositoryAccess: true,
+        },
+        {
+          label: "Species-specific care test scenarios",
+          url: "https://github.com/thembaxx/mypets/blob/482bb9ba875babb04ff0bb4b1feddbe1d942e1e1/tests/care.test.ts",
+          requiresRepositoryAccess: true,
+        },
+      ],
+      validationStatus:
+        "The repository describes the demo-to-personal transition and tests care-rule behavior. Changes in owners’ care routines or animal health have not yet been measured.",
+    },
     title: "mypets",
     subtitle: "Nuzzle · an everyday pet care companion",
     oneLiner: "Their little world. A little closer.",
@@ -167,6 +315,30 @@ export const featuredProjects: ProjectData[] = [
   },
   {
     id: "leesmaat",
+    caseStudy: {
+      problem:
+        "English and Afrikaans reading practice needs to work without an account or a dependable connection, while keeping each language’s progress separate.",
+      decision:
+        "Start with local reading and language-specific placement, store complete offline books, and offer explicitly configured Google sync. Anchor vocabulary and notes to the reading experience.",
+      evidence: [
+        {
+          label: "Explore the current application",
+          url: "https://leesmaat.vercel.app",
+        },
+        {
+          label: "Local-first reading and optional sync design",
+          url: "https://github.com/thembaxx/leesmaat/blob/d5df54d3d8a4ca5c70705730afb824122f1e15c9/README.md",
+          requiresRepositoryAccess: true,
+        },
+        {
+          label: "Offline reading and learning browser scenarios",
+          url: "https://github.com/thembaxx/leesmaat/blob/d5df54d3d8a4ca5c70705730afb824122f1e15c9/tests/browser/learning.spec.ts",
+          requiresRepositoryAccess: true,
+        },
+      ],
+      validationStatus:
+        "The source describes the storage and sync boundaries; browser scenarios cover offline reading and learning interactions. Literacy gains have not yet been measured.",
+    },
     title: "leesmaat",
     subtitle: "English and Afrikaans literacy, five minutes at a time",
     oneLiner: "A little reading. A bigger world.",
