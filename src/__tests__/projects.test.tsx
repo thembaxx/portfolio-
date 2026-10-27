@@ -25,8 +25,23 @@ vitest.mock("next/navigation", () => ({
 const ids = projects.map((project) => project.id);
 
 describe("Featured project routing and screenshots", () => {
-  test("showcases the latest Tally launch with genuine local screenshots and no private source link", () => {
-    expect(projects[0].id).toBe("tally");
+  test("features the newest Mise launch without exposing private GitHub source", () => {
+    expect(projects[0].id).toBe("mise");
+    const mise = projects.filter((project) => project.id === "mise");
+    expect(mise).toHaveLength(1);
+    expect(mise[0]).toMatchObject({
+      title: "Mise",
+      liveUrl: "https://mise-two-teal.vercel.app",
+      githubUrl: "",
+    });
+    // Use a genuine local capture when available, otherwise the labeled live-site preview.
+    const miseScreenshot = mise[0].screenshots[0];
+    expect(miseScreenshot.src).toMatch(/^\/projects\/mise\.(jpg|png)$|^https:\/\/image\.thum\.io\//);
+    expect(miseScreenshot.alt).toBeTruthy();
+    if (miseScreenshot.src.startsWith("https://")) {
+      expect(miseScreenshot.label).toBe("Live website preview");
+    }
+    expect(projects[1].id).toBe("tally");
     const tally = projects.filter((project) => project.id === "tally");
     expect(tally).toHaveLength(1);
     expect(tally[0]).toMatchObject({
@@ -39,7 +54,7 @@ describe("Featured project routing and screenshots", () => {
       "/projects/tally-mobile.png",
     ]);
     expect(
-      ["edx", "billora", "wavelet", "bidcraft"].every((id) =>
+      ["edx", "billora", "wavelet", "bidcraft", "nest"].every((id) =>
         projects.some((project) => project.id === id),
       ),
     ).toBe(true);

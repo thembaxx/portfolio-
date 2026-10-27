@@ -1,5 +1,29 @@
 [
   {
+    "id": "mise",
+    "title": "Mise",
+    "subtitle": "Interactive recipe discovery and 3D cooking studio",
+    "oneLiner": "The world, on your table.",
+    "description": "Explore recipes from around the world and practise cooking in an interactive 3D kitchen. Mise combines step-by-step guidance, optional physics, Cook Mode, prep checklists, persistent timers, shopping lists and a device-local personal cookbook with backup and restore.",
+    "features": [
+      "Touch-friendly virtual kitchen with optional 3D physics and accessible controls",
+      "Focused Cook Mode, preparation checklists and multiple persistent timers",
+      "Offline-capable PWA, shopping lists and reviewed cookbook import/backup"
+    ],
+    "technologies": [
+      "React",
+      "TypeScript",
+      "Vite",
+      "Three.js",
+      "React Three Fiber",
+      "Rapier",
+      "GSAP"
+    ],
+    "screenshots": [],
+    "liveUrl": "https://mise-two-teal.vercel.app",
+    "githubUrl": ""
+  },
+  {
     "id": "tally",
     "title": "Tally",
     "subtitle": "Interactive accounting tutor for South African learners",
@@ -19,7 +43,7 @@
     "id": "wavelet",
     "title": "Wavelet",
     "subtitle": "Interactive music-guessing game",
-    "description": "A music-trivia experience with listening rounds, genre and era challenges, player feedback and interactive turntable-inspired visuals.",
+    "description": "A free, interactive music-guessing game built around original browser-generated music, genre challenges, private multiplayer rooms and an animated 3D vinyl studio. Guest play uses an original audio catalog rather than unlicensed commercial clips.",
     "technologies": ["React", "Next.js", "TypeScript", "Three.js", "Motion", "GSAP"],
     "liveUrl": "https://wavelet.themba.dev",
     "oneLiner": "",
@@ -31,7 +55,7 @@
     "id": "edx",
     "title": "Kinlo",
     "subtitle": "School and family companion",
-    "description": "A school–home communication experience for class announcements, homework and school calendar updates.",
+    "description": "A school–home communication concept for South African families and educators, with fictional notices, homework, calendars and demo messages. It is not connected to a live school system.",
     "technologies": ["React", "Next.js", "TypeScript", "Motion"],
     "liveUrl": "https://edx-kappa.vercel.app",
     "oneLiner": "",
@@ -44,7 +68,7 @@
     "title": "Billora",
     "subtitle": "South African municipal account workspace",
     "oneLiner": "",
-    "description": "A local-first workspace for municipal statements, household spending comparisons, account insights and service request preparation.",
+    "description": "A local-first South African municipal account workspace for reviewed PDF statements, spending comparisons, explainable anomaly alerts and unsent service-request packs. Personal and sample data stay separate.",
     "features": [],
     "technologies": ["React", "TypeScript", "Vite", "Three.js", "Motion"],
     "screenshots": [],
@@ -67,7 +91,7 @@
     "id": "bidcraft",
     "title": "Bidcraft",
     "subtitle": "South African tender workspace",
-    "description": "A tender discovery and suitability workspace that helps South African teams review requirements, prepare draft responses and keep track of opportunities.",
+    "description": "A South African bid-writing and compliance workspace with clause-level human review, evidence links, draft proposals and version snapshots. Sample tender content is clearly marked as a demo; AI suggestions need verification before submission.",
     "technologies": ["React", "Next.js", "TypeScript", "Three.js", "Motion"],
     "liveUrl": "https://bidcraft-silk.vercel.app",
     "oneLiner": "",
@@ -278,9 +302,9 @@
   {
     "id": "nest",
     "title": "Nest",
-    "subtitle": "TypeScript project",
+    "subtitle": "Offline-first personal bookmark library",
     "oneLiner": "",
-    "description": "An offline-first personal bookmark library with collections, search, imports, exports and optional cloud sync.",
+    "description": "Save, organize and search bookmarks with browser imports, encrypted backups and optional Google Drive sync. A separate, opt-in X bookmarks importer guides manual exports without requiring account access.",
     "features": [],
     "technologies": ["React", "Next.js", "TypeScript", "Tailwind CSS", "Three.js", "Motion"],
     "screenshots": [],
