@@ -2,7 +2,7 @@
 
 A Next.js portfolio with warm paper tones, Instrument Serif and Geist typography, curated case studies, an automatically synced GitHub project catalog, and a particle sphere that becomes a wave field on scroll.
 
-The newest featured launch is [Mise](https://mise-two-teal.vercel.app), an interactive cooking studio. All 25 active reviewed projects are included in the shared catalog, with Mise first. Its private source is not linked publicly; until a real screenshot is captured, its card uses the existing clearly labeled live-site preview fallback.
+The newest featured launch is [Mise](https://mise-two-teal.vercel.app), an interactive cooking studio. All 25 active reviewed projects are included in the shared catalog, with Mise first. Its private source is not linked publicly; when a genuine capture is unavailable, its card uses the existing clearly labeled live-site preview fallback.
 
 ## Run locally
 
