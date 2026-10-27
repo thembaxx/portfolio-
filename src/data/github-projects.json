@@ -34,14 +34,7 @@
       "Guided practice and adaptive spaced review",
       "Offline-capable PWA with local progress and optional encrypted sync"
     ],
-    "technologies": [
-      "React",
-      "Next.js",
-      "TypeScript",
-      "Three.js",
-      "Motion",
-      "GSAP"
-    ],
+    "technologies": ["React", "Next.js", "TypeScript", "Three.js", "Motion", "GSAP"],
     "screenshots": [],
     "liveUrl": "https://tally-wine-alpha.vercel.app",
     "githubUrl": ""
@@ -51,14 +44,7 @@
     "title": "Wavelet",
     "subtitle": "Interactive music-guessing game",
     "description": "A free, interactive music-guessing game built around original browser-generated music, genre challenges, private multiplayer rooms and an animated 3D vinyl studio. Guest play uses an original audio catalog rather than unlicensed commercial clips.",
-    "technologies": [
-      "React",
-      "Next.js",
-      "TypeScript",
-      "Three.js",
-      "Motion",
-      "GSAP"
-    ],
+    "technologies": ["React", "Next.js", "TypeScript", "Three.js", "Motion", "GSAP"],
     "liveUrl": "https://wavelet.themba.dev",
     "oneLiner": "",
     "features": [],
@@ -70,12 +56,7 @@
     "title": "Kinlo",
     "subtitle": "School and family companion",
     "description": "A school–home communication concept for South African families and educators, with fictional notices, homework, calendars and demo messages. It is not connected to a live school system.",
-    "technologies": [
-      "React",
-      "Next.js",
-      "TypeScript",
-      "Motion"
-    ],
+    "technologies": ["React", "Next.js", "TypeScript", "Motion"],
     "liveUrl": "https://edx-kappa.vercel.app",
     "oneLiner": "",
     "features": [],
@@ -89,13 +70,7 @@
     "oneLiner": "",
     "description": "A local-first South African municipal account workspace for reviewed PDF statements, spending comparisons, explainable anomaly alerts and unsent service-request packs. Personal and sample data stay separate.",
     "features": [],
-    "technologies": [
-      "React",
-      "TypeScript",
-      "Vite",
-      "Three.js",
-      "Motion"
-    ],
+    "technologies": ["React", "TypeScript", "Vite", "Three.js", "Motion"],
     "screenshots": [],
     "liveUrl": "https://billora.themba.dev",
     "githubUrl": ""
@@ -107,12 +82,7 @@
     "oneLiner": "",
     "description": "A little clarity. A lot more control. A local-first subscription manager built with Next.js, TypeScript, Tailwind CSS, pnpm, Oxlint and Oxfmt.",
     "features": [],
-    "technologies": [
-      "React",
-      "Next.js",
-      "TypeScript",
-      "Tailwind CSS"
-    ],
+    "technologies": ["React", "Next.js", "TypeScript", "Tailwind CSS"],
     "screenshots": [],
     "liveUrl": "https://substition.vercel.app/",
     "githubUrl": ""
@@ -122,13 +92,7 @@
     "title": "Bidcraft",
     "subtitle": "South African tender workspace",
     "description": "A South African bid-writing and compliance workspace with clause-level human review, evidence links, draft proposals and version snapshots. Sample tender content is clearly marked as a demo; AI suggestions need verification before submission.",
-    "technologies": [
-      "React",
-      "Next.js",
-      "TypeScript",
-      "Three.js",
-      "Motion"
-    ],
+    "technologies": ["React", "Next.js", "TypeScript", "Three.js", "Motion"],
     "liveUrl": "https://bidcraft-silk.vercel.app",
     "oneLiner": "",
     "features": [],
@@ -162,14 +126,7 @@
     "oneLiner": "",
     "description": "A South African grocery-promotion explorer with offer terms, saved offers and three switchable interface designs.",
     "features": [],
-    "technologies": [
-      "React",
-      "Next.js",
-      "TypeScript",
-      "Tailwind CSS",
-      "Three.js",
-      "Motion"
-    ],
+    "technologies": ["React", "Next.js", "TypeScript", "Tailwind CSS", "Three.js", "Motion"],
     "screenshots": [],
     "liveUrl": "https://procodiapp.vercel.app/",
     "githubUrl": "https://github.com/thembaxx/procodiapp"
@@ -181,12 +138,7 @@
     "oneLiner": "",
     "description": "A municipal-information interface combining resident issue records with public-finance context.",
     "features": [],
-    "technologies": [
-      "React",
-      "Next.js",
-      "TypeScript",
-      "Tailwind CSS"
-    ],
+    "technologies": ["React", "Next.js", "TypeScript", "Tailwind CSS"],
     "screenshots": [],
     "liveUrl": "https://civicwise-psi.vercel.app/",
     "githubUrl": ""
@@ -198,13 +150,7 @@
     "oneLiner": "",
     "description": "A South African stokvel and burial-society administration prototype with financial test cases and a PostgreSQL foundation.",
     "features": [],
-    "technologies": [
-      "React",
-      "Next.js",
-      "TypeScript",
-      "Tailwind CSS",
-      "Motion"
-    ],
+    "technologies": ["React", "Next.js", "TypeScript", "Tailwind CSS", "Motion"],
     "screenshots": [],
     "liveUrl": "https://stockvel-seven.vercel.app/",
     "githubUrl": ""
@@ -216,14 +162,7 @@
     "oneLiner": "",
     "description": "mentra",
     "features": [],
-    "technologies": [
-      "React",
-      "Next.js",
-      "TypeScript",
-      "Tailwind CSS",
-      "Three.js",
-      "Motion"
-    ],
+    "technologies": ["React", "Next.js", "TypeScript", "Tailwind CSS", "Three.js", "Motion"],
     "screenshots": [],
     "liveUrl": "https://mentra-coral-chi.vercel.app/",
     "githubUrl": ""
@@ -255,14 +194,7 @@
     "oneLiner": "",
     "description": "English and Afrikaans reading practice in short sessions, with bookmarks, placement and an offline reading archive.",
     "features": [],
-    "technologies": [
-      "React",
-      "Next.js",
-      "TypeScript",
-      "Tailwind CSS",
-      "Three.js",
-      "Firebase"
-    ],
+    "technologies": ["React", "Next.js", "TypeScript", "Tailwind CSS", "Three.js", "Firebase"],
     "screenshots": [],
     "liveUrl": "https://leesmaat.vercel.app/",
     "githubUrl": ""
@@ -274,14 +206,7 @@
     "oneLiner": "",
     "description": "An experimental infant-audio interface with recording, interactive 3D presentation and configurable model integrations.",
     "features": [],
-    "technologies": [
-      "React",
-      "Next.js",
-      "TypeScript",
-      "Tailwind CSS",
-      "Three.js",
-      "Motion"
-    ],
+    "technologies": ["React", "Next.js", "TypeScript", "Tailwind CSS", "Three.js", "Motion"],
     "screenshots": [],
     "liveUrl": "https://baby-theta-peach.vercel.app/",
     "githubUrl": ""
@@ -313,14 +238,7 @@
     "oneLiner": "",
     "description": "A South African property due-diligence companion for comparing ownership budgets, nearby places and buyer checklists.",
     "features": [],
-    "technologies": [
-      "React",
-      "Next.js",
-      "TypeScript",
-      "Tailwind CSS",
-      "Three.js",
-      "Motion"
-    ],
+    "technologies": ["React", "Next.js", "TypeScript", "Tailwind CSS", "Three.js", "Motion"],
     "screenshots": [],
     "liveUrl": "https://homebuyer-seven.vercel.app/",
     "githubUrl": ""
@@ -332,13 +250,7 @@
     "oneLiner": "",
     "description": "A South African automotive UI with a sourced Toyota catalogue, vehicle detail pages, comparison and an affordability calculator.",
     "features": [],
-    "technologies": [
-      "React",
-      "Next.js",
-      "TypeScript",
-      "Three.js",
-      "JavaScript"
-    ],
+    "technologies": ["React", "Next.js", "TypeScript", "Three.js", "JavaScript"],
     "screenshots": [],
     "liveUrl": "https://carpur.vercel.app/",
     "githubUrl": ""
@@ -350,12 +262,7 @@
     "oneLiner": "",
     "description": "A little each. A lot together. A runnable full-stack demo of community buying, from pooled demand and tier savings to supplier delivery and QR collection.",
     "features": [],
-    "technologies": [
-      "React",
-      "Next.js",
-      "TypeScript",
-      "Tailwind CSS"
-    ],
+    "technologies": ["React", "Next.js", "TypeScript", "Tailwind CSS"],
     "screenshots": [],
     "liveUrl": "https://pamoja-rose.vercel.app/",
     "githubUrl": ""
@@ -387,12 +294,7 @@
     "oneLiner": "",
     "description": "A personal digital-footprint app built in the empty thembaxx/subzero repository on the themes branch. The Trace brand includes an original fingerprint mark, Satoshi typography, warm neutral and lime colors, light/dark themes, a Three.js identity sculpture, and GSAP scroll animation.",
     "features": [],
-    "technologies": [
-      "React",
-      "Next.js",
-      "TypeScript",
-      "Three.js"
-    ],
+    "technologies": ["React", "Next.js", "TypeScript", "Three.js"],
     "screenshots": [],
     "liveUrl": "https://subzero-five.vercel.app/",
     "githubUrl": ""
@@ -404,14 +306,7 @@
     "oneLiner": "",
     "description": "Save, organize and search bookmarks with browser imports, encrypted backups and optional Google Drive sync. A separate, opt-in X bookmarks importer guides manual exports without requiring account access.",
     "features": [],
-    "technologies": [
-      "React",
-      "Next.js",
-      "TypeScript",
-      "Tailwind CSS",
-      "Three.js",
-      "Motion"
-    ],
+    "technologies": ["React", "Next.js", "TypeScript", "Tailwind CSS", "Three.js", "Motion"],
     "screenshots": [],
     "liveUrl": "https://nest-iota-three.vercel.app/",
     "githubUrl": ""
@@ -423,14 +318,7 @@
     "oneLiner": "",
     "description": "A STEM learning playground for South African Grade 10–12 learners, combining short lessons, quizzes and interactive models.",
     "features": [],
-    "technologies": [
-      "React",
-      "Next.js",
-      "TypeScript",
-      "Tailwind CSS",
-      "Three.js",
-      "Motion"
-    ],
+    "technologies": ["React", "Next.js", "TypeScript", "Tailwind CSS", "Three.js", "Motion"],
     "screenshots": [],
     "liveUrl": "https://lumnie.vercel.app/",
     "githubUrl": ""
@@ -440,14 +328,7 @@
     "title": "BahiApp",
     "subtitle": "Spaza shop management",
     "description": "A mobile-friendly, offline-capable spaza-shop workspace for stock, sales and customer credit records.",
-    "technologies": [
-      "React",
-      "Next.js",
-      "TypeScript",
-      "Tailwind CSS",
-      "Three.js",
-      "Motion"
-    ],
+    "technologies": ["React", "Next.js", "TypeScript", "Tailwind CSS", "Three.js", "Motion"],
     "liveUrl": "https://bhahiapp.themba.dev",
     "oneLiner": "",
     "features": [],
@@ -459,14 +340,7 @@
     "title": "Varda",
     "subtitle": "Community living and spatial design",
     "description": "An interactive community-living concept with a 3D spatial laboratory and visual exploration of shared spaces.",
-    "technologies": [
-      "React",
-      "Next.js",
-      "TypeScript",
-      "Tailwind CSS",
-      "Three.js",
-      "Motion"
-    ],
+    "technologies": ["React", "Next.js", "TypeScript", "Tailwind CSS", "Three.js", "Motion"],
     "liveUrl": "https://varda-alpha.vercel.app",
     "oneLiner": "",
     "features": [],
