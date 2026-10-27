@@ -25,6 +25,47 @@ export interface ProjectData {
 // Showcase the newest launch first while preserving the established featured case studies.
 export const featuredProjects: ProjectData[] = [
   {
+    id: "mise",
+    caseStudy: {
+      problem:
+        "Cooking instructions, ingredient preparation and several simultaneous timers are difficult to track while moving between a recipe and a visually rich virtual kitchen.",
+      decision:
+        "Keep a lightweight recipe-first flow and a focused Cook Mode alongside optional 3D physics. Provide accessible HTML controls and separate real-world preparation checklists, with offline-first storage and explicit backup review.",
+      evidence: [
+        {
+          label: "Explore the current application",
+          url: "https://mise-two-teal.vercel.app",
+        },
+        {
+          label: "Cooking, offline and import design notes",
+          url: "https://github.com/thembaxx/mise/blob/b1010decad28b6d08f4c13cd06601b4192beeda5/README.md",
+          requiresRepositoryAccess: true,
+        },
+        {
+          label: "Personal cookbook backup regression scenarios",
+          url: "https://github.com/thembaxx/mise/blob/b1010decad28b6d08f4c13cd06601b4192beeda5/tests/cookbook-backup.test.ts",
+          requiresRepositoryAccess: true,
+        },
+      ],
+      validationStatus:
+        "Source documents the cooking and offline feature boundaries, with automated test scenarios for cookbook restore. Desktop/mobile gesture quality and real-world cooking outcomes are not independently established by the source links.",
+    },
+    title: "Mise",
+    subtitle: "Interactive recipe discovery and 3D cooking studio",
+    oneLiner: "The world, on your table.",
+    description:
+      "Explore recipes from around the world and practise cooking in an interactive 3D kitchen. Mise combines step-by-step guidance, optional physics, Cook Mode, prep checklists, persistent timers, shopping lists and a device-local personal cookbook with backup and restore.",
+    features: [
+      "Touch-friendly virtual kitchen with optional 3D physics and accessible controls",
+      "Focused Cook Mode, preparation checklists and multiple persistent timers",
+      "Offline-capable PWA, shopping lists and reviewed cookbook import/backup",
+    ],
+    technologies: ["React", "TypeScript", "Vite", "Three.js", "React Three Fiber", "Rapier", "GSAP"],
+    liveUrl: "https://mise-two-teal.vercel.app",
+    githubUrl: "",
+    screenshots: [],
+  },
+  {
     id: "tally",
     caseStudy: {
       problem:
