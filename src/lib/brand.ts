@@ -6,7 +6,7 @@ export const brand = {
   tagline: "Thoughtful interfaces. Built to last.",
   role: "Frontend Developer",
   description:
-    "Frontend developer in South Africa building fast, accessible React, TypeScript and Next.js products. Explore six projects in learning, discovery and everyday life.",
+    "Frontend developer in South Africa building fast, accessible React, TypeScript and Next.js products. Explore selected case studies in everyday tools, document workflows and interactive learning.",
   email: "me@themba.dev",
   location: "South Africa",
   github: "https://github.com/thembaxx",
