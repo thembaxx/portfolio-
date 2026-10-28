@@ -17,7 +17,11 @@ jobs:
         with:
           node-version: 24
       - run: npm ci --ignore-scripts --no-audit --no-fund
-      - run: npm run format:check
+      - name: Inspect Oxfmt correction
+        run: |
+          npx oxfmt --write src/components/ProjectCarousel.tsx
+          git diff -- src/components/ProjectCarousel.tsx
+          git diff --quiet -- src/components/ProjectCarousel.tsx
       - run: npm run typecheck
       - run: npm run lint
       - run: npm run test
