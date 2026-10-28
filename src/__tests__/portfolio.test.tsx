@@ -97,7 +97,7 @@ describe("Themba Mndebele — editorial portfolio", () => {
     expect(screen.getByText(/Vitest, Playwright/)).toBeDefined();
   });
 
-  test("leads with three case studies and keeps the wider collection in a compact disclosure", () => {
+  test("leads with three case studies and keeps the wider collection in an accessible carousel", () => {
     render(<ProjectSection />);
     const featured = [
       ["Nest", "nest", "https://nest-iota-three.vercel.app/"],
@@ -111,12 +111,12 @@ describe("Themba Mndebele — editorial portfolio", () => {
       featured.map(([name]) => name),
     );
     expect(screen.getByText("3 flagship case studies")).toBeDefined();
-    const disclosure = screen
-      .getByText(`More projects & experiments (${otherProjects.length})`)
-      .closest("details")!;
-    expect(disclosure).not.toHaveAttribute("open");
+    const carousel = screen.getByRole("region", { name: /More projects/ });
+    expect(carousel.querySelectorAll(".carousel-slide")).toHaveLength(otherProjects.length);
+    expect(screen.getByRole("button", { name: "Previous project" })).toBeDisabled();
+    expect(screen.getByRole("button", { name: "Next project" })).toBeEnabled();
     for (const project of otherProjects) {
-      expect(disclosure.querySelector(`a[href="/projects/${project.id}"]`)).not.toBeNull();
+      expect(carousel.querySelector(`a[href="/projects/${project.id}"]`)).not.toBeNull();
     }
     for (const [name, id, liveUrl] of featured) {
       expect(screen.getByRole("link", { name: `Read ${name} case study` })).toHaveAttribute(

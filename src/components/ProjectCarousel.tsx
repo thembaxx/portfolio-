@@ -17,6 +17,7 @@ export function ProjectCarousel({ projects }: { projects: ProjectData[] }) {
 
   useGSAP(
     () => {
+      if (typeof window.matchMedia !== "function") return;
       const media = gsap.matchMedia();
       media.add("(prefers-reduced-motion: no-preference)", () => {
         gsap.from(".carousel-heading", {
@@ -69,12 +70,15 @@ export function ProjectCarousel({ projects }: { projects: ProjectData[] }) {
       });
     };
     element.addEventListener("scroll", update, { passive: true });
-    const resize = new ResizeObserver(update);
-    resize.observe(element);
+    const resize =
+      typeof ResizeObserver !== "undefined" ? new ResizeObserver(update) : null;
+    resize?.observe(element);
+    window.addEventListener("resize", update);
     update();
     return () => {
       element.removeEventListener("scroll", update);
-      resize.disconnect();
+      window.removeEventListener("resize", update);
+      resize?.disconnect();
       cancelAnimationFrame(frame);
     };
   }, []);
@@ -86,8 +90,8 @@ export function ProjectCarousel({ projects }: { projects: ProjectData[] }) {
     const offset = card.getBoundingClientRect().left - element.getBoundingClientRect().left;
     element.scrollTo({
       left: element.scrollLeft + offset,
-      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
-        ? "instant"
+      behavior: window.matchMedia?.("(prefers-reduced-motion: reduce)").matches
+        ? "auto"
         : "smooth",
     });
   }
@@ -155,7 +159,7 @@ export function ProjectCarousel({ projects }: { projects: ProjectData[] }) {
           const screenshot =
             project.screenshots.find((item) => item.type === "desktop") ?? project.screenshots[0];
           return (
-            <li key={project.id} className="carousel-slide">
+            <li key={project.id} className="carousel-slide" data-active={active === index}>
               <Link className="carousel-card" href={`/projects/${project.id}`}>
                 {screenshot && (
                   <div className="carousel-image">

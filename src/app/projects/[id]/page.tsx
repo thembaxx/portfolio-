@@ -75,7 +75,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
               {project.technologies.map((tech) => (
                 <span
                   key={tech}
-                  className="px-3 py-1 text-xs font-medium rounded-full bg-[var(--accentSoft)] text-[var(--accent)]"
+                  className="squircle-chip px-3 py-1 text-xs font-medium rounded-xl bg-[var(--accentSoft)] text-[var(--accent)]"
                 >
                   {tech}
                 </span>
@@ -83,7 +83,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
               {project.tools?.map((tool) => (
                 <span
                   key={tool}
-                  className="px-3 py-1 text-xs font-medium rounded-full bg-[var(--card)] border border-[var(--line)] text-[var(--mute)]"
+                  className="squircle-chip px-3 py-1 text-xs font-medium rounded-xl bg-[var(--card)] border border-[var(--line)] text-[var(--mute)]"
                 >
                   {tool}
                 </span>
@@ -98,7 +98,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`Open Live Demo for ${project.title}`}
-                  className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[var(--accent)] text-white text-xs font-medium hover:opacity-90 active:scale-95 transition-all shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+                  className="squircle-cta inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-[var(--accent)] text-white text-xs font-medium hover:opacity-90 active:scale-95 transition-all shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
                 >
                   <span>Live Demo</span>
                   <ArrowSquareOutIcon className="w-3.5 h-3.5" aria-hidden="true" />
@@ -212,7 +212,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
                   ))}
                 </ul>
               </div>
-              <div className="space-y-2 rounded-2xl border border-[var(--line)] p-4 sm:p-5">
+              <div className="squircle-panel space-y-2 rounded-2xl border border-[var(--line)] p-4 sm:p-5">
                 <h3 className="text-sm font-semibold">Validation and outcomes</h3>
                 <p className="text-sm leading-relaxed text-[var(--mute)]">
                   {project.caseStudy.validationStatus}

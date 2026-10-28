@@ -767,3 +767,244 @@
     transform: none !important;
   }
 }
+
+/* Squircle surfaces and focused motion: geometry falls back to rounded corners. */
+:root {
+  --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+body {
+  transition:
+    background-color 360ms ease,
+    color 360ms ease;
+}
+.portfolio-button,
+.theme-toggle,
+.carousel-controls button,
+.carousel-image,
+.screenshot-tabs button,
+.squircle-chip,
+.squircle-cta,
+.squircle-panel {
+  corner-shape: squircle;
+}
+.portfolio-button,
+.squircle-cta {
+  border-radius: 20px;
+}
+.portfolio-button {
+  transition:
+    background-color 250ms ease,
+    color 250ms ease,
+    transform 340ms var(--motion-ease),
+    box-shadow 340ms var(--motion-ease);
+}
+.portfolio-button:hover {
+  box-shadow: 0 10px 24px -16px var(--accent);
+}
+.portfolio-button:active,
+.squircle-cta:active {
+  transform: translateY(0) scale(0.975);
+}
+.portfolio-button svg,
+.text-link svg,
+.squircle-cta svg {
+  transition: transform 300ms var(--motion-ease);
+}
+.portfolio-button:hover svg,
+.squircle-cta:hover svg {
+  transform: translate(2px, -2px);
+}
+.text-link:hover svg {
+  transform: translate(2px, -2px);
+}
+.theme-toggle {
+  width: 40px;
+  height: 40px;
+  border-radius: 15px;
+  transition:
+    background-color 220ms ease,
+    border-color 220ms ease,
+    transform 300ms var(--motion-ease);
+}
+.theme-toggle:not(:disabled):hover {
+  background: var(--accentSoft);
+  border-color: var(--accent);
+  transform: rotate(-8deg);
+}
+.theme-toggle:not(:disabled):active {
+  transform: scale(0.94);
+}
+.carousel-controls button {
+  border-radius: 18px;
+}
+.carousel-controls button svg {
+  transition: transform 300ms var(--motion-ease);
+}
+.carousel-controls button:enabled:first-of-type:hover svg {
+  transform: translateX(-3px);
+}
+.carousel-controls button:enabled:last-of-type:hover svg {
+  transform: translateX(3px);
+}
+.carousel-track {
+  scroll-padding-inline: 4px;
+  padding-inline: 4px;
+  -webkit-overflow-scrolling: touch;
+}
+.carousel-slide {
+  transition: opacity 350ms ease;
+}
+.carousel-image {
+  position: relative;
+  border-radius: clamp(24px, 3.6vw, 44px);
+  isolation: isolate;
+  transition:
+    border-color 300ms ease,
+    transform 500ms var(--motion-ease),
+    box-shadow 500ms var(--motion-ease),
+    opacity 350ms ease;
+}
+.carousel-slide[data-active="true"] .carousel-image {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px -32px var(--ink);
+}
+.carousel-slide[data-active="false"] .carousel-image {
+  opacity: 0.92;
+}
+.carousel-copy h4 {
+  transition: color 300ms ease;
+}
+.carousel-slide[data-active="true"] .carousel-copy h4 {
+  color: var(--accent);
+}
+.carousel-card:focus-visible {
+  outline-offset: 6px;
+}
+.carousel-card:active img {
+  transform: scale(0.99);
+}
+.project-preview,
+.screenshot-figure a {
+  transition:
+    border-color 300ms ease,
+    box-shadow 450ms var(--motion-ease);
+}
+.project-preview img {
+  transition: transform 700ms var(--motion-ease);
+}
+.project-preview:is(:hover, :focus-visible),
+.screenshot-figure a:is(:hover, :focus-visible) {
+  border-color: var(--accent);
+  box-shadow: 0 18px 40px -34px var(--ink);
+}
+.screenshot-tabs {
+  gap: 8px;
+  border-bottom: 0;
+}
+.screenshot-tabs button {
+  padding: 9px 14px;
+  border: 1px solid transparent;
+  border-radius: 13px;
+  transition:
+    background-color 220ms ease,
+    color 220ms ease,
+    border-color 220ms ease;
+}
+.screenshot-tabs button[aria-selected="true"] {
+  background: var(--accentSoft);
+  border: 1px solid var(--line);
+}
+.screenshot-tabs button:not([aria-selected="true"]):hover {
+  background: var(--card);
+  color: var(--ink);
+}
+.squircle-chip {
+  border-radius: 13px;
+}
+.squircle-panel {
+  border-radius: 28px;
+}
+.squircle-cta {
+  transition:
+    background-color 240ms ease,
+    transform 300ms var(--motion-ease),
+    box-shadow 300ms ease;
+}
+.squircle-cta:hover {
+  box-shadow: 0 12px 24px -18px var(--accent);
+}
+@media (hover: hover) {
+  .project-preview:hover img {
+    transform: scale(1.035);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero-lead,
+  .portfolio-hero .action-row,
+  .hero-meta {
+    animation: hero-content-in 800ms var(--motion-ease) both;
+  }
+  .hero-lead {
+    animation-delay: 240ms;
+  }
+  .portfolio-hero .action-row {
+    animation-delay: 360ms;
+  }
+  .hero-meta {
+    animation-delay: 480ms;
+  }
+}
+@keyframes hero-content-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Progressive enhancement: in older browsers content remains fully visible. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .portfolio-section .section-heading,
+    .editorial-project .project-preview,
+    .toolkit-list > div,
+    .about-statement,
+    .about-description,
+    .contact-email {
+      animation: scroll-content-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 75%;
+    }
+  }
+}
+@keyframes scroll-content-in {
+  from {
+    opacity: 0.64;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (max-width: 759px) {
+  .carousel-image {
+    border-radius: 26px;
+  }
+  .carousel-controls button {
+    width: 46px;
+    height: 46px;
+  }
+  .screenshot-tabs button {
+    padding: 8px 12px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .carousel-slide[data-active="true"] .carousel-image,
+  .project-preview img,
+  .carousel-image img {
+    transform: none !important;
+  }
+}
