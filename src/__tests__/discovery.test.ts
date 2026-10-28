@@ -55,7 +55,7 @@ describe("Portfolio discovery", () => {
     }
   });
 
-  test("the requested llm.txt alias serves the same plain text as llms.txt, with all six projects", async () => {
+  test("the requested llm.txt alias serves the same plain text as llms.txt, with the full catalog", async () => {
     const { GET: short } = await import("@/app/llms.txt/route");
     const { GET: alias } = await import("@/app/llm.txt/route");
     const { GET: full } = await import("@/app/llms-full.txt/route");

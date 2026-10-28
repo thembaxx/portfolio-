@@ -59,9 +59,19 @@ const curatedProjects: ProjectData[] = [
       ],
       tradeoff:
         "Account-free storage lowers setup friction, but browser data can be cleared or evicted. Backups and optional sync are explicit choices; live Google consent requires separate configuration.",
-      evidence: [{ label: "Explore the application", url: "https://nest-iota-three.vercel.app/" }],
+      evidence: [
+        { label: "Explore the application", url: "https://nest-iota-three.vercel.app/" },
+        {
+          label: "Launch checks and recovery decisions",
+          url: "https://github.com/thembaxx/nest/blob/34349f8ed0fc8e86c436c1ba85591b5810ce15df/docs/launch-readiness.md",
+        },
+        {
+          label: "Import, recovery and cross-profile restore browser scenarios",
+          url: "https://github.com/thembaxx/nest/blob/34349f8ed0fc8e86c436c1ba85591b5810ce15df/tests/launch-readiness.spec.ts",
+        },
+      ],
       validationStatus:
-        "Release verification and known limits are recorded with the source. Adoption and user research outcomes have not been measured.",
+        "On 28 October 2026, 69 unit tests and 12 targeted production Chromium checks passed, including a complete mobile import-to-restore journey. Live Google consent and WebKit were outside this verification. Adoption and user research outcomes have not been measured.",
     },
   },
   {
@@ -95,9 +105,19 @@ const curatedProjects: ProjectData[] = [
       ],
       tradeoff:
         "Local processing keeps documents on the device. Users review extracted values, retain backups and submit queries themselves; municipal retrieval and submission are not integrated.",
-      evidence: [{ label: "Explore the application", url: "https://billora.themba.dev" }],
+      evidence: [
+        { label: "Explore the application", url: "https://billora.themba.dev" },
+        {
+          label: "Statement-to-query product decisions",
+          url: "https://github.com/thembaxx/billora/blob/19dad5b0d164c4a6e3e9301bedffc551fb23e1c0/docs/CASE_STUDY.md",
+        },
+        {
+          label: "Verified comparison, backup and failure-recovery evidence",
+          url: "https://github.com/thembaxx/billora/blob/19dad5b0d164c4a6e3e9301bedffc551fb23e1c0/docs/LAUNCH_EVIDENCE.md",
+        },
+      ],
       validationStatus:
-        "Release verification and known limits are recorded with the source. Automated checks do not establish extraction accuracy across every municipality or real billing outcomes.",
+        "On 28 October 2026, all 23 local production browser tests passed, including real PDF imports, comparison-pack bytes, encrypted backups and failed-restore rollback. Automated checks do not establish extraction accuracy across every municipality or real billing outcomes.",
     },
   },
   {
@@ -313,18 +333,20 @@ const curatedProjects: ProjectData[] = [
           url: "https://hydromental.vercel.app",
         },
         {
+          label: "Verified learning, recovery and accessibility checks",
+          url: "https://github.com/thembaxx/hydromental/blob/ecfc684222a7123b41356670cb1caa0b4dac79b2/docs/portfolio-launch.md",
+        },
+        {
           label: "Scientific provenance and model limitations",
-          url: "https://github.com/thembaxx/hydromental/blob/9fe537e19f05f766d3ed6fbb0cf317f635db83dd/docs/sources.md",
-          requiresRepositoryAccess: true,
+          url: "https://github.com/thembaxx/hydromental/blob/ecfc684222a7123b41356670cb1caa0b4dac79b2/docs/sources.md",
         },
         {
           label: "Science snapshot ingestion test scenarios",
-          url: "https://github.com/thembaxx/hydromental/blob/9fe537e19f05f766d3ed6fbb0cf317f635db83dd/tests/science-ingestion.test.mjs",
-          requiresRepositoryAccess: true,
+          url: "https://github.com/thembaxx/hydromental/blob/ecfc684222a7123b41356670cb1caa0b4dac79b2/tests/science-ingestion.test.mjs",
         },
       ],
       validationStatus:
-        "The source policy and ingestion tests make the data contract inspectable. They do not establish classroom learning gains, which have not yet been measured.",
+        "On 28 October 2026, 72 unit tests, 118 science records and 34 focused browser/device checks passed. The production dependency audit is clean; the full audit retains one pre-existing development-tool advisory. Classroom learning gains have not been measured.",
     },
     title: "Hydromental",
     subtitle: "Elementals · an interactive chemistry playground",
