@@ -70,7 +70,8 @@ export function ProjectCarousel({ projects }: { projects: ProjectData[] }) {
       });
     };
     element.addEventListener("scroll", update, { passive: true });
-    const resize = typeof ResizeObserver !== "undefined" ? new ResizeObserver(update) : null;
+    const resize =
+      typeof ResizeObserver !== "undefined" ? new ResizeObserver(update) : null;
     resize?.observe(element);
     window.addEventListener("resize", update);
     update();

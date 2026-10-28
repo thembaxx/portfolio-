@@ -768,13 +768,14 @@
   }
 }
 
-
 /* Squircle surfaces and focused motion: geometry falls back to rounded corners. */
 :root {
   --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 body {
-  transition: background-color 360ms ease, color 360ms ease;
+  transition:
+    background-color 360ms ease,
+    color 360ms ease;
 }
 .portfolio-button,
 .theme-toggle,
@@ -820,7 +821,10 @@ body {
   width: 40px;
   height: 40px;
   border-radius: 15px;
-  transition: background-color 220ms ease, border-color 220ms ease, transform 300ms var(--motion-ease);
+  transition:
+    background-color 220ms ease,
+    border-color 220ms ease,
+    transform 300ms var(--motion-ease);
 }
 .theme-toggle:not(:disabled):hover {
   background: var(--accentSoft);
@@ -881,7 +885,9 @@ body {
 }
 .project-preview,
 .screenshot-figure a {
-  transition: border-color 300ms ease, box-shadow 450ms var(--motion-ease);
+  transition:
+    border-color 300ms ease,
+    box-shadow 450ms var(--motion-ease);
 }
 .project-preview img {
   transition: transform 700ms var(--motion-ease);
@@ -899,7 +905,10 @@ body {
   padding: 9px 14px;
   border: 1px solid transparent;
   border-radius: 13px;
-  transition: background-color 220ms ease, color 220ms ease, border-color 220ms ease;
+  transition:
+    background-color 220ms ease,
+    color 220ms ease,
+    border-color 220ms ease;
 }
 .screenshot-tabs button[aria-selected="true"] {
   background: var(--accentSoft);
@@ -916,7 +925,10 @@ body {
   border-radius: 28px;
 }
 .squircle-cta {
-  transition: background-color 240ms ease, transform 300ms var(--motion-ease), box-shadow 300ms ease;
+  transition:
+    background-color 240ms ease,
+    transform 300ms var(--motion-ease),
+    box-shadow 300ms ease;
 }
 .squircle-cta:hover {
   box-shadow: 0 12px 24px -18px var(--accent);
@@ -932,13 +944,25 @@ body {
   .hero-meta {
     animation: hero-content-in 800ms var(--motion-ease) both;
   }
-  .hero-lead { animation-delay: 240ms; }
-  .portfolio-hero .action-row { animation-delay: 360ms; }
-  .hero-meta { animation-delay: 480ms; }
+  .hero-lead {
+    animation-delay: 240ms;
+  }
+  .portfolio-hero .action-row {
+    animation-delay: 360ms;
+  }
+  .hero-meta {
+    animation-delay: 480ms;
+  }
 }
 @keyframes hero-content-in {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 /* Progressive enhancement: in older browsers content remains fully visible. */
 @media (prefers-reduced-motion: no-preference) {
@@ -956,13 +980,26 @@ body {
   }
 }
 @keyframes scroll-content-in {
-  from { opacity: 0.64; transform: translateY(22px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0.64;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 @media (max-width: 759px) {
-  .carousel-image { border-radius: 26px; }
-  .carousel-controls button { width: 46px; height: 46px; }
-  .screenshot-tabs button { padding: 8px 12px; }
+  .carousel-image {
+    border-radius: 26px;
+  }
+  .carousel-controls button {
+    width: 46px;
+    height: 46px;
+  }
+  .screenshot-tabs button {
+    padding: 8px 12px;
+  }
 }
 @media (prefers-reduced-motion: reduce) {
   .carousel-slide[data-active="true"] .carousel-image,
