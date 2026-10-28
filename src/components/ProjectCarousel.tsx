@@ -9,7 +9,10 @@ import Link from "next/link";
 import { ArrowLeftIcon, ArrowRightIcon, ArrowUpRightIcon } from "@phosphor-icons/react";
 import type { ProjectData } from "@/data/projects";
 
-gsap.registerPlugin(useGSAP, ScrollTrigger);
+gsap.registerPlugin(useGSAP);
+if (typeof window === "undefined" || typeof window.matchMedia === "function") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 export function ProjectCarousel({ projects }: { projects: ProjectData[] }) {
   const id = useId();
@@ -70,8 +73,7 @@ export function ProjectCarousel({ projects }: { projects: ProjectData[] }) {
       });
     };
     element.addEventListener("scroll", update, { passive: true });
-    const resize =
-      typeof ResizeObserver !== "undefined" ? new ResizeObserver(update) : null;
+    const resize = typeof ResizeObserver !== "undefined" ? new ResizeObserver(update) : null;
     resize?.observe(element);
     window.addEventListener("resize", update);
     update();
