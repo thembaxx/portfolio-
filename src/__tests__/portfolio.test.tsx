@@ -105,7 +105,9 @@ describe("Themba Mndebele — editorial portfolio", () => {
       ["Hydromental", "hydromental", "https://hydromental.vercel.app"],
     ];
     expect(
-      screen.getAllByRole("heading", { level: 3 }).map((heading) => heading.textContent),
+      Array.from(document.querySelectorAll(".editorial-project h3")).map(
+        (heading) => heading.textContent,
+      ),
     ).toEqual(flagshipProjects.map((project) => project.title));
     expect(flagshipProjects.map((project) => project.title)).toEqual(
       featured.map(([name]) => name),
