@@ -179,11 +179,12 @@ describe("Themba Mndebele — editorial portfolio", () => {
     render(<Contact />);
     const copyButton = screen.getByRole("button", { name: /copy email address/i });
     expect(copyButton).toBeDefined();
+    expect(copyButton.querySelector("svg")).not.toBeNull();
 
     fireEvent.click(copyButton);
     expect(writeTextMock).toHaveBeenCalledWith("me@themba.dev");
 
-    expect(await screen.findByText("Copied ✓")).toBeDefined();
+    expect(await screen.findByText("Copied")).toBeDefined();
     expect(screen.getByText("Email address me@themba.dev copied to clipboard")).toBeDefined();
   });
 
@@ -210,7 +211,7 @@ describe("Themba Mndebele — editorial portfolio", () => {
       await act(async () => {
         fireEvent.click(screen.getByRole("button", { name: /copy email address/i }));
       });
-      expect(screen.getByText("Copied ✓")).toBeDefined();
+      expect(screen.getByText("Copied")).toBeDefined();
       act(() => vitest.advanceTimersByTime(2000));
       expect(screen.getByText("Copy email")).toBeDefined();
       await act(async () => {

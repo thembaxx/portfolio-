@@ -1,28 +1,28 @@
-import { Palette, Zap, Sparkles, BookOpen } from "lucide-react";
+import { PaletteIcon, LightningIcon, SparkleIcon, BookOpenIcon } from "@phosphor-icons/react/ssr";
 
 export function Approach() {
   const principles = [
     {
       title: "Design-Minded Engineering",
-      icon: Palette,
+      icon: PaletteIcon,
       description:
         "I care deeply about how interfaces look, feel, and behave\u2014not just whether they function. I build robust design systems with pixel-perfect attention to detail, motion design, and micro-interactions.",
     },
     {
       title: "Modern Tech Stack & Quality",
-      icon: Zap,
+      icon: LightningIcon,
       description:
         "React, TypeScript, Next.js, and Tailwind CSS are at the core of my workflow. I maintain clean component architecture, strong static typing, and high standards for performance and accessibility.",
     },
     {
       title: "AI-Assisted Workflow",
-      icon: Sparkles,
+      icon: SparkleIcon,
       description:
         "I leverage modern AI tools (Gemini, DeepSeek, CodeRabbit) to accelerate research, debug edge cases, write tests, and explore implementations\u2014while retaining absolute technical ownership.",
     },
     {
       title: "Continuous Learning",
-      icon: BookOpen,
+      icon: BookOpenIcon,
       description:
         "Web development evolves rapidly. I consistently experiment with emerging web specifications, state management paradigms, and testing methodologies to stay ahead.",
     },
@@ -55,7 +55,7 @@ export function Approach() {
                 className="p-5 rounded-2xl bg-card border border-border space-y-3 hover:border-primary/50 transition-colors shadow-xs"
               >
                 <div className="p-2.5 w-fit rounded-lg bg-secondary text-primary border border-border">
-                  <Icon className="w-5 h-5" strokeWidth={1.75} aria-hidden="true" />
+                  <Icon size={20} weight="regular" aria-hidden="true" />
                 </div>
                 <h3 className="text-base font-semibold text-foreground [text-wrap:balance]">
                   {item.title}

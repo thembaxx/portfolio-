@@ -1,7 +1,7 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
-import { Activity, BarChart3, ShieldCheck, Zap } from "lucide-react";
+import { ActivityIcon, ChartBarIcon, ShieldCheckIcon, LightningIcon } from "@phosphor-icons/react";
 import {
   AreaChart,
   Area,
@@ -45,7 +45,7 @@ export function AnalyticsSection() {
         {/* Section Header */}
         <div className="max-w-2xl space-y-3">
           <div className="inline-flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-wider text-blue-600 dark:text-sky-400">
-            <BarChart3 className="w-4 h-4" />
+            <ChartBarIcon className="w-4 h-4" />
             <span>Engineering Analytics</span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight [text-wrap:balance]">
@@ -69,7 +69,7 @@ export function AnalyticsSection() {
                   {item.metric}
                 </span>
                 <span className="inline-flex items-center gap-1 text-[11px] font-medium text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full">
-                  <ShieldCheck className="w-3 h-3" strokeWidth={1.75} aria-hidden="true" />
+                  <ShieldCheckIcon className="w-3 h-3" weight="regular" aria-hidden="true" />
                   {item.status}
                 </span>
               </div>
@@ -90,7 +90,7 @@ export function AnalyticsSection() {
             <div className="flex items-center justify-between">
               <div className="space-y-1">
                 <h3 className="text-base font-semibold flex items-center gap-2 [text-wrap:balance]">
-                  <Zap className="w-4 h-4 text-primary" strokeWidth={1.75} aria-hidden="true" />
+                  <LightningIcon className="w-4 h-4 text-primary" weight="regular" aria-hidden="true" />
                   Lighthouse Audit Score Trend
                 </h3>
                 <p className="text-xs text-muted-foreground [text-wrap:pretty]">
@@ -152,9 +152,9 @@ export function AnalyticsSection() {
             <div className="flex items-center justify-between">
               <div className="space-y-1">
                 <h3 className="text-base font-semibold flex items-center gap-2 [text-wrap:balance]">
-                  <Activity
+                  <ActivityIcon
                     className="w-4 h-4 text-primary"
-                    strokeWidth={1.75}
+                    weight="regular"
                     aria-hidden="true"
                   />
                   Page Load &amp; Interactive Efficiency
