@@ -12,7 +12,7 @@ import { Footer } from "../components/Footer";
 import Home from "../app/page";
 import RootLayout from "../app/layout";
 import ProjectPage from "../app/projects/[id]/page";
-import { projects } from "../data/projects";
+import { flagshipProjects, otherProjects } from "../data/projects";
 
 // Mock next/font/google
 vitest.mock("next/font/google", () => ({
@@ -28,10 +28,14 @@ vitest.mock("../components/ParticleBackground", () => ({
 // Mock next/image cleanly for JSDOM
 vitest.mock("next/image", () => ({
   default: (
-    props: React.ImgHTMLAttributes<HTMLImageElement> & { fill?: boolean; priority?: boolean },
+    props: React.ImgHTMLAttributes<HTMLImageElement> & {
+      fill?: boolean;
+      priority?: boolean;
+      unoptimized?: boolean;
+    },
   ) => {
     // oxlint-disable-next-line @typescript-eslint/no-unused-vars
-    const { fill, priority, ...rest } = props;
+    const { fill, priority, unoptimized, ...rest } = props;
     // oxlint-disable-next-line @next/next/no-img-element
     return <img {...rest} alt={props.alt || ""} />;
   },
@@ -93,24 +97,27 @@ describe("Themba Mndebele — editorial portfolio", () => {
     expect(screen.getByText(/Vitest, Playwright/)).toBeDefined();
   });
 
-  test("renders the six supplied Featured projects in order with their screenshots and links", () => {
+  test("leads with three case studies and keeps the wider collection in a compact disclosure", () => {
     render(<ProjectSection />);
     const featured = [
-      ["Lumnie", "lumnie", "https://lumnie.vercel.app"],
-      ["CityLit", "citylit", "https://citylit.vercel.app"],
+      ["Nest", "nest", "https://nest-iota-three.vercel.app/"],
+      ["Billora", "billora", "https://billora.themba.dev"],
       ["Hydromental", "hydromental", "https://hydromental.vercel.app"],
-      ["ProcodiApp", "procodiapp", "https://procodiapp.vercel.app"],
-      ["mypets", "mypets", "https://mypets-pi.vercel.app"],
-      ["leesmaat", "leesmaat", "https://leesmaat.vercel.app"],
     ];
     expect(
       screen.getAllByRole("heading", { level: 3 }).map((heading) => heading.textContent),
-    ).toEqual(projects.map((project) => project.title));
-    expect(projects.slice(1, 7).map((project) => project.title)).toEqual(
+    ).toEqual(flagshipProjects.map((project) => project.title));
+    expect(flagshipProjects.map((project) => project.title)).toEqual(
       featured.map(([name]) => name),
     );
-    expect(new Set(projects.map((project) => project.id)).size).toBe(projects.length);
-    expect(screen.getByText(`${projects.length} projects`)).toBeDefined();
+    expect(screen.getByText("3 flagship case studies")).toBeDefined();
+    const disclosure = screen
+      .getByText(`More projects & experiments (${otherProjects.length})`)
+      .closest("details")!;
+    expect(disclosure).not.toHaveAttribute("open");
+    for (const project of otherProjects) {
+      expect(disclosure.querySelector(`a[href="/projects/${project.id}"]`)).not.toBeNull();
+    }
     for (const [name, id, liveUrl] of featured) {
       expect(screen.getByRole("link", { name: `Read ${name} case study` })).toHaveAttribute(
         "href",
@@ -120,7 +127,10 @@ describe("Themba Mndebele — editorial portfolio", () => {
         screen.getByRole("link", { name: `Open live demo for ${name} (opens in a new tab)` }),
       ).toHaveAttribute("href", liveUrl);
       const preview = screen.getByRole("link", { name: `Explore ${name}` });
-      expect(preview.querySelector("img")).toHaveAttribute("src", `/projects/${id}.jpg`);
+      expect(preview.querySelector("img")).toHaveAttribute(
+        "src",
+        flagshipProjects.find((project) => project.id === id)!.screenshots[0].src,
+      );
     }
     expect(screen.queryByText("Mileia")).toBeNull();
   });
@@ -241,9 +251,8 @@ describe("Themba Mndebele — editorial portfolio", () => {
     expect(liveDemoLink.getAttribute("aria-label")).toBe("Open Live Demo for Hydromental");
     expect(liveDemoLink.className).toContain("focus-visible:ring-2");
 
-    // Private source repositories must not expose dead GitHub links.
     expect(
-      screen.queryByRole("link", { name: "View GitHub repository for Hydromental" }),
-    ).toBeNull();
+      screen.getByRole("link", { name: "View GitHub repository for Hydromental" }),
+    ).toHaveAttribute("href", "https://github.com/thembaxx/hydromental");
   });
 });

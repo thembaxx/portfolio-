@@ -1,4 +1,4 @@
-import { projects } from "@/data/projects";
+import { flagshipProjects, otherProjects, projects } from "@/data/projects";
 import { brand } from "./brand";
 import { absoluteUrl, siteUrl } from "./site";
 
@@ -7,7 +7,8 @@ export function llmsDocument(full = false) {
     `# ${brand.name}\n\n> ${brand.role} based in ${brand.location}. ${brand.tagline}`,
     `Personal portfolio of ${brand.name}, a frontend developer with a design background and about four years of experience building React products. The work focuses on accessible interfaces, responsive layouts and resilient state. Open to remote roles.`,
     `## Portfolio\n\n- [Homepage](${siteUrl}): Introduction, selected projects, toolkit, background and contact.\n- [About](${absoluteUrl("/#about")}): Design and engineering background.\n- [Contact](${absoluteUrl("/#contact")}): Role and project enquiries.`,
-    `## Featured projects\n\n${projects.map((project) => `- [${project.title}](${absoluteUrl(`/projects/${project.id}`)}): ${project.subtitle}. ${project.description}`).join("\n")}`,
+    `## Flagship case studies\n\n${flagshipProjects.map((project) => `- [${project.title}](${absoluteUrl(`/projects/${project.id}`)}): ${project.subtitle}. ${project.description}`).join("\n")}`,
+    `## More projects and experiments\n\n${otherProjects.map((project) => `- [${project.title}](${absoluteUrl(`/projects/${project.id}`)}): ${project.subtitle}.`).join("\n")}`,
   ];
   if (full) {
     sections.push(

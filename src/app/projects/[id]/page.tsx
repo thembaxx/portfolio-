@@ -128,6 +128,26 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
               <h2 id="case-study-title" className="font-serif text-2xl text-[var(--ink)]">
                 Behind the project
               </h2>
+              {(project.caseStudy.audience || project.caseStudy.contribution) && (
+                <dl className="grid gap-6 sm:grid-cols-2 text-sm">
+                  {project.caseStudy.audience && (
+                    <div className="space-y-2">
+                      <dt className="font-semibold">Who it serves</dt>
+                      <dd className="leading-relaxed text-[var(--mute)]">
+                        {project.caseStudy.audience}
+                      </dd>
+                    </div>
+                  )}
+                  {project.caseStudy.contribution && (
+                    <div className="space-y-2">
+                      <dt className="font-semibold">Work covered</dt>
+                      <dd className="leading-relaxed text-[var(--mute)]">
+                        {project.caseStudy.contribution}
+                      </dd>
+                    </div>
+                  )}
+                </dl>
+              )}
               <div className="grid gap-6 sm:grid-cols-2">
                 <div className="space-y-2">
                   <h3 className="text-sm font-semibold">The problem</h3>
@@ -142,6 +162,24 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
                   </p>
                 </div>
               </div>
+              {project.caseStudy.walkthrough && (
+                <div className="space-y-3">
+                  <h3 className="text-sm font-semibold">Try the main journey</h3>
+                  <ol className="list-decimal pl-5 space-y-2 text-sm leading-relaxed text-[var(--mute)]">
+                    {project.caseStudy.walkthrough.map((step) => (
+                      <li key={step}>{step}</li>
+                    ))}
+                  </ol>
+                </div>
+              )}
+              {project.caseStudy.tradeoff && (
+                <div className="space-y-2">
+                  <h3 className="text-sm font-semibold">The tradeoff</h3>
+                  <p className="text-sm leading-relaxed text-[var(--mute)]">
+                    {project.caseStudy.tradeoff}
+                  </p>
+                </div>
+              )}
               <div className="space-y-3">
                 <h3 className="text-sm font-semibold">Evidence to inspect</h3>
                 <p className="text-xs leading-relaxed text-[var(--mute)]">
