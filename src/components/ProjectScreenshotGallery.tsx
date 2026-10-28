@@ -2,6 +2,7 @@
 
 import { useId, useRef, useState } from "react";
 import Image from "next/image";
+import { ArrowUpRightIcon } from "@phosphor-icons/react";
 
 export interface ScreenshotItem {
   src: string;
@@ -104,7 +105,7 @@ export function ProjectScreenshotGallery({ screenshots, projectName }: GalleryPr
             />
           </a>
           <figcaption className="mono">
-            {current.label} <span aria-hidden="true">↗</span>
+            {current.label} <ArrowUpRightIcon size={14} aria-hidden="true" />
           </figcaption>
         </figure>
       </div>

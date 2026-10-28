@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { SectionLabel } from "./SectionLabel";
+import { ArrowUpRightIcon, CheckIcon, CopyIcon } from "@phosphor-icons/react";
 
 export function Contact() {
   const [status, setStatus] = useState<"idle" | "copied" | "failed">("idle");
@@ -45,7 +46,17 @@ export function Contact() {
                 : "Copy email address me@themba.dev to clipboard"
             }
           >
-            {status === "copied" ? "Copied ✓" : "Copy email"}
+            {status === "copied" ? (
+              <>
+                <CheckIcon size={16} weight="bold" aria-hidden="true" />
+                Copied
+              </>
+            ) : (
+              <>
+                <CopyIcon size={16} aria-hidden="true" />
+                Copy email
+              </>
+            )}
           </button>
           <a
             className="text-link mono"
@@ -54,7 +65,7 @@ export function Contact() {
             rel="noopener noreferrer"
             aria-label="LinkedIn profile (opens in a new tab)"
           >
-            LinkedIn ↗
+            LinkedIn <ArrowUpRightIcon size={14} aria-hidden="true" />
           </a>
           <a
             className="text-link mono"
@@ -63,7 +74,7 @@ export function Contact() {
             rel="noopener noreferrer"
             aria-label="GitHub profile (opens in a new tab)"
           >
-            GitHub ↗
+            GitHub <ArrowUpRightIcon size={14} aria-hidden="true" />
           </a>
         </div>
         <p

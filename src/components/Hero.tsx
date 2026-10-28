@@ -1,3 +1,5 @@
+import { ArrowDownIcon } from "@phosphor-icons/react/ssr";
+
 export function Hero() {
   return (
     <div id="top" className="portfolio-wrap portfolio-hero">
@@ -15,7 +17,7 @@ export function Hero() {
       </p>
       <div className="action-row">
         <a className="portfolio-button" href="#work">
-          Selected work <span aria-hidden="true">↓</span>
+          Selected work <ArrowDownIcon size={16} aria-hidden="true" />
         </a>
         <a className="text-link mono" href="mailto:me@themba.dev">
           me@themba.dev
