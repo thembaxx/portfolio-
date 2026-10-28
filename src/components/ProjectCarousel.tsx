@@ -92,9 +92,7 @@ export function ProjectCarousel({ projects }: { projects: ProjectData[] }) {
     const offset = card.getBoundingClientRect().left - element.getBoundingClientRect().left;
     element.scrollTo({
       left: element.scrollLeft + offset,
-      behavior: window.matchMedia?.("(prefers-reduced-motion: reduce)").matches
-        ? "auto"
-        : "smooth",
+      behavior: window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
     });
   }
 
