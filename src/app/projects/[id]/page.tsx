@@ -5,7 +5,12 @@ import { notFound, permanentRedirect } from "next/navigation";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ProjectScreenshotGallery } from "@/components/ProjectScreenshotGallery";
-import { ArrowLeftIcon, ArrowSquareOutIcon, CheckCircleIcon, GithubLogoIcon } from "@phosphor-icons/react/ssr";
+import {
+  ArrowLeftIcon,
+  ArrowSquareOutIcon,
+  CheckCircleIcon,
+  GithubLogoIcon,
+} from "@phosphor-icons/react/ssr";
 
 export function generateStaticParams() {
   return [...projects.map((project) => ({ id: project.id })), { id: "lumni" }];
@@ -198,7 +203,10 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
                             </span>
                           )}
                         </span>
-                        <ArrowSquareOutIcon className="w-4 h-4 shrink-0 mt-0.5" aria-hidden="true" />
+                        <ArrowSquareOutIcon
+                          className="w-4 h-4 shrink-0 mt-0.5"
+                          aria-hidden="true"
+                        />
                       </a>
                     </li>
                   ))}

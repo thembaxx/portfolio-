@@ -41,7 +41,11 @@ export function Navbar() {
           aria-pressed={mounted ? isDark : undefined}
           title={mounted ? label : "Toggle theme"}
         >
-          {isDark ? <SunIcon size={16} aria-hidden="true" /> : <MoonIcon size={16} aria-hidden="true" />}
+          {isDark ? (
+            <SunIcon size={16} aria-hidden="true" />
+          ) : (
+            <MoonIcon size={16} aria-hidden="true" />
+          )}
         </button>
       </nav>
     </header>

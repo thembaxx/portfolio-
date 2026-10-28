@@ -90,7 +90,11 @@ export function AnalyticsSection() {
             <div className="flex items-center justify-between">
               <div className="space-y-1">
                 <h3 className="text-base font-semibold flex items-center gap-2 [text-wrap:balance]">
-                  <LightningIcon className="w-4 h-4 text-primary" weight="regular" aria-hidden="true" />
+                  <LightningIcon
+                    className="w-4 h-4 text-primary"
+                    weight="regular"
+                    aria-hidden="true"
+                  />
                   Lighthouse Audit Score Trend
                 </h3>
                 <p className="text-xs text-muted-foreground [text-wrap:pretty]">

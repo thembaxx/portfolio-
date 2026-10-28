@@ -72,7 +72,8 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             href={`/projects/${project.id}`}
             aria-label={`Read ${project.title} ${project.caseStudy ? "case study" : "project details"}`}
           >
-            {project.caseStudy ? "Case study" : "Project details"} <ArrowRightIcon size={14} aria-hidden="true" />
+            {project.caseStudy ? "Case study" : "Project details"}{" "}
+            <ArrowRightIcon size={14} aria-hidden="true" />
           </Link>
         </div>
       </div>
