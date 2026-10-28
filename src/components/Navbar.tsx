@@ -5,6 +5,7 @@ import Link from "next/link";
 import { LogoMark } from "./LogoMark";
 import { brand } from "@/lib/brand";
 import { useTheme } from "next-themes";
+import { MoonIcon, SunIcon } from "@phosphor-icons/react";
 
 const emptySubscribe = () => () => {};
 
@@ -40,7 +41,11 @@ export function Navbar() {
           aria-pressed={mounted ? isDark : undefined}
           title={mounted ? label : "Toggle theme"}
         >
-          <span aria-hidden="true">◐</span>
+          {isDark ? (
+            <SunIcon size={16} aria-hidden="true" />
+          ) : (
+            <MoonIcon size={16} aria-hidden="true" />
+          )}
         </button>
       </nav>
     </header>

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { ProjectData } from "@/data/projects";
+import { ArrowRightIcon, ArrowUpRightIcon } from "@phosphor-icons/react/ssr";
 
 interface ProjectCardProps {
   project: ProjectData;
@@ -52,7 +53,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               rel="noopener noreferrer"
               aria-label={`Open live demo for ${project.title} (opens in a new tab)`}
             >
-              Live demo ↗
+              Live demo <ArrowUpRightIcon size={14} aria-hidden="true" />
             </a>
           )}
           {project.githubUrl && (
@@ -63,7 +64,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               rel="noopener noreferrer"
               aria-label={`View GitHub repository for ${project.title} (opens in a new tab)`}
             >
-              GitHub ↗
+              GitHub <ArrowUpRightIcon size={14} aria-hidden="true" />
             </a>
           )}
           <Link
@@ -71,7 +72,8 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             href={`/projects/${project.id}`}
             aria-label={`Read ${project.title} ${project.caseStudy ? "case study" : "project details"}`}
           >
-            {project.caseStudy ? "Case study" : "Project details"} →
+            {project.caseStudy ? "Case study" : "Project details"}{" "}
+            <ArrowRightIcon size={14} aria-hidden="true" />
           </Link>
         </div>
       </div>

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { flagshipProjects, otherProjects } from "@/data/projects";
 import { ProjectCard } from "./ProjectCard";
 import { SectionLabel } from "./SectionLabel";
+import { ArrowUpRightIcon } from "@phosphor-icons/react/ssr";
 
 export function ProjectSection() {
   return (
@@ -30,7 +31,7 @@ export function ProjectSection() {
                 <Link href={`/projects/${project.id}`}>
                   <span className="project-index-title">{project.title}</span>
                   <span className="project-index-description">{project.subtitle}</span>
-                  <span aria-hidden="true">↗</span>
+                  <ArrowUpRightIcon size={16} aria-hidden="true" />
                 </Link>
               </li>
             ))}

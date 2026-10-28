@@ -213,6 +213,9 @@
   transform: translateY(-2px);
 }
 .text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
   border-bottom: 1px solid currentColor;
   padding-bottom: 1px;
   transition: color 0.2s;
@@ -539,6 +542,9 @@
   height: auto;
 }
 .screenshot-figure figcaption {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
   color: var(--mute);
   margin-top: 12px;
 }
