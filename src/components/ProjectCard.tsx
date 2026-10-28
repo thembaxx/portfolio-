@@ -69,9 +69,9 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           <Link
             className="text-link"
             href={`/projects/${project.id}`}
-            aria-label={`Read ${project.title} ${screenshot ? "case study" : "project details"}`}
+            aria-label={`Read ${project.title} ${project.caseStudy ? "case study" : "project details"}`}
           >
-            {screenshot ? "Case study" : "Project details"} →
+            {project.caseStudy ? "Case study" : "Project details"} →
           </Link>
         </div>
       </div>

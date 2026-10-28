@@ -269,6 +269,47 @@
 .project-list {
   margin-top: 40px;
 }
+.more-projects {
+  border-block: 1px solid var(--line);
+  padding-block: 24px;
+}
+.more-projects summary {
+  cursor: pointer;
+  padding-block: 8px;
+}
+.more-projects > p {
+  color: var(--mute);
+  max-width: 60ch;
+  margin-block: 20px;
+}
+.project-index {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.project-index li + li {
+  border-top: 1px solid var(--line);
+}
+.project-index a {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4px 16px;
+  padding-block: 16px;
+}
+.project-index-title {
+  font-weight: 500;
+}
+.project-index-description {
+  grid-row: 2;
+  color: var(--mute);
+  font-size: 0.9rem;
+}
+.project-index a > :last-child {
+  grid-column: 2;
+  grid-row: 1 / 3;
+  align-self: center;
+  color: var(--accent);
+}
 .legacy-anchor {
   position: absolute;
   top: 0;

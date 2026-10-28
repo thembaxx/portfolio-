@@ -17,13 +17,89 @@ export interface ProjectData {
   caseStudy?: {
     problem: string;
     decision: string;
+    audience?: string;
+    contribution?: string;
+    walkthrough?: string[];
+    tradeoff?: string;
     evidence: { label: string; url: string; requiresRepositoryAccess?: boolean }[];
     validationStatus: string;
   };
 }
 
-// Showcase the newest launch first while preserving the established featured case studies.
-export const featuredProjects: ProjectData[] = [
+// Curated copy stays independent of generated GitHub metadata.
+const curatedProjects: ProjectData[] = [
+  {
+    id: "nest",
+    title: "Nest",
+    subtitle: "A dependable home for saved references",
+    oneLiner: "Good things, kept close.",
+    description:
+      "An offline-first bookmark library for collecting references, organising them into collections and finding them again. Browser imports, portable encrypted backups and optional sync keep the core library useful without an account.",
+    features: [
+      "Review browser imports before adding them to a personal library",
+      "Organise collections and retrieve references through search",
+      "Export, restore and recover browser-local data",
+    ],
+    technologies: ["React", "Next.js", "TypeScript", "IndexedDB", "Tailwind CSS"],
+    screenshots: [],
+    liveUrl: "https://nest-iota-three.vercel.app/",
+    githubUrl: "https://github.com/thembaxx/nest",
+    caseStudy: {
+      audience: "People collecting design, research and everyday web references.",
+      contribution:
+        "Product workflow, responsive frontend, local persistence, import/export and recovery behaviour.",
+      problem:
+        "A bookmark collection is only useful if saving is easy, retrieval is quick and references remain recoverable when browser storage fails.",
+      decision:
+        "Keep the library local-first, make import review explicit and offer portable backups. Optional sync stays separate from the account-free core journey.",
+      walkthrough: [
+        "Start with the labelled sample library or import your own browser bookmarks.",
+        "Review an import, organise a collection and retrieve a saved reference with search.",
+        "Export a backup and inspect the restore flow before replacing any data.",
+      ],
+      tradeoff:
+        "Account-free storage lowers setup friction, but browser data can be cleared or evicted. Backups and optional sync are explicit choices; live Google consent requires separate configuration.",
+      evidence: [{ label: "Explore the application", url: "https://nest-iota-three.vercel.app/" }],
+      validationStatus:
+        "Release verification and known limits are recorded with the source. Adoption and user research outcomes have not been measured.",
+    },
+  },
+  {
+    id: "billora",
+    title: "Billora",
+    subtitle: "Make municipal account changes understandable",
+    oneLiner: "A little clarity for everything home.",
+    description:
+      "A South African municipal account workspace for reviewing PDF statements, comparing monthly charges and preparing billing-query evidence. Personal documents stay in the browser, with full workspace backups and clearly labelled examples.",
+    features: [
+      "Local PDF extraction with evidence and human review",
+      "Explainable month-to-month comparisons and query preparation",
+      "Downloadable evidence packs and encrypted workspace backups",
+    ],
+    technologies: ["React", "TypeScript", "Vite", "PDF.js", "IndexedDB", "Three.js"],
+    screenshots: [],
+    liveUrl: "https://billora.themba.dev",
+    githubUrl: "https://github.com/thembaxx/billora",
+    caseStudy: {
+      audience: "South African homeowners organising municipal statements and billing queries.",
+      contribution:
+        "Statement review, comparison and evidence-pack workflows, browser-local storage and responsive interface engineering.",
+      problem:
+        "Understanding an unexpected municipal charge means comparing documents, checking extracted figures and keeping the evidence together for a billing query.",
+      decision:
+        "Extract locally, show quoted evidence for review and keep original statements alongside the figures. Turn comparisons into editable, unsent query packs.",
+      walkthrough: [
+        "Explore the labelled examples or start an empty personal workspace.",
+        "Import a statement, review the suggested figures and compare charges across months.",
+        "Prepare a billing query and download its supporting evidence pack.",
+      ],
+      tradeoff:
+        "Local processing keeps documents on the device. Users review extracted values, retain backups and submit queries themselves; municipal retrieval and submission are not integrated.",
+      evidence: [{ label: "Explore the application", url: "https://billora.themba.dev" }],
+      validationStatus:
+        "Release verification and known limits are recorded with the source. Automated checks do not establish extraction accuracy across every municipality or real billing outcomes.",
+    },
+  },
   {
     id: "mise",
     caseStudy: {
@@ -60,7 +136,15 @@ export const featuredProjects: ProjectData[] = [
       "Focused Cook Mode, preparation checklists and multiple persistent timers",
       "Offline-capable PWA, shopping lists and reviewed cookbook import/backup",
     ],
-    technologies: ["React", "TypeScript", "Vite", "Three.js", "React Three Fiber", "Rapier", "GSAP"],
+    technologies: [
+      "React",
+      "TypeScript",
+      "Vite",
+      "Three.js",
+      "React Three Fiber",
+      "Rapier",
+      "GSAP",
+    ],
     liveUrl: "https://mise-two-teal.vercel.app",
     githubUrl: "",
     screenshots: [],
@@ -209,10 +293,20 @@ export const featuredProjects: ProjectData[] = [
   {
     id: "hydromental",
     caseStudy: {
+      audience: "Curious learners exploring chemistry through short interactive activities.",
+      contribution:
+        "Interactive element exploration, attributed scientific data, accessible model alternatives and resilient learning progress.",
       problem:
         "An engaging element model can blur the distinction between a teaching illustration and sourced scientific data.",
       decision:
         "Keep quantitative properties in an attributed local snapshot, show units and unknown values, and document isotope, shell and model limitations alongside interactive exploration.",
+      walkthrough: [
+        "Choose an element and inspect its sourced properties and model explanation.",
+        "Complete a learning activity and save a discovery in the journal.",
+        "Reopen the app to revisit progress, then inspect backup and recovery controls.",
+      ],
+      tradeoff:
+        "Interactive atoms are simplified teaching models. Essential information and activities remain available through HTML controls when motion or WebGL is unavailable.",
       evidence: [
         {
           label: "Explore the current application",
@@ -244,7 +338,7 @@ export const featuredProjects: ProjectData[] = [
     ],
     technologies: ["React", "Next.js", "TypeScript", "Three.js", "Motion", "Radix UI"],
     liveUrl: "https://hydromental.vercel.app",
-    githubUrl: "",
+    githubUrl: "https://github.com/thembaxx/hydromental",
     screenshots: [
       {
         src: "/projects/hydromental.jpg",
@@ -436,21 +530,30 @@ function getScreenshots(project: ProjectData): ScreenshotItem[] {
   ];
 }
 
-// Keep curated case studies first and avoid listing their repositories twice.
+const flagshipIds = ["nest", "billora", "hydromental"] as const;
+export const featuredProjects = flagshipIds.map((id) =>
+  curatedProjects.find((project) => project.id === id)!,
+);
+
+// Preserve every existing project URL, while leading with three focused case studies.
 export const projects: ProjectData[] = [
-  ...featuredProjects.map((project) => ({ ...project, screenshots: getScreenshots(project) })),
-  ...githubProjects
-    .filter(
-      (project) =>
-        !featuredProjects.some(
-          (featured) =>
-            featured.id === project.id ||
-            (Boolean(featured.githubUrl) &&
-              featured.githubUrl.toLowerCase() === project.githubUrl.toLowerCase()),
-        ),
-    )
-    .map((project) => ({ ...project, screenshots: getScreenshots(project as ProjectData) })),
-];
+  ...featuredProjects,
+  ...curatedProjects.filter((project) => !featuredProjects.includes(project)),
+  ...githubProjects.filter(
+    (project) =>
+      !curatedProjects.some(
+        (featured) =>
+          featured.id === project.id ||
+          (Boolean(featured.githubUrl) &&
+            featured.githubUrl.toLowerCase() === project.githubUrl.toLowerCase()),
+      ),
+  ),
+].map((project) => ({ ...project, screenshots: getScreenshots(project) }));
+
+export const flagshipProjects = projects.filter((project) =>
+  flagshipIds.some((id) => id === project.id),
+);
+export const otherProjects = projects.filter((project) => !flagshipProjects.includes(project));
 
 export function getProject(id: string) {
   return projects.find((project) => project.id === id);

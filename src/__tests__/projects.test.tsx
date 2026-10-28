@@ -9,8 +9,12 @@ import * as projectCatalog from "../data/projects";
 import { ProjectCard } from "../components/ProjectCard";
 
 vitest.mock("next/image", () => ({
-  // oxlint-disable-next-line @next/next/no-img-element
-  default: (props: React.ImgHTMLAttributes<HTMLImageElement>) => <img {...props} alt={props.alt} />,
+  default: (props: React.ImgHTMLAttributes<HTMLImageElement> & { unoptimized?: boolean }) => {
+    // oxlint-disable-next-line @typescript-eslint/no-unused-vars
+    const { unoptimized, ...rest } = props;
+    // oxlint-disable-next-line @next/next/no-img-element
+    return <img {...rest} alt={rest.alt} />;
+  },
 }));
 vitest.mock("../components/Navbar", () => ({ Navbar: () => <nav /> }));
 vitest.mock("next/navigation", () => ({
@@ -25,8 +29,13 @@ vitest.mock("next/navigation", () => ({
 const ids = projects.map((project) => project.id);
 
 describe("Featured project routing and screenshots", () => {
-  test("features the newest Mise launch without exposing private GitHub source", () => {
-    expect(projects[0].id).toBe("mise");
+  test("features three launch case studies and preserves previous launches and source visibility", () => {
+    expect(projects.slice(0, 3).map((project) => project.id)).toEqual([
+      "nest",
+      "billora",
+      "hydromental",
+    ]);
+    expect(new Set(ids).size).toBe(ids.length);
     const mise = projects.filter((project) => project.id === "mise");
     expect(mise).toHaveLength(1);
     expect(mise[0]).toMatchObject({
@@ -36,12 +45,13 @@ describe("Featured project routing and screenshots", () => {
     });
     // Use a genuine local capture when available, otherwise the labeled live-site preview.
     const miseScreenshot = mise[0].screenshots[0];
-    expect(miseScreenshot.src).toMatch(/^\/projects\/mise\.(jpg|png)$|^https:\/\/image\.thum\.io\//);
+    expect(miseScreenshot.src).toMatch(
+      /^\/projects\/mise\.(jpg|png)$|^https:\/\/image\.thum\.io\//,
+    );
     expect(miseScreenshot.alt).toBeTruthy();
     if (miseScreenshot.src.startsWith("https://")) {
       expect(miseScreenshot.label).toBe("Live website preview");
     }
-    expect(projects[1].id).toBe("tally");
     const tally = projects.filter((project) => project.id === "tally");
     expect(tally).toHaveLength(1);
     expect(tally[0]).toMatchObject({

@@ -1,4 +1,4 @@
-import { projects } from "@/data/projects";
+import { flagshipProjects } from "@/data/projects";
 import { brand } from "@/lib/brand";
 import { absoluteUrl, siteUrl } from "@/lib/site";
 import { serializeSchema } from "@/lib/seo";
@@ -26,8 +26,8 @@ export default function Home() {
             about: { "@id": absoluteUrl("/#person") },
             mainEntity: {
               "@type": "ItemList",
-              numberOfItems: projects.length,
-              itemListElement: projects.map((project, index) => ({
+              numberOfItems: flagshipProjects.length,
+              itemListElement: flagshipProjects.map((project, index) => ({
                 "@type": "ListItem",
                 position: index + 1,
                 name: project.title,
