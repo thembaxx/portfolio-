@@ -163,9 +163,38 @@ export async function syncProjects({
     const saved = JSON.parse(previous);
     if (!Array.isArray(saved)) throw new Error("Invalid saved project catalog.");
     for (const project of saved) {
-      if (allowlist.has(project.id) && project.liveUrl && !merged.has(project.id)) {
-        merged.set(project.id, project);
+      if (!allowlist.has(project.id) || !project.liveUrl || merged.has(project.id)) continue;
+      // The current GitHub list deliberately excludes archived, disabled and forked repos.
+      // Do not resurrect an archived *public* project from the last saved snapshot.
+      // Private source can be retained only as a reviewed, live-only entry.
+      const response = await fetchImpl(
+        `https://api.github.com/repos/${encodeURIComponent(config.owner)}/${encodeURIComponent(project.id)}`,
+        {
+          headers: {
+            Accept: "application/vnd.github+json",
+            "X-GitHub-Api-Version": "2022-11-28",
+            ...(token ? { Authorization: `Bearer ${token}` } : {}),
+          },
+          signal: AbortSignal.timeout(30_000),
+        },
+      );
+      if (response.status !== 404) {
+        if (!response.ok) {
+          throw new Error(
+            `GitHub repository status check failed (${response.status}): ${project.id}`,
+          );
+        }
+        const repo = await response.json();
+        if (
+          repo.archived ||
+          repo.disabled ||
+          repo.fork ||
+          !repo.private ||
+          repo.owner?.login?.toLowerCase() !== config.owner.toLowerCase()
+        )
+          continue;
       }
+      merged.set(project.id, { ...project, githubUrl: "" });
     }
   }
   const projects = allowlist
