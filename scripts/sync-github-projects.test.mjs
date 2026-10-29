@@ -175,7 +175,6 @@ describe("GitHub project sync", () => {
     ]);
   });
 
-
   test("never resurrects a publicly archived repository from the saved allowlist", async () => {
     const directory = await mkdtemp(join(tmpdir(), "portfolio-archive-sync-"));
     directories.push(directory);
@@ -183,14 +182,29 @@ describe("GitHub project sync", () => {
     const outputPath = join(directory, "projects.json");
     await writeFile(
       configPath,
-      JSON.stringify({ ...config, activeRepoNames: ["retained-private", "retired-public", "live-public"] }),
+      JSON.stringify({
+        ...config,
+        activeRepoNames: ["retained-private", "retired-public", "live-public"],
+      }),
     );
-    await writeFile(outputPath, JSON.stringify([
-      { id: "retained-private", liveUrl: "https://private.example", githubUrl: "https://github.com/thembaxx/retained-private" },
-      { id: "retired-public", liveUrl: "https://retired.example", githubUrl: "https://github.com/thembaxx/retired-public" },
-    ]));
+    await writeFile(
+      outputPath,
+      JSON.stringify([
+        {
+          id: "retained-private",
+          liveUrl: "https://private.example",
+          githubUrl: "https://github.com/thembaxx/retained-private",
+        },
+        {
+          id: "retired-public",
+          liveUrl: "https://retired.example",
+          githubUrl: "https://github.com/thembaxx/retired-public",
+        },
+      ]),
+    );
     const fetchImpl = async (url) => {
-      if (url.includes("/users/")) return response([repository("live-public", { homepage: "https://live.example" })]);
+      if (url.includes("/users/"))
+        return response([repository("live-public", { homepage: "https://live.example" })]);
       if (url.endsWith("/repos/thembaxx/retired-public"))
         return response(repository("retired-public", { archived: true }));
       return response(null, 404);
@@ -207,13 +221,16 @@ describe("GitHub project sync", () => {
     directories.push(directory);
     const configPath = join(directory, "config.json");
     const outputPath = join(directory, "projects.json");
-    const previous = JSON.stringify([{ id: "retired-public", liveUrl: "https://retired.example" }]);
+    const previous = JSON.stringify([
+      { id: "retired-public", liveUrl: "https://retired.example" },
+    ]);
     await writeFile(configPath, JSON.stringify({ ...config, activeRepoNames: ["retired-public"] }));
     await writeFile(outputPath, previous);
     const fetchImpl = async (url) =>
       url.includes("/users/") ? response([]) : response({ error: "unavailable" }, 503);
-    await expect(syncProjects({ configPath, outputPath, fetchImpl, token: "" }))
-      .rejects.toThrow("repository status check failed (503)");
+    await expect(
+      syncProjects({ configPath, outputPath, fetchImpl, token: "" }),
+    ).rejects.toThrow("repository status check failed (503)");
     expect(await readFile(outputPath, "utf8")).toBe(previous);
   });
 
