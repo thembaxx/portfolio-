@@ -1,5 +1,6 @@
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 import { projects } from "@/data/projects";
+import projectConfig from "../../github-projects.config.json";
 
 beforeEach(() => {
   vi.resetModules();
@@ -10,6 +11,12 @@ beforeEach(() => {
 afterEach(() => vi.unstubAllEnvs());
 
 describe("Portfolio discovery", () => {
+  test("discontinued Mileia remains excluded even if GitHub still marks it non-archived", () => {
+    expect(projectConfig.exclude).toContain("mileia");
+    expect(projectConfig.activeRepoNames).not.toContain("mileia");
+    expect(projects.every((project) => project.id !== "mileia")).toBe(true);
+  });
+
   test("all public discovery documents use the configured canonical origin", async () => {
     vi.stubEnv("SITE_URL", "https://portfolio.example/");
     const { siteMetadata, identitySchema, projectMetadata, projectSchema } =
