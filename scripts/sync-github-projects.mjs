@@ -180,7 +180,9 @@ export async function syncProjects({
       );
       if (response.status !== 404) {
         if (!response.ok) {
-          throw new Error(`GitHub repository status check failed (${response.status}): ${project.id}`);
+          throw new Error(
+            `GitHub repository status check failed (${response.status}): ${project.id}`,
+          );
         }
         const repo = await response.json();
         if (
@@ -189,7 +191,8 @@ export async function syncProjects({
           repo.fork ||
           !repo.private ||
           repo.owner?.login?.toLowerCase() !== config.owner.toLowerCase()
-        ) continue;
+        )
+          continue;
       }
       merged.set(project.id, { ...project, githubUrl: "" });
     }
