@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "oxlint .",
-    "test": "vitest run",
+    "test": "vitest run && node --test scripts/sync-github-projects.test.mjs",
     "projects:sync": "node scripts/sync-github-projects.mjs",
     "brand:assets": "node scripts/generate-brand-assets.mjs",
     "lint:fix": "oxlint --fix .",
