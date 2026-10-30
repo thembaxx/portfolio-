@@ -118,7 +118,19 @@ describe("Themba Mndebele — editorial portfolio", () => {
     expect(screen.getByRole("button", { name: "Previous project" })).toBeDisabled();
     expect(screen.getByRole("button", { name: "Next project" })).toBeEnabled();
     for (const project of otherProjects) {
-      expect(carousel.querySelector(`a[href="/projects/${project.id}"]`)).not.toBeNull();
+      const caseStudy = carousel.querySelector(`a[href="/projects/${project.id}"]`);
+      expect(caseStudy).not.toBeNull();
+      const liveDemo = screen.queryByRole("link", {
+        name: `Open ${project.title} live demo (opens in a new tab)`,
+      });
+      if (project.liveUrl) {
+        expect(liveDemo).toHaveAttribute("href", project.liveUrl);
+        expect(liveDemo).toHaveAttribute("target", "_blank");
+        expect(liveDemo).toHaveAttribute("rel", "noopener noreferrer");
+        expect(caseStudy?.contains(liveDemo)).toBe(false);
+      } else {
+        expect(liveDemo).toBeNull();
+      }
     }
     for (const [name, id, liveUrl] of featured) {
       expect(screen.getByRole("link", { name: `Read ${name} case study` })).toHaveAttribute(
