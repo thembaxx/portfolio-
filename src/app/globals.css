@@ -721,6 +721,40 @@
   font-size: 0.7rem;
   margin-top: 12px;
 }
+/* Keep direct project demos separate from the case-study card link (no nested anchors). */
+.carousel-live-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+  margin-top: 12px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--ink);
+  font-size: 0.7rem;
+  text-decoration: none;
+  transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease;
+}
+.carousel-live-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+@media (hover: hover) and (pointer: fine) {
+  .carousel-live-link:hover {
+    background: var(--card);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .carousel-live-link {
+    transition: none;
+  }
+  .carousel-live-link:hover {
+    transform: none;
+  }
+}
 .carousel-progress {
   width: 120px;
   height: 2px;
