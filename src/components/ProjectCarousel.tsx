@@ -182,6 +182,17 @@ export function ProjectCarousel({ projects }: { projects: ProjectData[] }) {
                   <p>{project.subtitle}</p>
                 </div>
               </Link>
+              {project.liveUrl && (
+                <a
+                  className="carousel-live-link mono"
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Open ${project.title} live demo (opens in a new tab)`}
+                >
+                  View live app <ArrowUpRightIcon size={15} aria-hidden="true" />
+                </a>
+              )}
             </li>
           );
         })}
