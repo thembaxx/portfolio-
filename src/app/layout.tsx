@@ -4,6 +4,7 @@ import { Instrument_Serif, Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
+import "./mobile-ux.css";
 
 const serif = Instrument_Serif({
   weight: "400",

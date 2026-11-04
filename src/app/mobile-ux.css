@@ -1,0 +1,52 @@
+/* Screenshot-first portfolio: mobile reading rhythm, touch-ready gallery and controls.
+   Preserve the existing branded hero, particle field, squircle and carousel motion. */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+:is(.portfolio-wrap, .portfolio-main, .project-carousel, .carousel-card, .carousel-copy) {
+  min-width: 0;
+}
+:is(.project-description, .project-subtitle, .carousel-copy, .contact-email) {
+  overflow-wrap: anywhere;
+}
+:is(.portfolio-button, .squircle-cta, .carousel-controls button, .screenshot-tabs button) {
+  min-height: 44px;
+}
+.screenshot-tabs {
+  scroll-padding-inline: 16px;
+}
+@media (pointer: coarse), (max-width: 767px) {
+  :is(input:not([type="checkbox"]):not([type="radio"]):not([type="range"]), select, textarea) {
+    font-size: 16px !important;
+  }
+}
+@media (max-width: 759px) {
+  .project-description,
+  .about-description {
+    font-size: clamp(16px, 4vw, 18px);
+    line-height: 1.6;
+  }
+  .carousel-copy {
+    text-wrap: pretty;
+  }
+  .carousel-controls button {
+    min-width: 44px;
+  }
+  .screenshot-tabs {
+    max-width: 100%;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    overscroll-behavior-inline: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+  .screenshot-tabs button {
+    flex-shrink: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  :is(.carousel-controls button, .screenshot-tabs button) {
+    transition: none;
+  }
+}
