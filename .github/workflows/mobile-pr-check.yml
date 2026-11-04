@@ -4,6 +4,8 @@ on:
     branches: [ui/mobile-native-polish-20261104]
     paths:
       - .github/workflows/mobile-pr-check.yml
+      - src/components/Navbar.tsx
+      - src/app/mobile-ux.css
 permissions:
   contents: read
 jobs:
