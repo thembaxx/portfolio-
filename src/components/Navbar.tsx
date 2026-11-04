@@ -1,6 +1,7 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
+import { Moon, Sun } from "@phosphor-icons/react";
 import Link from "next/link";
 import { LogoMark } from "./LogoMark";
 import { brand } from "@/lib/brand";
@@ -32,7 +33,7 @@ export function Navbar() {
           aria-pressed={mounted ? isDark : undefined}
           title={mounted ? label : "Toggle theme"}
         >
-          <span aria-hidden="true">◐</span>
+          <span aria-hidden="true">{isDark ? <Sun size={19} weight="regular" /> : <Moon size={19} weight="regular" />}</span>
         </button>
       </nav>
     </header>
