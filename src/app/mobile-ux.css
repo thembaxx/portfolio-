@@ -35,7 +35,9 @@ html {
   }
   .screenshot-tabs {
     max-width: 100%;
+    flex-wrap: nowrap;
     overflow-x: auto;
+    scroll-snap-type: x proximity;
     overscroll-behavior-inline: contain;
     -webkit-overflow-scrolling: touch;
   }
