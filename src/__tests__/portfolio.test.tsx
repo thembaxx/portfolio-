@@ -74,11 +74,11 @@ describe("Themba Mndebele — editorial portfolio", () => {
     render(<Hero />);
     expect(screen.getByRole("heading", { level: 1, name: "Themba Mndebele" })).toBeDefined();
     expect(screen.getByText("South Africa")).toBeDefined();
-    expect(screen.getByText("Open to remote roles")).toBeDefined();
+    expect(screen.getByText("Available for freelance & remote work")).toBeDefined();
     expect(screen.getByRole("link", { name: /Selected work/ })).toHaveAttribute("href", "#work");
-    expect(screen.getByRole("link", { name: "me@themba.dev" })).toHaveAttribute(
+    expect(screen.getByRole("link", { name: "Email me about a project" })).toHaveAttribute(
       "href",
-      "mailto:me@themba.dev",
+      "mailto:me@themba.dev?subject=Project%20inquiry",
     );
   });
 

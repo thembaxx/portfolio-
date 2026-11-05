@@ -1045,3 +1045,80 @@ body {
     transform: none !important;
   }
 }
+
+/* Phase 2: strong project imagery and a more intentional conversion path. */
+.portfolio-hero {
+  min-height: 100dvh;
+}
+.hero-lead {
+  font-size: clamp(1.15rem, 1.65vw, 1.45rem);
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+.portfolio-hero .portfolio-button,
+.portfolio-hero .text-link {
+  min-height: 48px;
+}
+.portfolio-hero .portfolio-button:focus-visible,
+.portfolio-hero .text-link:focus-visible,
+.carousel-card:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 4px;
+}
+.project-preview,
+.carousel-image {
+  box-shadow: 0 16px 44px rgb(0 0 0 / 7%);
+}
+.carousel-slide[data-active="true"] .carousel-image {
+  border-color: var(--accent);
+}
+.carousel-controls button:focus-visible,
+.screenshot-tabs button:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .portfolio-hero .portfolio-button svg {
+    transition: transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .portfolio-hero .portfolio-button:hover svg {
+    transform: translateY(3px);
+  }
+  .project-preview,
+  .carousel-image {
+    transition:
+      border-color 220ms ease,
+      box-shadow 320ms ease;
+  }
+  .project-preview:hover,
+  .carousel-card:hover .carousel-image {
+    box-shadow: 0 22px 54px rgb(0 0 0 / 12%);
+  }
+}
+@media (max-width: 600px) {
+  .portfolio-hero {
+    min-height: 100svh;
+    padding-top: max(96px, env(safe-area-inset-top));
+    padding-bottom: max(28px, env(safe-area-inset-bottom));
+  }
+  .hero-lead {
+    max-width: 32ch;
+  }
+  .portfolio-hero .action-row {
+    gap: 8px 18px;
+  }
+  .portfolio-hero .hero-meta {
+    gap: 12px 18px;
+    line-height: 1.5;
+  }
+  .carousel-image {
+    aspect-ratio: 4 / 3;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-hero .portfolio-button svg,
+  .project-preview,
+  .carousel-image {
+    transition: none !important;
+  }
+}
