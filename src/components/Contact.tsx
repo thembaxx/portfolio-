@@ -36,6 +36,12 @@ export function Contact() {
           me@themba.dev
         </a>
         <div className="action-row">
+          <a
+            className="portfolio-button"
+            href="mailto:me@themba.dev?subject=Project%20or%20role%20enquiry"
+          >
+            Start a conversation <ArrowUpRightIcon size={16} aria-hidden="true" />
+          </a>
           <button
             className="portfolio-button"
             type="button"
