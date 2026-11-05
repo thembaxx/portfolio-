@@ -1045,3 +1045,36 @@ body {
     transform: none !important;
   }
 }
+
+/* Phase 2: editorial art direction with no continuous GPU animation. */
+.portfolio-hero {
+  background: radial-gradient(ellipse 60% 48% at 92% 20%, var(--accentSoft), transparent 80%);
+}
+.portfolio-hero .action-row .text-link {
+  min-height: 44px;
+  font-weight: 600;
+  text-underline-offset: 4px;
+}
+.portfolio-hero .action-row a:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 5px;
+}
+@media (max-width: 600px) {
+  .portfolio-hero {
+    padding-top: max(100px, env(safe-area-inset-top));
+    padding-bottom: max(28px, env(safe-area-inset-bottom));
+    background: radial-gradient(ellipse 100% 38% at 85% 9%, var(--accentSoft), transparent 82%);
+  }
+  .hero-lead {
+    max-width: 32ch;
+    font-size: clamp(1rem, 4.2vw, 1.2rem);
+    line-height: 1.55;
+  }
+  .portfolio-hero .action-row {
+    gap: 12px 20px;
+  }
+  .hero-meta {
+    gap: 8px 16px;
+    margin-top: 28px;
+  }
+}
